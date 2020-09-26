@@ -10,7 +10,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require material_icons
  *= require bootstrap
  *= require_tree .
  *= require_self
  */
+
+
+ /***********************************************/
+ /****** Change color scheme of materialize ********/
+ /***********************************************/
+
+ @import "materialize/components/color-variables";
+ $primary-color: color("blue", "lighten-2") !default;
+ $secondary-color: color("yellow", "base") !default;
+ @import 'materialize';

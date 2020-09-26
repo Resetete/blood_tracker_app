@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+    </footer>
   </body>
 </html>
