@@ -15,8 +15,9 @@
     </header>
 
     <main>
-      <p class="notice"> <%= notice %> </p>
-      <p class="alert"> <%= alert %> </p>
+      <div class="container mt-3">
+        <%= render 'layouts/flash_messages' %>
+      </div>
 
       <div class="container">
         <%= yield %>
