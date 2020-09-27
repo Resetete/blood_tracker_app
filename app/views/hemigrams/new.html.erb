@@ -1,0 +1,13 @@
+<h1> Create new Hemigram </h1>
+
+
+<!-- enter new data for the specific parameter ; dropdown of parameter -->
+<%= form_for @hemigram do |f| %>
+  <%= f.label :parameter %>
+  <%= f.text_field :parameter %>
+
+  <%= f.label :value %>
+  <%= f.text_field :value %>
+
+  <%= f.submit %>
+<% end %>
