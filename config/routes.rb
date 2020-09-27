@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :view_users, controller: 'users', only: [:show]
+  resources :hemigrams
 end

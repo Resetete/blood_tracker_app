@@ -1,0 +1,8 @@
+<h1> My Hemigrams </h1>
+
+<% @all_user_hemigrams.each do |hemigram| %>
+  <ul>
+    <li> <%= hemigram.parameter %> </li>
+    <li> <%= hemigram.value %> </li> 
+  </ul>
+<% end %>
