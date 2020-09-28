@@ -1,8 +1,5 @@
-<h1> My Hemigrams </h1>
+<h1> My Hemigram </h1>
 
-<p> to do </p>
-<p> - add search that filters table </p>
-<p> - add pagination, sort columns </p>
 
 <div class="mb-3">
   <table class="striped highlight responsive-table">
@@ -15,13 +12,11 @@
     </thead>
 
     <tbody>
-      <% @all_user_hemigrams.each do |hemigram| %>
       <tr>
-        <td> <%= hemigram.parameter %> </td>
-        <td> <%= hemigram.value %> </td>
-        <td> <%= hemigram.date %> </td>
+        <td> <%= @hemigram.parameter %> </td>
+        <td> <%= @hemigram.value %> </td>
+        <td> <%= @hemigram.date %> </td>
       </tr>
-      <% end %>
     </tbody>
   </table>
 </div>

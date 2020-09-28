@@ -1,10 +1,17 @@
-<!-- enter new data for the specific parameter ; dropdown of parameter -->
+<!-- to do: enter new data for the specific parameter ; dropdown of parameter; datepicker with materialize -->
+
 <%= form_for @hemigram do |f| %>
+  <%= @hemigram.errors.any? %>
+  <%= render "devise/shared/error_messages", resource: @hemigram %>
+
   <%= f.label :parameter %>
   <%= f.text_field :parameter %>
 
   <%= f.label :value %>
   <%= f.text_field :value %>
+
+  <%= f.label :date %>
+  <%= f.date_field :date, class: 'datepicker' %>
 
   <%= f.submit %>
 <% end %>
