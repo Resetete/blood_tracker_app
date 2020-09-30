@@ -2,7 +2,7 @@
 
 <p> to do </p>
 <p> - add search that filters table </p>
-<p> - add pagination, sort columns </p>
+<p> sort columns </p>
 
 <div class="mb-3">
   <table class="striped highlight responsive-table">
@@ -23,7 +23,9 @@
         <td> <%= hemigram.value %> </td>
         <td> <%= hemigram.unit %> </td>
         <td> <%= hemigram.date %> </td>
-        <td> <%= link_to 'Edit', edit_hemigram_path(hemigram), class: 'badge badge-info' %>, Delete </td>
+        <td> <%= link_to 'Edit', edit_hemigram_path(hemigram), class: 'badge badge-info' %>
+             <%= link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'badge badge-danger' %>
+        </td>
       </tr>
       <% end %>
     </tbody>

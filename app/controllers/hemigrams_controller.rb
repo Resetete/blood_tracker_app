@@ -1,5 +1,5 @@
 class HemigramsController < ApplicationController
-  before_action :set_hemigram, only: [:show, :edit, :update]
+  before_action :set_hemigram, only: [:show, :edit, :update, :destroy]
 
   def index
     @all_user_hemigrams = Hemigram.where(user_id: current_user.id).paginate(page: params[:page]).order('id DESC')
@@ -29,6 +29,21 @@ class HemigramsController < ApplicationController
   end
 
   def update
+    if @hemigram.update(hemigram_params)
+      flash[:notice] = 'You have successfully updated your hemigram'
+      redirect_to @hemigram
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if @hemigram.destroy
+      flash[:notice] = 'You have successfully deleted that hemigram.'
+      redirect_to hemigrams_path
+    else
+      redirect_to hemigrams_path
+    end
   end
 
   private
