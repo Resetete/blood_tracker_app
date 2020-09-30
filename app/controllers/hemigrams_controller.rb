@@ -1,5 +1,5 @@
 class HemigramsController < ApplicationController
-  before_action :set_hemigram, only: [:show]
+  before_action :set_hemigram, only: [:show, :edit, :update]
 
   def index
     @all_user_hemigrams = Hemigram.where(user_id: current_user.id).paginate(page: params[:page]).order('id DESC')
@@ -23,6 +23,12 @@ class HemigramsController < ApplicationController
       flash[:alert] = 'Something went wrong, please try again'
       redirect_to new_hemigram_path
     end
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   private

@@ -2,13 +2,16 @@
 
 <%= form_for :hemigram, url: hemigrams_path do |f| %>
   <%= render "devise/shared/error_messages", resource: @hemigram %>
-  <%=  @hemigram.errors.any? %> <br>
 
   <%= f.label :parameter %>
-  <%= f.select :parameter, options_for_select(Hemigram.parameters),
+  <% if @hemigram.new_record? %>
+    <%= f.select :parameter, options_for_select(Hemigram.parameters),
                { include_blank: 'Select' },
                class: 'form-control',
                required: true %>
+  <% else %>
+    <%= f.text_field :parameter %>
+  <% end %>
 
   <%= f.label :value %>
   <%= f.text_field :value %>
@@ -22,5 +25,8 @@
   <%= f.label :date %>
   <%= f.date_field :date, class: 'datepicker' %>
 
-  <%= f.submit %>
+  <%= f.submit 'Submit', class: 'btn mt-3' %>
+
 <% end %>
+
+<%= link_to 'Back', :back, class: "badge badge-info mt-3" %>

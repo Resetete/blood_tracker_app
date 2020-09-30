@@ -10,7 +10,9 @@
       <tr>
         <th>Parameter</th>
         <th>Value</th>
+        <th>Unit</th>
         <th>Date</th>
+        <th>Action</th>
       </tr>
     </thead>
 
@@ -19,7 +21,9 @@
       <tr>
         <td> <%= hemigram.parameter %> </td>
         <td> <%= hemigram.value %> </td>
+        <td> <%= hemigram.unit %> </td>
         <td> <%= hemigram.date %> </td>
+        <td> <%= link_to 'Edit', edit_hemigram_path(hemigram), class: 'badge badge-info' %>, Delete </td>
       </tr>
       <% end %>
     </tbody>
