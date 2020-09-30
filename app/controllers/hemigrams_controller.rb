@@ -28,7 +28,7 @@ class HemigramsController < ApplicationController
   private
 
   def hemigram_params
-    params.require(:hemigram).permit(:parameter, :value, :date)
+    params.require(:hemigram).permit(:parameter, :value, :unit, :date)
   end
 
   def set_hemigram
