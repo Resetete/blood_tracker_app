@@ -4,23 +4,20 @@
   <%= render "devise/shared/error_messages", resource: @hemigram %>
 
   <%= f.label :parameter %>
-  <% if @hemigram.new_record? %>
-    <%= f.select :parameter, options_for_select(Hemigram.parameters),
-               { include_blank: 'Select' },
+  <%= f.select :parameter, options_for_select(Hemigram.parameters),
+               { include_blank: @hemigram.new_record? ? 'Select' : @hemigram.parameter },
                class: 'form-control',
                required: true %>
-  <% else %>
-    <%= f.text_field :parameter %>
-  <% end %>
 
   <%= f.label :value %>
   <%= f.text_field :value %>
 
   <%= f.label :unit %>
   <%= f.select :unit, options_for_select(Hemigram.units),
-               { include_blank: 'Select' },
-               class: 'form-control',
-               required: true %>
+                { include_blank: @hemigram.new_record? ? 'Select' : @hemigram.unit },
+                class: 'form-control',
+                required: true %>
+
 
   <%= f.label :date %>
   <%= f.date_field :date, class: 'datepicker' %>
