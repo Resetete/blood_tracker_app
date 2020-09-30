@@ -13,6 +13,8 @@ class Hemigram < ApplicationRecord
 
     PARAMETERS = ['thrombozythes', 'Leucozyts', 'white blood cells', 'hemoglobin', 'hematocrit'] # this will be substituted when the blood parameters models is created
     UNITS = ['10 3/ul', 'g/dl', 'fl', '%', 'pg', '10 6/ul']
+    # pagination
+    self.per_page = 5
 
     def self.parameters
       PARAMETERS.map { |parameter| [parameter.capitalize, parameter] }

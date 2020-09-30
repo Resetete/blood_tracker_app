@@ -1,7 +1,8 @@
 <!-- to do: enter new data for the specific parameter ; dropdown of parameter; datepicker with materialize -->
 
-<%= form_for :hemigram do |f| %>
+<%= form_for :hemigram, url: hemigrams_path do |f| %>
   <%= render "devise/shared/error_messages", resource: @hemigram %>
+  <%=  @hemigram.errors.any? %> <br>
 
   <%= f.label :parameter %>
   <%= f.select :parameter, options_for_select(Hemigram.parameters),
