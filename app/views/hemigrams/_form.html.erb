@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: @hemigram %>
 
   <%= f.label :parameter %>
-  <%= f.select :parameter, options_for_select(Hemigram.parameters),
-               { include_blank: @hemigram.new_record? ? 'Select' : @hemigram.parameter },
+  <%= f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter),
+               { include_blank: 'Select' },
                class: 'form-control',
                required: true %>
 
@@ -18,8 +18,8 @@
   <%= f.text_field :value %>
 
   <%= f.label :unit %>
-  <%= f.select :unit, options_for_select(Hemigram.units),
-                { include_blank: @hemigram.new_record? ? 'Select' : @hemigram.unit },
+  <%= f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit),
+                { include_blank: 'Select' },
                 class: 'form-control',
                 required: true %>
 
