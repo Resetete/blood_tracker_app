@@ -11,6 +11,7 @@ class Hemigram < ApplicationRecord
     validates :unit, presence: true
     validates :date, presence: true
 
+    #  TO DO: make parameters an hash with parameter and short name (apelido) { parameter: 'thrombocthes', short: 'PLT'}
     PARAMETERS = ['thrombozythes', 'Leucozyts', 'white blood cells', 'hemoglobin', 'hematocrit'] # this will be substituted when the blood parameters models is created
     UNITS = ['10 3/ul', 'g/dl', 'fl', '%', 'pg', '10 6/ul']
     # pagination
@@ -22,5 +23,10 @@ class Hemigram < ApplicationRecord
 
     def self.units
       UNITS
+    end
+
+    def self.search(search, user)
+      # TODO make search case insensitive
+      where(user_id: user.id) && where('parameter LIKE ?', "%#{search}%")
     end
 end
