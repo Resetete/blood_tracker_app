@@ -9,6 +9,11 @@
                class: 'form-control',
                required: true %>
 
+  <% if !@hemigram.new_record? %>
+    <%= f.label :short %>
+    <%= f.text_field :short %>
+  <% end %>
+
   <%= f.label :value %>
   <%= f.text_field :value %>
 

@@ -15,6 +15,7 @@ class HemigramsController < ApplicationController
   def create
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
+    @hemigram.short = Hemigram.short(@hemigram.parameter)
 
     if @hemigram.save
       flash[:notice] = 'You successfully saved your hemigram'

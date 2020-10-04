@@ -12,13 +12,21 @@ class Hemigram < ApplicationRecord
     validates :date, presence: true
 
     #  TO DO: make parameters an hash with parameter and short name (apelido) { parameter: 'thrombocthes', short: 'PLT'}
-    PARAMETERS = ['thrombozythes', 'Leucozyts', 'white blood cells', 'hemoglobin', 'hematocrit'] # this will be substituted when the blood parameters models is created
+    #PARAMETERS = ['thrombozythes', 'leucozyts', 'white blood cells', 'hemoglobin', 'hematocrit'] # this will be substituted when the blood parameters models is created
+    PARAMETERS = { 'thrombozythes': { short: ['PLT', 'thrombos'] }, 'leucozyts': { short: ['WBC', 'Leu'] } } # this will be substituted when the blood parameters models is created
     UNITS = ['10 3/ul', 'g/dl', 'fl', '%', 'pg', '10 6/ul']
     # pagination
     self.per_page = 5
 
     def self.parameters
-      PARAMETERS.map { |parameter| [parameter.capitalize, parameter] }
+      PARAMETERS.map do |parameter, short|
+        parameter.capitalize
+      end
+    end
+
+    # when a parameter is selected in the form, another field wth the related short names should be prefilled (not user editable)
+    def self.short(parameter)
+      PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten # remove outer array
     end
 
     def self.units
@@ -26,6 +34,6 @@ class Hemigram < ApplicationRecord
     end
 
     def self.search(search, user)
-      where(user_id: user.id) && where('parameter LIKE ?', "%#{search}%")
+      where(user_id: user.id) && (where('parameter LIKE ?', "%#{search}%") || where('short LIKE ?', "%#{search}%"))
     end
 end
