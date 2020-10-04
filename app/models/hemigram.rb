@@ -26,7 +26,6 @@ class Hemigram < ApplicationRecord
     end
 
     def self.search(search, user)
-      # TODO make search case insensitive
       where(user_id: user.id) && where('parameter LIKE ?', "%#{search}%")
     end
 end
