@@ -3,32 +3,44 @@
 <%= form_for :hemigram, url: hemigrams_path do |f| %>
   <%= render "devise/shared/error_messages", resource: @hemigram %>
 
-  <%= f.label :parameter %>
-  <%= f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter),
-               { include_blank: 'Select' },
-               class: 'form-control',
-               required: true %>
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter),
+                       { include_blank: 'Select' },
+                       class: 'form-control dropdown',
+                       required: true %>
+          <%= f.label :parameter , class: 'active' %>
+        </div>
+      </div>
 
-  <% if !@hemigram.new_record? %>
-    <%= f.label :short %>
-    <%= f.text_field :short %>
-  <% end %>
+      <div class="row">
+        <div class="col s12">
+          <% if !@hemigram.new_record? %>
+            <%= f.label :short %>
+            <%= f.text_field :short, id: 'disabled', disabled: true %>
+          <% end %>
+        </div>
+      </div>
 
-  <%= f.label :value %>
-  <%= f.text_field :value %>
+      <%= f.label :value %>
+      <%= f.text_field :value %>
 
-  <%= f.label :unit %>
-  <%= f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit),
-                { include_blank: 'Select' },
-                class: 'form-control',
-                required: true %>
+      <%= f.label :unit %>
+      <%= f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit),
+                    { include_blank: 'Select' },
+                    class: 'form-control',
+                    required: true %>
 
 
-  <%= f.label :date %>
-  <%= f.date_field :date, class: 'datepicker' %>
+      <%= f.label :date %>
+      <%= f.text_field :date, class: 'datepicker' %>
 
-  <%= f.submit 'Submit', class: 'btn mt-3' %>
+      <%= f.submit 'Submit', class: 'btn mt-3' %>
 
+    </div>
+  </div>
 <% end %>
 
 <%= link_to 'Back', :back, class: "badge badge-info mt-3" %>
