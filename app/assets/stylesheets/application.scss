@@ -17,11 +17,4 @@
  */
 
 
- /***********************************************/
- /****** Change color scheme of materialize ********/
- /***********************************************/
-
- @import "materialize/components/color-variables";
- $primary-color: color("blue", "lighten-2") !default;
- $secondary-color: color("yellow", "base") !default;
- @import 'materialize';
+ 
