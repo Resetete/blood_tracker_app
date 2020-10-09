@@ -1,6 +1,10 @@
-<h1> Edit Hemigram </h1>
+<h1 class="center-align"> Edit Hemigram </h1>
 
-<div class="container">
   <%= render 'hemigrams/form' %>
-  <%= link_to 'Delete', hemigram_path(@hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'badge badge-danger' %>
+
+<div class="row">
+  <div class="col s12">
+  <%= link_to 'Back', :back, class: "btn btn-small" %>
+  <%= link_to 'Delete', hemigram_path(@hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-small' %>
+  </div>
 </div>

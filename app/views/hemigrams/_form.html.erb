@@ -11,7 +11,7 @@
                        { include_blank: 'Select' },
                        class: 'form-control dropdown',
                        required: true %>
-          <%= f.label :parameter , class: 'active' %>
+          <%= f.label :parameter %>
         </div>
       </div>
 
@@ -24,23 +24,32 @@
         </div>
       </div>
 
-      <%= f.label :value %>
-      <%= f.text_field :value %>
+      <div class="row">
+        <div class="col s12">
+          <%= f.label :value %>
+          <%= f.text_field :value %>
+        </div>
+      </div>
 
-      <%= f.label :unit %>
-      <%= f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit),
-                    { include_blank: 'Select' },
-                    class: 'form-control',
-                    required: true %>
+      <div class="row">
+        <div class="col s12">
+          <%= f.label :unit %>
+          <%= f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit),
+                        { include_blank: 'Select' },
+                        class: 'form-control',
+                        required: true %>
+        </div>
+      </div>
 
-
-      <%= f.label :date %>
-      <%= f.text_field :date, class: 'datepicker' %>
+      <div class="row">
+        <div class="col s12">
+          <%= f.label :date %>
+          <%= f.text_field :date, class: 'datepicker' %>
+        </div>
+      </div>
 
       <%= f.submit 'Submit', class: 'btn mt-3' %>
 
     </div>
   </div>
 <% end %>
-
-<%= link_to 'Back', :back, class: "badge badge-info mt-3" %>

@@ -1,9 +1,8 @@
 <nav>
   <div class="nav-wrapper">
-    <%= link_to root_path, class: 'brand-logo'  do %>
-    <%= image_tag 'logo_blood.png', class: 'logo' %>
-    Hemigram
-    <% end %>
+      <%= link_to root_path, class: 'brand-logo'  do %>
+        <div class="valign-wrapper"> <%= image_tag 'logo_blood.png', class: 'logo' %> Hemigram  </div>
+      <% end %>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li> <%= link_to 'About', about_path %> </li>

@@ -1,4 +1,4 @@
-<h1> My Hemigrams </h1>
+<h1 class="center-align"> My Hemigrams </h1>
 
 <p> #TODO </p>
 <p> - add search that filters table </p>
@@ -26,8 +26,8 @@
         <td> <%= hemigram.value %> </td>
         <td> <%= hemigram.unit %> </td>
         <td> <%= hemigram.date %> </td>
-        <td> <%= link_to 'Edit', edit_hemigram_path(hemigram), class: 'badge badge-info' %>
-             <%= link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'badge badge-danger' %>
+        <td> <%= link_to 'Edit', edit_hemigram_path(hemigram), class: 'waves-effect waves-light btn-flat' %>
+             <%= link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'waves-effect waves-teal btn-flat' %>
         </td>
       </tr>
       <% end %>
