@@ -27,6 +27,7 @@ require("../stylesheets/custom.css.scss")
 
 $(document).on('turbolinks:load', function() {
   $('select').formSelect();
+  $("#fade-out-target").fadeOut(4000);
   $('.datepicker').datepicker({
     format:'dd/mm/yyyy',
     firstDay: 1,
