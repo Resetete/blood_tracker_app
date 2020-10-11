@@ -9,7 +9,7 @@
         <div class="input-field col s12">
           <%= f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter),
                        { include_blank: 'Select' },
-                       class: 'form-control dropdown',
+                       class: 'form-control',
                        required: true %>
           <%= f.label :parameter %>
         </div>
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <%= f.submit 'Submit', class: 'btn mt-3' %>
+      <%= f.submit 'Submit', class: 'btn' %>
 
     </div>
   </div>
