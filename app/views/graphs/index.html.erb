@@ -1,4 +1,17 @@
 <h2 class="center-align"> My Hemigrams </h2>
 <h3 class="center-align"> Graphs </h3>
 
-<%= line_chart graphs_parameters_per_day_path %>
+<p> TODO:
+  <ul>
+    <li> - allow download of charts, check if chart.js is correctly installed </li>
+    <li> - add unit to yaxis </li>
+    <li> - correct xaxis label to date </li>
+  </ul>
+</p>
+
+<% Hemigram.parameters.each do |parameter| %>
+  <p> <%= parameter %> </p>
+  <div class="container">
+    <%= line_chart graphs_parameters_per_day_path(parameter: parameter.to_s), xtitle: "Day", ytitle: 'unit ??',label: "Value", legend: false, messages: {empty: "No data"}, download: { filename: parameter }  %>
+  </div>
+<% end %>

@@ -30,13 +30,10 @@ class HemigramsController < ApplicationController
   end
 
   def update
-    byebug
     if @hemigram.update(hemigram_params)
-      byebug
       flash[:notice] = 'You have successfully updated your hemigram'
       redirect_to @hemigram
     else
-      byebug
       render 'edit'
     end
   end
