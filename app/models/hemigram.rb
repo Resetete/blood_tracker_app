@@ -11,10 +11,10 @@ class Hemigram < ApplicationRecord
     validates :unit, presence: true
     validates :date, presence: true
 
-    #  TO DO: make parameters an hash with parameter and short name (apelido) { parameter: 'thrombocthes', short: 'PLT'}
-    #PARAMETERS = ['thrombozythes', 'leucozyts', 'white blood cells', 'hemoglobin', 'hematocrit'] # this will be substituted when the blood parameters models is created
-    PARAMETERS = { 'thrombozythes': { short: ['PLT', 'thrombos'] }, 'leucozyts': { short: ['WBC', 'Leu'] } } # this will be substituted when the blood parameters models is created
+    PARAMETERS = { 'thrombozythes': { short: ['PLT', 'thrombos'] },
+                   'leucozyts': { short: ['WBC', 'Leu'] } } # this will be substituted when the blood parameters models is created
     UNITS = ['10 3/ul', 'g/dl', 'fl', '%', 'pg', '10 6/ul']
+
     # pagination
     self.per_page = 5
 

@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function() {
   $(".dropdown-trigger").dropdown();
   $("#fade-out-target").fadeOut(4000);
   $('.datepicker').datepicker({
-    format:'dd/mm/yyyy',
+    format:'yyyy-mm-dd',
     firstDay: 1,
   });
 });
