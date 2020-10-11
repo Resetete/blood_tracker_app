@@ -7,15 +7,12 @@ import '../stylesheets/application'
 // materialize frontend
 import 'materialize-css/dist/js/materialize'
 
-// bootstrap frontend
-import 'bootstrap'
 
 require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("bootstrap")
 
 // import custom stylesheets from javascript/stylesheets/
 require("../stylesheets/custom.css.scss")
