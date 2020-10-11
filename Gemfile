@@ -25,7 +25,9 @@ gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 # add pagination component from materialize
 gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
-
+# charts
+gem 'groupdate'
+gem 'chartkick'
 
 
 # frontend

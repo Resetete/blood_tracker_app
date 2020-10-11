@@ -1,3 +1,10 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li> <%= link_to 'Data', hemigrams_path %> </li>
+  <li> <%= link_to 'Graphs', graphs_path %> </li>
+</ul>
+
+
 <nav>
   <div class="nav-wrapper">
       <%= link_to root_path, class: 'brand-logo'  do %>
@@ -6,7 +13,9 @@
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li> <%= link_to 'About', about_path %> </li>
-      <li> <%= link_to 'Hemigrams', hemigrams_path %> </li>
+      <!-- Dropdown Trigger -->
+      <li> <a class="dropdown-trigger" href="#!" data-target="dropdown1">My Hemigrams<i class="material-icons right">arrow_drop_down</i></a></li>
+
       <% if user_signed_in? %>
         <li> <%= link_to 'Account', view_user_path(current_user) %> </li>
       <% end %>
