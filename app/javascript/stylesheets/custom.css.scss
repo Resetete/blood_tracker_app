@@ -25,7 +25,6 @@ $colors: (
 
 @import 'materialize-css/sass/materialize';
 
-
 /****************+***************/
 /******* START CSS *********+****/
 /****************+***************/
@@ -33,4 +32,9 @@ $colors: (
 .logo {
   max-width: 10%;
   margin: 10px;
+}
+
+
+.pagination li.active a {
+  color: #fff;
 }

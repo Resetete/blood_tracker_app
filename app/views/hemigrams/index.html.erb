@@ -36,8 +36,9 @@
 </div>
 
 <div>
-  <%= will_paginate(@all_user_hemigrams, container: false) %>
+  <%= will_paginate(@all_user_hemigrams, container: true) %>
 </div>
+
 
 <p> <%= link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn' %> </p>
 
