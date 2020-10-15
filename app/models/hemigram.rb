@@ -13,7 +13,7 @@ class Hemigram < ApplicationRecord
 
     PARAMETERS = { 'thrombozythes': { short: ['PLT', 'thrombos'] },
                    'leucozyts': { short: ['WBC', 'Leu'] } } # this will be substituted when the blood parameters models is created
-    UNITS = ['10 3/ul', 'g/dl', 'fl', '%', 'pg', '10 6/ul']
+    UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
 
     # pagination
     self.per_page = 5

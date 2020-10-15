@@ -36,6 +36,8 @@ gem 'material_icons'
 gem 'foreman'
 gem "font-awesome-rails"
 
+# unit converter
+gem 'ruby-units'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

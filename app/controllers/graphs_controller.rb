@@ -6,9 +6,4 @@ class GraphsController < ApplicationController
   def parameters_per_day
     render json: Hemigram.where(user_id: current_user, parameter: params[:parameter]).group(:parameter).group_by_day(:date).maximum(:value)
   end
-
-  private
-  def convert_units
-    # needs to convert all database entries to a default unit
-  end
 end
