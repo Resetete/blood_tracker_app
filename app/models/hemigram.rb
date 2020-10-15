@@ -36,4 +36,17 @@ class Hemigram < ApplicationRecord
     def self.search(search, user)
       where(user_id: user.id) && (where('parameter LIKE ?', "%#{search}%") || where('short LIKE ?', "%#{search}%"))
     end
+
+    def self.unit_converter(data)
+      chart_data = data.map do |dataset|
+        unit = Unit.new("#{dataset.value}#{dataset.unit}")
+        if dataset.parameter == 'Thrombozythes' || 'Leucozyts'
+          dataset.value = unit.convert_to('g/l').scalar
+          dataset.unit = unit.convert_to('g/l').units
+          dataset
+        end
+      end
+      chart_data
+    end
+
 end

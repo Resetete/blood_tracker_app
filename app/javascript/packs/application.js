@@ -13,8 +13,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("chartkick")
-require("chartkick").use(require("highcharts"))
+require('chartkick')
+//require("chartkick").use(require("highcharts"))
 require("chart.js")
 
 // import custom stylesheets from javascript/stylesheets/

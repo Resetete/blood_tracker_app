@@ -28,6 +28,7 @@ gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate
 # charts
 gem 'groupdate'
 gem 'chartkick'
+gem 'highcharts-rails'
 
 
 # frontend

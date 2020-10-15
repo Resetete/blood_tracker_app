@@ -3,15 +3,25 @@
 
 <p> TODO:
   <ul>
-    <li> - allow download of charts, check if chart.js is correctly installed </li>
     <li> - add unit to yaxis </li>
-    <li> - correct xaxis label to date </li>
   </ul>
 </p>
 
 <% Hemigram.parameters.each do |parameter| %>
   <p> <%= parameter %> </p>
   <div class="container">
-    <%= line_chart graphs_parameters_per_day_path(parameter: parameter.to_s), xtitle: "Day", ytitle: 'unit ??',label: "Value", legend: false, messages: {empty: "No data"}, download: { filename: parameter }  %>
+    <%= line_chart graphs_parameters_per_day_path(parameter: parameter.to_s),
+          adapter: 'chartjs',
+          xtitle: "Date",
+          label: 'Value',
+          legend: false,
+          messages: {empty: "No data"},
+          download: { filename: parameter },
+          dataset: { borderWidth: 1,
+                     borderColor:'#4D7C8A',
+                     pointHoverBackgroundColor: '#F5B82E',
+                     pointHoverRadius: 5
+          }
+    %>
   </div>
 <% end %>
