@@ -92,6 +92,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.4.4)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -180,6 +181,19 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
     ruby-units (2.3.1)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -259,6 +273,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   rails_12factor
+  rspec
   ruby-units
   sass-rails (>= 6)
   selenium-webdriver
