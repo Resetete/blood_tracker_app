@@ -10,12 +10,14 @@ import 'materialize-css/dist/js/materialize'
 
 require("jquery")
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('chartkick')
-//require("chartkick").use(require("highcharts"))
+require("chartkick").use(require("highcharts"))
 require("chart.js")
+require("highcharts")
+require("turbolinks").start()
+
 
 // import custom stylesheets from javascript/stylesheets/
 require("../stylesheets/custom.css.scss")
