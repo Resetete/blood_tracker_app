@@ -1,0 +1,35 @@
+/ to do: enter new data for the specific parameter ; dropdown of parameter; datepicker with materialize
+= form_for :hemigram, url: hemigrams_path do |f|
+  = render "devise/shared/error_messages", resource: @hemigram
+  .row
+    .col.s12
+      .row
+        .input-field.col.s12
+          = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
+            { include_blank: 'Select' },                                                                 |
+            class: 'form-control',                                                                       |
+            required: true                                                                               |
+          = f.label :parameter
+      .row
+        .col.s12
+          - if !@hemigram.new_record?
+            = f.label :short
+            = f.text_field :short, id: 'disabled', disabled: true
+      .row
+        .col.s12
+          = f.label :value
+          = f.text_field :value
+      .row
+        .col.s12
+          = f.label :unit
+          = f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit), |
+            { include_blank: 'Select' },                                                  |
+            class: 'form-control',                                                        |
+            required: true                                                                |
+      .row
+        .col.s12
+          = f.label :date
+          = f.date_field :date, class: 'datepicker'
+      .row
+        .col.s12
+          = f.submit 'Submit', class: 'btn'

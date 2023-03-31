@@ -1,0 +1,22 @@
+%h1.center-align My Hemigram
+%div
+  %table.striped.highlight.responsive-table
+    %thead
+      %tr
+        %th Parameter
+        %th Value
+        %th Unit
+        %th Date
+    %tbody
+      %tr
+        %td
+          = @hemigram.parameter
+        %td
+          = @hemigram.value
+        %td
+          = @hemigram.unit
+        %td
+          = @hemigram.date
+%p
+  = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn'
+  = link_to 'Back to Hemigrams', hemigrams_path, class: 'btn'

@@ -37,7 +37,9 @@ gem 'highcharts-rails'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem 'foreman'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'haml-rails', '~> 2.0'
+gem 'html2haml'
 
 # unit converter
 gem 'ruby-units'
