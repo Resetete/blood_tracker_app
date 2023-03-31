@@ -1,0 +1,28 @@
+/ Dropdown Structure
+%ul#dropdown1.dropdown-content
+  %li
+    = link_to 'Data', hemigrams_path
+  %li
+    = link_to 'Graphs', graphs_path
+%nav
+  .nav-wrapper
+    = link_to root_path, class: 'brand-logo'  do
+      .valign-wrapper
+        = image_tag 'logo_blood.png', class: 'logo'
+        Hemigram
+    %ul#nav-mobile.right.hide-on-med-and-down
+      %li
+        = link_to 'About', about_path
+      / Dropdown Trigger
+      %li
+        %a.dropdown-trigger{"data-target" => "dropdown1", :href => "#!"}
+          My Hemigrams
+          %i.material-icons.right arrow_drop_down
+      - if user_signed_in?
+        %li
+          = link_to 'Account', view_user_path(current_user)
+      %li
+        = nav_links
+      - if !user_signed_in?
+        %li
+          = link_to 'Sign up', new_user_registration_path, class: 'btn'

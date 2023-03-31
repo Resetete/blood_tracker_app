@@ -1,0 +1,6 @@
+- flash.each do |name, message|
+  .row
+    .col.s12.m12.l12
+      #fade-out-target{:class => "card-panel alert-#{name == 'notice' ? 'success' : 'danger'}"}
+        %span.white-text
+          = message

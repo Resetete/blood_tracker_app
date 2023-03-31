@@ -1,0 +1,12 @@
+%h2.center-align My Hemigrams
+%h3.center-align Graphs
+%p
+  TODO:
+%ul
+  %li - add unit to yaxis
+- Hemigram.parameters.each do |parameter|
+  %p
+    = parameter
+  .container
+    = line_chart graphs_parameters_per_day_path(parameter: parameter.to_s), |
+      basic_options('test')                                                 |
