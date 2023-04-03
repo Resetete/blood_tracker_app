@@ -11,10 +11,10 @@ gem 'puma', '~> 4.1'
 gem 'psych', '~> 3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# importmaps for javascript (instead of webpacker)
+gem 'importmap-rails'
+# Turbo makes navigating your web application faster.
+gem 'turbo-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # authentication
+gem 'stimulus-rails'
+# to work with asset pipeline
+gem "sprockets-rails"
 gem 'devise'
 # page pagination
 gem 'will_paginate', '~> 3.1.0'
@@ -34,12 +37,11 @@ gem 'highcharts-rails'
 
 
 # frontend
-gem 'materialize-sass', '~> 1.0.0'
-gem 'material_icons'
 gem 'foreman'
 gem 'font-awesome-rails'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml'
+gem 'bootstrap', '~> 5.1.3'
 
 # unit converter
 gem 'ruby-units'
