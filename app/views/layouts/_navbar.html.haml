@@ -23,3 +23,14 @@
         - if !user_signed_in?
           %li
             = link_to 'Sign up', new_user_registration_path, class: 'btn'
+        %li
+          .dropdown
+            %button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", type: "button"}
+              Dropdown button
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenuButton1"}
+              %li
+                %a.dropdown-item{href: "#"} Action
+              %li
+                %a.dropdown-item{href: "#"} Another action
+              %li
+                %a.dropdown-item{href: "#"} Something else here
