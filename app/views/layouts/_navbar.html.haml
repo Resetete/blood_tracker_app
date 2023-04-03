@@ -1,28 +1,25 @@
-/ Dropdown Structure
-%ul#dropdown1.dropdown-content
-  %li
-    = link_to 'Data', hemigrams_path
-  %li
-    = link_to 'Graphs', graphs_path
-%nav
-  .nav-wrapper
-    = link_to root_path, class: 'brand-logo'  do
-      .valign-wrapper
-        = image_tag 'logo_blood.png', class: 'logo'
-        Hemigram
-    %ul#nav-mobile.right.hide-on-med-and-down
-      %li
-        = link_to 'About', about_path
-      / Dropdown Trigger
-      %li
-        %a.dropdown-trigger{"data-target" => "dropdown1", :href => "#!"}
-          My Hemigrams
-          %i.material-icons.right arrow_drop_down
-      - if user_signed_in?
-        %li
-          = link_to 'Account', view_user_path(current_user)
-      %li
-        = nav_links
-      - if !user_signed_in?
-        %li
-          = link_to 'Sign up', new_user_registration_path, class: 'btn'
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    %a.navbar-brand{href: "#"}
+      = image_tag 'logo_blood.png', class: 'logo'
+      BloodTracker
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav
+        %li.nav-item
+          %a.nav-link{href: root_path} Home
+        %li.nav-item
+          %a.nav-link{href: hemigrams_path} Data
+        %li.nav-item
+          %a.nav-link{href: graphs_path} Graphs
+        %li.nav-item
+          %a.nav-link{href: about_path} About
+        - if user_signed_in?
+          %li
+            = link_to 'Account', view_user_path(current_user)
+          %li
+            = nav_links
+        - if !user_signed_in?
+          %li
+            = link_to 'Sign up', new_user_registration_path, class: 'btn'

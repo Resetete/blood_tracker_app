@@ -10,8 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require material_icons
- *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import "font-awesome";
+
+/****************+***************/
+/******* START CSS *********+****/
+/****************+***************/
+
+
+.logo {
+  max-width: 10%;
+  margin: 10px;
+}
+
+.pagination li.active a {
+  color: #fff;
+}
+
+.alert-success {
+  background-color: #4D7C8A;
+}
+
+.alert-danger {
+  background-color: #F5B82E;
+}
