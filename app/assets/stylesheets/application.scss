@@ -22,8 +22,17 @@
 /****************+***************/
 
 $red: #EB001B;
+$rosa: #E4ACC0;
+
+body, html {
+  background-color: $rosa;
+  height: 100%;
+}
 
 /**** Nav Bar ****/
+nav.navbar {
+  background-color: $rosa !important;
+}
 
 .logo {
   max-width: 10%;
@@ -43,6 +52,35 @@ $red: #EB001B;
 #logo-tracker {
   color: $red;
   padding-left: none;
+}
+
+/********************/
+/*** Main section ***/
+/********************/
+
+#main-section {
+  height: 70vh;
+  background-color: $rosa;
+  background-image: url('hero_illustration.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.text {
+  max-width: 50vw;
+}
+
+.text-highlight {
+  background-color: $red;
+  border-radius: 2px;
+  color: white;
+  padding: 0 3px;
 }
 
 .pagination li.active a {
