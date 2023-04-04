@@ -2,35 +2,39 @@
   .container-fluid
     %a.navbar-brand{href: "#"}
       = image_tag 'logo_blood.png', class: 'logo'
-      BloodTracker
-    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
-      %span.navbar-toggler-icon
-    #navbarNav.collapse.navbar-collapse
-      %ul.navbar-nav
-        %li.nav-item
-          %a.nav-link{href: root_path} Home
-        %li.nav-item
-          %a.nav-link{href: hemigrams_path} Data
-        %li.nav-item
-          %a.nav-link{href: graphs_path} Graphs
-        %li.nav-item
-          %a.nav-link{href: about_path} About
-        - if user_signed_in?
+      %span#logo-blood>
+        Blood
+      %span#logo-tracker>
+        Tracker
+    .wrapper
+      %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
+        %span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link{href: root_path} Home
+          %li.nav-item
+            %a.nav-link{href: hemigrams_path} Data
+          %li.nav-item
+            %a.nav-link{href: graphs_path} Graphs
+          %li.nav-item
+            %a.nav-link{href: about_path} About
+          - if user_signed_in?
+            %li
+              = link_to 'Account', view_user_path(current_user)
+            %li
+              = nav_links
+          - if !user_signed_in?
+            %li
+              = link_to 'Sign up', new_user_registration_path, class: 'btn'
           %li
-            = link_to 'Account', view_user_path(current_user)
-          %li
-            = nav_links
-        - if !user_signed_in?
-          %li
-            = link_to 'Sign up', new_user_registration_path, class: 'btn'
-        %li
-          .dropdown
-            %button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", type: "button"}
-              Dropdown button
-            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenuButton1"}
-              %li
-                %a.dropdown-item{href: "#"} Action
-              %li
-                %a.dropdown-item{href: "#"} Another action
-              %li
-                %a.dropdown-item{href: "#"} Something else here
+            .nav-item.dropdown
+              %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", role: "button"}
+                Dropdown link
+              %ul.dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+                %li
+                  %a.dropdown-item{href: "#"} Action
+                %li
+                  %a.dropdown-item{href: "#"} Another action
+                %li
+                  %a.dropdown-item{href: "#"} Something else here

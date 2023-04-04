@@ -21,10 +21,28 @@
 /******* START CSS *********+****/
 /****************+***************/
 
+$red: #EB001B;
+
+/**** Nav Bar ****/
 
 .logo {
   max-width: 10%;
   margin: 10px;
+}
+
+.navbar-brand {
+  font-size: 2em;
+  font-weight: 500;
+  font-family: 'Rowdies', cursive;
+}
+
+#logo-blood {
+  text-decoration: underline double $red 2px;
+}
+
+#logo-tracker {
+  color: $red;
+  padding-left: none;
 }
 
 .pagination li.active a {
