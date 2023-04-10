@@ -1,0 +1,28 @@
+.accordion.accordion-flush
+  .accordion-item
+    %h2#flush-headingOne.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "flush-collapseOne", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseOne", "data-bs-toggle" => "collapse", type: "button"}
+        Thrombocytes
+    #flush-collapseOne.accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne", "data-bs-parent" => "#accordionFlushExample"}
+      .accordion-body
+        Placeholder content for this accordion, which is intended to demonstrate the
+        %code .accordion-flush
+        class. This is the first item's accordion body.
+  .accordion-item
+    %h2#flush-headingTwo.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "flush-collapseTwo", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseTwo", "data-bs-toggle" => "collapse", type: "button"}
+        Lymphocyte
+    #flush-collapseTwo.accordion-collapse.collapse{"aria-labelledby" => "flush-headingTwo", "data-bs-parent" => "#accordionFlushExample"}
+      .accordion-body
+        Placeholder content for this accordion, which is intended to demonstrate the
+        %code .accordion-flush
+        class. This is the second item's accordion body. Let's imagine this being filled with some actual content.
+  .accordion-item
+    %h2#flush-headingThree.accordion-header
+      %button.accordion-button.collapsed{"aria-controls" => "flush-collapseThree", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseThree", "data-bs-toggle" => "collapse", type: "button"}
+        Monocyte
+    #flush-collapseThree.accordion-collapse.collapse{"aria-labelledby" => "flush-headingThree", "data-bs-parent" => "#accordionFlushExample"}
+      .accordion-body
+        Placeholder content for this accordion, which is intended to demonstrate the
+        %code .accordion-flush
+        class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.

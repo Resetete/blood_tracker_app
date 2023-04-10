@@ -10,14 +10,5 @@
       %p.sub-title start monitoring your blood values today and discover potential health risks
   #deco-left= image_tag('hero-section-deco-left.png', alt: 'decoration element left')
   #deco-right= image_tag('hero-section-deco-right.png', alt: 'decoration element right')
-#problem-section
-  .container
-    .header-wrapper
-      .header-subtitle
-        %h3.sub-title The problem
-      %hr.separator-element
-      .header-title
-        %h1
-          %span.text-highlight Why should I care
-    %p.pt-5
-      Do have to take regular blood analysis? This could be the case if you have diabetes, a kind of cancer, or just want to keep track yourself to understand what's happening and where it is going. You might also change the doctor and want to quickly inform about the status of your blood health?
+= render('problem_section')
+= render('background_section')

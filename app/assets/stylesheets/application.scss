@@ -26,7 +26,8 @@ $rosa: #E4ACC0;
 $yellow: #DCD283;
 
 body, html {
-  background-color: $rosa;
+  background-color: $rosa
+  ;
   height: 100%;
 }
 
@@ -164,6 +165,7 @@ hr.separator-element {
   right: 0;
   top: 90%;
 }
+
 /***********************/
 /*** Problem section ***/
 /***********************/
@@ -173,3 +175,41 @@ hr.separator-element {
   background-color: $yellow;
 }
 
+/***********************/
+/*** Background section ***/
+/***********************/
+
+#background-section {
+  background-color: $yellow;
+}
+
+.bg-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dictionary {
+  width: 50%;
+  margin-right: 10%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.accordion-item {
+  margin: 5px 0;
+}
+
+.accordion-header {
+  border: solid 2px $red;
+  border-radius: 5px;
+}
+
+.accordion-button:active,
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+  background-color: red;
+  color: white;
+  border: solid 2px $red;
+  border-radius: 5px;
+}
