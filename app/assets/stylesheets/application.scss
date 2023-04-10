@@ -35,6 +35,11 @@ h1 {
   font-weight: 600;
 }
 
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+}
+
 /********************/
 /**** NavBar ****/
 /********************/
@@ -67,7 +72,7 @@ nav.navbar {
 }
 
 #logo-blood {
-  text-decoration: underline double $red 2px;
+  text-decoration: underline $red 4px;
 }
 
 #logo-tracker {
@@ -75,6 +80,30 @@ nav.navbar {
   padding-left: none;
 }
 
+/***********************/
+/*** Section headers ***/
+/***********************/
+
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1em;
+}
+
+hr.separator-element {
+  border-top: 4px solid $red;
+  border-radius: 5px;
+  width: 5%;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  opacity: 1;
+}
+
+.header-title {
+  margin: 0.5em;
+}
 
 /********************/
 /*** Main section ***/
