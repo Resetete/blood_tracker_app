@@ -82,7 +82,7 @@ nav.navbar {
 
 #main-section {
   position: relative;
-  height: 70vh;
+  height: 80vh;
   background-color: $rosa;
   background-image: url('hero_illustration.jpeg');
   background-position: center;
@@ -124,6 +124,17 @@ nav.navbar {
   background-color: #F5B82E;
 }
 
+#deco-left {
+  position: absolute;
+  left: 0;
+  top: 60%;
+}
+
+#deco-right {
+  position: absolute;
+  right: 0;
+  top: 90%;
+}
 /***********************/
 /*** Problem section ***/
 /***********************/
