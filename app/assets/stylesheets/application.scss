@@ -30,6 +30,11 @@ body, html {
   height: 100%;
 }
 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
 /********************/
 /**** NavBar ****/
 /********************/
@@ -92,7 +97,12 @@ nav.navbar {
 }
 
 .text {
-  max-width: 50vw;
+  max-width: 35vw;
+}
+.sub-title {
+  padding-top: 1em;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .text-highlight {
