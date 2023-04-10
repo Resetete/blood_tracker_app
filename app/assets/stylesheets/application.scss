@@ -22,18 +22,48 @@
 /****************+***************/
 
 $red: #EB001B;
+$rosa: #E4ACC0;
+$yellow: #DCD283;
 
-/**** Nav Bar ****/
+body, html {
+  background-color: $rosa;
+  height: 100%;
+}
 
-.logo {
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+/********************/
+/**** NavBar ****/
+/********************/
+
+nav.navbar {
+  background-color: $rosa !important;
+}
+
+.brand-image-wrapper {
   max-width: 10%;
   margin: 10px;
 }
+.logo {
+  width: 100%;
+}
 
 .navbar-brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-size: 2em;
   font-weight: 500;
   font-family: 'Rowdies', cursive;
+}
+
+#brand {
+  display: flex;
+  flex-direction: row;
 }
 
 #logo-blood {
@@ -43,6 +73,43 @@ $red: #EB001B;
 #logo-tracker {
   color: $red;
   padding-left: none;
+}
+
+
+/********************/
+/*** Main section ***/
+/********************/
+
+#main-section {
+  position: relative;
+  height: 80vh;
+  background-color: $rosa;
+  background-image: url('hero_illustration.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin-top: 10vh;
+}
+
+.text {
+  max-width: 35vw;
+}
+.sub-title {
+  padding-top: 1em;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.text-highlight {
+  background-color: $red;
+  border-radius: 2px;
+  color: white;
+  padding: 0 3px;
 }
 
 .pagination li.active a {
@@ -56,3 +123,24 @@ $red: #EB001B;
 .alert-danger {
   background-color: #F5B82E;
 }
+
+#deco-left {
+  position: absolute;
+  left: 0;
+  top: 60%;
+}
+
+#deco-right {
+  position: absolute;
+  right: 0;
+  top: 90%;
+}
+/***********************/
+/*** Problem section ***/
+/***********************/
+
+#problem-section {
+  min-height: 40vh;
+  background-color: $yellow;
+}
+

@@ -7,7 +7,7 @@
     = csp_meta_tag
     %link{rel: "preconnect", href: "https://fonts.googleapis.com"}
     %link{rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
-    %link{href: "https://fonts.googleapis.com/css2?family=Rowdies&display=swap", rel: "stylesheet" }
+    %link{href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600&family=Rowdies&display=swap", rel: "stylesheet" }
     %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
     = stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
@@ -15,8 +15,6 @@
     %header
       = render 'layouts/navbar'
     %main
-      .container.mt-3
-        = render 'layouts/flash_messages'
-      .container
-        = yield
+      = render 'layouts/flash_messages'
+      = yield
     %footer
