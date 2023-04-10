@@ -1,11 +1,13 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
   .container-fluid
-    %a.navbar-brand{href: "#"}
-      = image_tag 'logo_blood.png', class: 'logo'
-      %span#logo-blood>
-        Blood
-      %span#logo-tracker>
-        Tracker
+    %a.navbar-brand{href: root_path}
+      .brand-image-wrapper
+        = image_tag 'logo_blood.png', class: 'logo'
+      #brand
+        %span#logo-blood>
+          Blood
+        %span#logo-tracker>
+          Tracker
     .wrapper
       %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
         %span.navbar-toggler-icon
