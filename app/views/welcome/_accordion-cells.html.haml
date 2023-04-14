@@ -5,18 +5,22 @@
         Thrombocytes
     #flush-collapseOne.accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne", "data-bs-parent" => "#accordionFlushExample"}
       .accordion-body
-        Placeholder content for this accordion, which is intended to demonstrate the
-        %code .accordion-flush
-        class. This is the first item's accordion body.
+        = sanitize(@thrombocytes_article.summary)
+        = link_to('link', sanitize(@thrombocytes_article.url))
+        %p
+          source:
+          = sanitize(@thrombocytes_article.source)
   .accordion-item
     %h2#flush-headingTwo.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseTwo", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseTwo", "data-bs-toggle" => "collapse", type: "button"}
         Lymphocyte
     #flush-collapseTwo.accordion-collapse.collapse{"aria-labelledby" => "flush-headingTwo", "data-bs-parent" => "#accordionFlushExample"}
       .accordion-body
-        Placeholder content for this accordion, which is intended to demonstrate the
-        %code .accordion-flush
-        class. This is the second item's accordion body. Let's imagine this being filled with some actual content.
+        = sanitize(@lymphocyte_article.summary)
+        = link_to('link', sanitize(@lymphocyte_article.url))
+        %p
+          source:
+          = sanitize(@lymphocyte_article.source)
   .accordion-item
     %h2#flush-headingThree.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseThree", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseThree", "data-bs-toggle" => "collapse", type: "button"}

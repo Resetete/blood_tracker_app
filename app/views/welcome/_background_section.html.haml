@@ -11,4 +11,5 @@
     .bg-content.pt-5
       .dictionary
         = render('accordion-cells')
-      = image_tag('blood-cell-types.png')
+      .wrapper-blood-cell-image
+        = image_tag('blood-cell-types.png', alt: 'blood cell types description')

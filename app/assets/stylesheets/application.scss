@@ -191,9 +191,16 @@ hr.separator-element {
 }
 
 .dictionary {
-  width: 50%;
+  width: 60%;
   margin-right: 10%;
   font-family: 'Montserrat', sans-serif;
+}
+.wrapper-blood-cell-image {
+  max-width: 40%;
+}
+
+.wrapper-blood-cell-image img {
+  width: 100%;
 }
 
 .accordion-item {
