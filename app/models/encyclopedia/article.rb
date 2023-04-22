@@ -2,6 +2,7 @@ require 'faraday'
 
 module Encyclopedia
   class Article
+    # TODO: in controller only request new every 24h
     # returns entries from https://medlineplus.gov/
     BASE_URL = 'https://wsearch.nlm.nih.gov/ws'.freeze
 

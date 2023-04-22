@@ -4,7 +4,5 @@ class WelcomeController < ApplicationController
   def index
     @thrombocytes_article = Encyclopedia::Article.new('platelet disorders')
     @lymphocyte_article = Encyclopedia::Article.new('lymphocyte')
-
-
   end
 end

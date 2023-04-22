@@ -41,6 +41,27 @@ p {
   font-size: 1.3em;
 }
 
+// image crediting tooltip
+.image-credit {
+  position: relative;
+  font-size: 0.8em;
+  color: white;
+}
+.image-credit a {
+  color: white;
+  text-decoration: none;
+}
+.image-credit::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 0%;
+  bottom: 100%;
+  opacity: 0;
+}
+.image-credit:hover::before {
+  opacity: 1;
+}
+
 /********************/
 /**** NavBar ****/
 /********************/
@@ -166,6 +187,16 @@ hr.separator-element {
   top: 90%;
 }
 
+#hero-credit a {
+  color: white;
+  text-decoration: none;
+}
+
+#hero-credit {
+  bottom: 10px;
+  right: 100px;
+}
+
 /***********************/
 /*** Problem section ***/
 /***********************/
@@ -195,12 +226,22 @@ hr.separator-element {
   margin-right: 10%;
   font-family: 'Montserrat', sans-serif;
 }
+
+// blood cell image
 .wrapper-blood-cell-image {
   max-width: 40%;
+  position: relative;
 }
-
 .wrapper-blood-cell-image img {
   width: 100%;
+}
+#cells-credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-decoration: none;
+  width: 100%;
+  text-align: right;
 }
 
 .accordion-item {
