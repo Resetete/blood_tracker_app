@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4'
 gem 'puma', '~> 4.1'
 # psych 3 to fix incompatibility
 gem 'psych', '~> 3'
+# use postgres database
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # importmaps for javascript (instead of webpacker)
@@ -62,8 +64,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
   gem 'rspec'
 end
 
@@ -88,6 +88,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
