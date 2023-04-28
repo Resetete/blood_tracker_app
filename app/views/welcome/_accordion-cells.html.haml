@@ -1,9 +1,9 @@
-.accordion.accordion-flush
+.accordion.accordion-flush#accordion-blood-cells
   .accordion-item
     %h2#flush-headingOne.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseOne", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseOne", "data-bs-toggle" => "collapse", type: "button"}
         Thrombocytes
-    #flush-collapseOne.accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne", "data-bs-parent" => "#accordionFlushExample"}
+    #flush-collapseOne.accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne", "data-bs-parent" => "#accordion-blood-cells"}
       .accordion-body
         = sanitize(@thrombocytes_article.summary)
         = link_to('link', sanitize(@thrombocytes_article.url))
@@ -14,7 +14,7 @@
     %h2#flush-headingTwo.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseTwo", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseTwo", "data-bs-toggle" => "collapse", type: "button"}
         Lymphocyte
-    #flush-collapseTwo.accordion-collapse.collapse{"aria-labelledby" => "flush-headingTwo", "data-bs-parent" => "#accordionFlushExample"}
+    #flush-collapseTwo.accordion-collapse.collapse{"aria-labelledby" => "flush-headingTwo", "data-bs-parent" => "#accordion-blood-cells"}
       .accordion-body
         = sanitize(@lymphocyte_article.summary)
         = link_to('link', sanitize(@lymphocyte_article.url))
@@ -25,8 +25,17 @@
     %h2#flush-headingThree.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseThree", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseThree", "data-bs-toggle" => "collapse", type: "button"}
         Monocyte
-    #flush-collapseThree.accordion-collapse.collapse{"aria-labelledby" => "flush-headingThree", "data-bs-parent" => "#accordionFlushExample"}
+    #flush-collapseThree.accordion-collapse.collapse{"aria-labelledby" => "flush-headingThree", "data-bs-parent" => "#accordion-blood-cells"}
       .accordion-body
-        Placeholder content for this accordion, which is intended to demonstrate the
-        %code .accordion-flush
-        class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.
+        %p Monocytes are a type of white blood cell that are essential to the body's immune system. They are abbreviated as "MONO" in blood work and are measured in percentages. Monocytes are produced in the bone marrow and released into the bloodstream, where they can travel to various tissues and organs to fight off infections and foreign substances.
+        %p The normal range for monocytes is typically between 2% to 10% of the total white blood cell count. A low monocyte count, known as monocytopenia, can be caused by various factors, such as viral infections, autoimmune disorders, bone marrow disorders, or certain medications such as chemotherapy, corticosteroids, and immunosuppressive drugs. On the other hand, high monocyte counts, known as monocytosis, can be caused by infections, inflammation, and certain types of cancer such as leukemia.
+        %p Monocyte levels can be measured through a complete blood count (CBC) test, which is a standard test used to evaluate overall health and detect a wide range of medical conditions.
+        %p.source
+          Sources of information:
+          %ul
+            %li= link_to 'National Library of Medicine', 'https://medlineplus.gov/lab-tests/monocyte-count/'
+            %li= link_to 'Mayo Clinic', 'https://www.mayoclinic.org/tests-procedures/complete-blood-count/about/pac-20384919'
+            %li= link_to 'Medscape', 'https://emedicine.medscape.com/article/208506-overview'
+          Note: text generated with
+          = link_to 'ChatGPT', 'https://chat.openai.com/'
+
