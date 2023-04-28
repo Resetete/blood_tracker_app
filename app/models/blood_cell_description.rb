@@ -1,0 +1,2 @@
+class BloodCellDescription < ApplicationRecord
+end
