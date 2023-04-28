@@ -34,7 +34,14 @@ gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate
 gem 'groupdate'
 gem 'chartkick'
 gem 'highcharts-rails'
-
+# Requests API
+gem 'faraday'
+# debugging
+gem 'pry'
+# convert xml to hash
+gem 'ox'
+# sanitize html from third party api
+gem 'rails-html-sanitizer'
 
 # frontend
 gem 'foreman'
