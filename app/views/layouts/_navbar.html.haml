@@ -14,25 +14,23 @@
       #navbarNav.collapse.navbar-collapse
         %ul.navbar-nav
           %li.nav-item
-            %a.nav-link{href: root_path} Home
+            = link_to 'Home', root_path, class: 'nav-link'
           %li.nav-item
-            %a.nav-link{href: about_path} About
+            = link_to 'About', about_path, class: 'nav-link'
           %li.nav-item
-            %a.nav-link{href: about_path} Blog
+            = link_to 'Blog', about_path, class: 'nav-link'
           - if user_signed_in?
-            %li
-              = link_to 'Account', view_user_path(current_user)
-            %li
-              = nav_links
+            %li.nav-item
+              = link_to 'Account', view_user_path(current_user), class: 'nav-link'
+            %li.nav-item
+              = link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger'
+            %li.nav-item.dropdown
+              = link_to 'Tracker', '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdownMenuLink', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
+              %ul.dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+                %li
+                  = link_to 'Data', hemigrams_path, class: 'dropdown-item'
+                %li
+                  = link_to 'Graphs', graphs_path, class: 'dropdown-item'
           - if !user_signed_in?
             %li= link_to 'Sign up', new_user_registration_path, class: 'btn'
             %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-success'
-          %li
-            .nav-item.dropdown
-              %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", role: "button"}
-                Dropdown link
-              %ul.dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-                %li
-                  %a.dropdown-item{href: hemigrams_path} Data
-                %li
-                  %a.dropdown-item{href: graphs_path} Graphs
