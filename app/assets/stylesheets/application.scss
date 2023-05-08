@@ -26,15 +26,19 @@ $rosa: #E4ACC0;
 $yellow: #DCD283;
 
 body, html {
-  background-color: $rosa
-  ;
+  background-color: $rosa;
   height: 100%;
+}
+
+#flash-errors {
+  margin-top: 15vh;
 }
 
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
+
 
 p {
   font-family: 'Montserrat', sans-serif;
