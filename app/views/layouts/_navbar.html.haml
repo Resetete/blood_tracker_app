@@ -25,8 +25,8 @@
             %li
               = nav_links
           - if !user_signed_in?
-            %li
-              = link_to 'Sign up', new_user_registration_path, class: 'btn'
+            %li= link_to 'Sign up', new_user_registration_path, class: 'btn'
+            %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-success'
           %li
             .nav-item.dropdown
               %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", role: "button"}
