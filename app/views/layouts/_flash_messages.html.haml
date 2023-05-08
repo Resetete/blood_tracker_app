@@ -1,6 +1,6 @@
-- flash.each do |name, message|
-  .row
-    .col.s12.m12.l12
-      #fade-out-target{:class => "card-panel alert-#{name == 'notice' ? 'success' : 'danger'}"}
-        %span.white-text
-          = message
+.row.justify-content-md-center
+  .col-5
+    - flash.each do |name, message|
+      #flash-errors{:class => "alert alert-#{name == 'notice' ? 'success' : 'danger'} alert-dismissible fade show", :role => 'alert'}
+        = message
+        %button.btn-close{"type" => "button", "data-bs-dismiss" => "alert", "aria-label" => "Close"}

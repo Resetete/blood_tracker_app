@@ -26,15 +26,25 @@ $rosa: #E4ACC0;
 $yellow: #DCD283;
 
 body, html {
-  background-color: $rosa
-  ;
+  background-color: $rosa;
   height: 100%;
 }
+
+/* flash error messages*/
+#flash-errors {
+  margin-top: 15vh;
+}
+.alert {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
 
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
+
 
 p {
   font-family: 'Montserrat', sans-serif;
@@ -60,6 +70,19 @@ p {
 }
 .image-credit:hover::before {
   opacity: 1;
+}
+
+/*********************/
+/*** Devise Views ****/
+/*********************/
+
+.devise-views {
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.devise-errors {
+  width: 30vw;
 }
 
 /********************/
