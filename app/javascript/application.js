@@ -28,4 +28,11 @@ $(document).on('turbo:load', function() {
       $('#brand').css('top', "3vh");
     }
   }
+
+  // fade out alert flash messages
+  $(function() {
+    setTimeout(function() {
+      $('.alert').fadeOut('slow');
+    }, 5000);
+  });
 });
