@@ -1,0 +1,15 @@
+.container
+  %h2 Blood cell descriptions
+  = link_to 'New', new_blood_cell_description_path, class: 'btn btn-primary'
+  - @blood_cell_descriptions&.each do |description|
+    .card
+      .card-body
+        %h5.card-title= description.title
+        %p.card-text= description.description
+        %p= description.created_at
+        %p= description.updated_at
+        - if description.source_links.present?
+          - JSON.parse(description.source_links).each do |hash|
+            %p= hash['source']
+            %p= link_to "Source url", hash['link']
+        = link_to 'Edit', edit_blood_cell_description_path(description.id), class: 'btn btn-primary'
