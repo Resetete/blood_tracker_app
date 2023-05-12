@@ -8,8 +8,8 @@
 #  blood_cell_description_id :bigint
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
+#  text_generator            :boolean
 #
-# This stores links / urls to information sources
 class Link < ApplicationRecord
   belongs_to :blood_cell_description
 end
