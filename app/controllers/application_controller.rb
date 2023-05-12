@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
@@ -6,9 +8,9 @@ class ApplicationController < ActionController::Base
   private
 
   def require_admin!
-    unless current_user.admin?
-      flash[:alert] = 'You must be an admin to access this page.'
-      redirect_to root_path
-    end
+    return if current_user.admin?
+
+    flash[:alert] = 'You must be an admin to access this page.'
+    redirect_to root_path
   end
 end

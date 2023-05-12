@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 require 'faraday'
 
 module Encyclopedia
+  # accesses the medlineplus API for a given term and returns the xml results article
   class Article
     # TODO: in controller only request new every 24h
     # returns entries from https://medlineplus.gov/
-    BASE_URL = 'https://wsearch.nlm.nih.gov/ws'.freeze
+    BASE_URL = 'https://wsearch.nlm.nih.gov/ws'
 
     attr_reader :article, :url, :source, :summary, :title
 
@@ -20,7 +23,7 @@ module Encyclopedia
 
     def first_article_for(search_term)
       articles = look_up(search_term)
-      articles.dig(:nlmSearchResult,:list).second.dig(:document)
+      articles.dig(:nlmSearchResult, :list).second[:document]
     end
 
     def look_up(search_term)
@@ -31,29 +34,31 @@ module Encyclopedia
     private
 
     def url_of(article)
-      article.first.dig(:url)
+      article.first[:url]
     end
 
     def title_of(article)
-      parse_article_document(article).find{ |hash| hash['title'] }.values.join
+      parse_article_document(article).find { |hash| hash['title'] }.values.join
     end
 
     def source_of(article)
-      parse_article_document(article).find{ |hash| hash['organizationName'] }.values.join
+      parse_article_document(article).find { |hash| hash['organizationName'] }.values.join
     end
 
     def summary_of(article)
-      parse_article_document(article).find{ |hash| hash['FullSummary'] }.values.join
+      parse_article_document(article).find { |hash| hash['FullSummary'] }.values.join
     end
 
     def parse_article_document(article)
-      article.flat_map(&:values).map{|elem| {(elem.is_a?(String) ? elem : elem.first.values.join) => (elem.is_a?(String) ? nil : elem.second)}}
+      article.flat_map(&:values).map do |elem|
+        { (elem.is_a?(String) ? elem : elem.first.values.join) => (elem.is_a?(String) ? nil : elem.second) }
+      end
     end
 
     def client
       Faraday.new(
         url: BASE_URL,
-        headers: { 'Content-Type' => 'application/xml' },
+        headers: { 'Content-Type' => 'application/xml' }
       )
     end
 
