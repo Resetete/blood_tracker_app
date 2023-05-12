@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :hemigrams, dependent: :destroy
 
@@ -10,4 +12,3 @@ class User < ApplicationRecord
     admin
   end
 end
-

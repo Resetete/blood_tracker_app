@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBloodCellDescriptions < ActiveRecord::Migration[7.0]
   def change
     create_table :blood_cell_descriptions do |t|

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class HemigramsController < ApplicationController
-  before_action :set_hemigram, only: [:show, :edit, :update, :destroy]
+  before_action :set_hemigram, only: %i[show edit update destroy]
 
   def index
     @all_user_hemigrams = Hemigram.search(params[:search], current_user).paginate(page: params[:page]).order('id DESC')
@@ -9,8 +11,7 @@ class HemigramsController < ApplicationController
     @hemigram = Hemigram.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @hemigram = Hemigram.new(hemigram_params)
@@ -26,8 +27,7 @@ class HemigramsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @hemigram.update(hemigram_params)
@@ -39,12 +39,8 @@ class HemigramsController < ApplicationController
   end
 
   def destroy
-    if @hemigram.destroy
-      flash[:notice] = 'You have successfully deleted that hemigram.'
-      redirect_to hemigrams_path
-    else
-      redirect_to hemigrams_path
-    end
+    flash[:notice] = 'You have successfully deleted that hemigram.' if @hemigram.destroy
+    redirect_to hemigrams_path
   end
 
   private

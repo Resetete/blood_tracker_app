@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def nav_links
     if user_signed_in?
@@ -11,8 +13,8 @@ module ApplicationHelper
     {
       adapter: 'highcharts',
       legend: false,
-      colors: ["#f5b82e"],
-      messages: {empty: "No data"},
+      colors: ['#f5b82e'],
+      messages: { empty: 'No data' },
       library: {
         yAxis: {
           title: {
@@ -26,11 +28,10 @@ module ApplicationHelper
         },
         plotOptions: {
           line: {
-            color: "#f5b82e"
+            color: '#f5b82e'
           }
         }
-       }
       }
-
+    }
   end
 end

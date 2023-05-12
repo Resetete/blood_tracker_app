@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class BloodCellDescriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin!
 
-  before_action :set_description, only: [:show, :edit, :update, :destroy]
+  before_action :set_description, only: %i[show edit update destroy]
 
   def index
     @blood_cell_descriptions = BloodCellDescription.all
