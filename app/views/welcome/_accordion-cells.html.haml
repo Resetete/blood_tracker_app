@@ -24,7 +24,11 @@
               %li= link_to 'National Library of Medicine', 'https://medlineplus.gov/lab-tests/monocyte-count/'
               %li= link_to 'Mayo Clinic', 'https://www.mayoclinic.org/tests-procedures/complete-blood-count/about/pac-20384919'
               %li= link_to 'Medscape', 'https://emedicine.medscape.com/article/208506-overview'
-            - if description.text_generator
+
+            - text_generators = description.links.select(&:text_generator)
+            - if text_generators.any?
               Note: text generated with
-              = link_to description.text_generator, 'https://chat.openai.com/'
+              %ul
+                - text_generators.each do |generator|
+                  %li= link_to generator.name, generator.url
 
