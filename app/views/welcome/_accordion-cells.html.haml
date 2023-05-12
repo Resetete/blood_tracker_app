@@ -18,17 +18,18 @@
       .accordion-collapse.collapse{"aria-labelledby": "flush-heading#{idx}", "data-bs-parent": "#accordion-blood-cells", id: "flush-collapse#{idx}"}
         .accordion-body
           %p= description.description
-          %p.source
-            Sources of information:
-            %ul
-              %li= link_to 'National Library of Medicine', 'https://medlineplus.gov/lab-tests/monocyte-count/'
-              %li= link_to 'Mayo Clinic', 'https://www.mayoclinic.org/tests-procedures/complete-blood-count/about/pac-20384919'
-              %li= link_to 'Medscape', 'https://emedicine.medscape.com/article/208506-overview'
-
-            - text_generators = description.links.select(&:text_generator)
-            - if text_generators.any?
-              Note: text generated with
+          - sources = description.links.reject(&:text_generator)
+          - if sources.any?
+            %p.source
+              Sources of information
               %ul
-                - text_generators.each do |generator|
-                  %li= link_to generator.name, generator.url
+                - sources.each do |source|
+                  %li= link_to source.name, source.url
+
+          - text_generators = description.links.select(&:text_generator)
+          - if text_generators.any?
+            Note: text generated with
+            %ul
+              - text_generators.each do |generator|
+                %li= link_to generator.name, generator.url
 
