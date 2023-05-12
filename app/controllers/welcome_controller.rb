@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @thrombocytes_article = Encyclopedia::Article.new('platelet disorders')
-    @lymphocyte_article = Encyclopedia::Article.new('lymphocyte')
+    # @thrombocytes_article = Encyclopedia::Article.new('platelet disorders') # instead this, allow user to query medline
+    @blood_cell_descriptions = BloodCellDescription.all
   end
 end
