@@ -1,5 +1,5 @@
 .row
-  .col-6
+  .col-9
     = form_with model: @blood_cell_description, local: true do |f|
       .mb-3
         = f.label :title, class: 'form-label'
@@ -7,13 +7,13 @@
       .mb-3
         = f.label :description, class: 'form-label'
         = f.text_area :description, class: 'form-control', required: true
-      .mb-3
-        = f.label :source_links, class: 'form-label'
-        = f.text_field :source_links, class: 'form-control'
-        %p.form-text
-          [{"source": "medlib", "link": "https://test.com"},{"source": "medlib2", "link": "https://test2.com"}]
-      .mb-3
-        = f.label :text_generator, class: 'form-label'
-        = f.text_field :text_generator, class: 'form-control'
-        %p.form-text e.g. ChatGPT, https://chat.openai.com/
-      = f.submit 'Submit', class: 'btn btn-primary'
+
+      -# create the related source links
+      .links
+        = f.fields_for :links do |link|
+          .col-12
+            = render 'link_fields', f: link
+      = link_to_add_association 'Add Link', f, :links, data: { association_insertion_node: '.links', association_insertion_method: :append }, class: 'btn btn-info'
+
+      .mt-5
+        = f.submit 'Submit', class: 'btn btn-primary'

@@ -17,6 +17,7 @@ class BloodCellDescriptionsController < ApplicationController
 
   def new
     @blood_cell_description = BloodCellDescription.new
+    @blood_cell_description.links.build
   end
 
   def create
@@ -31,7 +32,9 @@ class BloodCellDescriptionsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @blood_cell_description.links.build
+  end
 
   def update
     if @blood_cell_description.update(description_params)
@@ -56,7 +59,7 @@ class BloodCellDescriptionsController < ApplicationController
   private
 
   def description_params
-    params.require(:blood_cell_description).permit(:title, :description, :source_links, :text_generator)
+    params.require(:blood_cell_description).permit(:title, :description, links_attributes: [:id, :name, :url, :text_generator, :_destroy])
   end
 
   def set_description

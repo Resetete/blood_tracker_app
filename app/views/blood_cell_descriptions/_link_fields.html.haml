@@ -1,0 +1,10 @@
+-# nested fields for adding links in form
+.nested-fields
+  = f.label :name, class: 'mt-3'
+  = f.text_field :name
+  = f.label :url
+  = f.text_field :url
+  = f.label 'Text generator link?'
+  = f.check_box :text_generator
+  = link_to_remove_association 'Delete', f, class: 'btn btn-danger'
+

@@ -9,14 +9,20 @@
       %p
         updated at:
         = @blood_cell_description.updated_at
-      - if @blood_cell_description.source_links.present?
-        - JSON.parse(@blood_cell_description.source_links).each do |hash|
-          %p
-            = hash['source']
-            = link_to "Source url", hash['link']
+      %p
+        Sources:
+        %ul
+        - @blood_cell_description.links.each do |link|
+          %li= "#{link.name}, #{link.url}"
       %p
         Text generation AI tool:
-        = @blood_cell_description.text_generator ? @blood_cell_description.text_generator : 'None'
+        %ul
+        - text_generators = @blood_cell_description.links.select(&:text_generator)
+        - if text_generators.any?
+          - text_generators.each do |generator|
+            %li= "#{generator.name}, #{generator.url}"
+        -else
+          %li None
 
       = link_to 'Edit', edit_blood_cell_description_path(@blood_cell_description.id), class: 'btn btn-primary'
       = link_to 'Delete', blood_cell_description_path(@blood_cell_description.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this description?' }, class: 'btn btn-danger'

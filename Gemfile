@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # authentication
+gem 'jquery-rails'
 gem 'stimulus-rails'
 # to work with asset pipeline
 gem 'devise'
@@ -53,6 +54,8 @@ gem 'font-awesome-rails'
 gem 'foreman'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml'
+# allow automatically adding new form fields for nested associations
+gem 'cocoon'
 
 # unit converter
 gem 'ruby-units'
