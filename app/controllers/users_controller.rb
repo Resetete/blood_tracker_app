@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# User CRUD is controlled via devise
+# This controller allows users to access their user profile info
 class UsersController < ApplicationController
   before_action :require_same_user
   before_action :set_user, only: [:show]

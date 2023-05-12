@@ -11,5 +11,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+
+# this allows storing and editing of the description of blood cells
 class BloodCellDescription < ApplicationRecord
 end

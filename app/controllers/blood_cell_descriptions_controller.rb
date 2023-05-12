@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Allows CRUD for blood cell descriptions
+# Only Users that are admins can perform those actions
+# Users must be logged in
 class BloodCellDescriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin!

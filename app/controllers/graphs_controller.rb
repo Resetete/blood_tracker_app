@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Responsible to render and visualize the graphical visualization of the blood work data (Hemigrams)
 class GraphsController < ApplicationController
   def index; end
 
@@ -8,6 +9,9 @@ class GraphsController < ApplicationController
     chart_data = raw_data.map { |i| [i[:date], i[:value], i[:unit]] }
     render json: chart_data
 
-    # works: #render json: Hemigram.where(user_id: current_user, parameter: params[:parameter]).group(:parameter).group_by_day(:date).maximum(:value)
+    # works:
+    # render json: Hemigram.where(user_id: current_user, parameter: params[:parameter])
+    # .group(:parameter)
+    # .group_by_day(:date).maximum(:value)
   end
 end

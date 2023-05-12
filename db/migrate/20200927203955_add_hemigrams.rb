@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Migration to create the hemigrams table
+# stores the user entered blood work data values
 class AddHemigrams < ActiveRecord::Migration[6.0]
   def change
     create_table :hemigrams do |t|

@@ -1,0 +1,29 @@
+require: rubocop-rails
+
+Style/Documentation:
+  Exclude:
+    - 'config/application.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/mailers/*'
+    - 'app/models/application_record.rb'
+    - 'db/migrate/20200911200112_devise_create_users.rb'
+    - 'test/application_system_test_case.rb'
+    - 'test/test_helper.rb'
+
+Rails/FilePath:
+  Exclude:
+    - 'config/initializers/assets.rb'
+
+Layout/LineLength:
+  Max: 140
+  Exclude:
+    - 'config/initializers/devise.rb'
+
+Naming/FileName:
+  Exclude:
+    - 'config/initializers/will-paginate-materialize.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20200911200112_devise_create_users.rb'

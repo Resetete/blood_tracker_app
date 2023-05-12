@@ -9,6 +9,7 @@ module ApplicationHelper
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def basic_options(unit)
     {
       adapter: 'highcharts',
@@ -34,4 +35,5 @@ module ApplicationHelper
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end

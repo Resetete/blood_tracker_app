@@ -3,6 +3,7 @@
 require 'faraday'
 
 module Encyclopedia
+  # accesses the medlineplus API for a given term and returns the xml results article
   class Article
     # TODO: in controller only request new every 24h
     # returns entries from https://medlineplus.gov/

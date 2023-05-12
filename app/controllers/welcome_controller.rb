@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controls the landing page sections
 class WelcomeController < ApplicationController
   skip_before_action :authenticate_user!
 

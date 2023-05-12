@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# CRUDs for the different hemigrams that store the blood work user data
 class HemigramsController < ApplicationController
   before_action :set_hemigram, only: %i[show edit update destroy]
 
