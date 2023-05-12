@@ -1,0 +1,14 @@
+.container
+  .card
+    .card-body
+      %h5.card-title= @blood_cell_description.title
+      %p.card-text= @blood_cell_description.description
+      %p= @blood_cell_description.created_at
+      %p= @blood_cell_description.updated_at
+      - if @blood_cell_description.source_links.present?
+        - JSON.parse(@blood_cell_description.source_links).each do |hash|
+          %p= hash['source']
+          %p= link_to "Source url", hash['link']
+      = link_to 'Edit', edit_blood_cell_description_path(@blood_cell_description.id), class: 'btn btn-primary'
+      = link_to 'Delete', blood_cell_description_path(@blood_cell_description.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this description?' }, class: 'btn btn-danger'
+      = link_to 'All', blood_cell_descriptions_path, class: 'btn btn-info'

@@ -30,6 +30,11 @@ body, html {
   height: 100%;
 }
 
+// ensure that the main elements are not overlapped by the navbar
+main {
+  margin-top: 15vh;
+}
+
 /* flash error messages*/
 #flash-errors {
   margin-top: 15vh;
@@ -38,7 +43,6 @@ body, html {
   opacity: 1;
   transition: opacity 0.5s ease-out;
 }
-
 
 h1 {
   font-family: 'Montserrat', sans-serif;
