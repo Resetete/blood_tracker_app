@@ -13,9 +13,9 @@
   - @blood_cell_descriptions.each_with_index do |description, idx|
     .accordion-item
       %h2{id: "flush-heading#{idx}.accordion-header"}
-        %button.accordion-button.collapsed{"aria-controls" => "flush-collapseThree", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseThree", "data-bs-toggle" => "collapse", type: "button"}
+        %button.accordion-button.collapsed{"aria-controls": "flush-collapse#{idx}", "aria-expanded": "false", "data-bs-target": "#flush-collapse#{idx}", "data-bs-toggle": "collapse", type: "button"}
           = description.title
-      #flush-collapseThree.accordion-collapse.collapse{"aria-labelledby" => "flush-headingThree", "data-bs-parent" => "#accordion-blood-cells"}
+      .accordion-collapse.collapse{"aria-labelledby": "flush-heading#{idx}", "data-bs-parent": "#accordion-blood-cells", id: "flush-collapse#{idx}"}
         .accordion-body
           %p= description.description
           %p.source
