@@ -18,24 +18,11 @@
         %p.form-text e.g. ChatGPT, https://chat.openai.com/
 
       -# create the related source links
-      = f.fields_for :links do |link_fields|
-        .col-12
-          = link_fields.label :name
-          = link_fields.text_field :name
-          = link_fields.label :url
-          = link_fields.text_field :url
-          = link_fields.label 'Text generator link?'
-          = link_fields.check_box :text_generator
-          .pull-right
-            = link_fields.check_box :_destroy
-            = link_fields.label :_destroy, 'Remove'
-        -if @blood_cell_description.persisted?
-          = link_to_add_association 'Add Link', f, :links
-        - else
-          = link_to_add_association 'Add Link', @blood_cell_description, :links
-
-
-
+      .links
+        = f.fields_for :links do |link|
+          .col-12
+            = render 'link_fields', f: link
+      = link_to_add_association 'Add Link', f, :links, data: { association_insertion_node: '.links', association_insertion_method: :append }, class: 'btn btn-info'
 
       .mt-5
         = f.submit 'Submit', class: 'btn btn-primary'
