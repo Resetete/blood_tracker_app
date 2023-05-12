@@ -12,5 +12,8 @@
           - JSON.parse(description.source_links).each do |hash|
             %p= hash['source']
             %p= link_to "Source url", hash['link']
+        %p
+          Text generation AI tool:
+          = description.text_generator ? description.text_generator : 'None'
         = link_to 'Edit', edit_blood_cell_description_path(description.id), class: 'btn btn-primary'
         = link_to 'Delete', blood_cell_description_path(description.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this description?' }, class: 'btn btn-danger'
