@@ -56,7 +56,7 @@ class BloodCellDescriptionsController < ApplicationController
   private
 
   def description_params
-    params.require(:blood_cell_description).permit(:title, :description, :source_links)
+    params.require(:blood_cell_description).permit(:title, :description, :source_links, :text_generator)
   end
 
   def set_description

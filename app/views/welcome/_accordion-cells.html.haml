@@ -1,16 +1,5 @@
 .accordion.accordion-flush#accordion-blood-cells
   .accordion-item
-    %h2#flush-headingOne.accordion-header
-      %button.accordion-button.collapsed{"aria-controls" => "flush-collapseOne", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseOne", "data-bs-toggle" => "collapse", type: "button"}
-        Thrombocytes
-    #flush-collapseOne.accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne", "data-bs-parent" => "#accordion-blood-cells"}
-      .accordion-body
-        = sanitize(@thrombocytes_article.summary)
-        = link_to('link', sanitize(@thrombocytes_article.url))
-        %p
-          source:
-          = sanitize(@thrombocytes_article.source)
-  .accordion-item
     %h2#flush-headingTwo.accordion-header
       %button.accordion-button.collapsed{"aria-controls" => "flush-collapseTwo", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseTwo", "data-bs-toggle" => "collapse", type: "button"}
         Lymphocyte
