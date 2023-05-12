@@ -2,7 +2,7 @@ class BloodCellDescriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin!
 
-  before_action :set_description, only: [:show, :edit, :update]
+  before_action :set_description, only: [:show, :edit, :update, :destroy]
 
   def index
     @blood_cell_descriptions = BloodCellDescription.all
@@ -22,7 +22,7 @@ class BloodCellDescriptionsController < ApplicationController
       redirect_to @blood_cell_description
     else
       flash[:alert] = 'Could not be created'
-      render :new
+      render :index
     end
   end
 
@@ -34,6 +34,16 @@ class BloodCellDescriptionsController < ApplicationController
       redirect_to @blood_cell_description
     else
       flash[:alert] = 'Could not be updated'
+      render :edit
+    end
+  end
+
+  def destroy
+    if @blood_cell_description.destroy
+      flash[:notice] = 'Successfully deleted'
+      redirect_to blood_cell_descriptions_path
+    else
+      flash[:alert] = 'Could not be deleted'
       render :edit
     end
   end
