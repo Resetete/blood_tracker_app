@@ -1,5 +1,5 @@
 .row
-  .col-6
+  .col-9
     = form_with model: @blood_cell_description, local: true do |f|
       .mb-3
         = f.label :title, class: 'form-label'
@@ -16,4 +16,26 @@
         = f.label :text_generator, class: 'form-label'
         = f.text_field :text_generator, class: 'form-control'
         %p.form-text e.g. ChatGPT, https://chat.openai.com/
-      = f.submit 'Submit', class: 'btn btn-primary'
+
+      -# create the related source links
+      = f.fields_for :links do |link_fields|
+        .col-12
+          = link_fields.label :name
+          = link_fields.text_field :name
+          = link_fields.label :url
+          = link_fields.text_field :url
+          = link_fields.label 'Text generator link?'
+          = link_fields.check_box :text_generator
+          .pull-right
+            = link_fields.check_box :_destroy
+            = link_fields.label :_destroy, 'Remove'
+        -if @blood_cell_description.persisted?
+          = link_to_add_association 'Add Link', f, :links
+        - else
+          = link_to_add_association 'Add Link', @blood_cell_description, :links
+
+
+
+
+      .mt-5
+        = f.submit 'Submit', class: 'btn btn-primary'

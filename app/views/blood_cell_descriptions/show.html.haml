@@ -14,6 +14,10 @@
           %p
             = hash['source']
             = link_to "Source url", hash['link']
+      - @blood_cell_description.links.each do |link|
+        %p
+          = link.name
+          = link.url
       %p
         Text generation AI tool:
         = @blood_cell_description.text_generator ? @blood_cell_description.text_generator : 'None'
