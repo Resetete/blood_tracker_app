@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: hemigrams
+#
+#  id         :bigint           not null, primary key
+#  parameter  :string
+#  value      :decimal(, )
+#  unit       :string
+#  user_id    :integer
+#  date       :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  short      :string
+#
 class Hemigram < ApplicationRecord
   # allow adding new blood parameters and units --> new model with new, create, destroy actions
   # unit converter (separate model? Part of a printer model? printer table holds all converted blood values) --> define your own conversions (in blood parameters), new, create, destroy
