@@ -1,2 +1,6 @@
-%h1
-  Welcome #{@user.email}
+.container
+  %h1
+    Welcome #{@user.email}
+  %p
+    admin:
+    = @user.admin?
