@@ -2,12 +2,14 @@ databases:
   - name: bloodtracker
     databaseName: bloodtracker
     user: bloodtracker
+    region: frankfurt
 
 services:
   - type: web
     plan: free
     name: bloodtracker
     env: ruby
+    region: frankfurt
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
