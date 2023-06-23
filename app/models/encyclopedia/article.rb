@@ -5,7 +5,7 @@ require 'faraday'
 module Encyclopedia
   # accesses the medlineplus API for a given term and returns the xml results article
   class Article
-    # TODO: in controller only request new every 24h
+    # TODO: in controller only request new once a month
     # returns entries from https://medlineplus.gov/
     BASE_URL = 'https://wsearch.nlm.nih.gov/ws'
 
