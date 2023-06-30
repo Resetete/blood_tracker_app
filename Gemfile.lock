@@ -185,6 +185,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    news-api (0.2.0)
     nio4r (2.5.8)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
@@ -365,6 +366,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
+  news-api
   ox
   pg
   pry

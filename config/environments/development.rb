@@ -16,6 +16,9 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # no need for precompiling assets to see scss file changes
+  config.assets.check_precompiled_asset = false
+
   # Enable server timing
   config.server_timing = true
 

@@ -17,13 +17,15 @@
 @import "bootstrap";
 @import "font-awesome";
 
+// import variables, like color definitions
+@import 'variables';
+
+// import scss files
+@use "news_section";
+
 /****************+***************/
 /******* START CSS *********+****/
 /****************+***************/
-
-$red: #EB001B;
-$rosa: #E4ACC0;
-$yellow: #DCD283;
 
 body, html {
   background-color: $rosa;
