@@ -1,5 +1,6 @@
 databases:
   - name: bloodtracker
+    plan: free
     databaseName: bloodtracker
     user: bloodtracker
     region: frankfurt
