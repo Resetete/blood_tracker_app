@@ -119,10 +119,12 @@ hr.separator-element {
 }
 
 /***********************/
-/*** Problem section ***/
+/*** Sections ***/
 /***********************/
 
-#problem-section {
+#problem-section,
+#news-section,
+#affiliate-marketing-section {
   min-height: 40vh;
   background-color: $yellow;
 }
