@@ -124,7 +124,12 @@ hr.separator-element {
 
 #problem-section,
 #news-section,
-#affiliate-marketing-section {
+#affiliate-marketing-section,
+#app-features-section {
   min-height: 40vh;
   background-color: $yellow;
+}
+
+#app-features-section img {
+  width: 100%;
 }
