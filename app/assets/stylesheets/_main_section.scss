@@ -1,0 +1,71 @@
+@import 'variables';
+
+/********************/
+/*** Main section ***/
+/********************/
+
+#main-section {
+  position: relative;
+  height: 80vh;
+  background-color: $rosa;
+  background-image: url('hero_illustration.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin-top: 10vh;
+}
+
+.text {
+  max-width: 35vw;
+}
+.sub-title {
+  padding-top: 1em;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.text-highlight {
+  background-color: $red;
+  border-radius: 2px;
+  color: white;
+  padding: 0 3px;
+}
+
+.pagination li.active a {
+  color: #fff;
+}
+
+.alert-success {
+  background-color: #4D7C8A;
+}
+
+.alert-danger {
+  background-color: #F5B82E;
+}
+
+#deco-left {
+  position: absolute;
+  left: 0;
+  top: 60%;
+}
+
+#deco-right {
+  position: absolute;
+  right: 0;
+  top: 90%;
+}
+
+#hero-credit a {
+  color: white;
+  text-decoration: none;
+}
+
+#hero-credit {
+  bottom: 10px;
+  right: 100px;
+}
