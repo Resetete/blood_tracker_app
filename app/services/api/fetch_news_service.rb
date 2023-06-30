@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
 module Api
+  # retrieves global news from https://newsapi.org
+
   class FetchNewsService
-    # retrieves global news from https://newsapi.org
+    # example response attributes
+    #  @author="Thalia Beaty",
+    #  @content=
+    #   "Sage Chelf poses for a photo at her home in Orlando, Fla., May 27, 2023. Recent Florida legislation … [+6696 chars]",
+    #  @description=
+    #   "Florida legislation targets the LGBTQ+ community, including a law that curtails ...",
+    #  @id="business-insider",
+    #  @name="Business Insider",
+    #  @publishedAt="2023-06-04T14:46:05Z",
+    #  @title="Dozens of transgender people in Florida are crowdfunding to flee ...",
+    #  @url="https://www.businessinsider.com/trans-people-in-florida-crowdfunding-to-flee-the-state-2023-6",
+    #  @urlToImage="https://i.insider.com/647a612740bf000019fa197b?width=1200&format=jpeg">
 
     def initialize(news_api_client)
       @newsapi = news_api_client
@@ -17,11 +30,11 @@ module Api
       )
     end
 
-    def everything_news(q: 'blood AND (disease OR treatment)', from: Date.today - 1.month)
+    def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month)
       @everything_news ||= @newsapi.get_everything(
         q:,
         from:,
-        to: Date.today,
+        to: Time.zone.today,
         language: 'en',
         sortBy: 'relevancy'
       )
