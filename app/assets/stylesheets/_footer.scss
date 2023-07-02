@@ -9,11 +9,18 @@ footer {
   padding-top: 2em;
 }
 
-.footer-links {
+.footer-links{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.footer-links a {
+  color: rgb(99,78, 86);
+}
+
+.footer-links a:hover {
+  color: black;
 }
 
 #copyright a {
