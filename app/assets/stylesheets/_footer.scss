@@ -1,0 +1,28 @@
+@import 'variables';
+
+footer {
+  // the $yellow with 50% transparence
+  background-color: rgba(232, 225, 168, 1);
+}
+
+.footer-wrapper {
+  padding-top: 2em;
+}
+
+.footer-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links a {
+  color: rgb(99,78, 86);
+}
+
+.footer-links a:hover {
+  color: black;
+}
+
+#copyright a {
+  color: $red;
+}
