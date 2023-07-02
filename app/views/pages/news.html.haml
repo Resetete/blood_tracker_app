@@ -1,5 +1,9 @@
 .blog-news-section
   .container.pt-4
+    = form_tag(news_sorting_path, method: :get) do
+      = label_tag :sort_by, 'Sort by:'
+      = select_tag :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevance']], params[:sort_by])
+      = submit_tag 'Sort'
     .news-cards-wrapper
       .row
         - @all_news.each do |article|

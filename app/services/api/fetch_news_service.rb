@@ -26,17 +26,17 @@ module Api
         q:,
         category: 'health',
         language: 'en',
-        country:
+        country:,
       )
     end
 
-    def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month)
+    def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month, sort_by: 'relevancy')
       @everything_news ||= @newsapi.get_everything(
         q:,
         from:,
         to: Time.zone.today,
         language: 'en',
-        sortBy: 'relevancy'
+        sortBy: sort_by,
       )
     end
 
