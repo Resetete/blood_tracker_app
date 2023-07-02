@@ -22,6 +22,9 @@
 
 // import scss files
 @use "news_section";
+@use "navbar";
+@use "main_section";
+@use "background_section";
 
 /****************+***************/
 /******* START CSS *********+****/
@@ -50,7 +53,6 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
-
 
 p {
   font-family: 'Montserrat', sans-serif;
@@ -91,46 +93,6 @@ p {
   width: 30vw;
 }
 
-/********************/
-/**** NavBar ****/
-/********************/
-
-nav.navbar {
-  background-color: $rosa !important;
-}
-
-.brand-image-wrapper {
-  max-width: 10%;
-  margin: 10px;
-}
-.logo {
-  width: 100%;
-}
-
-.navbar-brand {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
-  font-weight: 500;
-  font-family: 'Rowdies', cursive;
-}
-
-#brand {
-  display: flex;
-  flex-direction: row;
-}
-
-#logo-blood {
-  text-decoration: underline $red 4px;
-}
-
-#logo-tracker {
-  color: $red;
-  padding-left: none;
-}
-
 /***********************/
 /*** Section headers ***/
 /***********************/
@@ -156,137 +118,18 @@ hr.separator-element {
   margin: 0.5em;
 }
 
-/********************/
-/*** Main section ***/
-/********************/
-
-#main-section {
-  position: relative;
-  height: 80vh;
-  background-color: $rosa;
-  background-image: url('hero_illustration.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
-  margin-top: 10vh;
-}
-
-.text {
-  max-width: 35vw;
-}
-.sub-title {
-  padding-top: 1em;
-  font-size: 1.5em;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.text-highlight {
-  background-color: $red;
-  border-radius: 2px;
-  color: white;
-  padding: 0 3px;
-}
-
-.pagination li.active a {
-  color: #fff;
-}
-
-.alert-success {
-  background-color: #4D7C8A;
-}
-
-.alert-danger {
-  background-color: #F5B82E;
-}
-
-#deco-left {
-  position: absolute;
-  left: 0;
-  top: 60%;
-}
-
-#deco-right {
-  position: absolute;
-  right: 0;
-  top: 90%;
-}
-
-#hero-credit a {
-  color: white;
-  text-decoration: none;
-}
-
-#hero-credit {
-  bottom: 10px;
-  right: 100px;
-}
-
 /***********************/
-/*** Problem section ***/
+/*** Sections ***/
 /***********************/
 
-#problem-section {
+#problem-section,
+#news-section,
+#affiliate-marketing-section,
+#app-features-section {
   min-height: 40vh;
   background-color: $yellow;
 }
 
-/***********************/
-/*** Background section ***/
-/***********************/
-
-#background-section {
-  background-color: $yellow;
-}
-
-.bg-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.dictionary {
-  width: 70%;
-  margin-right: 5%;
-  font-family: 'Montserrat', sans-serif;
-}
-
-// blood cell image
-.wrapper-blood-cell-image {
-  max-width: 35%;
-  position: relative;
-}
-.wrapper-blood-cell-image img {
+#app-features-section img {
   width: 100%;
-}
-#cells-credit {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  text-decoration: none;
-  width: 100%;
-  text-align: right;
-}
-
-.accordion-item {
-  margin: 5px 0;
-}
-
-.accordion-header {
-  border: solid 2px $red;
-  border-radius: 5px;
-}
-
-.accordion-button:active,
-.accordion-button:focus,
-.accordion-button:not(.collapsed) {
-  background-color: red;
-  color: white;
-  border: solid 2px $red;
-  border-radius: 5px;
 }

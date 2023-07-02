@@ -1,0 +1,57 @@
+@import 'variables';
+
+/***********************/
+/*** Background section ***/
+/***********************/
+
+#background-section {
+  background-color: $yellow;
+}
+
+.bg-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dictionary {
+  width: 70%;
+  margin-right: 5%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// blood cell image
+.wrapper-blood-cell-image {
+  max-width: 35%;
+  position: relative;
+}
+.wrapper-blood-cell-image img {
+  width: 100%;
+}
+#cells-credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-decoration: none;
+  width: 100%;
+  text-align: right;
+}
+
+.accordion-item {
+  margin: 5px 0;
+}
+
+.accordion-header {
+  border: solid 2px $red;
+  border-radius: 5px;
+}
+
+.accordion-button:active,
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+  background-color: red;
+  color: white;
+  border: solid 2px $red;
+  border-radius: 5px;
+}
