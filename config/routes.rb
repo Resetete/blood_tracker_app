@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about', to: 'pages#about'
   get 'graphs', to: 'graphs#index'
+  get 'imprint', to: 'pages#imprint'
 
   namespace :graphs do
     get 'parameters-per-day'
