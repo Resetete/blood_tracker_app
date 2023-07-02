@@ -1,23 +1,24 @@
-.container
-  .news-cards-wrapper
-    .row
-    - @all_news.each do |article|
-      .col-md-3
-        .card#news-card.mb-3
-          .card-header.text-end
-            published
-            = time_ago_in_words(article.publishedAt.to_date)
-            ago
-          = image_tag(article.urlToImage, class:'img-fluid card-img-top', alt:'news image')
-          .card-body
-            %h5.card-title= article.title
-            %h6.card-subtitle.mb-2.text-body-secondary= article.description
-            %p.card-text= article.content
-            = link_to('read more >', article.url, class: 'card-link card-news-link')
-          .card-footer.text-body-secondary.d-flex.flex-row.justify-content-between
-            %small.news-author
-              by
-              = article.author
-            %small.news-source.flex-end
-              Source:
-              = article.name
+.blog-news-section
+  .container.pt-4
+    .news-cards-wrapper
+      .row
+        - @all_news.each do |article|
+          .col-md-3
+            .card#news-card.mb-3
+              .card-header.text-end
+                published
+                = time_ago_in_words(article.publishedAt.to_date)
+                ago
+              = image_tag(article.urlToImage, class:'img-fluid card-img-top', alt:'news image')
+              .card-body
+                %h5.card-title= article.title
+                %h6.card-subtitle.mb-2.text-body-secondary= article.description
+                %p.card-text= article.content
+                = link_to('read more >', article.url, class: 'card-link card-news-link')
+              .card-footer.text-body-secondary.d-flex.flex-row.justify-content-between
+                %small.news-author
+                  by
+                  = article.author
+                %small.news-source.flex-end
+                  Source:
+                  = article.name
