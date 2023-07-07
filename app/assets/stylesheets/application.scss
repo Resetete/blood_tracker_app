@@ -21,12 +21,12 @@
 @import 'variables';
 
 // import scss files
-@use "news_section";
-@use "navbar";
-@use "main_section";
-@use "background_section";
-@use "user_account";
-@use "footer";
+@import "news_section";
+@import "navbar";
+@import "main_section";
+@import "background_section";
+@import "user_account";
+@import "footer";
 
 /****************+***************/
 /******* START CSS *********+****/
@@ -72,6 +72,15 @@ h1 {
 p {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.3em;
+}
+
+// form styles
+
+.form-background {
+  background-color: $yellow;
+  padding: 2em;
+  margin: 2em 0;
+  border-radius: 5px;
 }
 
 // image crediting tooltip
@@ -151,3 +160,4 @@ hr.separator-element {
 #app-features-section img {
   width: 100%;
 }
+

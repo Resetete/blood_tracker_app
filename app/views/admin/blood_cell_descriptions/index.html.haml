@@ -1,8 +1,10 @@
-.container.mt-5
-  %h2 Blood cell descriptions
+.container.mt-5.mb-5
+  .header-title.p-0.m-0
+    %h1
+      %span.text-highlight Blood cell descriptions
   = link_to 'New', new_admin_blood_cell_description_path, class: 'btn btn-primary mb-3'
   - @blood_cell_descriptions&.each do |description|
-    .card
+    .card.mb-3
       .card-body
         %h5.card-title= description.title
         %p.card-text= description.description

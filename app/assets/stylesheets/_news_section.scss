@@ -4,11 +4,12 @@
   margin-top: 10vh;
 }
 
-#news-card {
+.news-card {
+  min-width: 30%;
   background-color: $rosa;
+  margin: 1em 1em 1em 0;
 }
 
 .card-news-link {
   color: $red;
 }
-

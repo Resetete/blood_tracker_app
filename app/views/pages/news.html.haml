@@ -1,5 +1,8 @@
 .blog-news-section
   .container.pt-4
+    .header-title.p-0.m-0
+    %h2.mb-5
+      %span.text-highlight Blood and health related news
     -# TODO: enable the sorting by ajax form
     -# views/pages/_sorted_news.js.erb
     -# views/pahes/_news.html.haml
@@ -10,4 +13,4 @@
     -#     = form.select :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevancy']], params[:sort_by])
     -#     = form.submit 'sort', class: 'btn btn-success'
     #sorted_news_result
-      = render partial: 'news'
+      = render partial: 'news', locals: { news: @news }

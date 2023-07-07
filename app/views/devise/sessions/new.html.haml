@@ -1,8 +1,8 @@
-.devise-views
+.devise-views.mb-5
   .header-title.p-0.m-0
-    %h2.mb-5
+    %h2
       %span.text-highlight Log in (Admin)
-
+    %p.small Currently the login is only possible for the admin. When the tracker becomes available, you will be able to sign up.
   .row
     .col-md-6
       = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
@@ -20,6 +20,6 @@
             = f.label :remember_me, class: 'form-check-label', for: 'remember-checkbox'
 
         .actions.mb-2
-          = f.submit('Log in', class: 'btn btn-success')
+          = f.submit('Log in', class: 'btn btn-outline-light')
 
       = render 'devise/shared/links'
