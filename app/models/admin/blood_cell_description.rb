@@ -12,7 +12,9 @@
 #
 
 # this allows storing and editing of the description of blood cells
-class BloodCellDescription < ApplicationRecord
-  has_many :links, dependent: :destroy
-  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
+module Admin
+  class BloodCellDescription < ApplicationRecord
+    has_many :links, dependent: :destroy
+    accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
+  end
 end

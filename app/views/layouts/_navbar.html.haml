@@ -32,7 +32,7 @@
               = link_to 'Admin', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownAdminLinks', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
               %ul.dropdown-menu-end.dropdown-menu{"aria-labelledby" => "navbarDropdownAdminLinks"}
                 %li
-                  = link_to 'Blood type descriptions', blood_cell_descriptions_path, class: 'dropdown-item'
+                  = link_to 'Blood type descriptions', admin_blood_cell_descriptions_path, class: 'dropdown-item'
           - if !user_signed_in?
             -# %li= link_to 'Sign up', new_user_registration_path, class: 'btn'
             %li= link_to 'Sign in (Admin)', new_user_session_path, class: 'btn btn-success'

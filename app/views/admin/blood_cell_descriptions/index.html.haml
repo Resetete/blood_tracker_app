@@ -1,6 +1,6 @@
 .container.mb-5
   %h2 Blood cell descriptions
-  = link_to 'New', new_blood_cell_description_path, class: 'btn btn-primary mb-3'
+  = link_to 'New', new_admin_blood_cell_description_path, class: 'btn btn-primary mb-3'
   - @blood_cell_descriptions&.each do |description|
     .card
       .card-body
@@ -26,5 +26,5 @@
               %li= "#{generator.name}, #{generator.url}"
           -else
             %li None
-        = link_to 'Edit', edit_blood_cell_description_path(description.id), class: 'btn btn-primary'
-        = link_to 'Delete', blood_cell_description_path(description.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this description?' }, class: 'btn btn-danger'
+        = link_to 'Edit', edit_admin_blood_cell_description_path(description.id), class: 'btn btn-primary'
+        = link_to 'Delete', admin_blood_cell_description_path(description.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this description?' }, class: 'btn btn-danger'
