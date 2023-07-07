@@ -17,12 +17,9 @@
   %body
     .website-content-wrapper
       %header
-        - if current_page?(admin: '*')
-          = render 'layouts/admin_navbar'
-        - else
-          = render 'layouts/navbar'
+        = render 'layouts/navbar'
       %main
         = render 'layouts/flash_messages'
         = yield
-      %footer
+      %footer.mt-5
         = render 'layouts/footer'

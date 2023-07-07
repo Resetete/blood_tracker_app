@@ -27,6 +27,7 @@
                   = link_to 'Data', hemigrams_path, class: 'dropdown-item'
                 %li
                   = link_to 'Graphs', graphs_path, class: 'dropdown-item'
+          -# Admin user area
           - if user_signed_in? && current_user.admin?
             %li.nav-item.dropdown
               = link_to 'Admin', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownAdminLinks', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
