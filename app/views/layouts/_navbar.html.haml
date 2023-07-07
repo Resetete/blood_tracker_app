@@ -3,7 +3,7 @@
     %a.navbar-brand{href: root_path}
       .brand-image-wrapper.brand-image-wrapper-home
         = image_tag 'logo_blood.png', class: 'logo'
-      .brand.brand-home
+      .brand{class: current_page?(root_path) ? 'brand-home' : '' }
         %span#logo-blood>
           Blood
         %span#logo-tracker>
@@ -27,6 +27,7 @@
                   = link_to 'Data', hemigrams_path, class: 'dropdown-item'
                 %li
                   = link_to 'Graphs', graphs_path, class: 'dropdown-item'
+          -# Admin user area
           - if user_signed_in? && current_user.admin?
             %li.nav-item.dropdown
               = link_to 'Admin', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownAdminLinks', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
