@@ -21,10 +21,6 @@
           = render 'layouts/admin_navbar'
         - else
           = render 'layouts/navbar'
-        -# - if current_page?(root_path) || current_page?(news_path) || current_page?(imprint_path)
-        -#   = render 'layouts/navbar'
-        -# - else
-        -#   = render 'layouts/admin_navbar' # TODO: set up an admin namespace for admin routes
       %main
         = render 'layouts/flash_messages'
         = yield
