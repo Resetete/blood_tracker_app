@@ -16,10 +16,10 @@
     = javascript_include_tag 'jquery'
   %body
     %header
-      - if current_page?(root_path)
+      - if current_page?(root_path) || current_page?(news_path) || current_page?(imprint_path)
         = render 'layouts/navbar'
       - else
-        = render 'layouts/admin_navbar'
+        = render 'layouts/admin_navbar' # TODO: set up an admin namespace for admin routes
       = render 'layouts/flash_messages'
     %main
       = yield

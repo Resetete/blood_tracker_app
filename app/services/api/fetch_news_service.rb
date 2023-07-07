@@ -22,22 +22,32 @@ module Api
     end
 
     def top_headline_news(q: 'blood', country: 'us')
-      @top_headline_news ||= @newsapi.get_top_headlines(
-        q:,
-        category: 'health',
-        language: 'en',
-        country:
-      )
+      Rails.cache.fetch("top_headline_news_#{q}_#{country}", expires_in: 1.day) do
+        @newsapi.get_top_headlines(
+          q:,
+          category: 'health',
+          language: 'en',
+          country:,
+        )
+      end
+    rescue TooManyRequestsException => e
+      Rails.logger.error("News API (top headlines) Too Many Requests Error: #{e.message}")
+      []
     end
 
-    def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month)
-      @everything_news ||= @newsapi.get_everything(
-        q:,
-        from:,
-        to: Time.zone.today,
-        language: 'en',
-        sortBy: 'relevancy'
-      )
+    def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month, sort_by: 'relevancy')
+      Rails.cache.fetch("everything_news_#{q}_#{from}_#{sort_by}", expires_in: 1.day) do
+        @newsapi.get_everything(
+          q:,
+          from:,
+          to: Time.zone.today,
+          language: 'en',
+          sortBy: sort_by,
+        )
+      end
+    rescue TooManyRequestsException => e
+      Rails.logger.error("News API (everything news) Too Many Requests Error: #{e.message}")
+      []
     end
 
     def news_sources(country: 'us', language: 'en')

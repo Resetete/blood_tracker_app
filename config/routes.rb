@@ -2,9 +2,10 @@
 
 Rails.application.routes.draw do
   root 'welcome#index'
-  get 'about', to: 'pages#about'
   get 'graphs', to: 'graphs#index'
   get 'imprint', to: 'pages#imprint'
+  get 'news', to: 'pages#news'
+  get '/news/sort_by', to: 'pages#sort_news_articles'
 
   namespace :graphs do
     get 'parameters-per-day'

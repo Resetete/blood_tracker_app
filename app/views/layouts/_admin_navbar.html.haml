@@ -16,9 +16,7 @@
           %li.nav-item
             = link_to 'Home', root_path, class: 'nav-link'
           %li.nav-item
-            = link_to 'About', about_path, class: 'nav-link'
-          %li.nav-item
-            = link_to 'Blog', about_path, class: 'nav-link'
+            = link_to 'News', news_path, class: 'nav-link'
           - if user_signed_in?
             %li.nav-item
               = link_to 'Account', view_user_path(current_user), class: 'nav-link'

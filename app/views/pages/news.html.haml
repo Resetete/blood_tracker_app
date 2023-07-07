@@ -1,0 +1,13 @@
+.blog-news-section
+  .container.pt-4
+    -# TODO: enable the sorting by ajax form
+    -# views/pages/_sorted_news.js.erb
+    -# views/pahes/_news.html.haml
+
+    -# #sort_form
+    -#   = form_with(url: news_sort_by_path, method: :get, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
+    -#     = form.label :sort_by, 'Sort by:'
+    -#     = form.select :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevancy']], params[:sort_by])
+    -#     = form.submit 'sort', class: 'btn btn-success'
+    #sorted_news_result
+      = render partial: 'news'
