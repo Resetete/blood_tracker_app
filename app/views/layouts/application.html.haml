@@ -15,13 +15,14 @@
     -# ensure that we load jquery first
     = javascript_include_tag 'jquery'
   %body
-    %header
-      - if current_page?(root_path) || current_page?(news_path) || current_page?(imprint_path)
-        = render 'layouts/navbar'
-      - else
-        = render 'layouts/admin_navbar' # TODO: set up an admin namespace for admin routes
-      = render 'layouts/flash_messages'
-    %main
-      = yield
-    %footer
-      = render 'layouts/footer'
+    .website-content-wrapper
+      %header
+        - if current_page?(root_path) || current_page?(news_path) || current_page?(imprint_path)
+          = render 'layouts/navbar'
+        - else
+          = render 'layouts/admin_navbar' # TODO: set up an admin namespace for admin routes
+      %main
+        = render 'layouts/flash_messages'
+        = yield
+      %footer
+        = render 'layouts/footer'

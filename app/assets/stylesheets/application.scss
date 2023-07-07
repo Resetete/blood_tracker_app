@@ -34,11 +34,23 @@
 body, html {
   background-color: $rosa;
   height: 100%;
+  width: 100vw;
+}
+
+// ensures that navbar, main and footer section span at least 100vh
+.website-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 // ensure that the main elements are not overlapped by the navbar
 main {
-  margin-top: 15vh;
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 /* flash error messages*/

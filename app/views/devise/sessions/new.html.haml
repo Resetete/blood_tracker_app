@@ -1,0 +1,25 @@
+.devise-views
+  .header-title.p-0.m-0
+    %h2.mb-5
+      %span.text-highlight Log in (Admin)
+
+  .row
+    .col-md-6
+      = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
+        .mb-3
+          = f.label :email, class: 'form-label', for: 'email_input'
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email_input', placeholder: 'my_email@example.com'
+
+        .mb-3
+          = f.label :password, class: 'form-label', for: 'password_input'
+          = f.password_field :password, autocomplete: 'current-password', class: 'form-control', id: 'password_input'
+
+        - if devise_mapping.rememberable?
+          .form-check.mb-3
+            = f.check_box :remember_me, class: 'form-check-input', id: 'remember-checkbox'
+            = f.label :remember_me, class: 'form-check-label', for: 'remember-checkbox'
+
+        .actions.mb-2
+          = f.submit('Log in', class: 'btn btn-success')
+
+      = render 'devise/shared/links'

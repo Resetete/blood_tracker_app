@@ -25,7 +25,10 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+
+  # Registerable temporarly desactivated
+  # TODO: allow registration when tracker is ready
+  devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :validatable
 
   def admin?
