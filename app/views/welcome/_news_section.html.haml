@@ -10,7 +10,8 @@
     %p.pt-5.d-flex.flex-row.justify-content-between
       Discover in this section the latest news relevant for blood health.
       = link_to('More news >', news_path, class: 'card-link card-news-link text-right')
-    .news-cards-wrapper
+    = render partial: 'pages/news', locals: { news: @all_news }
+    -# .news-cards-wrapper
       .row
         - @all_news.each do |article|
           .col-md-4
