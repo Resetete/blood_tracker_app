@@ -25,6 +25,7 @@
 @use "navbar";
 @use "main_section";
 @use "background_section";
+@use "user_account";
 @use "footer";
 
 /****************+***************/
@@ -46,7 +47,6 @@ body, html {
 
 // ensure that the main elements are not overlapped by the navbar
 main {
-  margin-top: 10vh;
   flex: 1;
 }
 
