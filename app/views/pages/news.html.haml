@@ -1,28 +1,13 @@
 .blog-news-section
   .container.pt-4
-    = form_tag(news_sorting_path, method: :get) do
-      = label_tag :sort_by, 'Sort by:'
-      = select_tag :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevance']], params[:sort_by])
-      = submit_tag 'Sort'
-    .news-cards-wrapper
-      .row
-        - @all_news.each do |article|
-          .col-md-3
-            .card#news-card.mb-3
-              .card-header.text-end
-                published
-                = time_ago_in_words(article.publishedAt.to_date)
-                ago
-              = image_tag(article.urlToImage, class:'img-fluid card-img-top', alt:'news image')
-              .card-body
-                %h5.card-title= article.title
-                %h6.card-subtitle.mb-2.text-body-secondary= article.description
-                %p.card-text= article.content
-                = link_to('read more >', article.url, class: 'card-link card-news-link')
-              .card-footer.text-body-secondary.d-flex.flex-row.justify-content-between
-                %small.news-author
-                  by
-                  = article.author
-                %small.news-source.flex-end
-                  Source:
-                  = article.name
+    -# TODO: enable the sorting by ajax form
+    -# views/pages/_sorted_news.js.erb
+    -# views/pahes/_news.html.haml
+
+    -# #sort_form
+    -#   = form_with(url: news_sort_by_path, method: :get, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
+    -#     = form.label :sort_by, 'Sort by:'
+    -#     = form.select :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevancy']], params[:sort_by])
+    -#     = form.submit 'sort', class: 'btn btn-success'
+    #sorted_news_result
+      = render partial: 'news'
