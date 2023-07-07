@@ -30,6 +30,9 @@ module Api
           country:,
         )
       end
+    rescue TooManyRequestsException => e
+      Rails.logger.error("News API (top headlines) Too Many Requests Error: #{e.message}")
+      []
     end
 
     def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month, sort_by: 'relevancy')
@@ -42,6 +45,9 @@ module Api
           sortBy: sort_by,
         )
       end
+    rescue TooManyRequestsException => e
+      Rails.logger.error("News API (everything news) Too Many Requests Error: #{e.message}")
+      []
     end
 
     def news_sources(country: 'us', language: 'en')
