@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
   .container-fluid
     %a.navbar-brand{href: root_path}
-      .brand-image-wrapper.brand-image-wrapper-home
+      .brand-image-wrapper{class: current_page?(root_path) ? 'brand-image-wrapper-home' : '' }
         = image_tag 'logo_blood.png', class: 'logo'
       .brand{class: current_page?(root_path) ? 'brand-home' : '' }
         %span#logo-blood>
