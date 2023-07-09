@@ -11,18 +11,18 @@ module Admin
     before_action :set_description, only: %i[show edit update destroy]
 
     def index
-      @blood_cell_descriptions = BloodCellDescription.all
+      @blood_cell_descriptions = Admin::BloodCellDescription.all
     end
 
     def show; end
 
     def new
-      @blood_cell_description = BloodCellDescription.new
+      @blood_cell_description = Admin::BloodCellDescription.new
       @blood_cell_description.links.build
     end
 
     def create
-      @blood_cell_description = BloodCellDescription.new(description_params)
+      @blood_cell_description = Admin::BloodCellDescription.new(description_params)
 
       if @blood_cell_description.save
         flash[:notice] = 'Successfully created'
@@ -60,11 +60,11 @@ module Admin
     private
 
     def description_params
-      params.require(:blood_cell_description).permit(:title, :description, links_attributes: %i[id name url text_generator _destroy])
+      params.require(:admin_blood_cell_description).permit(:title, :description, links_attributes: %i[id name url text_generator _destroy])
     end
 
     def set_description
-      @blood_cell_description = BloodCellDescription.find(params[:id])
+      @blood_cell_description = Admin::BloodCellDescription.find(params[:id])
     end
   end
 end
