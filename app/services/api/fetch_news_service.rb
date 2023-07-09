@@ -39,8 +39,8 @@ module Api
       Rails.cache.fetch("everything_news_#{q}_#{from}_#{sort_by}", expires_in: 1.day) do
         @newsapi.get_everything(
           q:,
-          from:,
-          to: Time.zone.today,
+          from: from.to_s,
+          to: Time.zone.today.to_s,
           language: 'en',
           sortBy: sort_by,
         )
