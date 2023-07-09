@@ -9,8 +9,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create an admin user
-User.create(
-  email: Rails.application.credentials.admin.email,
-  password: Rails.application.credentials.admin.password,
-  admin: true
-)
+unless User.find_by(email: Rails.application.credentials.admin.email)
+  User.create(
+    email: Rails.application.credentials.admin.email,
+    password: Rails.application.credentials.admin.password,
+    admin: true,
+  )
+  p 'Admin user created'
+else
+  p 'Admin user already exists'
+end
