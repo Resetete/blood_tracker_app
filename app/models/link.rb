@@ -13,5 +13,5 @@
 #  text_generator            :boolean
 #
 class Link < ApplicationRecord
-  belongs_to :blood_cell_description
+  belongs_to :blood_cell_description, class_name: 'Admin::BloodCellDescription'
 end
