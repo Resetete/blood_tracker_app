@@ -60,7 +60,7 @@ module Admin
     private
 
     def description_params
-      params.require(:blood_cell_description).permit(:title, :description, links_attributes: %i[id name url text_generator _destroy])
+      params.require(:admin_blood_cell_description).permit(:title, :description, links_attributes: %i[id name url text_generator _destroy])
     end
 
     def set_description
