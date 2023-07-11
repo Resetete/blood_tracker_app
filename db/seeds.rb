@@ -113,6 +113,52 @@ else
   p 'Thrombocytes description already exists'
 end
 
+unless Admin::BloodCellDescription.find_by(title: 'Lymphocytes')
+  lymphocytes = Admin::BloodCellDescription.new(
+    title: 'Lymphocytes',
+    description: "<p>Lymphocytes are a type of white blood cell that plays a crucial role in the immune system's defense against infections and diseases. They are abbreviated as LY or LYMPH in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
+    <p>In a healthy individual, lymphocytes make up a significant proportion of the total white blood cell count. The normal range for lymphocytes is typically between 20% and 40% of the total white blood cell count, or an absolute count of 1,000 to 4,000 lymphocytes per microliter.</p>
+    <p>Low lymphocyte counts, known as lymphocytopenia, can be caused by various factors, including:</p>
+    <ul>
+    <li>Viral infections, such as HIV or hepatitis.</li>
+    <li>Certain medications, including chemotherapy drugs or immunosuppressants.</li>
+    <li>Autoimmune diseases, like systemic lupus erythematosus (SLE).</li>
+    <li>Bone marrow disorders, such as aplastic anemia or leukemia.</li>
+    </ul>
+    <p>High lymphocyte counts, known as lymphocytosis, can be attributed to various factors, including:</p>
+    <ul>
+    <li>Viral infections, such as mononucleosis or pertussis.</li>
+    <li>Bacterial infections, including tuberculosis or whooping cough.</li>
+    <li>Certain cancers, like leukemia or lymphoma.</li>
+    <li>Autoimmune disorders, such as rheumatoid arthritis or multiple sclerosis.</li>
+    </ul>
+    "
+  )
+  lymphocytes.links.build(
+    name: "National Library of Medicine. Lymphocytopenia. MedlinePlus.",
+    url: "https://medlineplus.gov/ency/article/003657.htm",
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
+    url: nil,
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "American Association for Clinical Chemistry (AACC). Lymphocytes. Lab Tests Online.",
+    url: 'https://labtestsonline.org/tests/lymphocytes',
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  lymphocytes.save
 
+  p 'Lymphocytes description created'
+else
+  p 'Lymphocytes description already exists'
+end
 
 
