@@ -371,5 +371,42 @@ else
   p 'Plasma description already exists'
 end
 
+unless Admin::BloodCellDescription.find_by(title: 'Leukocytes (White blood cells)')
+  leukocytes = Admin::BloodCellDescription.new(
+    title: 'Leukocytes (White blood cells)',
+    description: "<p>Leukocytes, commonly known as white blood cells (WBCs), are a crucial component of the immune system and are essential for the body's defense against infections and diseases. They are a diverse group of cells that play various roles in recognizing, attacking, and eliminating pathogens, foreign substances, and abnormal cells.</p>
+    <p>White blood cells are produced in the bone marrow and circulate in the bloodstream and lymphatic system. There are different types of leukocytes, each with its unique functions and characteristics, including:</p>
+    <ul>
+    <li>Neutrophils: They are the most abundant type of white blood cell and are the first responders to sites of infection or tissue damage.</li>
+    <li>Lymphocytes: They include T cells, B cells, and natural killer (NK) cells, and are involved in specific immune responses, such as antibody production and cell-mediated immunity.</li>
+    <li>Monocytes: They are involved in phagocytosis and can differentiate into macrophages, playing a role in tissue repair and defense against pathogens.</li>
+    <li>Eosinophils: They are important in fighting parasitic infections and have a role in allergic reactions.</li>
+    <li>Basophils: They are involved in allergic responses and release histamine and other mediators.</li>
+    </ul>
+    <p>White blood cells are crucial for several reasons:</p>
+    <ul>
+    <li>Defense against Infections: They recognize and destroy pathogens, such as bacteria, viruses, and fungi, helping to prevent and control infections.</li>
+    <li>Immune Responses: White blood cells play a vital role in specific immune responses, including the production of antibodies, memory cells, and coordination of the immune system.</li>
+    <li>Tissue Repair and Inflammation: They contribute to tissue repair, wound healing, and the regulation of inflammation.</li>
+    <li>Surveillance of Abnormal Cells: White blood cells help detect and eliminate abnormal or cancerous cells in the body.</li>
+    <li>Immunological Memory: Some white blood cells retain memory of previous encounters with pathogens, leading to faster and more effective immune responses upon re-exposure.</li>
+    </ul>
+    "
+  )
+  leukocytes.links.build(
+    name: 'Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.',
+    url: nil,
+    text_generator: false,
+  )
+  leukocytes.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  leukocytes.save
 
+  p 'Leukocytes description created'
+else
+  p 'Leukocytes description already exists'
+end
 
