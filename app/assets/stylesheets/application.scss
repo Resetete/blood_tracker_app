@@ -28,6 +28,8 @@
 @import "user_account";
 @import "footer";
 
+@import "mobile_styles";
+
 /****************+***************/
 /******* START CSS *********+****/
 /****************+***************/
@@ -75,7 +77,6 @@ p {
 }
 
 // form styles
-
 .form-background {
   background-color: $yellow;
   padding: 2em;
@@ -104,9 +105,9 @@ p {
   opacity: 1;
 }
 
-/*********************/
-/*** Devise Views ****/
-/*********************/
+/*************************/
+/*** Devise Gem Views ****/
+/*************************/
 
 .devise-views {
   margin-top: 10%;
