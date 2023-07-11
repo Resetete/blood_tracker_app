@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   # Registerable temporarly desactivated
   # TODO: allow registration when tracker is ready
-  devise :database_authenticatable, #:registerable,
+  devise :database_authenticatable, # :registerable,
          :recoverable, :rememberable, :validatable
 
   def admin?

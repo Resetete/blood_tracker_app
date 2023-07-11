@@ -17,7 +17,7 @@
           = description.title
       .accordion-collapse.collapse{"aria-labelledby": "flush-heading#{idx}", "data-bs-parent": "#accordion-blood-cells", id: "flush-collapse#{idx}"}
         .accordion-body
-          %p= description.description
+          %p= sanitize(description.description).html_safe
           - sources = description.links.reject(&:text_generator)
           - if sources.any?
             %p.source
