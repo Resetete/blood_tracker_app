@@ -161,4 +161,138 @@ else
   p 'Lymphocytes description already exists'
 end
 
+unless Admin::BloodCellDescription.find_by(title: 'Erythroid cells')
+  erythroids = Admin::BloodCellDescription.new(
+    title: 'Erythroid cells',
+    description: "<p>Erythroid cells, also known as red blood cells (RBCs), are specialized cells in the bloodstream responsible for transporting oxygen to tissues and organs throughout the body. In blood work, erythroid cells are often abbreviated as RBC, and their unit of measurement is typically reported as the number of cells per microliter (10^6/μL) or as a concentration in grams per deciliter (g/dL).</p>
+    <p>The normal range for erythroid cell counts and hemoglobin levels in adults can vary slightly, but generally, the reference ranges are:</p>
+    <ul>
+    <li>Erythroid cell count: Typically between 4.5 and 5.5 million cells per microliter (4.5 - 5.5 x 10^6/μL).</li>
+    <li>Hemoglobin level: Usually between 12 and 16 grams per deciliter (12 - 16 g/dL) for females and 13.5 to 17.5 grams per deciliter (13.5 - 17.5 g/dL) for males.</li>
+    </ul>
+    <p>Low erythroid cell counts or hemoglobin levels, known as anemia, can be caused by various factors, including:</p>
+    <ul>
+    <li>Iron deficiency, which may be due to inadequate dietary intake, chronic blood loss, or poor iron absorption.</li>
+    <li>Vitamin deficiencies, particularly vitamin B12 or folate.</li>
+    <li>Chronic diseases, such as kidney disease or autoimmune disorders.</li>
+    <li>Bone marrow disorders, like aplastic anemia or myelodysplastic syndromes.</li>
+    </ul>
+    <p>High erythroid cell counts or hemoglobin levels can be observed in conditions such as:</p>
+    <ul>
+    <li>Polycythemia vera, a rare blood disorder characterized by the overproduction of red blood cells.</li>
+    <li>Chronic lung diseases, like chronic obstructive pulmonary disease (COPD) or congenital heart defects.</li>
+    <li>Living at high altitudes where there is reduced oxygen availability.</li>
+    <li>Dehydration, leading to a relative increase in the concentration of red blood cells.</li>
+    </ul>
+    "
+  )
+  erythroids.links.build(
+    name: "National Heart, Lung, and Blood Institute (NHLBI). What Is Anemia?",
+    url: "https://www.nhlbi.nih.gov/health-topics/anemia",
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: "Hoffbrand AV, Moss PAH, Pettit JE. Essential Haematology. 7th edition. Wiley-Blackwell; 2015.",
+    url: nil,
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: 'Kaushansky K, Lichtman MA, Prchal JT, Levi MM, Press OW, Burns LJ, Caligiuri MA. Williams Hematology. 9th edition. McGraw-Hill Education; 2020.',
+    url: nil,
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  erythroids.save
 
+  p 'Erythroids description created'
+else
+  p 'Erythroids description already exists'
+end
+
+unless Admin::BloodCellDescription.find_by(title: 'Neutrophil cells')
+  neutrophils = Admin::BloodCellDescription.new(
+    title: 'Neutrophil cells',
+    description: "<p>Neutrophil cells, often referred to as neutrophils, are a type of white blood cell that plays a critical role in the immune system's defense against bacterial and fungal infections. Neutrophils are abbreviated as NEU or NEUT in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
+    <p>In a healthy individual, neutrophils make up the majority of the total white blood cell count and are the most abundant type of white blood cell. The normal range for neutrophil counts is typically between 40% and 75% of the total white blood cell count or an absolute count of 2,000 to 7,500 neutrophils per microliter.</p>
+    <p>Low neutrophil counts, known as neutropenia, can be caused by various factors, including:</p>
+    <ul>
+    <li>Bone marrow disorders or damage, such as aplastic anemia or leukemia.</li>
+    <li>Viral infections, including HIV or hepatitis.</li>
+    <li>Chemotherapy or radiation therapy for cancer treatment.</li>
+    <li>Certain medications, such as antibiotics or immunosuppressants.</li>
+    </ul>
+    <p>High neutrophil counts, known as neutrophilia, can be attributed to various factors, including:</p>
+    <ul>
+    <li>Bacterial infections, such as pneumonia or urinary tract infections.</li>
+    <li>Inflammatory conditions, like rheumatoid arthritis or inflammatory bowel disease.</li>
+    <li>Physical or emotional stress.</li>
+    <li>Certain medications, such as corticosteroids.</li>
+    "
+  )
+  neutrophils.links.build(
+    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
+    url: nil,
+    text_generator: false,
+  )
+  neutrophils.links.build(
+    name: "National Library of Medicine. Neutropenia. MedlinePlus.",
+    url: "https://medlineplus.gov/ency/article/001090.htm",
+    text_generator: false,
+  )
+  neutrophils.links.build(
+    name: 'American Association for Clinical Chemistry (AACC). Neutrophils. Lab Tests Online.',
+    url: 'https://labtestsonline.org/tests/neutrophils',
+    text_generator: false,
+  )
+  neutrophils.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  neutrophils.save
+
+  p 'Neutrophils description created'
+else
+  p 'Neutrophils description already exists'
+end
+
+unless Admin::BloodCellDescription.find_by(title: 'Basophil cells')
+  basophils = Admin::BloodCellDescription.new(
+    title: 'Basophil cells',
+    description: "<p>Basophils are a type of white blood cell involved in the immune response, specifically in allergic reactions and defense against parasites. In blood work, basophils are abbreviated as BASO or BAS in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
+    <p>In a healthy individual, basophils constitute a small fraction of the total white blood cell count, usually ranging from 0.5% to 1% of the total white blood cells.</p>
+    <p>Low basophil values, known as basopenia, are not typically considered clinically significant. They are generally not associated with specific health conditions and are usually inconsequential.</p>
+    <p>High basophil counts, known as basophilia, can occur due to several factors, including:</p>
+    <ul>
+    <li>Allergic reactions, such as asthma or hay fever.</li>
+    <li>Chronic inflammatory conditions, like ulcerative colitis or rheumatoid arthritis.</li>
+    <li>Chronic myeloid leukemia or other myeloproliferative disorders.</li>
+    <li>Hypothyroidism or certain other endocrine disorders.</li>
+    </ul>
+    "
+  )
+  basophils.links.build(
+    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
+    url: nil,
+    text_generator: false,
+  )
+  basophils.links.build(
+    name: "National Library of Medicine. Basophilia. MedlinePlus.",
+    url: "https://medlineplus.gov/ency/article/003647.htm",
+    text_generator: false,
+  )
+  basophils.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  basophils.save
+
+  p 'Basophils description created'
+else
+  p 'Basophils description already exists'
+end
