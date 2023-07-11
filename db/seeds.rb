@@ -21,6 +21,106 @@ else
 end
 
 # Create blood cell descriptions
+unless Admin::BloodCellDescription.find_by(title: 'Erythroid cells')
+  erythroids = Admin::BloodCellDescription.new(
+    title: 'Erythroid cells',
+    description: "<p>Erythroid cells, also known as red blood cells (RBCs), are specialized cells in the bloodstream responsible for transporting oxygen to tissues and organs throughout the body. In blood work, erythroid cells are often abbreviated as RBC, and their unit of measurement is typically reported as the number of cells per microliter (10^6/μL) or as a concentration in grams per deciliter (g/dL).</p>
+    <p>The normal range for erythroid cell counts and hemoglobin levels in adults can vary slightly, but generally, the reference ranges are:</p>
+    <ul>
+    <li>Erythroid cell count: Typically between 4.5 and 5.5 million cells per microliter (4.5 - 5.5 x 10^6/μL).</li>
+    <li>Hemoglobin level: Usually between 12 and 16 grams per deciliter (12 - 16 g/dL) for females and 13.5 to 17.5 grams per deciliter (13.5 - 17.5 g/dL) for males.</li>
+    </ul>
+    <p>Low erythroid cell counts or hemoglobin levels, known as anemia, can be caused by various factors, including:</p>
+    <ul>
+    <li>Iron deficiency, which may be due to inadequate dietary intake, chronic blood loss, or poor iron absorption.</li>
+    <li>Vitamin deficiencies, particularly vitamin B12 or folate.</li>
+    <li>Chronic diseases, such as kidney disease or autoimmune disorders.</li>
+    <li>Bone marrow disorders, like aplastic anemia or myelodysplastic syndromes.</li>
+    </ul>
+    <p>High erythroid cell counts or hemoglobin levels can be observed in conditions such as:</p>
+    <ul>
+    <li>Polycythemia vera, a rare blood disorder characterized by the overproduction of red blood cells.</li>
+    <li>Chronic lung diseases, like chronic obstructive pulmonary disease (COPD) or congenital heart defects.</li>
+    <li>Living at high altitudes where there is reduced oxygen availability.</li>
+    <li>Dehydration, leading to a relative increase in the concentration of red blood cells.</li>
+    </ul>
+    "
+  )
+  erythroids.links.build(
+    name: "National Heart, Lung, and Blood Institute (NHLBI). What Is Anemia?",
+    url: "https://www.nhlbi.nih.gov/health-topics/anemia",
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: "Hoffbrand AV, Moss PAH, Pettit JE. Essential Haematology. 7th edition. Wiley-Blackwell; 2015.",
+    url: nil,
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: 'Kaushansky K, Lichtman MA, Prchal JT, Levi MM, Press OW, Burns LJ, Caligiuri MA. Williams Hematology. 9th edition. McGraw-Hill Education; 2020.',
+    url: nil,
+    text_generator: false,
+  )
+  erythroids.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  erythroids.save
+
+  p 'Erythroids description created'
+else
+  p 'Erythroids description already exists'
+end
+
+unless Admin::BloodCellDescription.find_by(title: 'Lymphocytes')
+  lymphocytes = Admin::BloodCellDescription.new(
+    title: 'Lymphocytes',
+    description: "<p>Lymphocytes are a type of white blood cell that plays a crucial role in the immune system's defense against infections and diseases. They are abbreviated as LY or LYMPH in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
+    <p>In a healthy individual, lymphocytes make up a significant proportion of the total white blood cell count. The normal range for lymphocytes is typically between 20% and 40% of the total white blood cell count, or an absolute count of 1,000 to 4,000 lymphocytes per microliter.</p>
+    <p>Low lymphocyte counts, known as lymphocytopenia, can be caused by various factors, including:</p>
+    <ul>
+    <li>Viral infections, such as HIV or hepatitis.</li>
+    <li>Certain medications, including chemotherapy drugs or immunosuppressants.</li>
+    <li>Autoimmune diseases, like systemic lupus erythematosus (SLE).</li>
+    <li>Bone marrow disorders, such as aplastic anemia or leukemia.</li>
+    </ul>
+    <p>High lymphocyte counts, known as lymphocytosis, can be attributed to various factors, including:</p>
+    <ul>
+    <li>Viral infections, such as mononucleosis or pertussis.</li>
+    <li>Bacterial infections, including tuberculosis or whooping cough.</li>
+    <li>Certain cancers, like leukemia or lymphoma.</li>
+    <li>Autoimmune disorders, such as rheumatoid arthritis or multiple sclerosis.</li>
+    </ul>
+    "
+  )
+  lymphocytes.links.build(
+    name: "National Library of Medicine. Lymphocytopenia. MedlinePlus.",
+    url: "https://medlineplus.gov/ency/article/003657.htm",
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
+    url: nil,
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "American Association for Clinical Chemistry (AACC). Lymphocytes. Lab Tests Online.",
+    url: 'https://labtestsonline.org/tests/lymphocytes',
+    text_generator: false,
+  )
+  lymphocytes.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  lymphocytes.save
+
+  p 'Lymphocytes description created'
+else
+  p 'Lymphocytes description already exists'
+end
+
 unless Admin::BloodCellDescription.find_by(title: 'Monocytes')
   monocytes = Admin::BloodCellDescription.new(
     title: 'Monocytes',
@@ -53,9 +153,9 @@ else
   p 'Monocytes description already exists'
 end
 
-unless Admin::BloodCellDescription.find_by(title: 'Thrombocytes')
+unless Admin::BloodCellDescription.find_by(title: 'Platelets')
   thrombocytes = Admin::BloodCellDescription.new(
-    title: 'Thrombocytes',
+    title: 'Platelets',
     description: "<p>Thrombocytes, also referred to as platelets, are small, irregularly-shaped blood cells that play a crucial role in the process of blood clotting, known as hemostasis.
     In the context of blood work, thrombocytes are commonly abbreviated as PLT, and their unit of measurement is typically reported as platelets per microliter of blood (10^9/L or thousand/μL).
     The normal range for platelet counts in a healthy individual typically falls between 150,000 and 450,000 platelets per microliter of blood. Deviations from this range may indicate certain medical conditions or factors that impact platelet production, survival, or consumption.
@@ -111,106 +211,6 @@ unless Admin::BloodCellDescription.find_by(title: 'Thrombocytes')
   p 'Thrombocytes description created'
 else
   p 'Thrombocytes description already exists'
-end
-
-unless Admin::BloodCellDescription.find_by(title: 'Lymphocytes')
-  lymphocytes = Admin::BloodCellDescription.new(
-    title: 'Lymphocytes',
-    description: "<p>Lymphocytes are a type of white blood cell that plays a crucial role in the immune system's defense against infections and diseases. They are abbreviated as LY or LYMPH in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
-    <p>In a healthy individual, lymphocytes make up a significant proportion of the total white blood cell count. The normal range for lymphocytes is typically between 20% and 40% of the total white blood cell count, or an absolute count of 1,000 to 4,000 lymphocytes per microliter.</p>
-    <p>Low lymphocyte counts, known as lymphocytopenia, can be caused by various factors, including:</p>
-    <ul>
-    <li>Viral infections, such as HIV or hepatitis.</li>
-    <li>Certain medications, including chemotherapy drugs or immunosuppressants.</li>
-    <li>Autoimmune diseases, like systemic lupus erythematosus (SLE).</li>
-    <li>Bone marrow disorders, such as aplastic anemia or leukemia.</li>
-    </ul>
-    <p>High lymphocyte counts, known as lymphocytosis, can be attributed to various factors, including:</p>
-    <ul>
-    <li>Viral infections, such as mononucleosis or pertussis.</li>
-    <li>Bacterial infections, including tuberculosis or whooping cough.</li>
-    <li>Certain cancers, like leukemia or lymphoma.</li>
-    <li>Autoimmune disorders, such as rheumatoid arthritis or multiple sclerosis.</li>
-    </ul>
-    "
-  )
-  lymphocytes.links.build(
-    name: "National Library of Medicine. Lymphocytopenia. MedlinePlus.",
-    url: "https://medlineplus.gov/ency/article/003657.htm",
-    text_generator: false,
-  )
-  lymphocytes.links.build(
-    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
-    url: nil,
-    text_generator: false,
-  )
-  lymphocytes.links.build(
-    name: "American Association for Clinical Chemistry (AACC). Lymphocytes. Lab Tests Online.",
-    url: 'https://labtestsonline.org/tests/lymphocytes',
-    text_generator: false,
-  )
-  lymphocytes.links.build(
-    name: "ChatGPT",
-    url: "https://chat.openai.com/",
-    text_generator: true,
-  )
-  lymphocytes.save
-
-  p 'Lymphocytes description created'
-else
-  p 'Lymphocytes description already exists'
-end
-
-unless Admin::BloodCellDescription.find_by(title: 'Erythroid cells')
-  erythroids = Admin::BloodCellDescription.new(
-    title: 'Erythroid cells',
-    description: "<p>Erythroid cells, also known as red blood cells (RBCs), are specialized cells in the bloodstream responsible for transporting oxygen to tissues and organs throughout the body. In blood work, erythroid cells are often abbreviated as RBC, and their unit of measurement is typically reported as the number of cells per microliter (10^6/μL) or as a concentration in grams per deciliter (g/dL).</p>
-    <p>The normal range for erythroid cell counts and hemoglobin levels in adults can vary slightly, but generally, the reference ranges are:</p>
-    <ul>
-    <li>Erythroid cell count: Typically between 4.5 and 5.5 million cells per microliter (4.5 - 5.5 x 10^6/μL).</li>
-    <li>Hemoglobin level: Usually between 12 and 16 grams per deciliter (12 - 16 g/dL) for females and 13.5 to 17.5 grams per deciliter (13.5 - 17.5 g/dL) for males.</li>
-    </ul>
-    <p>Low erythroid cell counts or hemoglobin levels, known as anemia, can be caused by various factors, including:</p>
-    <ul>
-    <li>Iron deficiency, which may be due to inadequate dietary intake, chronic blood loss, or poor iron absorption.</li>
-    <li>Vitamin deficiencies, particularly vitamin B12 or folate.</li>
-    <li>Chronic diseases, such as kidney disease or autoimmune disorders.</li>
-    <li>Bone marrow disorders, like aplastic anemia or myelodysplastic syndromes.</li>
-    </ul>
-    <p>High erythroid cell counts or hemoglobin levels can be observed in conditions such as:</p>
-    <ul>
-    <li>Polycythemia vera, a rare blood disorder characterized by the overproduction of red blood cells.</li>
-    <li>Chronic lung diseases, like chronic obstructive pulmonary disease (COPD) or congenital heart defects.</li>
-    <li>Living at high altitudes where there is reduced oxygen availability.</li>
-    <li>Dehydration, leading to a relative increase in the concentration of red blood cells.</li>
-    </ul>
-    "
-  )
-  erythroids.links.build(
-    name: "National Heart, Lung, and Blood Institute (NHLBI). What Is Anemia?",
-    url: "https://www.nhlbi.nih.gov/health-topics/anemia",
-    text_generator: false,
-  )
-  erythroids.links.build(
-    name: "Hoffbrand AV, Moss PAH, Pettit JE. Essential Haematology. 7th edition. Wiley-Blackwell; 2015.",
-    url: nil,
-    text_generator: false,
-  )
-  erythroids.links.build(
-    name: 'Kaushansky K, Lichtman MA, Prchal JT, Levi MM, Press OW, Burns LJ, Caligiuri MA. Williams Hematology. 9th edition. McGraw-Hill Education; 2020.',
-    url: nil,
-    text_generator: false,
-  )
-  erythroids.links.build(
-    name: "ChatGPT",
-    url: "https://chat.openai.com/",
-    text_generator: true,
-  )
-  erythroids.save
-
-  p 'Erythroids description created'
-else
-  p 'Erythroids description already exists'
 end
 
 unless Admin::BloodCellDescription.find_by(title: 'Neutrophil cells')
@@ -296,3 +296,42 @@ unless Admin::BloodCellDescription.find_by(title: 'Basophil cells')
 else
   p 'Basophils description already exists'
 end
+
+unless Admin::BloodCellDescription.find_by(title: 'Eosinophil cells')
+  eosinophils = Admin::BloodCellDescription.new(
+    title: 'Eosinophil cells',
+    description: "<p>Eosinophils are a type of white blood cell involved in the immune response against parasites and in allergic reactions. In blood work, eosinophils are often abbreviated as EOS or EO in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
+    <p>In a healthy individual, eosinophils constitute a small fraction of the total white blood cell count, usually ranging from 1% to 4% of the total white blood cells.</p>
+    <p>Low eosinophil values, known as eosinopenia, are generally not considered significant and are not associated with specific health conditions.</p>
+    <p>High eosinophil counts, known as eosinophilia, can occur due to several factors, including:</p>
+    <ul>
+    <li>Allergic reactions, such as asthma or hay fever.</li>
+    <li>Parasitic infections, like intestinal parasites or certain helminth infections.</li>
+    <li>Autoimmune disorders, including eosinophilic granulomatosis with polyangiitis (formerly known as Churg-Strauss syndrome) or systemic lupus erythematosus (SLE).</li>
+    <li>Certain types of cancers, such as Hodgkin's lymphoma or eosinophilic leukemia.</li>
+    </ul>
+    "
+  )
+  eosinophils.links.build(
+    name: "Abbas AK, Lichtman AH, Pillai S. Cellular and Molecular Immunology. 9th edition. Elsevier; 2017.",
+    url: nil,
+    text_generator: false,
+  )
+  eosinophils.links.build(
+    name: "National Library of Medicine. Eosinophilia. MedlinePlus.",
+    url: "https://medlineplus.gov/ency/article/003665.htm",
+    text_generator: false,
+  )
+  eosinophils.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  eosinophils.save
+
+  p 'Eosinophils description created'
+else
+  p 'Eosinophils description already exists'
+end
+
+# Create blood term descriptions
