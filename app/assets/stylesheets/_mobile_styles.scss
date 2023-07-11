@@ -1,0 +1,61 @@
+@import 'variables';
+
+@media (max-width: 767px) {
+  // Mobile styles
+
+  #main-section {
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 10vh;
+    background-position: right bottom;
+    background-size: 300%;
+    overflow: hidden;
+  }
+  #main-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+  }
+  .text {
+    max-width: 100%;
+  }
+
+  .navbar > .container, .navbar > .container-fluid {
+    flex-wrap: nowrap;
+  }
+
+  #deco-left {
+    z-index: -100;
+  }
+
+  .header-wrapper {
+    text-align: center;
+  }
+
+  .pt-5 {
+    text-align: center;
+  }
+
+  .bg-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .dictionary {
+    margin-right: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .wrapper-blood-cell-image {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+  .wrapper-blood-cell-image {
+    max-width: 90%;
+  }
+  .news-content-text {
+    flex-direction: column !important;
+  }
+}

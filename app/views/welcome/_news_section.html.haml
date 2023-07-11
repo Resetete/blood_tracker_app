@@ -7,7 +7,7 @@
       .header-title
         %h1
           %span.text-highlight Get the latest news
-    %p.pt-5.d-flex.flex-row.justify-content-between
+    %p.news-content-text.pt-5.d-flex.flex-row.justify-content-between
       Discover in this section the latest news relevant for blood health.
       = link_to('More news >', news_path, class: 'card-link card-news-link text-right')
     = render partial: 'pages/news', locals: { news: @all_news }
