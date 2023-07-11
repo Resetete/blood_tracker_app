@@ -27,7 +27,7 @@ module Api
           q:,
           category: 'health',
           language: 'en',
-          country:,
+          country:
         )
       end
     rescue TooManyRequestsException => e
@@ -42,7 +42,7 @@ module Api
           from: from.to_s,
           to: Time.zone.today.to_s,
           language: 'en',
-          sortBy: sort_by,
+          sortBy: sort_by
         )
       end
     rescue TooManyRequestsException => e
