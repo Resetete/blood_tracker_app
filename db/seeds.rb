@@ -335,3 +335,41 @@ else
 end
 
 # Create blood term descriptions
+unless Admin::BloodCellDescription.find_by(title: 'Blood plasma')
+  plasma = Admin::BloodCellDescription.new(
+    title: 'Blood plasma',
+    description: "<p>Blood plasma is the yellowish fluid component of blood that constitutes approximately 55% of the total blood volume. It is the liquid in which blood cells, platelets, and various substances are suspended. Plasma is crucial for the transportation of nutrients, hormones, antibodies, waste products, and other important components throughout the body.</p>
+    <p>Blood plasma consists mainly of water, electrolytes (such as sodium, potassium, and chloride), proteins (including albumin, globulins, and fibrinogen), hormones, enzymes, antibodies, nutrients, and waste products. It serves several crucial functions:</p>
+    <ul>
+    <li>Transportation: Plasma acts as a medium for carrying cells, nutrients, hormones, and waste products throughout the body.</li>
+    <li>Immune Response: It contains antibodies and immune system components that help defend against infections and diseases.</li>
+    <li>Regulation of Fluid Balance: Plasma helps maintain the balance of fluids, electrolytes, and pH in the body.</li>
+    <li>Blood Clotting: Plasma contains clotting factors that are essential for the coagulation process to prevent excessive bleeding.</li>
+    <li>Regulation of Blood Pressure: The proteins in plasma play a role in maintaining the osmotic pressure and fluid balance necessary for blood pressure regulation.</li>
+    </ul>
+    "
+  )
+  plasma.links.build(
+    name: "Becker KL. Principles and Practice of Endocrinology and Metabolism. 3rd edition. Lippincott Williams & Wilkins; 2001.",
+    url: nil,
+    text_generator: false,
+  )
+  plasma.links.build(
+    name: "Hoffbrand AV, Moss PAH, Pettit JE. Essential Haematology. 7th edition. Wiley-Blackwell; 2015.",
+    url: nil,
+    text_generator: false,
+  )
+  plasma.links.build(
+    name: "ChatGPT",
+    url: "https://chat.openai.com/",
+    text_generator: true,
+  )
+  plasma.save
+
+  p 'Plasma description created'
+else
+  p 'Plasma description already exists'
+end
+
+
+
