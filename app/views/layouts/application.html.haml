@@ -43,10 +43,12 @@
     %script{async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-B6VL5ZS8V9"}
     %script
       :plain
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-B6VL5ZS8V9');
+        if(localStorage.getItem('cookieConsent') == 'accepted'){
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-B6VL5ZS8V9');
+        }
     -# End google analytics tag
 
   %body
