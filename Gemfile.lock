@@ -76,6 +76,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    all-the-favicons (0.5.9)
+      rails (>= 4.2.0)
+      vector2d (~> 2.2, >= 2.2.1)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -323,6 +326,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    vector2d (2.2.4)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -347,6 +351,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  all-the-favicons
   annotate
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.1.3)
