@@ -7,10 +7,15 @@
     -# views/pages/_sorted_news.js.erb
     -# views/pahes/_news.html.haml
 
-    -# #sort_form
-    -#   = form_with(url: news_sort_by_path, method: :get, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
-    -#     = form.label :sort_by, 'Sort by:'
-    -#     = form.select :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevancy']], params[:sort_by])
-    -#     = form.submit 'sort', class: 'btn btn-success'
+    #sort_form
+      = form_with(url: news_sort_by_path, method: :post, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
+        -# .row.mb-3.align-items-start
+        .row.row-cols-lg-auto.g-3.align-items-center
+          .col-12
+            = form.label :sort_by, 'Sort by:', class: 'visually-hidden', for: 'sort_by_input'
+            = form.select :sort_by, options_for_select([['Popularity', 'popularity'], ['Newest first', 'publishedAt'], ['Relevance', 'relevancy']], selected: params[:sort_by]), {}, class: 'form-select', id: 'sort_by_input'
+
+          .col-12
+            = form.submit 'Sort', class: 'btn btn-outline-dark'
     #sorted_news_result
       = render partial: 'news', locals: { news: @news }
