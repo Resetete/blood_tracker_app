@@ -41,6 +41,11 @@ body, html {
   width: 100vw;
 }
 
+// set color for all links
+a {
+  color: $red;
+}
+
 // ensures that navbar, main and footer section span at least 100vh
 .website-content-wrapper {
   display: flex;
