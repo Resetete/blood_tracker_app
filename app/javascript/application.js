@@ -11,7 +11,9 @@ import "@nathanvda/cocoon"
 $(document).on('turbo:load', function() {
   // resizes the navbar logo and brand when scrolling down 80px from top
   if (window.innerWidth >= 768){
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function() {
+      scrollFunction()
+    };
   }
 
   function scrollFunction() {
