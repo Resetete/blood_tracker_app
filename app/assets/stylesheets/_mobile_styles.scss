@@ -59,3 +59,21 @@
     flex-direction: column !important;
   }
 }
+
+
+@media (max-width: 375px) {
+  // Mobile styles
+
+  #main-section {
+    align-items: flex-start;
+    justify-content: center;
+    background-size: 150%;
+    text-align: center;
+    background-position: right bottom;
+  }
+
+  .navbar-brand {
+    max-width: 100vw;
+    font-size: 2em;
+  }
+}
