@@ -26,6 +26,7 @@
 @import "main_section";
 @import "background_section";
 @import "user_account";
+@import "cookie_banner";
 @import "footer";
 
 @import "mobile_styles";
@@ -38,6 +39,11 @@ body, html {
   background-color: $rosa;
   height: 100%;
   width: 100vw;
+}
+
+// set color for all links
+a {
+  color: $red;
 }
 
 // ensures that navbar, main and footer section span at least 100vh
@@ -110,12 +116,7 @@ p {
 /*************************/
 
 .devise-views {
-  margin-top: 10%;
-  margin-left: 20%;
-}
-
-.devise-errors {
-  width: 30vw;
+  padding: 10%;
 }
 
 /***********************/

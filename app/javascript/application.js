@@ -36,4 +36,19 @@ $(document).on('turbo:load', function() {
       $('.alert').fadeOut('slow');
     }, 5000);
   });
+
+  // cookie banner
+  if(localStorage.getItem('cookieSeen') != 'shown'){
+    $(".cookie-banner").delay(2000).fadeIn();
+  }
+  $('#accept-cookies').on('click', function(e) {
+    localStorage.setItem('cookieConsent','accepted')
+    localStorage.setItem('cookieSeen','shown')
+    $('.cookie-banner').fadeOut();
+  });
+  $('#decline-cookies').on('click', function(e) {
+    localStorage.setItem('cookieConsent','declined')
+    localStorage.setItem('cookieSeen','shown')
+    $('.cookie-banner').fadeOut();
+  });
 });

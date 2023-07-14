@@ -1,0 +1,33 @@
+/********************/
+/*** Cookie banner ***/
+/*********************/
+@import 'variables';
+
+.cookie-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding: 1em;
+  background-color: $yellow;
+  color: black;
+  border-radius: 5px;
+  border: solid 2px $rosa;
+  // ensure it is always on top of all elements
+  z-index: 1000;
+}
+
+.cookie-buttons {
+  display: flex;
+  flex-direction: row;
+}
+#accept-cookies {
+  margin-right: 1em;
+  background-color: $rosa;
+}
+
+.cookie-banner a {
+  color: $red;
+}

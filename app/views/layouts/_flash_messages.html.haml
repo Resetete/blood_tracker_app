@@ -1,5 +1,5 @@
-.row.justify-content-md-center
-  .col-5
+.row.justify-content-center
+  .col-md-6.col-s-12
     - flash.each do |name, message|
       #flash-errors{:class => "alert alert-#{name == 'notice' ? 'success' : 'danger'} alert-dismissible fade show", :role => 'alert'}
         = message
