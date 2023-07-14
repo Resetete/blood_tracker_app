@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
   def imprint; end
 
+  def cookie_policy; end
+
   def news
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news
     everything = Api::FetchNewsService.new(news_api_client).everything_news

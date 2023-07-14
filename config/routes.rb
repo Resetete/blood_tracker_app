@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'imprint', to: 'pages#imprint'
   get 'news', to: 'pages#news'
   get '/news/sort_by', to: 'pages#sort_news_articles'
+  get 'cookie_policy', to: 'pages#cookie_policy'
 
   namespace :graphs do
     get 'parameters-per-day'
