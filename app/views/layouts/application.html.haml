@@ -39,6 +39,15 @@
           pintrk('track', 'pagevisit');
         }
     -# End Pinterest track page visit -->
+    -# Start google analytics tag (gtag.js)
+    %script{async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-B6VL5ZS8V9"}
+    %script
+      :plain
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B6VL5ZS8V9');
+    -# End google analytics tag
 
   %body
     .website-content-wrapper
