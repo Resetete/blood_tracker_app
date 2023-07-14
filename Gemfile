@@ -41,8 +41,6 @@ gem 'groupdate'
 gem 'highcharts-rails'
 # Requests API
 gem 'faraday'
-# debugging
-gem 'pry'
 # convert xml to hash
 gem 'ox'
 # sanitize html from third party api
@@ -73,7 +71,8 @@ gem 'news-api'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # debugging
+  gem 'pry-byebug'
   gem 'rspec'
 end
 

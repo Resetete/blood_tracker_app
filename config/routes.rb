@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'graphs', to: 'graphs#index'
   get 'imprint', to: 'pages#imprint'
   get 'news', to: 'pages#news'
-  get '/news/sort_by', to: 'pages#sort_news_articles'
+  post '/news/sort_by', to: 'pages#sort_news_articles'
   get 'cookie_policy', to: 'pages#cookie_policy'
 
   namespace :graphs do
