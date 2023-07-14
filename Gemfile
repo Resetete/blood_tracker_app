@@ -47,6 +47,8 @@ gem 'pry'
 gem 'ox'
 # sanitize html from third party api
 gem 'rails-html-sanitizer'
+# generate and configure favicons
+gem 'all-the-favicons'
 
 # frontend
 gem 'bootstrap', '~> 5.1.3'
