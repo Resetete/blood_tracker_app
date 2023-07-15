@@ -51,6 +51,20 @@
           gtag('config', 'G-B6VL5ZS8V9');
         }
     -# End google analytics tag
+    -# Google track event
+    %script
+      :plain
+        if(localStorage.getItem('cookieConsent') == 'accepted'){
+          function trackLinkClick(category, action, label) {
+            gtag('event', 'click', {
+              'event_category': category,
+              'event_action': action,
+              'event_label': label
+            });
+          }
+        }
+    -# end Google track event
+
 
   %body
     .website-content-wrapper
