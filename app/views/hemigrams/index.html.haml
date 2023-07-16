@@ -1,32 +1,31 @@
-%h1.center-align My Hemigrams
-%p #TODO
-%p - sort columns
-%p - require same user as current user
-= render 'shared/search'
-%div
-  %table.striped.highlight.responsive-table
-    %thead
-      %tr
-        %th Parameter
-        %th Value
-        %th Unit
-        %th Date
-        %th Action
-    %tbody
-      - @all_user_hemigrams.each do |hemigram|
-        %tr
-          %td
-            = hemigram.parameter
-          %td
-            = hemigram.value
-          %td
-            = hemigram.unit
-          %td
-            = hemigram.date
-          %td
-            = link_to 'Edit', edit_hemigram_path(hemigram), class: 'waves-effect waves-light btn-flat'
-            = link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'waves-effect waves-teal btn-flat'
-%div
-  = will_paginate(@all_user_hemigrams, container: true)
-%p
-  = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn'
+.container.mt-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight My Hemigrams
+  -# TODO: sort columns
+  -# TODO: require same user as current user
+  .mt-5
+    = render 'shared/search'
+    .table-responsive
+      %table.table.table-striped.table-hover.table-borderless
+        %thead.table-light
+          %tr
+            %th Parameter
+            %th Value
+            %th Unit
+            %th Date
+            %th Action
+        %tbody
+          - @all_user_hemigrams.each do |hemigram|
+            %tr
+              %td= hemigram.parameter
+              %td= hemigram.value
+              %td= hemigram.unit
+              %td= hemigram.date
+              %td
+                = link_to 'Edit', edit_hemigram_path(hemigram), class: 'btn btn-outline-dark'
+                = link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
+  %div
+    = will_paginate(@all_user_hemigrams, container: true)
+  %p
+    = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark'

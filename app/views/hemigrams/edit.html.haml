@@ -1,6 +1,8 @@
-%h2.center-align Edit Hemigram
-= render 'hemigrams/form'
-.row
-  .col.s12
-    = link_to 'Back', :back, class: "btn btn-small"
-    = link_to 'Delete', hemigram_path(@hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-small'
+.container.mt-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Edit Hemigram
+  .mt-5.mb-5
+    = render 'hemigrams/form'
+    = link_to 'Back', :back, class: "btn btn-outline-dark"
+    = link_to 'Delete', hemigram_path(@hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'

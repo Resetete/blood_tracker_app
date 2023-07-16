@@ -1,35 +1,27 @@
 / to do: enter new data for the specific parameter ; dropdown of parameter; datepicker with materialize
-= form_for :hemigram, url: hemigrams_path do |f|
-  = render "devise/shared/error_messages", resource: @hemigram
-  .row
-    .col.s12
-      .row
-        .input-field.col.s12
-          = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
-            { include_blank: 'Select' },                                                                 |
-            class: 'form-control',                                                                       |
-            required: true                                                                               |
-          = f.label :parameter
-      .row
-        .col.s12
-          - if !@hemigram.new_record?
-            = f.label :short
-            = f.text_field :short, id: 'disabled', disabled: true
-      .row
-        .col.s12
-          = f.label :value
-          = f.text_field :value
-      .row
-        .col.s12
-          = f.label :unit
-          = f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit), |
-            { include_blank: 'Select' },                                                  |
-            class: 'form-control',                                                        |
-            required: true                                                                |
-      .row
-        .col.s12
-          = f.label :date
-          = f.date_field :date, class: 'datepicker'
-      .row
-        .col.s12
-          = f.submit 'Submit', class: 'btn'
+.mb-5
+  = form_for :hemigram, url: hemigrams_path do |f|
+    = render "devise/shared/error_messages", resource: @hemigram
+    .mb-3
+      = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
+        { include_blank: 'Select parameter' },                                                       |
+        class: 'form-select',                                                                        |
+        id: 'parameter-select',                                                                      |
+        required: true                                                                               |
+    .mb-3.form-floating
+      - if !@hemigram.new_record?
+        = f.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation'
+        = f.label :short, class: 'form-label', for: 'input_abreviation'
+    .mb-3.form-floating
+      = f.text_field :value, class: 'form-control', id: 'input_value'
+      = f.label :value, class: 'form-label', for: 'input_value'
+    .mb-3
+      = f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit), |
+        { include_blank: 'Select unit' },                                                  |
+        class: 'form-select',                                                        |
+        required: true                                                                |
+    .mb-3.form-floating
+      = f.date_field :date, class: 'datepicker form-control', id: 'input_date'
+      = f.label :date, class: 'form-label', for: 'input_date'
+    .mb-3
+      = f.submit 'Submit', class: 'btn btn-outline-dark'
