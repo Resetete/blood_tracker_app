@@ -14,6 +14,9 @@ module BloodLevelsApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # removes sensitive data from requests or logs
+    config.filter_parameters += [hemigram.parameter, hemigram.value]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

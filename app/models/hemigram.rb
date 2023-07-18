@@ -23,9 +23,10 @@ class Hemigram < ApplicationRecord
   # --> define your own conversions (in blood parameters), new, create, destroy
   # create translations --> DE, EN of the app
 
-  belongs_to :user
+  # Hide attributes values when querying the model
+  self.filter_attributes += [ :parameter, :value ]
 
-  before_save :encrypt_blood_value
+  belongs_to :user
 
   validates :parameter, presence: true
   validates :value, presence: true
@@ -53,6 +54,7 @@ class Hemigram < ApplicationRecord
   end
 
   def abbreviations
+    return unless new_record?
     JSON.parse(short).join(', ')
   end
 
@@ -74,11 +76,5 @@ class Hemigram < ApplicationRecord
       dataset.unit = unit.convert_to('g/l').units
       dataset
     end
-  end
-
-  private
-
-  def encrypt_blood_value
-    parameter.encrypt
   end
 end
