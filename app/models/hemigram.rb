@@ -25,7 +25,7 @@ class Hemigram < ApplicationRecord
 
   belongs_to :user
 
-  # TODO: before_save :encrypt_blood_value
+  before_save :encrypt_blood_value
 
   validates :parameter, presence: true
   validates :value, presence: true
@@ -74,5 +74,11 @@ class Hemigram < ApplicationRecord
       dataset.unit = unit.convert_to('g/l').units
       dataset
     end
+  end
+
+  private
+
+  def encrypt_blood_value
+    parameter.encrypt
   end
 end
