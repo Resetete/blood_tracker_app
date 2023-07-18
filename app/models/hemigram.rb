@@ -22,9 +22,10 @@ class Hemigram < ApplicationRecord
   # unit converter (separate model? Part of a printer model? printer table holds all converted blood values)
   # --> define your own conversions (in blood parameters), new, create, destroy
   # create translations --> DE, EN of the app
-  # add a search functionality to the dropdown --> pass a search params and filter the parameters
 
   belongs_to :user
+
+  before_save :encrypt_blood_value
 
   validates :parameter, presence: true
   validates :value, presence: true
@@ -45,10 +46,14 @@ class Hemigram < ApplicationRecord
     end
   end
 
-  # when a parameter is selected in the form, another field wth the related short names
+  # when a parameter is selected in the form, another field with the related short names
   # should be prefilled (not user editable)
   def self.short(parameter)
-    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten # remove outer array
+    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten.join(', ')
+  end
+
+  def abbreviations
+    JSON.parse(short).join(', ')
   end
 
   def self.units
@@ -56,7 +61,8 @@ class Hemigram < ApplicationRecord
   end
 
   def self.search(search, user)
-    where(user_id: user.id) && (where('parameter LIKE ?', "%#{search}%") || where('short LIKE ?', "%#{search}%"))
+    where(user_id: user.id)
+    .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search&.downcase}%")
   end
 
   def self.unit_converter(data)
@@ -68,5 +74,11 @@ class Hemigram < ApplicationRecord
       dataset.unit = unit.convert_to('g/l').units
       dataset
     end
+  end
+
+  private
+
+  def encrypt_blood_value
+    parameter.encrypt
   end
 end

@@ -15,9 +15,9 @@
     -# ensure that we load jquery first
     = javascript_include_tag 'jquery'
     -# favicons
-    -# = render 'shared/favicon'
     = all_the_favicons
     -# -- Pinterest Tag -->
+    %meta{name: 'p:domain_verify', content: 'ad7aa7124246fa4dccb677096493d3db'}
     %script
       :plain
          if(localStorage.getItem('cookieConsent') == 'accepted'){
@@ -27,11 +27,11 @@
             t=document.createElement("script");t.async=!0,t.src=e;var
             r=document.getElementsByTagName("script")[0];
             r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-          pintrk('load', '2612582801014');
+          pintrk('load', '2612582801014', {em: '<user_email_address>'});
           pintrk('page');
          }
     %noscript
-      %img{height: "1", width: "1", style: "display:none;", alt: "", src: "https://ct.pinterest.com/v3/?event=init&tid=2612582801014&noscript=1"}
+      %img{height: "1", width: "1", style: "display:none;", alt: "", src: "https://ct.pinterest.com/v3/?event=init&tid=2612582801014&pd[em]=<hashed_email_address>&noscript=1"}
     -# end Pinterest Tag -->
     -# Pinterest track page visit -->
     %script

@@ -5,7 +5,7 @@ class HemigramsController < ApplicationController
   before_action :set_hemigram, only: %i[show edit update destroy]
 
   def index
-    @all_user_hemigrams = Hemigram.search(params[:search], current_user).paginate(page: params[:page]).order('id DESC')
+    @hemigrams = Hemigram.search(params[:search], current_user).paginate(page: params[:page]).order('id DESC')
   end
 
   def new
