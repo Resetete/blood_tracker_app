@@ -26,6 +26,8 @@ class Hemigram < ApplicationRecord
 
   belongs_to :user
 
+  # TODO: before_save :encrypt_blood_value
+
   validates :parameter, presence: true
   validates :value, presence: true
   validates :unit, presence: true
@@ -45,10 +47,10 @@ class Hemigram < ApplicationRecord
     end
   end
 
-  # when a parameter is selected in the form, another field wth the related short names
+  # when a parameter is selected in the form, another field with the related short names
   # should be prefilled (not user editable)
   def self.short(parameter)
-    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten # remove outer array
+    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten
   end
 
   def self.units

@@ -1,4 +1,7 @@
-/ to do: enter new data for the specific parameter ; dropdown of parameter; datepicker with materialize
+/ TODO: enter new data for the specific parameter
+-# dropdown of parameter - dependent dropdowns (unit - blood parameter specific)
+-# dependent dropdowns: blood parameter - abbreviation
+-# datepicker with nicer styles
 .mb-5
   = form_for :hemigram, url: hemigrams_path do |f|
     = render "devise/shared/error_messages", resource: @hemigram
