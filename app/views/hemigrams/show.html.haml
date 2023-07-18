@@ -1,20 +1,9 @@
-.container
+.container.mt-5
   .header-title.p-0.m-0
     %h2
       %span.text-highlight My Hemigram
-    %table.striped.highlight.responsive-table
-      %thead
-        %tr
-          %th Parameter
-          %th Value
-          %th Unit
-          %th Date
-      %tbody
-        %tr
-          %td= @hemigram.parameter
-          %td= @hemigram.value
-          %td= @hemigram.unit
-          %td= @hemigram.date
+    .mt-5
+      = render partial: 'table', locals: { hemigrams: [@hemigram] }
     %p
       = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark'
       = link_to 'Back to Hemigrams', hemigrams_path, class: 'btn btn-outline-dark'

@@ -1,0 +1,21 @@
+.table-responsive
+  %table.table.table-striped.table-hover.table-borderless
+    %thead.table-light
+      %tr
+        %th Parameter
+        %th Abbreviations
+        %th Value
+        %th Unit
+        %th Date
+        %th Action
+    %tbody
+      - hemigrams.each do |hemigram|
+        %tr
+          %td= hemigram.parameter
+          %td= hemigram.abbreviations
+          %td= hemigram.value
+          %td= hemigram.unit
+          %td= hemigram.date.to_date
+          %td
+            = link_to 'Edit', edit_hemigram_path(hemigram), class: 'btn btn-outline-dark'
+            = link_to 'Delete', hemigram_path(hemigram), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'

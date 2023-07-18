@@ -22,7 +22,6 @@ class Hemigram < ApplicationRecord
   # unit converter (separate model? Part of a printer model? printer table holds all converted blood values)
   # --> define your own conversions (in blood parameters), new, create, destroy
   # create translations --> DE, EN of the app
-  # add a search functionality to the dropdown --> pass a search params and filter the parameters
 
   belongs_to :user
 
@@ -63,7 +62,7 @@ class Hemigram < ApplicationRecord
 
   def self.search(search, user)
     where(user_id: user.id)
-    .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search.downcase}%")
+    .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search&.downcase}%")
   end
 
   def self.unit_converter(data)
