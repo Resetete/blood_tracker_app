@@ -50,7 +50,11 @@ class Hemigram < ApplicationRecord
   # when a parameter is selected in the form, another field with the related short names
   # should be prefilled (not user editable)
   def self.short(parameter)
-    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten
+    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten.join(', ')
+  end
+
+  def abbreviations
+    JSON.parse(short).join(', ')
   end
 
   def self.units
@@ -58,7 +62,8 @@ class Hemigram < ApplicationRecord
   end
 
   def self.search(search, user)
-    where(user_id: user.id) && (where('parameter LIKE ?', "%#{search}%") || where('short LIKE ?', "%#{search}%"))
+    where(user_id: user.id)
+    .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search.downcase}%")
   end
 
   def self.unit_converter(data)

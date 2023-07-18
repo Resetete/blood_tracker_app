@@ -11,6 +11,7 @@
         %thead.table-light
           %tr
             %th Parameter
+            %th Abbreviations
             %th Value
             %th Unit
             %th Date
@@ -19,6 +20,7 @@
           - @all_user_hemigrams.each do |hemigram|
             %tr
               %td= hemigram.parameter
+              %td= hemigram.abbreviations
               %td= hemigram.value
               %td= hemigram.unit
               %td= hemigram.date
