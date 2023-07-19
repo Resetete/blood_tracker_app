@@ -32,7 +32,7 @@ class Hemigram < ApplicationRecord
   belongs_to :user
 
   validates :parameter, presence: true
-  validates :value, presence: true
+  validates :value, presence: true, numericality: { only_integer: true }
   validates :unit, presence: true
   validates :date, presence: true
 

@@ -20,11 +20,9 @@ class HemigramsController < ApplicationController
     @hemigram.short = Hemigram.short(@hemigram.parameter)
 
     if @hemigram.save
-      flash[:notice] = 'You successfully saved your hemigram'
-      redirect_to @hemigram
+      redirect_to hemigram_path(@hemigram), notice: 'Hemigram was successfully created.'
     else
-      flash[:alert] = 'Something went wrong, please try again'
-      redirect_to new_hemigram_path
+      render :new, status: :unprocessable_entity
     end
   end
 
