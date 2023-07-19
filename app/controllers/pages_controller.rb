@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     sort_by = params[:sort_by]
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news.first(3)
     everything = Api::FetchNewsService.new(news_api_client).everything_news(sort_by:)
-    @news = (top_headline_news + everything).first(30)#.sort_by(&:publishedAt).reverse
+    @news = (top_headline_news + everything).first(30) # .sort_by(&:publishedAt).reverse
 
     if @news
       respond_to do |format|

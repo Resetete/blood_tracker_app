@@ -24,7 +24,10 @@ class Hemigram < ApplicationRecord
   # create translations --> DE, EN of the app
 
   # Hide attributes values when querying the model
-  self.filter_attributes += [ :parameter, :value ]
+  self.filter_attributes += %i[parameter value]
+
+  encrypts :parameter, deterministic: true # allows querying the db data
+  encrypts :value
 
   belongs_to :user
 
@@ -55,6 +58,7 @@ class Hemigram < ApplicationRecord
 
   def abbreviations
     return unless new_record?
+
     JSON.parse(short).join(', ')
   end
 
@@ -64,7 +68,7 @@ class Hemigram < ApplicationRecord
 
   def self.search(search, user)
     where(user_id: user.id)
-    .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search&.downcase}%")
+      .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{search&.downcase}%")
   end
 
   def self.unit_converter(data)
