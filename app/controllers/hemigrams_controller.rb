@@ -22,7 +22,7 @@ class HemigramsController < ApplicationController
     if @hemigram.save
       redirect_to hemigram_path(@hemigram), notice: 'Hemigram was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity # need the status to show errors with turbo
     end
   end
 

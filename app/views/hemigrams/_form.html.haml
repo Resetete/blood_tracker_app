@@ -6,9 +6,6 @@
   = form_for :hemigram, url: hemigrams_path do |f|
     = render partial: 'shared/model_errors', locals: { model: @hemigram }
     .mb-3
-      - if @hemigram.errors.any?
-        - @hemigram.errors.full_messages.each do |msg|
-          %li= msg
       = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
         { include_blank: 'Select parameter' },                                                       |
         class: 'form-select',                                                                        |
