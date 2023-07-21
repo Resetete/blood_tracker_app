@@ -1,0 +1,8 @@
+= turbo_frame_tag 'mediline_results' do
+    %h2= mediline_search_result.title.html_safe
+    = mediline_search_result.summary.html_safe
+    %p= link_to(mediline_search_result.url.html_safe, mediline_search_result.url.html_safe)
+    %p.small= mediline_search_result.source.html_safe
+
+-# TODO: document how to use %turbo-frames!
+-# TODO: render an error message if no results can be shown (if mediline_search_result is nil)

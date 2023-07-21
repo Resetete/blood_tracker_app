@@ -55,3 +55,10 @@
   border: solid 2px $red;
   border-radius: 5px;
 }
+
+#search_medline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
