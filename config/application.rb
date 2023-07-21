@@ -14,6 +14,11 @@ module BloodLevelsApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # data encryption
+    config.active_storage.encrypt = true
+    config.active_record.encryption.add_to_filter_parameters = true
+    config.active_record.encryption.store_key_references = true
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
