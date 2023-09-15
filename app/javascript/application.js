@@ -7,6 +7,7 @@ import $ from "jquery"
 import 'controllers'
 import * as bootstrap from "bootstrap"
 import "@nathanvda/cocoon"
+import "@fortawesome/fontawesome-free"
 
 $(document).on('turbo:load', function() {
   // resizes the navbar logo and brand when scrolling down 80px from top

@@ -35,5 +35,6 @@
         - if @mediline_search_result.present?
           = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
         - elsif @mediline_search_result&.empty?
-          %i.fa-solid.fa-face-sad-tear
-          %p Unfortunately, your search didn't return any results. Please try again with something else.
+          %p
+            %i.fa-regular.fa-face-sad-tear.fa-xl
+            Unfortunately, your search didn't return any results. Please try again with something else.
