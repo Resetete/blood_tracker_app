@@ -15,15 +15,15 @@ module Encyclopedia
       article = first_article_for(search_term)
 
       @article = article || nil
-      @url = url_of(article) || nil
-      @title = title_of(article) || nil
-      @source = source_of(article) || nil
-      @summary = summary_of(article) || nil
+      @url = article.present? ? url_of(article) : nil
+      @title = article.present? ? title_of(article) : nil
+      @source = article.present? ? source_of(article) : nil
+      @summary = article.present? ? summary_of(article) : nil
     end
 
     def first_article_for(search_term)
       articles = look_up(search_term)
-      return if articles.values.first.dig(:count) == 0
+      return if articles[:nlmSearchResult][:count] == '0'
 
       articles.dig(:nlmSearchResult, :list).second[:document]
     end

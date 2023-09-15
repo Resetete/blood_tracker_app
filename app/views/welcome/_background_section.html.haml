@@ -32,4 +32,7 @@
 
       -# render mediline search results
       .mt-5
-        = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
+        - if @mediline_search_result.present?
+          = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
+        - elsif @mediline_search_result&.empty?
+          %p Unfortunately, your search didn't return any results. Please try again with another search term.
