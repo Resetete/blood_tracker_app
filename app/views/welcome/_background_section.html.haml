@@ -16,7 +16,7 @@
           = image_tag('blood-cell-types.png', alt: 'blood cell types description')
           #cells-credit.image-credit{'data-tooltip': 'Image by brgfx on Freepik'}
             = link_to('image source', 'https://www.freepik.com/free-vector/type-blood-cells_18233500.htm#&position=11&from_view=collections#position=11')
-    #search_medline.mt-5
+    #search_medline.mt-5.text-center
       .header-title
         %h3
           %span.text-highlight
@@ -35,4 +35,5 @@
         - if @mediline_search_result.present?
           = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
         - elsif @mediline_search_result&.empty?
-          %p Unfortunately, your search didn't return any results. Please try again with another search term.
+          %i.fa-solid.fa-face-sad-tear
+          %p Unfortunately, your search didn't return any results. Please try again with something else.
