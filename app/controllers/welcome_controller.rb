@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     if mediline_search_params.present?
       query = sanitize_search_query(mediline_search_params[:mediline_search])
       search_result = Encyclopedia::Article.new(query)
-      @mediline_search_result = search_result.article.present? ? Encyclopedia::Article.new(query) : []
+      @mediline_search_result = search_result.article.present? ? search_result : false
     end
     @blood_cell_descriptions = Admin::BloodCellDescription.all.sort_by(&:created_at)
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news

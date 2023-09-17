@@ -16,25 +16,26 @@
           = image_tag('blood-cell-types.png', alt: 'blood cell types description')
           #cells-credit.image-credit{'data-tooltip': 'Image by brgfx on Freepik'}
             = link_to('image source', 'https://www.freepik.com/free-vector/type-blood-cells_18233500.htm#&position=11&from_view=collections#position=11')
-    #search_medline.mt-5.text-center
+    #search_medline.mt-5
       .header-title
         %h3
-          %span.text-highlight
+          %span.text-highlight.text-center
             Want to search by your own? Here is your chance.
       %p Use the search field below to look up symptomes, medical terms and more
       .mt-3
-        = form_tag root_path, method: :get, id: 'mediline-search-form', data: {turbo_frame: 'mediline_results'} do
+        = form_tag root_path, method: :get, id: 'mediline-search-form', data: { update_url: true } do
           .row.row-cols-auto
             .col
-              = text_field_tag :mediline_search, params[:mediline_search], placeholder: 'Search mediline', class: 'form-control'
+              = text_field_tag :mediline_search, params[:mediline_search], placeholder: 'Search mediline', class: 'form-control', required: true
             .col
               = submit_tag 'Search', name: nil, class: 'btn btn-outline-dark'
 
       -# render mediline search results
       .mt-5
-        - if @mediline_search_result.present?
-          = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
-        - elsif @mediline_search_result&.empty?
-          %p
+        - if @mediline_search_result == false
+          %p.text-center
             %i.fa-regular.fa-face-sad-tear.fa-xl
             Unfortunately, your search didn't return any results. Please try again with something else.
+        - elsif @mediline_search_result.present?
+          = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }
+
