@@ -7,6 +7,26 @@ import $ from "jquery"
 import 'controllers'
 import * as bootstrap from "bootstrap"
 import "@nathanvda/cocoon"
+import "@fortawesome/fontawesome-free"
+
+// updates the search term in the url when searching with turbo frame in mediline
+document.addEventListener("turbo:submit-end", function (event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const frameId = form.getAttribute("data-turbo-frame");
+  const searchInput = form.querySelector("[name='mediline_search']");
+  const searchValue = searchInput.value;
+
+  // Update the URL with the search term
+  const url = new URL(window.location.href);
+  url.searchParams.set("mediline_search", searchValue);
+  window.history.pushState({}, "", url.toString());
+
+  // Clear the "No results found" message in the mediline-results-frame
+  const resultsFrame = document.querySelector("#mediline-results-frame");
+  resultsFrame.innerHTML = "";
+});
 
 $(document).on('turbo:load', function() {
   // resizes the navbar logo and brand when scrolling down 80px from top

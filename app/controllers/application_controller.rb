@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'You must be an admin to access this page.'
     redirect_to root_path
   end
+
+  def sanitize_search_query(query)
+    ActionController::Base.helpers.sanitize(query)
+  end
 end
