@@ -1,5 +1,9 @@
-= turbo_frame_tag 'mediline_results' do
-  %h2= mediline_search_result&.title&.html_safe
-  = mediline_search_result&.summary&.html_safe
-
-  %p.small= mediline_search_result&.source&.html_safe
+= turbo_frame_tag 'mediline_result' do
+  - if mediline_search_result
+    %h2= mediline_search_result&.title&.html_safe
+    = mediline_search_result&.summary&.html_safe
+    %p.small= mediline_search_result&.source&.html_safe
+  - else
+    %p.text-center
+      %i.fa-regular.fa-face-sad-tear.fa-xl
+      Unfortunately, your search didn't return any results. Please try again with something else.
