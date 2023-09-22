@@ -24,7 +24,7 @@ class HemigramsController < ApplicationController
     @hemigram.short = Hemigram.short(@hemigram.parameter)
 
     if @hemigram.save
-      redirect_to hemigram_path(@hemigram), notice: 'Hemigram was successfully created.'
+      redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE
     else
       render :new, status: :unprocessable_entity # need the status to show errors with turbo
     end
@@ -37,8 +37,7 @@ class HemigramsController < ApplicationController
       flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE
       redirect_to hemigrams_path
     else
-      flash[:alert] = ErrorHandling::UNSUCCESSFUL_UPDATE
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
