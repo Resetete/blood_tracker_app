@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
         search_result = Encyclopedia::Article.new(query)
         @mediline_search_result = search_result.article.present? ? search_result : false
       rescue StandardError => e
-        @error_message = 'An error occurred during the lookup.'
+        @error_message = ErrorHandling::LOOK_UP_ERROR_MESSAGE
       end
     end
     @blood_cell_descriptions = Admin::BloodCellDescription.all.sort_by(&:created_at)

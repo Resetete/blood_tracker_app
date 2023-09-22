@@ -33,7 +33,7 @@ module Encyclopedia
 
       xml_as_hash(response.body)
     rescue StandardError => e
-      Rails.logger.error("An error occurred during the lookup: #{e.message}")
+      Rails.logger.error("#{ErrorHandling::LOOK_UP_ERROR_MESSAGE} #{e.message}")
     end
 
     private
