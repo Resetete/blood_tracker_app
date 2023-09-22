@@ -32,4 +32,8 @@
               = submit_tag 'Search', name: nil, class: 'btn btn-outline-dark'
 
       .mt-5
+        - if @error_message.present?
+          %p.text-center
+            %i.fa-regular.fa-face-sad-tear.fa-xl
+            = @error_message
         = render partial: 'mediline_results', locals: { mediline_search_result: @mediline_search_result }

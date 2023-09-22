@@ -6,7 +6,7 @@
 #
 #  id         :bigint           not null, primary key
 #  parameter  :string
-#  value      :decimal(, )
+#  value      :string
 #  unit       :string
 #  user_id    :integer
 #  date       :datetime

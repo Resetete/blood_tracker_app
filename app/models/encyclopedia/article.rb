@@ -30,7 +30,10 @@ module Encyclopedia
 
     def look_up(search_term)
       response = client.get('query', { db: 'healthTopics', term: search_term })
+
       xml_as_hash(response.body)
+    rescue StandardError => e
+      Rails.logger.error("An error occurred during the lookup: #{e.message}")
     end
 
     private
