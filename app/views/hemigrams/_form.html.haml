@@ -3,7 +3,7 @@
 -# dependent dropdowns: blood parameter - abbreviation
 -# datepicker with nicer styles
 .mb-5
-  = form_for :hemigram, url: hemigrams_path do |f|
+  = form_for @hemigram do |f|
     = render partial: 'shared/model_errors', locals: { model: @hemigram }
     .mb-3
       = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
@@ -11,18 +11,15 @@
         class: 'form-select',                                                                        |
         id: 'parameter-select',                                                                      |
         required: true                                                                               |
-    .mb-3.form-floating
-      - if !@hemigram.new_record?
+    - unless @hemigram.new_record?
+      .mb-3.form-floating
         = f.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation'
         = f.label :short, class: 'form-label', for: 'input_abreviation'
     .mb-3.form-floating
       = f.text_field :value, class: 'form-control', id: 'input_value'
       = f.label :value, class: 'form-label', for: 'input_value'
     .mb-3
-      = f.select :unit, options_for_select(Hemigram.units, selected: @hemigram.unit), |
-        { include_blank: 'Select unit' },                                                  |
-        class: 'form-select',                                                        |
-        required: true                                                                |
+      = f.select(:unit, options_for_select(Hemigram.units, selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
     .mb-3.form-floating
       = f.date_field :date, class: 'datepicker form-control', id: 'input_date'
       = f.label :date, class: 'form-label', for: 'input_date'

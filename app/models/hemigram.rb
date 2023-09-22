@@ -6,7 +6,7 @@
 #
 #  id         :bigint           not null, primary key
 #  parameter  :string
-#  value      :string
+#  value      :decimal(, )
 #  unit       :string
 #  user_id    :integer
 #  date       :datetime
@@ -26,15 +26,15 @@ class Hemigram < ApplicationRecord
   # Hide attributes values when querying the model
   self.filter_attributes += %i[parameter value]
 
-  encrypts :parameter, deterministic: true # allows querying the db data
-  encrypts :value
+  encrypts :parameter, deterministic: true # deterministic: allows querying the db data
+  encrypts :value, deterministic: true # deterministic: allows querying the db data
 
   belongs_to :user
 
   validates :parameter, presence: true
-  validates :value, presence: true, numericality: { only_integer: true }
   validates :unit, presence: true
   validates :date, presence: true
+  validate :validate_only_one_entry_per_parameter_per_day
 
   # this will be substituted when the blood parameters models is created
   PARAMETERS = { 'thrombozythes': { short: %w[PLT thrombos] },
@@ -81,5 +81,14 @@ class Hemigram < ApplicationRecord
       dataset.unit = unit.convert_to('g/l').units
       dataset
     end
+  end
+
+  private
+
+  def validate_only_one_entry_per_parameter_per_day
+    Hemigram.where(user_id: user_id)
+            .where("DATE(date) = ?", date.to_date)
+            .select(parameter: parameter)
+            .exists?
   end
 end

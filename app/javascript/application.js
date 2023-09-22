@@ -8,6 +8,8 @@ import 'controllers'
 import * as bootstrap from "bootstrap"
 import "@nathanvda/cocoon"
 import "@fortawesome/fontawesome-free"
+import "chartkick"
+import "Chart.bundle"
 
 // updates the search term in the url when searching with turbo frame in mediline
 document.addEventListener("turbo:submit-end", function (event) {

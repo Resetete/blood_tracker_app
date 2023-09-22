@@ -15,6 +15,7 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
+    binding.pry
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
     @hemigram.short = Hemigram.short(@hemigram.parameter)
@@ -29,11 +30,13 @@ class HemigramsController < ApplicationController
   def edit; end
 
   def update
+    binding.pry
     if @hemigram.update(hemigram_params)
-      flash[:notice] = 'You have successfully updated your hemigram'
-      redirect_to @hemigram
+      flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE
+      redirect_to hemigrams_path
     else
-      render 'edit'
+      flash[:alert] = ErrorHandling::UNSUCCESSFUL_UPDATE
+      render :edit
     end
   end
 
