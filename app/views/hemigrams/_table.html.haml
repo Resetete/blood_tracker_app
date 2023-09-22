@@ -12,7 +12,7 @@
       - hemigrams.each do |hemigram|
         %tr
           %td= hemigram.parameter
-          %td= hemigram.abbreviations
+          %td= hemigram.short
           %td= hemigram.value
           %td= hemigram.unit
           %td= hemigram.date.to_date

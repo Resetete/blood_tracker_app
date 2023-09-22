@@ -2,10 +2,14 @@
 
 # CRUDs for the different hemigrams that store the blood work user data
 class HemigramsController < ApplicationController
+  include WillPaginate::CollectionMethods
+
   before_action :set_hemigram, only: %i[show edit update destroy]
 
   def index
-    @hemigrams = Hemigram.search(params[:search], current_user).paginate(page: params[:page]).order('id DESC')
+    @hemigrams = Hemigram.search(params[:search], current_user)
+                         .order('id DESC')
+                         .paginate(page: params[:page])
   end
 
   def new
@@ -15,7 +19,6 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
-    binding.pry
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
     @hemigram.short = Hemigram.short(@hemigram.parameter)
@@ -30,7 +33,6 @@ class HemigramsController < ApplicationController
   def edit; end
 
   def update
-    binding.pry
     if @hemigram.update(hemigram_params)
       flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE
       redirect_to hemigrams_path

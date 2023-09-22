@@ -3,9 +3,10 @@
     %h2
       %span.text-highlight My Hemigrams
   -# TODO: sort columns
-  .mt-5
+  .mt-5.hemigram-data-table
     = render 'shared/search'
     = render partial: 'table', locals: { hemigrams: @hemigrams }
-  -# = will_paginate(@hemigrams, container: true)
+    .custom_pagination.mt-3.mb-3
+      = will_paginate(@hemigrams, page_links: true)
   %p
     = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark'

@@ -32,9 +32,7 @@ gem 'stimulus-rails'
 gem 'devise'
 gem 'sprockets-rails'
 # page pagination
-gem 'will_paginate', '~> 3.1.0'
-# add pagination component from materialize
-gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
+gem 'will_paginate', '~> 4.0.0'
 # charts
 gem 'chartkick'
 gem 'groupdate'

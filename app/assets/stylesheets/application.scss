@@ -163,3 +163,37 @@ hr.separator-element {
   width: 100%;
 }
 
+
+/***********************/
+/*** Pagination ***/
+/***********************/
+
+.custom_pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default; }
+  .custom_pagination a, .custom_pagination span, .custom_pagination em {
+    padding: 0.2em 0.5em; }
+  .custom_pagination .disabled {
+    color: white; }
+  .custom_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: $red; }
+  .custom_pagination a {
+    border: 1px solid white;
+    color: $yellow;
+    text-decoration: none; }
+    .custom_pagination a:hover, .custom_pagination a:focus {
+      border-color: $red;
+      background: $yellow;
+      color: white; }
+  .custom_pagination .page_info {
+    color: white;
+    padding-top: 0.8em; }
+  .custom_pagination .previous_page, .custom_pagination .next_page {
+    border-width: 2px; }
+  .custom_pagination .previous_page {
+    margin-right: 1em; }
+  .custom_pagination .next_page {
+    margin-left: 1em; }
