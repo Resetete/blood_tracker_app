@@ -7,8 +7,9 @@ class HemigramsController < ApplicationController
   before_action :set_hemigram, only: %i[show edit update destroy]
 
   def index
-    @hemigrams = Hemigram.search(params[:search], current_user)
-                         .order('id DESC')
+    hemigrams = Hemigram.search(params[:search], current_user)
+    # convert search result into an activerecord relation to allow pagination
+    @hemigrams = Hemigram.where(id: hemigrams.map(&:id))
                          .paginate(page: params[:page])
   end
 

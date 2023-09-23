@@ -67,8 +67,11 @@ class Hemigram < ApplicationRecord
   end
 
   def self.search(search, user)
-    safe_search_query = ActionController::Base.helpers.sanitize(search)
-    where(user_id: user.id).where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{safe_search_query&.downcase}%")
+    safe_search_query = ActionController::Base.helpers.sanitize(search).to_s
+    result = where(user_id: user.id).order(created_at: :desc).select do |h|
+      h.parameter.downcase.include?(safe_search_query.downcase) || h.short.downcase.include?(safe_search_query.downcase)
+    end
+    # .where('LOWER(parameter) LIKE :search OR LOWER(short) LIKE :search', search: "%#{safe_search_query&.downcase}%")
   end
 
   def self.unit_converter(data)
