@@ -59,8 +59,9 @@ class Hemigram < ApplicationRecord
   # when a parameter is selected in the form, another field with the related short names
   # should be prefilled (not user editable)
   def self.short(parameter)
-    PARAMETERS.fetch(parameter.downcase.to_sym).values.flatten.join(', ')
+    PARAMETERS.dig(parameter.downcase.to_sym).values_at(:short).flatten.join(', ')
   end
+
 
   def abbreviations
     return unless new_record?
@@ -79,23 +80,11 @@ class Hemigram < ApplicationRecord
     end
   end
 
-  # TODO: before_save action: convert values to a chart_unit -> depending on chart unit store converted chart_value
-  # TODO: create a convert unit service that updates the hemigram with chart_unit and chart_value
   def convert_value_to_chart_unit_value
-    # here I would actually call a service passing in the hemigram object
-    # Hemigram::ConvertUnitService.new(self).execute
+    Hemigrams::ConvertUnitsService.new(self).execute
     # check the unit of each dataset and convert into the chart_unit
     # I will need to check how to convert and in which chart unit for the current parameter (e.g. thrombos have a
     # different chart unit than WBC)
-    chart_unit = PARAMETERS.dig(parameter)
-    self.chart_value =
-      case unit
-        when 'mg/dl' then value / 100
-        when 'kg/dl' then value * 100
-        when 'g/l' then value / 5
-      else
-        value
-      end
   end
 
   def value
