@@ -21,7 +21,6 @@ class Hemigram < ApplicationRecord
   # allow adding new blood parameters and units --> new model with new, create, destroy actions
   # unit converter (separate model? Part of a printer model? printer table holds all converted blood values)
   # --> define your own conversions (in blood parameters), new, create, destroy
-  # create translations --> DE, EN of the app
 
   # Hide attributes values when querying the model
   self.filter_attributes += %i[parameter value]
@@ -36,9 +35,11 @@ class Hemigram < ApplicationRecord
   validates :date, presence: true
   validate :validate_only_one_entry_per_parameter_per_day
 
-  # this will be substituted when the blood parameters models is created
-  PARAMETERS = { 'thrombozythes': { short: %w[PLT thrombos] },
-                 'leucozyts': { short: %w[WBC Leu] } }.freeze
+  scope :for_user, ->(user) { where(user_id: user.id) }
+
+  # this will be substituted when the blood parameters model is created
+  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos] },
+                 leucozyts: { short: %w[WBC Leu] } }.freeze
   UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul'].freeze
 
   # pagination
@@ -73,16 +74,31 @@ class Hemigram < ApplicationRecord
     end
   end
 
-  def self.unit_converter(data)
-    data.map do |dataset|
-      unit = Unit.new("#{dataset.value}#{dataset.unit}")
-      next unless dataset.parameter == ('Thrombozythes' || 'Leucozyts')
 
-      dataset.value = unit.convert_to('g/l').scalar
-      dataset.unit = unit.convert_to('g/l').units
-      dataset
-    end
+  def unify_units
+    # check the unit of each dataset and convert into same unit
+    converted_value =
+      case unit
+        when 'mg/dl' then value / 100
+        when 'kg/dl' then value * 100
+      else
+        value
+      end
+
+    # Create a new Hemigram object with the converted value and unit that can be used to display it in the graph
+    self.class.new(parameter: parameter, value: converted_value, unit: 'g/dl', user_id: user_id, date: date)
   end
+
+  # def self.unit_converter(data)
+  #   data.map do |dataset|
+  #     unit = Unit.new("#{dataset.value}#{dataset.unit}")
+  #     next unless dataset.parameter == ('Thrombozythes' || 'Leucozyts')
+
+  #     dataset.value = unit.convert_to('g/l').scalar
+  #     dataset.unit = unit.convert_to('g/l').units
+  #     dataset
+  #   end
+  # end
 
   private
 

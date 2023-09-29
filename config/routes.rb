@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'cookie_policy', to: 'pages#cookie_policy'
 
   namespace :graphs do
-    get 'parameters-per-day', to: 'graphs#parameters_per_day'
+    get 'parameter_values_per_day'
   end
 
   devise_for :users

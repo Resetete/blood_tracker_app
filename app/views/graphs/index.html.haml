@@ -4,18 +4,8 @@
     %p
       TODO:
     %ul
-      %li use an api call
       %li ensure that we use the same unit for all entries of a certain parameter
     - Hemigram.parameters.each do |parameter|
-      %p
-        = parameter
-      .container
-        = line_chart graphs_parameters_per_day_path(parameter: parameter.lowercase)
-
-    = line_chart(                                       |
-      @data,                                            |
-      discrete: true,                                   |
-      ytitle: 'g/dl',                                   |
-      loading: "Loading...",                            |
-      dataset: { borderWidth: 1, spanGaps: true },      |
-    )                                                   |
+      %p= parameter
+      .container.mb-5
+        = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.to_s), discrete: true, ytitle: parameter.chart_unit)

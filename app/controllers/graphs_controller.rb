@@ -2,21 +2,23 @@
 
 # Responsible to render and visualize the graphical visualization of the blood work data (Hemigrams)
 class GraphsController < ApplicationController
-  def index
-    # works, but is not using the api endpoint
+  def index; end
 
-    @data = Hemigram.all.group_by{|h| h.parameter}.map{ |parameter, group| {name: parameter, data: group.map{|entry| [entry.date.to_date,entry.value.to_i]}}}.compact.flatten
+  def parameter_values_per_day
+    raw_data = user_parameter_datasets.map(&:unify_units)
+    chart_data = raw_data.group_by{ |h| h.parameter }
+                         .map{ |parameter, group| { name: parameter, data: group.map{ |entry| [entry.date.to_date, entry.value.to_i] } }
+                         }.compact.flatten
+    render json: chart_data
   end
 
-  def parameters_per_day
-    binding.pry
-    raw_data = Hemigram.unit_converter(Hemigram.where(user_id: current_user, parameter: params[:parameter]))
-    chart_data = raw_data.map { |i| [i[:date], i[:value], i[:unit]] }
-    render json: chart_data
+  private
 
-    # works:
-    # render json: Hemigram.where(user_id: current_user, parameter: params[:parameter])
-    # .group(:parameter)
-    # .group_by_day(:date).maximum(:value)
+  def user_parameter_datasets
+    user_hemigrams.select{ |h| h.parameter == params[:parameter] }
+  end
+
+  def user_hemigrams
+    Hemigram.for_user(current_user)
   end
 end
