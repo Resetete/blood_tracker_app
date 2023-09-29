@@ -1,18 +1,21 @@
-.mt-5
-  %h2.center-align My Hemigrams
-  %h3.center-align Graphs
-  %p
-    TODO:
-  %ul
-    %li - add unit to yaxis
-  -# - Hemigram.parameters.each do |parameter|
-  -#   %p
-  -#     = parameter
-  -#   .container
-      -# = line_chart graphs_parameters_per_day_path(parameter: parameter.to_s)
-      -# , basic_options('test'))
+.container
+  .mt-5
+    %h2.center-align My Hemigrams
+    %p
+      TODO:
+    %ul
+      %li use an api call
+      %li ensure that we use the same unit for all entries of a certain parameter
+    - Hemigram.parameters.each do |parameter|
+      %p
+        = parameter
+      .container
+        = line_chart graphs_parameters_per_day_path(parameter: parameter.lowercase)
 
-  -# = line_chart Hemigram.group(:parameter).group_by_day(:date).average("CAST(value AS integer)")
-
-
-= line_chart @data
+    = line_chart(                                       |
+      @data,                                            |
+      discrete: true,                                   |
+      ytitle: 'g/dl',                                   |
+      loading: "Loading...",                            |
+      dataset: { borderWidth: 1, spanGaps: true },      |
+    )                                                   |

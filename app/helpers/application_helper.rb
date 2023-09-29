@@ -8,32 +8,4 @@ module ApplicationHelper
       link_to 'Login', new_user_session_path
     end
   end
-
-  # rubocop:disable Metrics/MethodLength
-  def basic_options(unit)
-    {
-      adapter: 'highcharts',
-      legend: false,
-      colors: ['#f5b82e'],
-      messages: { empty: 'No data' },
-      library: {
-        yAxis: {
-          title: {
-            text: 'Unit'
-          }
-        },
-        xAxis: {
-          title: {
-            text: unit
-          }
-        },
-        plotOptions: {
-          line: {
-            color: '#f5b82e'
-          }
-        }
-      }
-    }
-  end
-  # rubocop:enable Metrics/MethodLength
 end
