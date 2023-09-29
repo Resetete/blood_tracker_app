@@ -30,8 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_131837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "short"
-    t.decimal "lower_limit"
-    t.decimal "upper_limit"
     t.string "chart_unit"
     t.decimal "chart_value"
   end

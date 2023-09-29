@@ -13,8 +13,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  short       :string
-#  lower_limit :decimal(, )
-#  upper_limit :decimal(, )
 #  chart_unit  :string
 #  chart_value :decimal(, )
 #
@@ -42,8 +40,9 @@ class Hemigram < ApplicationRecord
   scope :for_user, ->(user) { where(user_id: user.id) }
 
   # this will be substituted when the blood parameters model is created
-  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: 'g/dl' },
-                 leucozyts: { short: %w[WBC Leu], chart_unit: 'g/dl' },
+  # extra table to store the units and parameter info
+  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: 'g/dl', upper_limit: '', lower_limit: '' },
+                 leucozyts: { short: %w[WBC Leu], chart_unit: 'g/dl', upper_limit: '', lower_limit: '' },
                }
   UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
 
