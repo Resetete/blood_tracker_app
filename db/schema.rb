@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_204034) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_131837) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_204034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "short"
+    t.decimal "lower_limit"
+    t.decimal "upper_limit"
+    t.string "chart_unit"
+    t.decimal "chart_value"
   end
 
   create_table "links", force: :cascade do |t|

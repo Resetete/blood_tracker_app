@@ -4,15 +4,19 @@
 #
 # Table name: hemigrams
 #
-#  id         :bigint           not null, primary key
-#  parameter  :string
-#  value      :decimal(, )
-#  unit       :string
-#  user_id    :integer
-#  date       :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  short      :string
+#  id          :bigint           not null, primary key
+#  parameter   :string
+#  value       :string
+#  unit        :string
+#  user_id     :integer
+#  date        :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  short       :string
+#  lower_limit :decimal(, )
+#  upper_limit :decimal(, )
+#  chart_unit  :string
+#  chart_value :decimal(, )
 #
 
 # stores the user blood work data
@@ -74,7 +78,8 @@ class Hemigram < ApplicationRecord
     end
   end
 
-
+  # TODO: before_save action: convert values to a chart_unit -> depending on chart unit store converted chart_value
+  # TODO: create a convert unit service that updates the hemigram with chart_unit and chart_value
   def unify_units
     # check the unit of each dataset and convert into same unit
     converted_value =
@@ -88,17 +93,6 @@ class Hemigram < ApplicationRecord
     # Create a new Hemigram object with the converted value and unit that can be used to display it in the graph
     self.class.new(parameter: parameter, value: converted_value, unit: 'g/dl', user_id: user_id, date: date)
   end
-
-  # def self.unit_converter(data)
-  #   data.map do |dataset|
-  #     unit = Unit.new("#{dataset.value}#{dataset.unit}")
-  #     next unless dataset.parameter == ('Thrombozythes' || 'Leucozyts')
-
-  #     dataset.value = unit.convert_to('g/l').scalar
-  #     dataset.unit = unit.convert_to('g/l').units
-  #     dataset
-  #   end
-  # end
 
   private
 
