@@ -11,7 +11,7 @@
     %tbody
       - hemigrams.each do |hemigram|
         %tr
-          %td= hemigram.parameter
+          %td= hemigram.parameter.capitalize
           %td= hemigram.short
           %td= hemigram.value
           %td= hemigram.unit

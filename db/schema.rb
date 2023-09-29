@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_131837) do
     t.datetime "updated_at", null: false
     t.string "short"
     t.string "chart_unit"
-    t.decimal "chart_value"
+    t.string "chart_value"
   end
 
   create_table "links", force: :cascade do |t|

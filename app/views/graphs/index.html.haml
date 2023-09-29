@@ -5,4 +5,4 @@
       - @user_parameters.each do |parameter|
         %p= parameter.capitalize
         .mb-5.chart
-          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, ytitle: Hemigram::PARAMETERS.dig(parameter, :chart_unit))
+          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, ytitle: Hemigram::PARAMETERS.dig(parameter.to_sym, :chart_unit))
