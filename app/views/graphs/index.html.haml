@@ -1,11 +1,8 @@
 .container
   .mt-5
     %h2.center-align My Hemigrams
-    %p
-      TODO:
-    %ul
-      %li ensure that we use the same unit for all entries of a certain parameter
-    - Hemigram.parameters.each do |parameter|
-      %p= parameter
-      .container.mb-5
-        = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.to_s), discrete: true, ytitle: parameter.chart_unit)
+    .container.mt-5
+      - @user_parameters.each do |parameter|
+        %p= parameter.capitalize
+        .mb-5
+          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, ytitle: Hemigram::PARAMETERS.dig(parameter, :chart_unit))

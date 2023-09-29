@@ -6,7 +6,8 @@
   = form_for @hemigram do |f|
     = render partial: 'shared/model_errors', locals: { model: @hemigram }
     .mb-3
-      = f.select :parameter, options_for_select(Hemigram.parameters, selected: @hemigram.parameter), |
+      = f.select :parameter, options_for_select(Hemigram.parameters.map { |option| [option.capitalize, option] }, |
+        selected: @hemigram.parameter),                                                              |
         { include_blank: 'Select parameter' },                                                       |
         class: 'form-select',                                                                        |
         id: 'parameter-select',                                                                      |

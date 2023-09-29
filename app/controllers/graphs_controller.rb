@@ -2,7 +2,9 @@
 
 # Responsible to render and visualize the graphical visualization of the blood work data (Hemigrams)
 class GraphsController < ApplicationController
-  def index; end
+  def index
+    @user_parameters = user_hemigrams.pluck(:parameter).uniq
+  end
 
   def parameter_values_per_day
     raw_data = user_parameter_datasets.map(&:unify_units)
@@ -15,7 +17,7 @@ class GraphsController < ApplicationController
   private
 
   def user_parameter_datasets
-    user_hemigrams.select{ |h| h.parameter == params[:parameter] }
+    user_hemigrams.select{ |h| h.parameter.capitalize == params[:parameter] }
   end
 
   def user_hemigrams

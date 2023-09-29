@@ -42,16 +42,17 @@ class Hemigram < ApplicationRecord
   scope :for_user, ->(user) { where(user_id: user.id) }
 
   # this will be substituted when the blood parameters model is created
-  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos] },
-                 leucozyts: { short: %w[WBC Leu] } }.freeze
-  UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul'].freeze
+  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: 'g/dl' },
+                 leucozyts: { short: %w[WBC Leu], chart_unit: 'g/dl' },
+               }
+  UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
 
   # pagination
   self.per_page = 5
 
   def self.parameters
     PARAMETERS.map do |parameter, _short|
-      parameter.capitalize
+      parameter
     end
   end
 
