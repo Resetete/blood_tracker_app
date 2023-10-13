@@ -5,4 +5,5 @@
       - @user_parameters.each do |parameter|
         %p= parameter.capitalize
         .mb-5.chart
-          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, ytitle: Hemigram::PARAMETERS.dig(parameter.to_sym, :chart_unit))
+          -# options are defined in a view helper
+          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, colors: ["red"], thousands: ',', decimal: '.', precision: 2, ytitle: Hemigram::PARAMETERS.dig(parameter.to_sym, :chart_unit), library: {plugins: {annotation: {annotations: { line1: {type: 'line', yMin: '1000',yMax: '1000', borderColor: 'green', borderWidth: 2 }, line2: {type: 'line', yMin: '5000',yMax: '5000', borderColor: 'orange', borderWidth: 2 } } }}})

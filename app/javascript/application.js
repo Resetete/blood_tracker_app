@@ -11,6 +11,12 @@ import "@fortawesome/fontawesome-free"
 import "chartkick"
 import "Chart.bundle"
 
+import { Chart, registerables } from "chart.js"
+Chart.register(...registerables)
+import "./chartjs-plugin-annotation";
+
+// import "./chartjs-adapter-date-fns"
+
 // updates the search term in the url when searching with turbo frame in mediline
 document.addEventListener("turbo:submit-end", function (event) {
   event.preventDefault();
