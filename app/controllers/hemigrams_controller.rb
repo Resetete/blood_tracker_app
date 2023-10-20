@@ -48,11 +48,12 @@ class HemigramsController < ApplicationController
   end
 
   def get_unit_selection_dropdown_options
-    parameter_dropdown_selection = params[:parameter_select].to_sym
+    parameter = params[:parameter_select].to_sym
 
-    options = Hemigram.units(parameter_dropdown_selection)
+    options = Hemigram.units(parameter)
+    shorts = Hemigram.short(parameter)
 
-    render json: options
+    render json: { options:, shorts: }
   end
 
   private

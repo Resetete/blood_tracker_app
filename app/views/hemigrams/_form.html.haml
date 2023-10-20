@@ -16,6 +16,7 @@
       .mb-3.form-floating
         = f.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation'
         = f.label :short, class: 'form-label', for: 'input_abreviation'
+        %div#abbreviation-display
     .mb-3.form-floating
       = f.text_field :value, class: 'form-control', id: 'input_value'
       = f.label :value, class: 'form-label', for: 'input_value'
