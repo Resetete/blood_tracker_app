@@ -22,7 +22,7 @@
     .mb-3
       = f.select(:unit, options_for_select([], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
     .mb-3.form-floating
-      = f.date_field :date, class: 'datepicker form-control', id: 'input_date'
+      = f.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s
       = f.label :date, class: 'form-label', for: 'input_date'
     .mb-3
       = f.submit 'Submit', class: 'btn btn-outline-dark'
