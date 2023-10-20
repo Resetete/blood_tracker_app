@@ -4,15 +4,17 @@
 #
 # Table name: hemigrams
 #
-#  id         :bigint           not null, primary key
-#  parameter  :string
-#  value      :string
-#  unit       :string
-#  user_id    :integer
-#  date       :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  short      :string
+#  id          :bigint           not null, primary key
+#  parameter   :string
+#  value       :string
+#  unit        :string
+#  user_id     :integer
+#  date        :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  short       :string
+#  chart_unit  :string
+#  chart_value :string
 #
 
 # stores the user blood work data
@@ -42,10 +44,10 @@ class Hemigram < ApplicationRecord
 
   # this will be substituted when the blood parameters model is created
   # extra table to store the units and parameter info
-  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: 'g/dl', upper_limit: '', lower_limit: '' },
-                 leucozyts: { short: %w[WBC Leu], chart_unit: 'g/dl', upper_limit: '', lower_limit: '' },
+  PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
+                 leucozyts: { short: %w[WBC Leu], chart_unit: 'µL', upper_limit: '1000', lower_limit: '100' },
                }
-  UNITS = ['10^3/ul', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
+  UNITS = ['10^3/µL', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
 
   # pagination
   self.per_page = 5
@@ -82,9 +84,6 @@ class Hemigram < ApplicationRecord
 
   def convert_value_to_chart_unit_value
     Hemigrams::ConvertUnitsService.new(self).execute
-    # check the unit of each dataset and convert into the chart_unit
-    # I will need to check how to convert and in which chart unit for the current parameter (e.g. thrombos have a
-    # different chart unit than WBC)
   end
 
   def value

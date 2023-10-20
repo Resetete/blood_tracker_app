@@ -8,4 +8,18 @@ module ApplicationHelper
       link_to 'Login', new_user_session_path
     end
   end
+
+  def graph_annotations(min, max)
+    {
+      plugins: {
+        annotation: {
+          annotations: {
+            # ymax and ymin should be an attribute of parameter
+            line1: { type: 'line', yMin: min, yMax: min, borderColor: 'green', borderWidth: 2 },
+            line2: { type: 'line', yMin: max, yMax: max, borderColor: 'orange', borderWidth: 2 }
+          }
+        }
+      }
+    }
+  end
 end
