@@ -88,12 +88,13 @@ class Hemigram < ApplicationRecord
     end
   end
 
-  # when a parameter is selected in the form, another field with the related short names
-  # should be prefilled (not user editable)
   def self.short(parameter)
-    PARAMETERS.dig(parameter.downcase.to_sym).values_at(:short).flatten.join(', ')
-  end
+    parameter = PARAMETERS.dig(parameter.downcase.to_sym)
 
+    return '' if parameter.nil?
+
+    parameter.values_at(:short).flatten.join(', ')
+  end
 
   def abbreviations
     return unless new_record?

@@ -3,7 +3,7 @@
     %h2.center-align My Hemigrams
     .container.mt-5
       - @user_parameters.each do |parameter|
-        %p= parameter.capitalize
+        %p= parameter.humanize
         .mb-5.chart
           - chart_unit = Hemigram::PARAMETERS.dig(parameter.to_sym, :chart_unit)
           - min = Hemigram::PARAMETERS.dig(parameter.to_sym, :lower_limit)

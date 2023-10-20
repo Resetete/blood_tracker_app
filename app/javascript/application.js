@@ -85,6 +85,7 @@ $(document).on('turbo:load', function() {
   });
 
   // return hemigram parameter unit options for dropdown in hemigram form
+  // change abbreviation/shorts field if parameter changes
   $('#parameter-select').on('change', function() {
     var selectedOption = $(this).val();
 
@@ -93,17 +94,25 @@ $(document).on('turbo:load', function() {
       data: { 'parameter_select': selectedOption },
       dataType: 'json',
       success: function(data) {
-        var secondDropdown = $('#hemigram_unit');
-        secondDropdown.empty();  // Clear existing options
+        var unitDropdown = $('#hemigram_unit');
+        unitDropdown.empty();  // Clear existing options
+        var inputAbbreviation = $('#input_abreviation')
 
-        if (data == undefined)
-          secondDropdown.append(new Option('Select a parameter first', ''));
-        else if (data.length > 0) {
-          data.forEach(function(option) {
-            secondDropdown.append(new Option(option, option));
-          });
+        if (data.shorts == undefined || data.options == null) {
+          unitDropdown.append(new Option('Select a parameter first', ''));
+          inputAbbreviation.val('Select a parameter first');
         } else {
-          secondDropdown.append(new Option('Select unit', ''));
+          // update the abbreviation values if parameter changes
+          var shortValue = data.shorts;
+          inputAbbreviation.val(shortValue);
+
+          if (data.options && data.options.length > 0) {
+            data.options.forEach(function(option) {
+              unitDropdown.append(new Option(option, option));
+            });
+          } else {
+            unitDropdown.append(new Option('Select unit', ''));
+          }
         }
       }
     })
