@@ -14,7 +14,7 @@ module Hemigrams
     def execute
       value = hemigram.value
       source_unit = hemigram.unit
-      target_unit = Hemigram::PARAMETERS.dig(hemigram.parameter, :chart_unit)
+      target_unit = Hemigram::PARAMETERS.dig(hemigram.parameter.to_sym, :chart_unit)
 
       return set_chart_value_and_unit(value, source_unit) unless need_to_convert_unit?(target_unit)
 
@@ -44,11 +44,13 @@ module Hemigrams
       when ['10^5/μL', 'kg/dL']
         value / 100
       when ['mg/dL', '10^9/L']
-        value / 1000000
+        value / 1_000_000
       when ['g/L', '10^9/L']
         value
+      when ['g/L', '10^3/µL']
+        value / 100_000_000
       when ['10^9/L', 'mg/dL']
-        value * 1000000
+        value * 1_000_000_000
       when ['10^9/L', 'g/L']
         value
       when ['g/dL', 'g/L']
@@ -60,17 +62,17 @@ module Hemigrams
       when ['g/dL', '%']
         value * 100
       when ['10^6/μL', 'T/L']
-        value / 1000
+        value / 1_000
       when ['T/L', '10^6/μL']
-        value * 1000
+        value * 1_000
       when ['fL', 'μm^3']
         value
       when ['μm^3', 'fL']
         value
       when ['pg', 'fmol']
-        value * 1000
+        value * 1_000
       when ['fmol', 'pg']
-        value / 1000
+        value / 1_000
       when ['g/dL', 'g/L']
         value / 10
       when ['g/L', 'g/dL']

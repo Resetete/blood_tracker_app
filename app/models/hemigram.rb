@@ -36,6 +36,7 @@ class Hemigram < ApplicationRecord
   validates :parameter, presence: true
   validates :unit, presence: true
   validates :date, presence: true
+  validate :validate_date_not_in_future
   validate :validate_only_one_entry_per_parameter_per_day
 
   before_save :convert_value_to_chart_unit_value
@@ -49,11 +50,9 @@ class Hemigram < ApplicationRecord
                  hemoglobin: { short: %w[Hb Hgb], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
                }
 
-  # TODO: hash with possible units per parameter
-  # UNITS = ['10^3/µL', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
   UNITS = {
-            thrombozythes: ['10^3/µL', 'G/l'],
-            leucozyts: ['10^3/µL', 'G/l'],
+            thrombozythes: ['10^3/µL', 'g/L'],
+            leucozyts: ['10^3/µL', 'g/L'],
             hemoglobin: ['g/dl', 'g/L'],
           }
 
@@ -113,5 +112,11 @@ class Hemigram < ApplicationRecord
             .where("DATE(date) = ?", date.to_date)
             .select(parameter: parameter)
             .exists?
+  end
+
+  def validate_date_not_in_future
+    return unless date.present? && date > Date.current
+
+    errors.add(:date, "can't be in the future")
   end
 end
