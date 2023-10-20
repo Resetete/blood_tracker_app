@@ -48,12 +48,35 @@ class Hemigram < ApplicationRecord
   PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
                  leucozyts: { short: %w[WBC Leu], chart_unit: 'µL', upper_limit: '1000', lower_limit: '100' },
                  hemoglobin: { short: %w[Hb Hgb], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
-               }
+                 hematocrit: { short: %w[Hct], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
+                 red_blood_cells: { short: %w[RBC erythrocytes], chart_unit: '10^6/μL', upper_limit: '1000', lower_limit: '100' },
+                 white_blood_cells: { short: %w[WBC leukocytes], chart_unit: '10^6/μL', upper_limit: '1000', lower_limit: '100' },
+                 mean_corpuscular_volume: { short: %w[MCV], chart_unit: 'fl', upper_limit: '1000', lower_limit: '100' },
+                 mean_corpuscular_hemoglobin: { short: %w[MCH], chart_unit: 'pg', upper_limit: '1000', lower_limit: '100' },
+                 mean_corpuscular_hemoglobin_concentration: { short: %w[MCHC], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
+                 red_cell_distribution_width: { short: %w[RDW], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
+                 platelet_distribution_width: { short: %w[PDW], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
+                 mean_platelet_volume: { short: %w[MPV], chart_unit: 'fl', upper_limit: '1000', lower_limit: '100' },
+                 prothrombin_time: { short: %w[PT], chart_unit: 'seconds', upper_limit: '1000', lower_limit: '100' },
+                 fibrinogen: { short: %w[], chart_unit: 'g/L', upper_limit: '1000', lower_limit: '100' },
+                }
+
 
   UNITS = {
             thrombozythes: ['10^3/µL', 'g/L'],
             leucozyts: ['10^3/µL', 'g/L'],
             hemoglobin: ['g/dl', 'g/L'],
+            hematocrit: ['%', 'L/L', 'ratio'],
+            red_blood_cells: ['10^6/μL', 'T/L'],
+            white_blood_cells: ['10^3/μL', 'g/L'],
+            mean_corpuscular_volume: ['fl'],
+            mean_corpuscular_hemoglobin: ['pg'],
+            mean_corpuscular_hemoglobin_concentration: ['g/dl'],
+            red_cell_distribution_width: ['%'],
+            platelet_distribution_width: ['%'],
+            mean_platelet_volume: ['fl'],
+            prothrombin_time: ['seconds'],
+            fibrinogen: ['g/L'],
           }
 
   # pagination
