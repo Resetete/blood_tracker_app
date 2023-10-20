@@ -83,4 +83,29 @@ $(document).on('turbo:load', function() {
     localStorage.setItem('cookieSeen','shown')
     $('.cookie-banner').fadeOut();
   });
+
+  // return hemigram parameter unit options for dropdown in hemigram form
+  $('#parameter-select').on('change', function() {
+    var selectedOption = $(this).val();
+
+    $.ajax({
+      url: '/hemigrams/get_unit_selection_dropdown_options',
+      data: { 'parameter_select': selectedOption },
+      dataType: 'json',
+      success: function(data) {
+        var secondDropdown = $('#hemigram_unit');
+        secondDropdown.empty();  // Clear existing options
+
+        if (data == undefined)
+          secondDropdown.append(new Option('Select a parameter first', ''));
+        else if (data.length > 0) {
+          data.forEach(function(option) {
+            secondDropdown.append(new Option(option, option));
+          });
+        } else {
+          secondDropdown.append(new Option('Select unit', ''));
+        }
+      }
+    })
+  });
 });

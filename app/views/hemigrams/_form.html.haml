@@ -20,7 +20,7 @@
       = f.text_field :value, class: 'form-control', id: 'input_value'
       = f.label :value, class: 'form-label', for: 'input_value'
     .mb-3
-      = f.select(:unit, options_for_select(Hemigram.units, selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
+      = f.select(:unit, options_for_select([], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
     .mb-3.form-floating
       = f.date_field :date, class: 'datepicker form-control', id: 'input_date'
       = f.label :date, class: 'form-label', for: 'input_date'

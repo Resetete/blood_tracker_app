@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'news', to: 'pages#news'
   post '/news/sort_by', to: 'pages#sort_news_articles'
   get 'cookie_policy', to: 'pages#cookie_policy'
+  get '/hemigrams/get_unit_selection_dropdown_options', to: 'hemigrams#get_unit_selection_dropdown_options'
 
   namespace :graphs do
     get 'parameter_values_per_day'

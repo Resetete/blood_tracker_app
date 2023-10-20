@@ -46,8 +46,16 @@ class Hemigram < ApplicationRecord
   # extra table to store the units and parameter info
   PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
                  leucozyts: { short: %w[WBC Leu], chart_unit: 'µL', upper_limit: '1000', lower_limit: '100' },
+                 hemoglobin: { short: %w[Hb Hgb], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
                }
-  UNITS = ['10^3/µL', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
+
+  # TODO: hash with possible units per parameter
+  # UNITS = ['10^3/µL', '1000/ul', 'g/l', '10^9/l', 'g/dl', 'fl', '%', 'pg', '10^6/ul']
+  UNITS = {
+            thrombozythes: ['10^3/µL', 'G/l'],
+            leucozyts: ['10^3/µL', 'G/l'],
+            hemoglobin: ['g/dl', 'g/L'],
+          }
 
   # pagination
   self.per_page = 5
@@ -71,8 +79,8 @@ class Hemigram < ApplicationRecord
     JSON.parse(short).join(', ')
   end
 
-  def self.units
-    UNITS
+  def self.units(parameter)
+    UNITS.dig(parameter)
   end
 
   def self.search(search, user)
