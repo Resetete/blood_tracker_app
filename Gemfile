@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 # authentication
 gem 'jquery-rails'
 gem 'stimulus-rails'
+# improve form dropdowns
+gem "select2-rails"
 # to work with asset pipeline
 gem 'devise'
 gem 'sprockets-rails'
