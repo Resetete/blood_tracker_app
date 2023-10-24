@@ -14,7 +14,6 @@ module ApplicationHelper
       plugins: {
         annotation: {
           annotations: {
-            # ymax and ymin should be an attribute of parameter
             line1: { type: 'line', yMin: min, yMax: min, borderColor: 'green', borderWidth: 2 },
             line2: { type: 'line', yMin: max, yMax: max, borderColor: 'orange', borderWidth: 2 }
           }

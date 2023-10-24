@@ -10,4 +10,13 @@
           - max = Hemigram::PARAMETERS.dig(parameter.to_sym, :upper_limit)
 
           -# graph_annotations are defined in a view helper
-          = line_chart(graphs_parameter_values_per_day_path(parameter: parameter.capitalize), discrete: true, colors: ["red"], thousands: ',', decimal: '.', precision: 2, ytitle: chart_unit, library: graph_annotations(min, max))
+          = line_chart(graphs_parameter_values_per_day_path( |
+            parameter: parameter.capitalize),                |
+            discrete: true,                                  |
+            colors: ["#3a3d69"],                             |
+            thousands: ',',                                  |
+            decimal: '.',                                    |
+            precision: 2,                                    |
+            ytitle: chart_unit,                              |
+            library: graph_annotations(min, max)             |
+            )                                                |
