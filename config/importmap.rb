@@ -23,3 +23,4 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 pin 'bootstrap', to: 'https://ga.jspm.io/npm:bootstrap@5.1.3/dist/js/bootstrap.esm.js'
 pin '@nathanvda/cocoon', to: 'https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/cocoon.js'
 pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.1.1/js/all.js"
+pin "choices.js", to: "https://ga.jspm.io/npm:choices.js@10.2.0/public/assets/scripts/choices.js"

@@ -2,7 +2,8 @@
 
 import "@hotwired/turbo-rails"
 import $ from "jquery"
-// window.jQuery = jquery
+// window.jQuery = jQuery
+// window.jquery = jquery
 // window.$ = jquery
 import 'controllers'
 import * as bootstrap from "bootstrap"
@@ -10,12 +11,11 @@ import "@nathanvda/cocoon"
 import "@fortawesome/fontawesome-free"
 import "chartkick"
 import "Chart.bundle"
+import Choices from 'choices.js';
 
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
 import "./chartjs-plugin-annotation";
-
-// import "./chartjs-adapter-date-fns"
 
 // updates the search term in the url when searching with turbo frame in mediline
 document.addEventListener("turbo:submit-end", function (event) {
@@ -34,6 +34,45 @@ document.addEventListener("turbo:submit-end", function (event) {
   // Clear the "No results found" message in the mediline-results-frame
   const resultsFrame = document.querySelector("#mediline-results-frame");
   resultsFrame.innerHTML = "";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  let selectElement = document.getElementById('parameter-select');
+  new Choices(selectElement, { searchEnabled: true });
+
+  // Return hemigram parameter unit options for dropdown in hemigram form
+  // Change abbreviation/shorts field if parameter changes
+  $('#parameter-select').on('change', function() {
+    var selectedOption = $(this).val();
+
+    $.ajax({
+      url: '/hemigrams/get_unit_selection_dropdown_options',
+      data: { 'parameter_select': selectedOption },
+      dataType: 'json',
+      success: function(data) {
+        var unitDropdown = $('#hemigram_unit');
+        unitDropdown.empty();  // Clear existing options
+        var inputAbbreviation = $('#input_abreviation');
+
+        if (data.shorts == undefined || data.options == null) {
+          unitDropdown.append(new Option('Select a parameter first', ''));
+          inputAbbreviation.val('Select a parameter first');
+        } else {
+          // Update the abbreviation values if the parameter changes
+          var shortValue = data.shorts;
+          inputAbbreviation.val(shortValue);
+
+          if (data.options && data.options.length > 0) {
+            data.options.forEach(function(option) {
+              unitDropdown.append(new Option(option, option));
+            });
+          } else {
+            unitDropdown.append(new Option('Select unit', ''));
+          }
+        }
+      }
+    });
+  });
 });
 
 $(document).on('turbo:load', function() {
@@ -82,39 +121,5 @@ $(document).on('turbo:load', function() {
     localStorage.setItem('cookieConsent','declined')
     localStorage.setItem('cookieSeen','shown')
     $('.cookie-banner').fadeOut();
-  });
-
-  // return hemigram parameter unit options for dropdown in hemigram form
-  // change abbreviation/shorts field if parameter changes
-  $('#parameter-select').on('change', function() {
-    var selectedOption = $(this).val();
-
-    $.ajax({
-      url: '/hemigrams/get_unit_selection_dropdown_options',
-      data: { 'parameter_select': selectedOption },
-      dataType: 'json',
-      success: function(data) {
-        var unitDropdown = $('#hemigram_unit');
-        unitDropdown.empty();  // Clear existing options
-        var inputAbbreviation = $('#input_abreviation')
-
-        if (data.shorts == undefined || data.options == null) {
-          unitDropdown.append(new Option('Select a parameter first', ''));
-          inputAbbreviation.val('Select a parameter first');
-        } else {
-          // update the abbreviation values if parameter changes
-          var shortValue = data.shorts;
-          inputAbbreviation.val(shortValue);
-
-          if (data.options && data.options.length > 0) {
-            data.options.forEach(function(option) {
-              unitDropdown.append(new Option(option, option));
-            });
-          } else {
-            unitDropdown.append(new Option('Select unit', ''));
-          }
-        }
-      }
-    })
   });
 });
