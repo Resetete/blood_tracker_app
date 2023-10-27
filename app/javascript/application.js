@@ -12,7 +12,6 @@ import "@fortawesome/fontawesome-free"
 import "chartkick"
 import "Chart.bundle"
 import Choices from 'choices.js';
-
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
 import "./chartjs-plugin-annotation";
@@ -37,6 +36,7 @@ document.addEventListener("turbo:submit-end", function (event) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Dropdown in hemigram form
   let selectElement = document.getElementById('parameter-select');
   new Choices(selectElement, { searchEnabled: true });
 

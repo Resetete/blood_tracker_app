@@ -11,14 +11,24 @@ module ApplicationHelper
 
   def graph_annotations(min, max)
     {
-      plugins: {
-        annotation: {
-          annotations: {
-            line1: { type: 'line', yMin: min, yMax: min, borderColor: 'green', borderWidth: 2 },
-            line2: { type: 'line', yMin: max, yMax: max, borderColor: 'orange', borderWidth: 2 }
-          }
-        }
+      annotations: {
+        line1: { type: 'line', yMin: min, yMax: min, borderColor: 'green', borderWidth: 2 },
+        line2: { type: 'line', yMin: max, yMax: max, borderColor: 'orange', borderWidth: 2 }
       }
     }
+  end
+
+  def point_background_color(chart_data, min, max)
+    return unless chart_data
+
+    chart_data.first[:data].map(&:second).map do |value|
+      if value > max.to_i
+        'orange'
+      elsif value < min.to_i
+        'orange'
+      else
+        'green'
+      end
+    end
   end
 end
