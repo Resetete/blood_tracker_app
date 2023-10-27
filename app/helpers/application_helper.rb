@@ -12,7 +12,7 @@ module ApplicationHelper
   def graph_annotations(min, max)
     {
       annotations: {
-        line1: { type: 'line', yMin: min, yMax: min, borderColor: 'green', borderWidth: 2 },
+        line1: { type: 'line', yMin: min, yMax: min, borderColor: 'orange', borderWidth: 2 },
         line2: { type: 'line', yMin: max, yMax: max, borderColor: 'orange', borderWidth: 2 }
       }
     }
