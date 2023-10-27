@@ -35,7 +35,7 @@ document.addEventListener("turbo:submit-end", function (event) {
   resultsFrame.innerHTML = "";
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+$(document).on('turbo:load', function() {
   // Dropdown in hemigram form
   let selectElement = document.getElementById('parameter-select');
   new Choices(selectElement, { searchEnabled: true });
@@ -73,9 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-});
 
-$(document).on('turbo:load', function() {
   // resizes the navbar logo and brand when scrolling down 80px from top
   if (window.innerWidth >= 768){
     window.onscroll = function() {

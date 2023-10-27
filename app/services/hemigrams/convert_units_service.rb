@@ -46,7 +46,7 @@ module Hemigrams
       when ['10^6/μL', '10^3/μL']
         value / 1000
       when ['10^3/μL', 'g/L']
-        value / 1000000
+        value / 1_000_000
       when ['10^6/μL', 'g/L']
         value / 1000
       when ['10^5/μL', 'kg/dL']
@@ -77,9 +77,9 @@ module Hemigrams
         value
       when ['μm^3', 'fL']
         value
-      when ['pg', 'fmol']
+      when %w[pg fmol]
         value * 1_000
-      when ['fmol', 'pg']
+      when %w[fmol pg]
         value / 1_000
       when ['g/dL', 'g/L']
         value / 10

@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
     @blood_cell_descriptions = Admin::BloodCellDescription.all.sort_by(&:created_at)
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news
     everything = Api::FetchNewsService.new(news_api_client).everything_news
-    @all_news = (top_headline_news + everything).uniq{ |article| article.title }.first(9)
+    @all_news = (top_headline_news + everything).uniq(&:title).first(9)
   end
 
   private

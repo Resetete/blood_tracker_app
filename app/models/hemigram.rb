@@ -29,11 +29,11 @@ class Hemigram < ApplicationRecord
 
   belongs_to :user
 
+  validates :date, presence: true
   validates :parameter, presence: true
   validates :unit, presence: true
-  validates :date, presence: true
-  validate :validate_date_not_in_future
-  validate :validate_only_one_entry_per_parameter_per_day
+  validate :validate_date_not_in_future, if: :date_present?
+  validate :validate_only_one_entry_per_parameter_per_day, if: :date_present?
 
   before_save :convert_value_to_chart_unit_value
 
@@ -58,29 +58,28 @@ class Hemigram < ApplicationRecord
                  lymphocytes: { short: %w[Lymph], chart_unit: '%', upper_limit: '40', lower_limit: '20' },
                  monocytes: { short: %w[Mono], chart_unit: '%', upper_limit: '10', lower_limit: '2' },
                  eosinophils: { short: %w[EO], chart_unit: '%', upper_limit: '5', lower_limit: '1' },
-                 basophils: { short: %w[BASO], chart_unit: '%', upper_limit: '2', lower_limit: '0.5' },
-                }
+                 basophils: { short: %w[BASO], chart_unit: '%', upper_limit: '2', lower_limit: '0.5' } }.freeze
 
   UNITS = {
-            thrombozythes: ['10^3/µL', 'g/L'],
-            white_blood_cells: ['10^3/µL', '10^3/µL', 'g/L'],
-            hemoglobin: ['g/dL', 'g/L'],
-            hematocrit: ['%', 'L/L', 'ratio'],
-            red_blood_cells: ['10^6/μL', 'T/L'],
-            mean_corpuscular_volume: ['fl'],
-            mean_corpuscular_hemoglobin: ['pg'],
-            mean_corpuscular_hemoglobin_concentration: ['g/dL'],
-            red_cell_distribution_width: ['%'],
-            platelet_distribution_width: ['%', 'fl'],
-            mean_platelet_volume: ['fl'],
-            prothrombin_time: ['seconds'],
-            fibrinogen: ['g/L', 'mg/dL'],
-            neutrophils: ['%'],
-            lymphocytes: ['%'],
-            monocytes: ['%'],
-            eosinophils: ['%'],
-            basophils: ['%'],
-          }
+    thrombozythes: ['10^3/µL', 'g/L'],
+    white_blood_cells: ['10^3/µL', '10^3/µL', 'g/L'],
+    hemoglobin: ['g/dL', 'g/L'],
+    hematocrit: ['%', 'L/L', 'ratio'],
+    red_blood_cells: ['10^6/μL', 'T/L'],
+    mean_corpuscular_volume: ['fl'],
+    mean_corpuscular_hemoglobin: ['pg'],
+    mean_corpuscular_hemoglobin_concentration: ['g/dL'],
+    red_cell_distribution_width: ['%'],
+    platelet_distribution_width: ['%', 'fl'],
+    mean_platelet_volume: ['fl'],
+    prothrombin_time: ['seconds'],
+    fibrinogen: ['g/L', 'mg/dL'],
+    neutrophils: ['%'],
+    lymphocytes: ['%'],
+    monocytes: ['%'],
+    eosinophils: ['%'],
+    basophils: ['%']
+  }.freeze
 
   # pagination
   self.per_page = 5
@@ -92,7 +91,7 @@ class Hemigram < ApplicationRecord
   end
 
   def self.short(parameter)
-    parameter = PARAMETERS.dig(parameter.downcase.to_sym)
+    parameter = PARAMETERS[parameter.downcase.to_sym]
 
     return '' if parameter.nil?
 
@@ -106,7 +105,7 @@ class Hemigram < ApplicationRecord
   end
 
   def self.units(parameter)
-    UNITS.dig(parameter)
+    UNITS[parameter]
   end
 
   def self.search(search, user)
@@ -129,19 +128,22 @@ class Hemigram < ApplicationRecord
   def validate_only_one_entry_per_parameter_per_day
     return unless entry_already_exists_on_date?
 
-    unless persisted? && date_changed?
-      errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
-    end
+    return if persisted? && date_changed?
+
+    errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
   end
 
   def entry_already_exists_on_date?
-    results = Hemigram.where(user_id: user_id).where("DATE(date) = ?", date.to_date)
-    results.select{ |hemigram| hemigram.parameter == parameter }.any?
+    Hemigram.exists?(user_id:, parameter:, date: date.to_date)
   end
 
   def validate_date_not_in_future
-    return unless date.present? && date > Date.current
+    return unless date > Date.current
 
     errors.add(:date, "can't be in the future")
+  end
+
+  def date_present?
+    date.present?
   end
 end

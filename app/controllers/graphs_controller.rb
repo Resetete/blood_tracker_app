@@ -11,16 +11,15 @@ class GraphsController < ApplicationController
 
   def prepare_charts_data
     raw_data = user_hemigrams
-    charts_data = raw_data.group_by { |h| h.parameter }
-      .map do |parameter, group|
-        {
-          name: parameter,
-          data: group
-            .sort_by { |entry| entry.date }
-            .map { |entry| [entry.date.to_date, entry.chart_value.to_i] }
-        }
-      end.compact.flatten
-    charts_data
+    raw_data.group_by(&:parameter)
+            .map do |parameter, group|
+      {
+        name: parameter,
+        data: group
+          .sort_by(&:date)
+          .map { |entry| [entry.date.to_date, entry.chart_value.to_i] }
+      }
+    end.compact.flatten
   end
 
   def user_hemigrams
