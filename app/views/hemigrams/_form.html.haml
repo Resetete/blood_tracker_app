@@ -6,7 +6,7 @@
   = form_for @hemigram, url: form_url, method: form_method  do |f|
     = render partial: 'shared/model_errors', locals: { model: @hemigram }
     .mb-3
-      = f.select :parameter, options_for_select(Hemigram::PARAMETERS.to_a.map { |key, value| ["#{key.to_s.humanize} (#{value[:short].join(', ')})", key] }, |
+      = f.select :parameter, options_for_select(Hemigrams::ParameterMetadata::PARAMETERS.to_a.map { |key, value| ["#{key.to_s.humanize} (#{value[:short].join(', ')})", key] }, |
         selected: @hemigram.parameter || params[:parameter]),                                                              |
         { include_blank: 'Select parameter' },                                                       |
         class: 'form-select',                                                                        |

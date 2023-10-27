@@ -14,7 +14,7 @@ module Hemigrams
     def execute
       value = hemigram.value
       source_unit = hemigram.unit
-      target_unit = Hemigram::PARAMETERS.dig(hemigram.parameter.to_sym, :chart_unit)
+      target_unit = Hemigrams::ParameterMetadata::PARAMETERS.dig(hemigram.parameter.to_sym, :chart_unit)
 
       return set_chart_value_and_unit(value, source_unit) unless need_to_convert_unit?(target_unit)
 
