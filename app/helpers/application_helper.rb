@@ -22,9 +22,9 @@ module ApplicationHelper
     return unless chart_data
 
     chart_data.first[:data].map(&:second).map do |value|
-      if value > max.to_i
+      if value > max.to_f
         'orange'
-      elsif value < min.to_i
+      elsif value < min.to_f
         'orange'
       else
         'green'

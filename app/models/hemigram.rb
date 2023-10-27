@@ -128,7 +128,7 @@ class Hemigram < ApplicationRecord
   def validate_only_one_entry_per_parameter_per_day
     return unless entry_already_exists_on_date?
 
-    return if persisted? && date_changed?
+    return if persisted?
 
     errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
   end

@@ -17,7 +17,7 @@ class GraphsController < ApplicationController
         name: parameter,
         data: group
           .sort_by(&:date)
-          .map { |entry| [entry.date.to_date, entry.chart_value.to_i] }
+          .map { |entry| [entry.date.to_date, entry.chart_value.to_f] }
       }
     end.compact.flatten
   end
