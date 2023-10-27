@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_185528) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_27_195545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,17 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_185528) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "hemigram_metadata", force: :cascade do |t|
-    t.string "parameter_name"
-    t.string "abbreviations", default: [], array: true
-    t.string "chart_unit"
-    t.float "upper_limit"
-    t.float "lower_limit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["parameter_name"], name: "index_hemigram_metadata_on_parameter_name", unique: true
   end
 
   create_table "hemigrams", force: :cascade do |t|
@@ -43,6 +32,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_185528) do
     t.string "short"
     t.string "chart_unit"
     t.string "chart_value"
+  end
+
+  create_table "hemigrams_parameter_metadata", force: :cascade do |t|
+    t.string "parameter_name"
+    t.string "abbreviations", default: [], array: true
+    t.string "chart_unit"
+    t.float "upper_limit"
+    t.float "lower_limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parameter_name"], name: "index_hemigrams_parameter_metadata_on_parameter_name", unique: true
   end
 
   create_table "links", force: :cascade do |t|

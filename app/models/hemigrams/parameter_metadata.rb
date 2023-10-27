@@ -2,6 +2,8 @@
 
 module Hemigrams
   class ParameterMetadata < ApplicationRecord
+    self.table_name = 'hemigrams_parameter_metadata'
+
     validates :parameter_name, presence: true, uniqueness: true
     validates :abbreviations, presence: true
     validates :chart_unit, presence: true
