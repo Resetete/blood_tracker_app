@@ -41,17 +41,24 @@ $(document).on('turbo:load', function() {
   new Choices(selectElement, { searchEnabled: true });
 
   // Return hemigram parameter unit options for dropdown in hemigram form
+  // Change abbreviation/shorts field if parameter dropdown is filled
+  var selectedOption = $('#parameter-select').val();
+  updateUnitDropdown(selectedOption)
+
   // Change abbreviation/shorts field if parameter changes
   $('#parameter-select').on('change', function() {
     var selectedOption = $(this).val();
+    updateUnitDropdown(selectedOption)
+  });
 
+  function updateUnitDropdown(selectedOption) {
     $.ajax({
       url: '/hemigrams/get_unit_selection_dropdown_options',
       data: { 'parameter_select': selectedOption },
       dataType: 'json',
-      success: function(data) {
+      success: function (data) {
         var unitDropdown = $('#hemigram_unit');
-        unitDropdown.empty();  // Clear existing options
+        unitDropdown.empty(); // Clear existing options
         var inputAbbreviation = $('#input_abreviation');
 
         if (data.shorts == undefined || data.options == null) {
@@ -63,16 +70,16 @@ $(document).on('turbo:load', function() {
           inputAbbreviation.val(shortValue);
 
           if (data.options && data.options.length > 0) {
-            data.options.forEach(function(option) {
+            data.options.forEach(function (option) {
               unitDropdown.append(new Option(option, option));
             });
           } else {
             unitDropdown.append(new Option('Select unit', ''));
           }
         }
-      }
+      },
     });
-  });
+  }
 
   // resizes the navbar logo and brand when scrolling down 80px from top
   if (window.innerWidth >= 768){
