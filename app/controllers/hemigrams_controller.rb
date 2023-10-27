@@ -10,6 +10,7 @@ class HemigramsController < ApplicationController
     hemigrams = Hemigram.search(params[:search], current_user)
     # convert search result into an activerecord relation to allow pagination
     @hemigrams = Hemigram.where(id: hemigrams.map(&:id))
+                         .order(date: :desc)
                          .paginate(page: params[:page])
   end
 

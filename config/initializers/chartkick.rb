@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # Options doesn't seem to have any effect
 # TODO: remove
 Chartkick.options = {
-  adapter: "chartjs",
+  adapter: 'chartjs',
   options: {
     plugins: {
       annotation: {
@@ -11,7 +13,7 @@ Chartkick.options = {
             yMin: 5000,
             yMax: 5000,
             borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 2,
+            borderWidth: 2
           }
         }
       }
@@ -24,6 +26,6 @@ Chartkick.options = {
     tooltips: {
       mode: 'index',
       intersect: true
-    },
+    }
   }
 }

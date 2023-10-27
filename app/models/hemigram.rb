@@ -20,10 +20,6 @@
 # stores the user blood work data
 # parameter is the blood value name (e.g. thrombocythe)
 class Hemigram < ApplicationRecord
-  # allow adding new blood parameters and units --> new model with new, create, destroy actions
-  # unit converter (separate model? Part of a printer model? printer table holds all converted blood values)
-  # --> define your own conversions (in blood parameters), new, create, destroy
-
   # Hide attributes values when querying the model
   self.filter_attributes += %i[parameter value]
 
@@ -33,51 +29,57 @@ class Hemigram < ApplicationRecord
 
   belongs_to :user
 
+  validates :date, presence: true
   validates :parameter, presence: true
   validates :unit, presence: true
-  validates :date, presence: true
-  validate :validate_date_not_in_future
-  validate :validate_only_one_entry_per_parameter_per_day
+  validate :validate_date_not_in_future, if: :date_present?
+  validate :validate_only_one_entry_per_parameter_per_day, if: :date_present?
 
   before_save :convert_value_to_chart_unit_value
 
   scope :for_user, ->(user) { where(user_id: user.id) }
 
-  # this will be substituted when the blood parameters model is created
-  # extra table to store the units and parameter info
+  # extra table to store the units and parameter info, new model required
+  # allows to add new parameters and characteristics via admin
   PARAMETERS = { thrombozythes: { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
-                 leucozyts: { short: %w[WBC Leu], chart_unit: 'µL', upper_limit: '1000', lower_limit: '100' },
-                 hemoglobin: { short: %w[Hb Hgb], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
-                 hematocrit: { short: %w[Hct], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
-                 red_blood_cells: { short: %w[RBC erythrocytes], chart_unit: '10^6/μL', upper_limit: '1000', lower_limit: '100' },
-                 white_blood_cells: { short: %w[WBC leukocytes], chart_unit: '10^6/μL', upper_limit: '1000', lower_limit: '100' },
-                 mean_corpuscular_volume: { short: %w[MCV], chart_unit: 'fl', upper_limit: '1000', lower_limit: '100' },
-                 mean_corpuscular_hemoglobin: { short: %w[MCH], chart_unit: 'pg', upper_limit: '1000', lower_limit: '100' },
-                 mean_corpuscular_hemoglobin_concentration: { short: %w[MCHC], chart_unit: 'g/dl', upper_limit: '1000', lower_limit: '100' },
-                 red_cell_distribution_width: { short: %w[RDW], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
-                 platelet_distribution_width: { short: %w[PDW], chart_unit: '%', upper_limit: '1000', lower_limit: '100' },
-                 mean_platelet_volume: { short: %w[MPV], chart_unit: 'fl', upper_limit: '1000', lower_limit: '100' },
-                 prothrombin_time: { short: %w[PT], chart_unit: 'seconds', upper_limit: '1000', lower_limit: '100' },
-                 fibrinogen: { short: %w[], chart_unit: 'g/L', upper_limit: '1000', lower_limit: '100' },
-                }
-
+                 hemoglobin: { short: %w[Hb Hgb], chart_unit: 'g/dL', upper_limit: '18', lower_limit: '12' },
+                 hematocrit: { short: %w[Hct], chart_unit: '%', upper_limit: '52', lower_limit: '37' },
+                 red_blood_cells: { short: %w[RBC erythrocytes], chart_unit: '10^6/μL', upper_limit: '6', lower_limit: '4.5' },
+                 white_blood_cells: { short: %w[WBC leukocytes], chart_unit: '10^6/μL', upper_limit: '11', lower_limit: '4' },
+                 mean_corpuscular_volume: { short: %w[MCV], chart_unit: 'fl', upper_limit: '100', lower_limit: '80' },
+                 mean_corpuscular_hemoglobin: { short: %w[MCH], chart_unit: 'pg', upper_limit: '34', lower_limit: '27' },
+                 mean_corpuscular_hemoglobin_concentration: { short: %w[MCHC], chart_unit: 'g/dl', upper_limit: '36', lower_limit: '32' },
+                 red_cell_distribution_width: { short: %w[RDW], chart_unit: '%', upper_limit: '16', lower_limit: '11' },
+                 platelet_distribution_width: { short: %w[PDW], chart_unit: 'fl', upper_limit: '20', lower_limit: '9' },
+                 mean_platelet_volume: { short: %w[MPV], chart_unit: 'fl', upper_limit: '13', lower_limit: '7' },
+                 prothrombin_time: { short: %w[PT], chart_unit: 'seconds', upper_limit: '15', lower_limit: '11' },
+                 fibrinogen: { short: %w[-], chart_unit: 'mg/dL', upper_limit: '400', lower_limit: '200' },
+                 neutrophils: { short: %w[NEUT Neutro], chart_unit: '%', upper_limit: '70', lower_limit: '40' },
+                 lymphocytes: { short: %w[Lymph], chart_unit: '%', upper_limit: '40', lower_limit: '20' },
+                 monocytes: { short: %w[Mono], chart_unit: '%', upper_limit: '10', lower_limit: '2' },
+                 eosinophils: { short: %w[EO], chart_unit: '%', upper_limit: '5', lower_limit: '1' },
+                 basophils: { short: %w[BASO], chart_unit: '%', upper_limit: '2', lower_limit: '0.5' } }.freeze
 
   UNITS = {
-            thrombozythes: ['10^3/µL', 'g/L'],
-            leucozyts: ['10^3/µL', 'g/L'],
-            hemoglobin: ['g/dl', 'g/L'],
-            hematocrit: ['%', 'L/L', 'ratio'],
-            red_blood_cells: ['10^6/μL', 'T/L'],
-            white_blood_cells: ['10^3/μL', 'g/L'],
-            mean_corpuscular_volume: ['fl'],
-            mean_corpuscular_hemoglobin: ['pg'],
-            mean_corpuscular_hemoglobin_concentration: ['g/dl'],
-            red_cell_distribution_width: ['%'],
-            platelet_distribution_width: ['%'],
-            mean_platelet_volume: ['fl'],
-            prothrombin_time: ['seconds'],
-            fibrinogen: ['g/L'],
-          }
+    thrombozythes: ['10^3/µL', 'g/L'],
+    white_blood_cells: ['10^3/µL', '10^3/µL', 'g/L'],
+    hemoglobin: ['g/dL', 'g/L'],
+    hematocrit: ['%', 'L/L', 'ratio'],
+    red_blood_cells: ['10^6/μL', 'T/L'],
+    mean_corpuscular_volume: ['fl'],
+    mean_corpuscular_hemoglobin: ['pg'],
+    mean_corpuscular_hemoglobin_concentration: ['g/dL'],
+    red_cell_distribution_width: ['%'],
+    platelet_distribution_width: ['%', 'fl'],
+    mean_platelet_volume: ['fl'],
+    prothrombin_time: ['seconds'],
+    fibrinogen: ['g/L', 'mg/dL'],
+    neutrophils: ['%'],
+    lymphocytes: ['%'],
+    monocytes: ['%'],
+    eosinophils: ['%'],
+    basophils: ['%']
+  }.freeze
 
   # pagination
   self.per_page = 5
@@ -89,7 +91,7 @@ class Hemigram < ApplicationRecord
   end
 
   def self.short(parameter)
-    parameter = PARAMETERS.dig(parameter.downcase.to_sym)
+    parameter = PARAMETERS[parameter.downcase.to_sym]
 
     return '' if parameter.nil?
 
@@ -103,7 +105,7 @@ class Hemigram < ApplicationRecord
   end
 
   def self.units(parameter)
-    UNITS.dig(parameter)
+    UNITS[parameter]
   end
 
   def self.search(search, user)
@@ -126,21 +128,22 @@ class Hemigram < ApplicationRecord
   def validate_only_one_entry_per_parameter_per_day
     return unless entry_already_exists_on_date?
 
-    if persisted? && date_changed?
-      errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
-    end
+    return if persisted?
+
+    errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
   end
 
   def entry_already_exists_on_date?
-    Hemigram.where(user_id: user_id)
-            .where("DATE(date) = ?", date.to_date)
-            .select(parameter: parameter)
-            .exists?
+    Hemigram.exists?(user_id:, parameter:, date: date.to_date)
   end
 
   def validate_date_not_in_future
-    return unless date.present? && date > Date.current
+    return unless date > Date.current
 
     errors.add(:date, "can't be in the future")
+  end
+
+  def date_present?
+    date.present?
   end
 end

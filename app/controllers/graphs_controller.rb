@@ -4,26 +4,22 @@
 class GraphsController < ApplicationController
   def index
     @user_parameters = user_hemigrams.pluck(:parameter).uniq
-  end
-
-  def parameter_values_per_day
-    raw_data = user_parameter_datasets
-    chart_data = raw_data.group_by{ |h| h.parameter }
-                         .map do |parameter, group|
-                            {
-                              name: parameter,
-                              data: group
-                                      .sort_by { |entry| entry.date }
-                                      .map { |entry| [entry.date.to_date, entry.chart_value.to_i] }
-                            }
-                         end.compact.flatten
-    render json: chart_data
+    @charts_data = prepare_charts_data
   end
 
   private
 
-  def user_parameter_datasets
-    user_hemigrams.select{ |h| h.parameter.capitalize == params[:parameter] }
+  def prepare_charts_data
+    raw_data = user_hemigrams
+    raw_data.group_by(&:parameter)
+            .map do |parameter, group|
+      {
+        name: parameter,
+        data: group
+          .sort_by(&:date)
+          .map { |entry| [entry.date.to_date, entry.chart_value.to_f] }
+      }
+    end.compact.flatten
   end
 
   def user_hemigrams
