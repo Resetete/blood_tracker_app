@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :view_users, controller: 'users', only: [:show]
-  resources :hemigrams
+  resources :hemigrams, param: :parameter
 
   namespace :admin do
     resources :blood_cell_descriptions

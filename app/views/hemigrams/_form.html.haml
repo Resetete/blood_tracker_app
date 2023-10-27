@@ -3,11 +3,11 @@
 -# dependent dropdowns: blood parameter - abbreviation
 -# datepicker with nicer styles
 .mb-5
-  = form_for @hemigram do |f|
+  = form_for @hemigram, url: new_hemigram_path(parameter: nil) do |f|
     = render partial: 'shared/model_errors', locals: { model: @hemigram }
     .mb-3
       = f.select :parameter, options_for_select(Hemigram::PARAMETERS.to_a.map { |key, value| ["#{key.to_s.humanize} (#{value[:short].join(', ')})", key] }, |
-        selected: @hemigram.parameter),                                                              |
+        selected: @hemigram.parameter || params[:parameter]),                                                              |
         { include_blank: 'Select parameter' },                                                       |
         class: 'form-select',                                                                        |
         id: 'parameter-select',                                                                      |

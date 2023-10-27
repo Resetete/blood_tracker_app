@@ -10,6 +10,8 @@
           - max = Hemigram::PARAMETERS.dig(parameter.to_sym, :upper_limit)
           - chart_data = @charts_data.select{|h| h[:name] == parameter.downcase}
 
+          = link_to('Add data', new_hemigram_path(parameter:), class: 'btn btn-outline-dark')
+
           -# graph_annotations are defined in a view helper
           -# graph_datasets view helper, dataset: { pointBackgroundColor: }
           = line_chart(chart_data,                                                  |
@@ -19,6 +21,8 @@
               decimal: '.',                                                         |
               zeros: true,                                                          |
               ytitle: chart_unit,                                                   |
+              options: {                                                            |
+              },                                                                    |
               dataset: {                                                            |
                 pointBackgroundColor: point_background_color(chart_data, min, max), |
                 pointBorderWidth: 0,                                                |
