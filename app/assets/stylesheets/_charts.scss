@@ -9,3 +9,10 @@
   padding: 1em;
 }
 
+.chart-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+

@@ -1,15 +1,4 @@
 .accordion.accordion-flush#accordion-blood-cells
-  -# .accordion-item
-  -#   %h2#flush-headingTwo.accordion-header
-  -#     %button.accordion-button.collapsed{"aria-controls" => "flush-collapseTwo", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseTwo", "data-bs-toggle" => "collapse", type: "button"}
-  -#       Thrombocythes
-  -#   #flush-collapseTwo.accordion-collapse.collapse{"aria-labelledby" => "flush-headingTwo", "data-bs-parent" => "#accordion-blood-cells"}
-  -#     .accordion-body
-  -#       = sanitize(@thrombocytes_article.summary)
-  -#       = link_to('link', sanitize(@thrombocytes_article.url))
-  -#       %p
-  -#         source:
-  -#         = sanitize(@thrombocytes_article.source)
   - @blood_cell_descriptions.each_with_index do |description, idx|
     .accordion-item
       %h2{id: "flush-heading#{idx}.accordion-header"}
@@ -25,7 +14,6 @@
               %ul
                 - sources.each do |source|
                   %li= link_to source.name, source.url
-
           - text_generators = description.links.select(&:text_generator)
           - if text_generators.any?
             Note: text generated with

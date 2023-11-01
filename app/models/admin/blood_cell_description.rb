@@ -9,6 +9,7 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  parameter   :string
 #
 
 # this allows storing and editing of the description of blood cells
