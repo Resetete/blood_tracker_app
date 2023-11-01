@@ -30,8 +30,4 @@ class PagesController < ApplicationController
       render news_path
     end
   end
-
-  def glossary
-    @glossary_entries = Admin::BloodCellDescription.all.sort_by(&:title)
-  end
 end

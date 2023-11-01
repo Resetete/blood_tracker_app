@@ -13,7 +13,7 @@
               Sources of information
               %ul
                 - sources.each do |source|
-                  %li= link_to source.name, source.url
+                  %li= source.url.blank? ? source.name : link_to(source.name, source.url)
           - text_generators = description.links.select(&:text_generator)
           - if text_generators.any?
             Note: text generated with

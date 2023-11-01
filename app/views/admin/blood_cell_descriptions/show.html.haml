@@ -13,7 +13,9 @@
         Sources:
         %ul
         - @blood_cell_description.links.each do |link|
-          %li= "#{link.name}, #{link.url}"
+          %li
+            = link.name
+            = link_to(link.url)
       %p
         Text generation AI tool:
         %ul

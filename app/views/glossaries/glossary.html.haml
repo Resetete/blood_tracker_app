@@ -10,3 +10,10 @@
             = entry.title.upcase
           .col-8.glossary-content
             = entry.description.html_safe
+            %p
+              Sources:
+              %ul
+                - entry.links.each do |link|
+                  %li
+                    = link.name
+                    = link_to(link.url)
