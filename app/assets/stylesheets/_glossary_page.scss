@@ -2,7 +2,6 @@
 // thebloodtracker.com/glossary
 
 .glossary-section {
-  background-color: white;
   height: 100%;
   width: 100vw;
 }
@@ -10,12 +9,18 @@
 .glossary-entry {
   display: flex;
   flex-direction: row;
-  align-items: space-between;
-  justify-content: flex-start;
+  align-content: space-between;
+  justify-items: flex-start;
+  background-color: white;
+  padding-top: 2em;
 }
 
 .glossary-header {
   font-family: 'Montserrat', sans-serif;
   font-size: larger;
   text-align: right;
+}
+
+.glossary-content {
+  padding-left: 2em;
 }

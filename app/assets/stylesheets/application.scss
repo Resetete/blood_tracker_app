@@ -199,3 +199,11 @@ hr.separator-element {
     margin-right: 1em; }
   .custom_pagination .next_page {
     margin-left: 1em; }
+
+// text-highlighting
+mark {
+  background-color: $rosa;
+  color: $red;
+  padding: 0.2em 0.3em;
+  font-weight: bold;
+}

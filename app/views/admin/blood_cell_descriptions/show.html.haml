@@ -2,7 +2,10 @@
   .card
     .card-body
       %h5.card-title= @blood_cell_description.title
-      %p.card-text= @blood_cell_description.description
+      %p.card-text= @blood_cell_description.description.html_safe
+      %p
+        parameter name:
+        = @blood_cell_description.parameter.blank? ? 'Unspecified' : @blood_cell_description.parameter
       %p
         created at:
         = @blood_cell_description.created_at

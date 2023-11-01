@@ -10,7 +10,7 @@
         %p.card-text= description.description.html_safe
         %p
           parameter name:
-          = description.parameter ? description.parameter : 'Unspecified'
+          = description.parameter.blank? ? 'Unspecified' : description.parameter
         %p
           created at:
           = description.created_at
@@ -21,9 +21,7 @@
           Sources:
           %ul
           - description.links.each do |link|
-            %li
-              = link.name
-              = link_to(link.url)
+            %li= link.url.blank? ? link.name : link_to(link.name, link.url)
         %p
           Text generation AI tool:
           %ul

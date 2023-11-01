@@ -7,13 +7,11 @@
       .section{id: "#{entry.parameter}-glossary"}
         .row.glossary-entry
           .col-3.glossary-header
-            = entry.title.upcase
-          .col-8.glossary-content
+            %mark= entry.title.upcase
+          .col-9.glossary-content
             = entry.description.html_safe
             %p
               Sources:
               %ul
                 - entry.links.each do |link|
-                  %li
-                    = link.name
-                    = link_to(link.url)
+                  %li= link.url.blank? ? link.name : link_to(link.name, link.url)
