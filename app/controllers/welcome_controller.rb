@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
         @error_message = ErrorHandling::LOOK_UP_ERROR_MESSAGE
       end
     end
-    @blood_cell_descriptions = Admin::BloodCellDescription.on_landing_page.sort_by(&:created_at)
+    @blood_cell_descriptions = Admin::BloodCellDescription.on_landing_page.sort_by(&:title)
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news
     everything = Api::FetchNewsService.new(news_api_client).everything_news
     @all_news = (top_headline_news + everything).uniq(&:title).first(9)
