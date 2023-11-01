@@ -63,6 +63,7 @@ module Admin
       params.require(:admin_blood_cell_description).permit(
         :title,
         :parameter,
+        :glossary_only,
         :description,
         links_attributes: %i[id name url text_generator _destroy]
       )

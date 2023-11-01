@@ -26,6 +26,7 @@ if Admin::BloodCellDescription.find_by(title: 'Blood plasma')
 else
   plasma = Admin::BloodCellDescription.new(
     title: 'Blood plasma',
+    glossary_only: false,
     description: "<p>Blood plasma is the yellowish fluid component of blood that constitutes approximately 55% of the total blood volume. It is the liquid in which blood cells, platelets, and various substances are suspended. Plasma is crucial for the transportation of nutrients, hormones, antibodies, waste products, and other important components throughout the body.</p>
     <p>Blood plasma consists mainly of water, electrolytes (such as sodium, potassium, and chloride), proteins (including albumin, globulins, and fibrinogen), hormones, enzymes, antibodies, nutrients, and waste products. It serves several crucial functions:</p>
     <ul>
@@ -63,6 +64,7 @@ else
   leukocytes = Admin::BloodCellDescription.new(
     title: 'Leukocytes (White blood cells)',
     parameter: 'white_blood_cells',
+    glossary_only: false,
     description: "<p>Leukocytes, commonly known as white blood cells (WBCs), are a crucial component of the immune system and are essential for the body's defense against infections and diseases. They are a diverse group of cells that play various roles in recognizing, attacking, and eliminating pathogens, foreign substances, and abnormal cells.</p>
     <p>White blood cells are produced in the bone marrow and circulate in the bloodstream and lymphatic system. There are different types of leukocytes, each with its unique functions and characteristics, including:</p>
     <ul>
@@ -103,6 +105,7 @@ else
   hemoglobin = Admin::BloodCellDescription.new(
     title: 'Hemoglobin (Hb)',
     parameter: 'hemoglobin',
+    glossary_only: false,
     description: "<p>Hemoglobin is a protein found in red blood cells (erythrocytes) that is responsible for transporting oxygen from the lungs to various tissues and organs in the body. It is an essential component of the circulatory system and plays a crucial role in maintaining overall health and vitality.</p>
     <p>Hemoglobin molecules are composed of four protein chains called globins, each of which is bound to a heme group. The heme group contains iron, which enables hemoglobin to bind and carry oxygen molecules. When oxygen-rich blood reaches the capillaries in the tissues, hemoglobin releases the oxygen, allowing it to be used by cells for various metabolic processes.</p>
     <p>The importance of hemoglobin lies in its role in oxygen transport and delivery to body tissues. Some key points about its significance include:</p>
@@ -135,6 +138,7 @@ else
   hematocrit = Admin::BloodCellDescription.new(
     title: 'Hematocrit (Hct)',
     parameter: 'hematocrit',
+    glossary_only: false,
     description: "<p>Hematocrit is a measure of the volume of red blood cells (RBCs) in relation to the total volume of blood. It is expressed as a percentage and represents the proportion of blood occupied by RBCs.</p>
     <p>Hematocrit is determined by separating the cellular components (primarily RBCs) from the liquid component (plasma) of blood. It is obtained by centrifuging a blood sample and measuring the height of the RBC layer compared to the total height of the blood sample.</p>
     <p>Hematocrit is important for several reasons:</p>
@@ -167,6 +171,7 @@ if Admin::BloodCellDescription.find_by(title: 'Complete blood count (CBC)')
 else
   blood_count = Admin::BloodCellDescription.new(
     title: 'Complete blood count (CBC)',
+    glossary_only: false,
     description: "<p>A complete blood count (CBC) is a common laboratory test that provides valuable information about the cellular components of blood. It involves the measurement of various blood cell types and other parameters, offering insights into overall health and potential underlying conditions.</p>
     <p>A CBC typically includes the following measurements:</p>
     <ul>
@@ -206,6 +211,7 @@ if Admin::BloodCellDescription.find_by(title: 'Coagulation')
 else
   coagulation = Admin::BloodCellDescription.new(
     title: 'Coagulation',
+    glossary_only: false,
     description: "<p>Blood coagulation, also known as blood clotting or hemostasis, is a complex physiological process that plays a vital role in preventing excessive bleeding and maintaining the integrity of the circulatory system. It involves a series of well-coordinated steps leading to the formation of a clot at the site of vascular injury.</p>
     <p>When a blood vessel is damaged, the process of coagulation is initiated through two main pathways: the intrinsic pathway and the extrinsic pathway. These pathways involve the activation of specific factors and the conversion of proenzymes into enzymes, ultimately leading to the formation of a stable blood clot.</p>
     <p>Blood coagulation is important for several reasons:</p>
@@ -238,6 +244,7 @@ if Admin::BloodCellDescription.find_by(title: 'Anticoagulants')
 else
   anticoagulants = Admin::BloodCellDescription.new(
     title: 'Anticoagulants',
+    glossary_only: false,
     description: "<p>Blood anticoagulants are substances or medications that prevent or inhibit blood clot formation, also known as coagulation. They play a crucial role in maintaining proper blood flow and preventing the formation of unwanted blood clots. Anticoagulants are used in various clinical settings to manage and prevent conditions associated with abnormal clotting.</p>
     <p>Anticoagulants work through different mechanisms to interfere with the coagulation process. They may target specific factors or enzymes involved in clot formation or inhibit platelet aggregation, ultimately preventing the formation of stable blood clots.</p>
     <p>The importance of blood anticoagulants includes:</p>
@@ -270,6 +277,7 @@ if Admin::BloodCellDescription.find_by(title: 'Blood types')
 else
   blood_types = Admin::BloodCellDescription.new(
     title: 'Blood types',
+    glossary_only: false,
     description: "<p>Blood types refer to the classification of blood based on the presence or absence of specific antigens on the surface of red blood cells. The most well-known blood typing system is the ABO system, which categorizes blood into four major types: A, B, AB, and O. Additionally, the Rh factor (positive or negative) is another crucial component of blood typing.</p>
     <p>Blood types are determined by inherited genetic traits. The presence or absence of specific antigens on red blood cells leads to the categorization of blood types. The ABO system is based on the presence or absence of A and B antigens, while the Rh system focuses on the presence or absence of the Rh antigen.</p>
     <p>Blood type is important for several reasons:</p>
@@ -304,6 +312,7 @@ else
   erythroids = Admin::BloodCellDescription.new(
     title: 'Erythroid cells',
     parameter: 'red_blood_cells',
+    glossary_only: false,
     description: "<p>Erythroid cells, also known as red blood cells (RBCs), are specialized cells in the bloodstream responsible for transporting oxygen to tissues and organs throughout the body. In blood work, erythroid cells are often abbreviated as RBC, and their unit of measurement is typically reported as the number of cells per microliter (10^6/μL) or as a concentration in grams per deciliter (g/dL).</p>
     <p>The normal range for erythroid cell counts and hemoglobin levels in adults can vary slightly, but generally, the reference ranges are:</p>
     <ul>
@@ -357,6 +366,7 @@ else
   lymphocytes = Admin::BloodCellDescription.new(
     title: 'Lymphocytes',
     parameter: 'lymphocytes',
+    glossary_only: false,
     description: "<p>Lymphocytes are a type of white blood cell that plays a crucial role in the immune system's defense against infections and diseases. They are abbreviated as LY or LYMPH in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
     <p>In a healthy individual, lymphocytes make up a significant proportion of the total white blood cell count. The normal range for lymphocytes is typically between 20% and 40% of the total white blood cell count, or an absolute count of 1,000 to 4,000 lymphocytes per microliter.</p>
     <p>Low lymphocyte counts, known as lymphocytopenia, can be caused by various factors, including:</p>
@@ -406,6 +416,7 @@ else
   monocytes = Admin::BloodCellDescription.new(
     title: 'Monocytes',
     parameter: 'monocytes',
+    glossary_only: false,
     description: "Monocytes are a type of white blood cell that plays a crucial role in the body's immune system. They are abbreviated as \"MONO\" in blood work and measured in percentages. Monocytes are produced in the bone marrow and released into the bloodstream, where they can travel to different tissues and organs to help fight off infections and foreign substances.\n\nThe normal range for monocytes is between 2% to 10% of the total white blood cell count. A low monocyte count, called monocytopenia, can be caused by a variety of factors such as viral infections, autoimmune disorders, bone marrow disorders, or medications such as chemotherapy, corticosteroids, and immunosuppressive drugs. High monocyte counts, called monocytosis, can be caused by infections, inflammation, and certain types of cancer such as leukemia.\n\nMonocyte levels can be measured through a complete blood count (CBC) test, which is a standard test used to evaluate overall health and detect a wide range of medical conditions.\n\nCertain medications can cause low or high monocyte values. Corticosteroids can cause monocytopenia, while some immunosuppressive drugs can cause monocytosis. It is important to discuss any medications you are taking with your healthcare provider to understand their potential impact on your monocyte count."
   )
   monocytes.links.build(
@@ -439,6 +450,7 @@ else
   thrombocytes = Admin::BloodCellDescription.new(
     title: 'Platelets',
     parameter: 'thrombozythes',
+    glossary_only: false,
     description: "<p>Thrombocytes, also referred to as platelets, are small, irregularly-shaped blood cells that play a crucial role in the process of blood clotting, known as hemostasis.
     In the context of blood work, thrombocytes are commonly abbreviated as PLT, and their unit of measurement is typically reported as platelets per microliter of blood (10^9/L or thousand/μL).
     The normal range for platelet counts in a healthy individual typically falls between 150,000 and 450,000 platelets per microliter of blood. Deviations from this range may indicate certain medical conditions or factors that impact platelet production, survival, or consumption.
@@ -500,6 +512,7 @@ else
   neutrophils = Admin::BloodCellDescription.new(
     title: 'Neutrophil cells',
     parameter: 'neutrophils',
+    glossary_only: false,
     description: "<p>Neutrophil cells, often referred to as neutrophils, are a type of white blood cell that plays a critical role in the immune system's defense against bacterial and fungal infections. Neutrophils are abbreviated as NEU or NEUT in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
     <p>In a healthy individual, neutrophils make up the majority of the total white blood cell count and are the most abundant type of white blood cell. The normal range for neutrophil counts is typically between 40% and 75% of the total white blood cell count or an absolute count of 2,000 to 7,500 neutrophils per microliter.</p>
     <p>Low neutrophil counts, known as neutropenia, can be caused by various factors, including:</p>
@@ -548,6 +561,7 @@ else
   basophils = Admin::BloodCellDescription.new(
     title: 'Basophil cells',
     parameter: 'basophils',
+    glossary_only: false,
     description: "<p>Basophils are a type of white blood cell involved in the immune response, specifically in allergic reactions and defense against parasites. In blood work, basophils are abbreviated as BASO or BAS in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
     <p>In a healthy individual, basophils constitute a small fraction of the total white blood cell count, usually ranging from 0.5% to 1% of the total white blood cells.</p>
     <p>Low basophil values, known as basopenia, are not typically considered clinically significant. They are generally not associated with specific health conditions and are usually inconsequential.</p>
@@ -586,6 +600,7 @@ else
   eosinophils = Admin::BloodCellDescription.new(
     title: 'Eosinophil cells',
     parameter: 'eosinophils',
+    glossary_only: false,
     description: "<p>Eosinophils are a type of white blood cell involved in the immune response against parasites and in allergic reactions. In blood work, eosinophils are often abbreviated as EOS or EO in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
     <p>In a healthy individual, eosinophils constitute a small fraction of the total white blood cell count, usually ranging from 1% to 4% of the total white blood cells.</p>
     <p>Low eosinophil values, known as eosinopenia, are generally not considered significant and are not associated with specific health conditions.</p>

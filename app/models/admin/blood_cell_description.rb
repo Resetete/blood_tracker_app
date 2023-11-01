@@ -18,5 +18,8 @@ module Admin
   class BloodCellDescription < ApplicationRecord
     has_many :links, dependent: :destroy
     accepts_nested_attributes_for :links, allow_destroy: true, reject_if: :all_blank
+
+    scope :glossary_only, -> { where(glossary_only: true) }
+    scope :on_landing_page, -> { where(glossary_only: false) }
   end
 end
