@@ -7,6 +7,9 @@
       .mb-3
         = f.label :description, class: 'form-label'
         = f.text_area :description, class: 'form-control', required: true
+      .mb-3
+        = f.label :parameter, 'Blood parameter', class: 'form-label'
+        = f.select :parameter, options_for_select(Hemigrams::ParameterMetadata.all.pluck(:parameter_name).sort), class: 'form-select'
 
       -# create the related source links
       .links

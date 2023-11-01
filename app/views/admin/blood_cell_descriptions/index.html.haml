@@ -7,7 +7,10 @@
     .card.mb-3
       .card-body
         %h5.card-title= description.title
-        %p.card-text= description.description
+        %p.card-text= description.description.html_safe
+        %p
+          parameter name:
+          = description.parameter ? description.parameter : 'Unspecified'
         %p
           created at:
           = description.created_at

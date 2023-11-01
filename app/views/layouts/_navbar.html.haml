@@ -25,10 +25,9 @@
             %li.nav-item.dropdown
               = link_to 'Tracker', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownMenuLink', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
               %ul.dropdown-menu-end.dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-                %li
-                  = link_to 'Data', hemigrams_path, class: 'dropdown-item'
-                %li
-                  = link_to 'Graphs', graphs_path, class: 'dropdown-item'
+                %li= link_to 'Data', hemigrams_path, class: 'dropdown-item'
+                %li= link_to 'Graphs', graphs_path, class: 'dropdown-item'
+                %li= link_to 'Glossary', glossary_path, class: 'dropdown-item'
           -# Admin user area
           - if user_signed_in? && current_user.admin?
             %li.nav-item.dropdown

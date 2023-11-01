@@ -62,6 +62,7 @@ if Admin::BloodCellDescription.find_by(title: 'Leukocytes (White blood cells)')
 else
   leukocytes = Admin::BloodCellDescription.new(
     title: 'Leukocytes (White blood cells)',
+    parameter: 'white_blood_cells',
     description: "<p>Leukocytes, commonly known as white blood cells (WBCs), are a crucial component of the immune system and are essential for the body's defense against infections and diseases. They are a diverse group of cells that play various roles in recognizing, attacking, and eliminating pathogens, foreign substances, and abnormal cells.</p>
     <p>White blood cells are produced in the bone marrow and circulate in the bloodstream and lymphatic system. There are different types of leukocytes, each with its unique functions and characteristics, including:</p>
     <ul>
@@ -101,6 +102,7 @@ if Admin::BloodCellDescription.find_by(title: 'Hemoglobin (Hb)')
 else
   hemoglobin = Admin::BloodCellDescription.new(
     title: 'Hemoglobin (Hb)',
+    parameter: 'hemoglobin',
     description: "<p>Hemoglobin is a protein found in red blood cells (erythrocytes) that is responsible for transporting oxygen from the lungs to various tissues and organs in the body. It is an essential component of the circulatory system and plays a crucial role in maintaining overall health and vitality.</p>
     <p>Hemoglobin molecules are composed of four protein chains called globins, each of which is bound to a heme group. The heme group contains iron, which enables hemoglobin to bind and carry oxygen molecules. When oxygen-rich blood reaches the capillaries in the tissues, hemoglobin releases the oxygen, allowing it to be used by cells for various metabolic processes.</p>
     <p>The importance of hemoglobin lies in its role in oxygen transport and delivery to body tissues. Some key points about its significance include:</p>
@@ -132,6 +134,7 @@ if Admin::BloodCellDescription.find_by(title: 'Hematocrit (Hct)')
 else
   hematocrit = Admin::BloodCellDescription.new(
     title: 'Hematocrit (Hct)',
+    parameter: 'hematocrit',
     description: "<p>Hematocrit is a measure of the volume of red blood cells (RBCs) in relation to the total volume of blood. It is expressed as a percentage and represents the proportion of blood occupied by RBCs.</p>
     <p>Hematocrit is determined by separating the cellular components (primarily RBCs) from the liquid component (plasma) of blood. It is obtained by centrifuging a blood sample and measuring the height of the RBC layer compared to the total height of the blood sample.</p>
     <p>Hematocrit is important for several reasons:</p>
@@ -300,6 +303,7 @@ if Admin::BloodCellDescription.find_by(title: 'Erythroid cells')
 else
   erythroids = Admin::BloodCellDescription.new(
     title: 'Erythroid cells',
+    parameter: 'red_blood_cells',
     description: "<p>Erythroid cells, also known as red blood cells (RBCs), are specialized cells in the bloodstream responsible for transporting oxygen to tissues and organs throughout the body. In blood work, erythroid cells are often abbreviated as RBC, and their unit of measurement is typically reported as the number of cells per microliter (10^6/μL) or as a concentration in grams per deciliter (g/dL).</p>
     <p>The normal range for erythroid cell counts and hemoglobin levels in adults can vary slightly, but generally, the reference ranges are:</p>
     <ul>
@@ -352,6 +356,7 @@ if Admin::BloodCellDescription.find_by(title: 'Lymphocytes')
 else
   lymphocytes = Admin::BloodCellDescription.new(
     title: 'Lymphocytes',
+    parameter: 'lymphocytes',
     description: "<p>Lymphocytes are a type of white blood cell that plays a crucial role in the immune system's defense against infections and diseases. They are abbreviated as LY or LYMPH in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
     <p>In a healthy individual, lymphocytes make up a significant proportion of the total white blood cell count. The normal range for lymphocytes is typically between 20% and 40% of the total white blood cell count, or an absolute count of 1,000 to 4,000 lymphocytes per microliter.</p>
     <p>Low lymphocyte counts, known as lymphocytopenia, can be caused by various factors, including:</p>
@@ -400,6 +405,7 @@ if Admin::BloodCellDescription.find_by(title: 'Monocytes')
 else
   monocytes = Admin::BloodCellDescription.new(
     title: 'Monocytes',
+    parameter: 'monocytes',
     description: "Monocytes are a type of white blood cell that plays a crucial role in the body's immune system. They are abbreviated as \"MONO\" in blood work and measured in percentages. Monocytes are produced in the bone marrow and released into the bloodstream, where they can travel to different tissues and organs to help fight off infections and foreign substances.\n\nThe normal range for monocytes is between 2% to 10% of the total white blood cell count. A low monocyte count, called monocytopenia, can be caused by a variety of factors such as viral infections, autoimmune disorders, bone marrow disorders, or medications such as chemotherapy, corticosteroids, and immunosuppressive drugs. High monocyte counts, called monocytosis, can be caused by infections, inflammation, and certain types of cancer such as leukemia.\n\nMonocyte levels can be measured through a complete blood count (CBC) test, which is a standard test used to evaluate overall health and detect a wide range of medical conditions.\n\nCertain medications can cause low or high monocyte values. Corticosteroids can cause monocytopenia, while some immunosuppressive drugs can cause monocytosis. It is important to discuss any medications you are taking with your healthcare provider to understand their potential impact on your monocyte count."
   )
   monocytes.links.build(
@@ -432,6 +438,7 @@ if Admin::BloodCellDescription.find_by(title: 'Platelets')
 else
   thrombocytes = Admin::BloodCellDescription.new(
     title: 'Platelets',
+    parameter: 'thrombozythes',
     description: "<p>Thrombocytes, also referred to as platelets, are small, irregularly-shaped blood cells that play a crucial role in the process of blood clotting, known as hemostasis.
     In the context of blood work, thrombocytes are commonly abbreviated as PLT, and their unit of measurement is typically reported as platelets per microliter of blood (10^9/L or thousand/μL).
     The normal range for platelet counts in a healthy individual typically falls between 150,000 and 450,000 platelets per microliter of blood. Deviations from this range may indicate certain medical conditions or factors that impact platelet production, survival, or consumption.
@@ -492,6 +499,7 @@ if Admin::BloodCellDescription.find_by(title: 'Neutrophil cells')
 else
   neutrophils = Admin::BloodCellDescription.new(
     title: 'Neutrophil cells',
+    parameter: 'neutrophils',
     description: "<p>Neutrophil cells, often referred to as neutrophils, are a type of white blood cell that plays a critical role in the immune system's defense against bacterial and fungal infections. Neutrophils are abbreviated as NEU or NEUT in blood work, and their unit of measurement is typically reported as a percentage of the total white blood cell count or as an absolute count in cells per microliter (10^9/L).</p>
     <p>In a healthy individual, neutrophils make up the majority of the total white blood cell count and are the most abundant type of white blood cell. The normal range for neutrophil counts is typically between 40% and 75% of the total white blood cell count or an absolute count of 2,000 to 7,500 neutrophils per microliter.</p>
     <p>Low neutrophil counts, known as neutropenia, can be caused by various factors, including:</p>
@@ -539,6 +547,7 @@ if Admin::BloodCellDescription.find_by(title: 'Basophil cells')
 else
   basophils = Admin::BloodCellDescription.new(
     title: 'Basophil cells',
+    parameter: 'basophils',
     description: "<p>Basophils are a type of white blood cell involved in the immune response, specifically in allergic reactions and defense against parasites. In blood work, basophils are abbreviated as BASO or BAS in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
     <p>In a healthy individual, basophils constitute a small fraction of the total white blood cell count, usually ranging from 0.5% to 1% of the total white blood cells.</p>
     <p>Low basophil values, known as basopenia, are not typically considered clinically significant. They are generally not associated with specific health conditions and are usually inconsequential.</p>
@@ -576,6 +585,7 @@ if Admin::BloodCellDescription.find_by(title: 'Eosinophil cells')
 else
   eosinophils = Admin::BloodCellDescription.new(
     title: 'Eosinophil cells',
+    parameter: 'eosinophils',
     description: "<p>Eosinophils are a type of white blood cell involved in the immune response against parasites and in allergic reactions. In blood work, eosinophils are often abbreviated as EOS or EO in blood count reports, and their unit of measurement is typically reported as a percentage of the total white blood cell count.</p>
     <p>In a healthy individual, eosinophils constitute a small fraction of the total white blood cell count, usually ranging from 1% to 4% of the total white blood cells.</p>
     <p>Low eosinophil values, known as eosinopenia, are generally not considered significant and are not associated with specific health conditions.</p>

@@ -32,6 +32,6 @@ class PagesController < ApplicationController
   end
 
   def glossary
-    @glossary_entries = Admin::BloodCellDescriptions.all.sort_by(:title)
+    @glossary_entries = Admin::BloodCellDescription.all.sort_by(&:title)
   end
 end

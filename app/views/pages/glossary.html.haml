@@ -1,9 +1,12 @@
-.glossary-section
+.glossary-section.mt-5
   .container.pt-4
     .header-title.p-0.m-0
     %h2.mb-5
       %span.text-highlight Glossary
-    .section#hemoglobin-glossary
-      TEST hemoglobin
-    .section#thrombocythes-glossary
-      TEST thrombos
+    - @glossary_entries.each do |entry|
+      .section{id: "#{entry.parameter}-glossary"}
+        .row.glossary-entry
+          .col-3.glossary-header
+            = entry.title.upcase
+          .col-8.glossary-content
+            = entry.description.html_safe

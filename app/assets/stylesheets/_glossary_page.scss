@@ -1,0 +1,21 @@
+// stlyes for the glossary page
+// thebloodtracker.com/glossary
+
+.glossary-section {
+  background-color: white;
+  height: 100%;
+  width: 100vw;
+}
+
+.glossary-entry {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: flex-start;
+}
+
+.glossary-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: larger;
+  text-align: right;
+}
