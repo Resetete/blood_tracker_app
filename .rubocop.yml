@@ -19,6 +19,7 @@ Layout/LineLength:
   Max: 140
   Exclude:
     - 'config/initializers/devise.rb'
+    - 'db/seeds.rb'
 
 Naming/FileName:
   Exclude:

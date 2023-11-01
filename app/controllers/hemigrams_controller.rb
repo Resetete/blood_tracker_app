@@ -23,7 +23,7 @@ class HemigramsController < ApplicationController
   def create
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
-    @hemigram.short = Hemigram.short(@hemigram.parameter)
+    @hemigram.short = Hemigrams::ParameterMetadata.short(@hemigram.parameter)
 
     if @hemigram.save
       redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE
@@ -51,8 +51,8 @@ class HemigramsController < ApplicationController
   def get_unit_selection_dropdown_options
     parameter = params[:parameter_select].to_sym
 
-    options = Hemigram.units(parameter)
-    shorts = Hemigram.short(parameter)
+    options = Hemigrams::ParameterMetadata.units(parameter)
+    shorts = Hemigrams::ParameterMetadata.short(parameter)
 
     render json: { options:, shorts: }
   end
