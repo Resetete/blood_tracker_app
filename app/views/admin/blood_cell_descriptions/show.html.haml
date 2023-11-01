@@ -13,6 +13,9 @@
         updated at:
         = @blood_cell_description.updated_at
       %p
+        on landing page only?
+        = @blood_cell_description.landing_page_only
+      %p
         Sources:
         %ul
         - @blood_cell_description.links.each do |link|

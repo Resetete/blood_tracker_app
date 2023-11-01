@@ -10,6 +10,9 @@
       .mb-3
         = f.label :parameter, 'Blood parameter', class: 'form-label'
         = f.select :parameter, options_for_select(Hemigrams::ParameterMetadata.all.pluck(:parameter_name).sort, selected: @blood_cell_description.parameter), { include_blank: 'Select a parameter' }, class: 'form-select'
+      .mb-3
+        = f.label :landing_page_only, class: 'form-label'
+        = f.check_box :landing_page_only, class: 'form-control'
 
       -# create the related source links
       .links

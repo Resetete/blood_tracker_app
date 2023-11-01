@@ -18,6 +18,9 @@
           updated at
           = description.updated_at
         %p
+          on landing page only?
+          = description.landing_page_only
+        %p
           Sources:
           %ul
           - description.links.each do |link|

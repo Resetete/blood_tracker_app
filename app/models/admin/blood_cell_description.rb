@@ -4,12 +4,13 @@
 #
 # Table name: blood_cell_descriptions
 #
-#  id          :bigint           not null, primary key
-#  title       :string
-#  description :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  parameter   :string
+#  id            :bigint           not null, primary key
+#  title         :string
+#  description   :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  parameter     :string
+#  glossary_only :boolean          default(TRUE)
 #
 
 # this allows storing and editing of the description of blood cells
