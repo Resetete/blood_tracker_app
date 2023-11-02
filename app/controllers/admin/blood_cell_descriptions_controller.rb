@@ -11,7 +11,7 @@ module Admin
     before_action :set_description, only: %i[show edit update destroy]
 
     def index
-      @blood_cell_descriptions = Admin::BloodCellDescription.all
+      @blood_cell_descriptions = Admin::BloodCellDescription.all.sort_by(&:title)
     end
 
     def show; end
