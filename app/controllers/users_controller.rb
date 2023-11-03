@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   before_action :require_same_user
   before_action :set_user, only: [:show]
 
-  def show; end
+  def show
+    @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
+    @user_parameter_ids = Hemigram.for_user(current_user).map(&:parameter_metadata).flat_map(&:ids).uniq
+  end
 
   private
 

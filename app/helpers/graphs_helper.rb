@@ -26,7 +26,9 @@ module GraphsHelper
 
   def options_for_chart_settings_select
     user_parameters = Hemigram.for_user(current_user).pluck(:parameter).uniq
-    Hemigrams::ParameterMetadata.all.select{ |parameter_metadata| user_parameters.include?(parameter_metadata.parameter_name) }.map do |parameter|
+    Hemigrams::ParameterMetadata.all.select do |parameter_metadata|
+      user_parameters.include?(parameter_metadata.parameter_name)
+    end.map do |parameter|
       [parameter.parameter_name.humanize, parameter.id]
     end
   end

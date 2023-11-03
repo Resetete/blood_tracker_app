@@ -1,7 +1,13 @@
 .user-account-section.mb-5
   .container
-    %h1
+    %h2
       Welcome #{@user.email}
     %p
-      admin:
+      User is admin?:
       = @user.admin?
+    %h2 Chart settings
+    %p Select the parameters for which you want to display the charts
+    .row
+      .col-9.mb-3
+        = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user: , chart_setting: @chart_setting}
+

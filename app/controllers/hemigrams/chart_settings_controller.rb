@@ -13,9 +13,9 @@ module Hemigrams
 
     def update
       if @chart_setting.update(chart_setting_params)
-        redirect_to graphs_path
+        redirect_to request.referer
       else
-        redirect_to graphs_path
+        redirect_to request.referer, notice: ErrorHandling::UNSUCCESSFUL_UPDATE
       end
     end
 

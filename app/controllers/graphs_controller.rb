@@ -5,7 +5,7 @@ class GraphsController < ApplicationController
   def index
     @user_parameters = user_hemigrams.pluck(:parameter).uniq
     @charts_data = prepare_charts_data
-    @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
+    @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user: current_user)
   end
 
   private
