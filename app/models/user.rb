@@ -31,6 +31,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, # :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
+
   def admin?
     admin
   end
