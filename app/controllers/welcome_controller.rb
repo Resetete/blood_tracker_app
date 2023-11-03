@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
     @blood_cell_descriptions = Admin::BloodCellDescription.on_landing_page.sort_by(&:title)
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news
     everything = Api::FetchNewsService.new(news_api_client).everything_news
-    @all_news = (top_headline_news + everything).uniq(&:title).first(9)
+    @all_news = (top_headline_news + everything).reject { |news| news.title.include?('removed') }.uniq(&:title).first(9)
   end
 
   private

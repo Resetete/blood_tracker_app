@@ -2,11 +2,7 @@
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Or run Rails.application.load_seed in rails console
 
 # Create an admin user
 if User.find_by(email: Rails.application.credentials.admin.email)
@@ -1069,4 +1065,50 @@ else
   red_cell_distribution_width.save
 
   Rails.logger.debug 'Red Cell Distribution Width description created'
+end
+
+if Admin::BloodCellDescription.find_by(title: 'Blood glucose levels')
+  Rails.logger.debug 'Blood glucose levels Width description already exists'
+else
+  blood_glucose_levels = Admin::BloodCellDescription.new(
+    title: 'Blood glucose levels',
+    parameter: nil,
+    glossary_only: true,
+    description: "<p>Blood glucose levels, also known as blood sugar levels, refer to the concentration of glucose (sugar) present in the bloodstream. Glucose is a primary source of energy for cells and is crucial for the normal functioning of the body. Blood glucose levels are tightly regulated and are influenced by various factors, including diet, physical activity, hormones, and overall health.</p>
+      <p>Maintaining blood glucose levels within a specific range is essential for several reasons:</p>
+      <ul>
+        <li>Energy Supply: Glucose is the body's primary energy source, especially for the brain and muscles. It provides the fuel necessary for daily activities and bodily functions.</li>
+        <li>Metabolic Health: Proper blood glucose regulation is crucial for overall metabolic health. Consistently high or low glucose levels can lead to health problems, including diabetes and hypoglycemia.</lp>
+        <li>Brain Function: The brain relies on a steady supply of glucose. Fluctuations in glucose levels can affect cognitive function, mood, and concentration.</li>
+        <li>Prevention of Complications: Chronic high blood glucose levels, as seen in diabetes, can lead to long-term complications like cardiovascular disease, kidney damage, and nerve damage. Maintaining healthy levels can help reduce the risk of these complications.</li>
+      </ul>
+      <p>Blood Glucose Levels:</p>
+      <p>Blood glucose levels are typically measured in milligrams per deciliter (<code>mg/dL</code>) or millimoles per liter (<code>mmol/L</code>). The most common unit used in the United States is <code>mg/dL</code>, while <code>mmol/L</code> is more common in many other countries.</p>
+      <ul>
+        <li>Fasting Blood Glucose: A normal fasting blood glucose level is typically considered to be between <code>70 mg/dL</code> and <code>100 mg/dL</code> (<code>3.9 mmol/L</code> to <code>5.6 mmol/L</code>).</li>
+        <li>Postprandial (After Eating) Blood Glucose: Normal levels after a meal can vary but are generally less than <code>140 mg/dL</code> (<code>7.8 mmol/L</code>) two hours after eating.</li>
+        <li>Diabetes Diagnosis: A diagnosis of diabetes is typically made if fasting blood glucose levels consistently measure <code>126 mg/dL</code> (<code>7.0 mmol/L</code>) or higher. Levels between <code>100 mg/dL</code> and <code>125 mg/dL</code> (<code>5.6 mmol/L</code> to <code>6.9 mmol/L</code>) are often indicative of prediabetes.</li>
+        <li>Hypoglycemia (Low Blood Sugar): Blood glucose levels below <code>70 mg/dL</code> (<code>3.9 mmol/L</code>) are considered low and can lead to symptoms of hypoglycemia, such as shakiness, sweating, and confusion. Severe hypoglycemia can be dangerous and may require immediate treatment.</li>
+      </ul>
+      <p>It's important to note that these reference ranges can vary slightly based on factors like age, individual health, and the specific laboratory conducting the test. Regular monitoring of blood glucose levels is crucial for individuals with diabetes and can help guide treatment and lifestyle adjustments to maintain optimal health.</p>
+    "
+  )
+  blood_glucose_levels.links.build(
+    name: "McPherson, R., & Pincus, M. R. (2017). Henry's Clinical Diagnosis and Management by Laboratory Methods. Elsevier.",
+    url: nil,
+    text_generator: false
+  )
+  blood_glucose_levels.links.build(
+    name: "Rodak, B. F., & Fritsma, G. A. (2018). Hematology: Clinical Principles and Applications. Saunders.",
+    url: nil,
+    text_generator: false
+  )
+  blood_glucose_levels.links.build(
+    name: 'ChatGPT',
+    url: 'https://chat.openai.com/',
+    text_generator: true
+  )
+  blood_glucose_levels.save
+
+  Rails.logger.debug 'Blood Glucose Levels description created'
 end
