@@ -244,12 +244,12 @@ else
     text_generator: false
   )
   blood_count.links.build(
-    name: "Hoffman R, Benz EJ Jr, Silberstein LE, Heslop H, Weitz JI, Anastasi J. Hematology: Basic Principles and Practice. 7th edition. Elsevier; 2018.",
+    name: 'Hoffman R, Benz EJ Jr, Silberstein LE, Heslop H, Weitz JI, Anastasi J. Hematology: Basic Principles and Practice. 7th edition. Elsevier; 2018.',
     url: nil,
     text_generator: false
   )
   blood_count.links.build(
-    name: "Buttarello M. Laboratory diagnosis of anemia: are the old and new red cell parameters useful in classification and treatment, how? Int J Lab Hematol. 2016;38 Suppl 1:123-32.",
+    name: 'Buttarello M. Laboratory diagnosis of anemia: are the old and new red cell parameters useful in classification and treatment, how? Int J Lab Hematol. 2016;38 Suppl 1:123-32.',
     url: nil,
     text_generator: false
   )
@@ -1053,7 +1053,7 @@ else
     text_generator: false
   )
   red_cell_distribution_width.links.build(
-    name: "Rodak, B. F., & Fritsma, G. A. (2018). Hematology: Clinical Principles and Applications. Saunders.",
+    name: 'Rodak, B. F., & Fritsma, G. A. (2018). Hematology: Clinical Principles and Applications. Saunders.',
     url: nil,
     text_generator: false
   )
@@ -1099,7 +1099,7 @@ else
     text_generator: false
   )
   blood_glucose_levels.links.build(
-    name: "Rodak, B. F., & Fritsma, G. A. (2018). Hematology: Clinical Principles and Applications. Saunders.",
+    name: 'Rodak, B. F., & Fritsma, G. A. (2018). Hematology: Clinical Principles and Applications. Saunders.',
     url: nil,
     text_generator: false
   )

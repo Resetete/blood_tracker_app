@@ -1,0 +1,8 @@
+= form_for chart_setting, url: hemigrams_chart_setting_path(chart_setting) do |f|
+  .row
+    .col
+      - @user_parameter_ids.each do |user_parameter_id|
+        = f.label Hemigrams::ParameterMetadata.find(user_parameter_id).parameter_name
+        = check_box_tag "hemigrams_chart_setting[parameter_ids][]", user_parameter_id, chart_setting.parameter_ids.include?(user_parameter_id)
+    .col
+      = f.submit 'Save Setting', class: 'btn btn-outline-dark'

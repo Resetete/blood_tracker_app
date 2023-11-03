@@ -128,3 +128,4 @@ $(document).on('turbo:load', function() {
     $('.cookie-banner').fadeOut();
   });
 });
+

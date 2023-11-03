@@ -8,7 +8,6 @@ class HemigramsController < ApplicationController
 
   def index
     hemigrams = Hemigram.search(params[:search], current_user)
-    # convert search result into an activerecord relation to allow pagination
     @hemigrams = Hemigram.where(id: hemigrams.map(&:id))
                          .order(date: :desc)
                          .paginate(page: params[:page])
@@ -24,6 +23,7 @@ class HemigramsController < ApplicationController
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
     @hemigram.short = Hemigrams::ParameterMetadata.short(@hemigram.parameter)
+    @hemigram.hemigram_parameter_associations.build(parameter_metadata:)
 
     if @hemigram.save
       redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE
@@ -65,5 +65,9 @@ class HemigramsController < ApplicationController
 
   def set_hemigram
     @hemigram = Hemigram.find(params[:id])
+  end
+
+  def parameter_metadata
+    Hemigrams::ParameterMetadata.find_by(parameter_name: @hemigram.parameter)
   end
 end
