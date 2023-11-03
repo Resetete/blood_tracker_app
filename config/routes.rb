@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :view_users, controller: 'users', only: [:show]
   resources :hemigrams
 
+  namespace :hemigrams do
+    resources :chart_settings
+  end
+
   namespace :admin do
     resources :blood_cell_descriptions
   end

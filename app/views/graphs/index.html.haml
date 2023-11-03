@@ -1,7 +1,12 @@
 .container
   .mt-5
     %h2.center-align My Hemigrams
-    .container.mt-5
+    .mt-5
+      .row
+        .col-9.mb-3
+          %h3.col-2.text-highlight Filter charts
+          = render partial: '/hemigrams/chart_settings/form', locals: { current_user: , chart_setting: @chart_setting}
+
       - @user_parameters.each do |parameter|
         %p= parameter.humanize
         .mb-5.chart

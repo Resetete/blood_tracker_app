@@ -18,5 +18,12 @@ module Hemigrams
     self.table_name = 'hemigrams_chart_settings'
 
     belongs_to :user, dependent: :destroy
+    before_save :sanitize_parameter_ids
+
+    private
+
+    def sanitize_parameter_ids
+      parameter_ids.compact
+    end
   end
 end
