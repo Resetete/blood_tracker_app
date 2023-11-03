@@ -28,7 +28,7 @@ class GraphsController < ApplicationController
   # Also need to set the parameter_id when creating a hemigram, Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter)
   def user_hemigrams
     Hemigram.for_user(current_user).select do |hemigram|
-      hemigram.parameter.include?(current_user.chart_setting.parameter_ids)
+      hemigram.parameter_metadata.map(&:id).intersect?(current_user.chart_setting.parameter_ids)
     end.sort_by(&:parameter)
   end
 end
