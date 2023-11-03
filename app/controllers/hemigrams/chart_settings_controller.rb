@@ -4,16 +4,19 @@ module Hemigrams
   class ChartSettingsController < ApplicationController
     before_action :set_chart_setting, only: %i[create edit update destroy]
 
+    # TODO: do I need the new and create action?
     def new; end
 
-    def create
-      binding.pry
-    end
+    def create; end
 
     def edit; end
 
     def update
-      redirect_to graphs_path
+      if @chart_setting.update(chart_setting_params)
+        redirect_to graphs_path
+      else
+        redirect_to graphs_path
+      end
     end
 
     def destroy; end

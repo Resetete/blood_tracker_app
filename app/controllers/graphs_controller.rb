@@ -26,6 +26,7 @@ class GraphsController < ApplicationController
   # TODO: only return the hemigrams with parameters (need to check the parameter_id) and compare them with the chart_setting.parameter_ids
   # Need to backfill the parameter_associations so that I have this connection
   # Also need to set the parameter_id when creating a hemigram, Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter)
+  # Maybe create a hemigram scope to just return the hemigrams for the chart_settings
   def user_hemigrams
     Hemigram.for_user(current_user).select do |hemigram|
       hemigram.parameter_metadata.map(&:id).intersect?(current_user.chart_setting.parameter_ids)
