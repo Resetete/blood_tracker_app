@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :blood_cell_descriptions
+    resources :hemigrams_parameter_metadata
   end
 end
