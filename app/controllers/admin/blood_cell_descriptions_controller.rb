@@ -11,7 +11,7 @@ module Admin
     before_action :set_description, only: %i[show edit update destroy]
 
     def index
-      @blood_cell_descriptions = Admin::BloodCellDescription.all
+      @blood_cell_descriptions = Admin::BloodCellDescription.all.sort_by(&:title)
     end
 
     def show; end
@@ -42,7 +42,7 @@ module Admin
         flash[:notice] = 'Successfully updated'
         redirect_to @blood_cell_description
       else
-        flash[:alert] = 'Could not be updated'
+        flash[:alert] = "Could not be updated due to #{@blood_cell_description.errors.full_messages}"
         render :edit
       end
     end
@@ -60,7 +60,13 @@ module Admin
     private
 
     def description_params
-      params.require(:admin_blood_cell_description).permit(:title, :description, links_attributes: %i[id name url text_generator _destroy])
+      params.require(:admin_blood_cell_description).permit(
+        :title,
+        :parameter,
+        :glossary_only,
+        :description,
+        links_attributes: %i[id name url text_generator _destroy]
+      )
     end
 
     def set_description

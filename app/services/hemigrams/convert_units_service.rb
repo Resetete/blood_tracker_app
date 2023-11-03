@@ -55,8 +55,8 @@ module Hemigrams
         ['10^9/L', 'g/L'] => 1,
         ['g/dL', 'g/L'] => 0.1,
         ['g/L', 'g/dL'] => 10,
-        ['g/L', '10^3/µL'] =>  0.0000001,
-        ['10^3/µL', 'g/L'] =>  1_000_000,
+        ['g/L', '10^3/µL'] => 0.0000001,
+        ['10^3/µL', 'g/L'] => 1_000_000,
         ['10^9/L', 'mg/dL'] => 1_000_000_000,
         ['mg/dL', '10^9/L'] => 0.000000001,
         ['g/L', 'mg/dL'] => 100,
@@ -77,19 +77,17 @@ module Hemigrams
         %w[pg fmol] => 1_000,
         %w[fmol pg] => 0.001,
         ['g/dL', 'g/L'] => 0.1,
-        ['g/L', 'g/dL'] => 10,
+        ['g/L', 'g/dL'] => 10
       }
     end
 
     def perform_conversion(value, from_unit, to_unit)
       conversion_factor = conversion_factors[[from_unit, to_unit]]
 
-      if conversion_factor
-        converted_value = value * conversion_factor
-        return custom_round(converted_value, 2)
-      else
-        raise "Unsupported unit conversion from #{from_unit} to #{to_unit}"
-      end
+      raise "Unsupported unit conversion from #{from_unit} to #{to_unit}" unless conversion_factor
+
+      converted_value = value * conversion_factor
+      custom_round(converted_value, 2)
     end
 
     def custom_round(value, decimal_places)

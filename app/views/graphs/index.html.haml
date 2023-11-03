@@ -10,7 +10,9 @@
           - max = Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).upper_limit
           - chart_data = @charts_data.select{|h| h[:name] == parameter.downcase}
 
-          = link_to('Add data', new_hemigram_path(parameter:), class: 'btn btn-outline-dark')
+          .chart-links
+            = link_to('Add data', new_hemigram_path(parameter:), class: 'btn btn-outline-dark')
+            = link_to('Glossary', glossary_path + "##{parameter}-glossary", class: 'btn btn-outline-dark')
 
           -# graph_annotations are defined in a view helper
           -# graph_datasets view helper, dataset: { pointBackgroundColor: }

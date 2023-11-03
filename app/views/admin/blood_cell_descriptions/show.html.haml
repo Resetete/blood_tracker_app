@@ -2,7 +2,10 @@
   .card
     .card-body
       %h5.card-title= @blood_cell_description.title
-      %p.card-text= @blood_cell_description.description
+      %p.card-text= @blood_cell_description.description.html_safe
+      %p
+        parameter name:
+        = @blood_cell_description.parameter.blank? ? 'Unspecified' : @blood_cell_description.parameter
       %p
         created at:
         = @blood_cell_description.created_at
@@ -10,10 +13,15 @@
         updated at:
         = @blood_cell_description.updated_at
       %p
+        displayed on glossary page only?
+        = @blood_cell_description.glossary_only
+      %p
         Sources:
         %ul
         - @blood_cell_description.links.each do |link|
-          %li= "#{link.name}, #{link.url}"
+          %li
+            = link.name
+            = link_to(link.url)
       %p
         Text generation AI tool:
         %ul

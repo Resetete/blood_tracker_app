@@ -1,0 +1,17 @@
+.glossary-section.mt-5
+  .container.pt-4.mb-5
+    .header-title.p-0.m-0
+    %h2.mb-5
+      %span.text-highlight Glossary
+    - @glossary_entries.each do |entry|
+      .section{id: "#{entry.parameter}-glossary"}
+        .row.glossary-entry
+          .col-3.glossary-header
+            %mark= entry.title.upcase
+          .col-9.glossary-content
+            = entry.description.html_safe
+            %p
+              Sources:
+              %ul
+                - entry.links.each do |link|
+                  %li= link.url.blank? ? link.name : link_to(link.name, link.url)

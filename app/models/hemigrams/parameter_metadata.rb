@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: hemigrams_parameter_metadata
+#
+#  id             :bigint           not null, primary key
+#  parameter_name :string
+#  abbreviations  :string           default([]), is an Array
+#  chart_unit     :string
+#  upper_limit    :float
+#  lower_limit    :float
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 module Hemigrams
   class ParameterMetadata < ApplicationRecord
     self.table_name = 'hemigrams_parameter_metadata'

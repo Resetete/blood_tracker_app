@@ -23,6 +23,6 @@ class GraphsController < ApplicationController
   end
 
   def user_hemigrams
-    Hemigram.for_user(current_user)
+    Hemigram.for_user(current_user).sort_by(&:parameter)
   end
 end

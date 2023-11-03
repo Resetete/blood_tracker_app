@@ -7,7 +7,10 @@
     .card.mb-3
       .card-body
         %h5.card-title= description.title
-        %p.card-text= description.description
+        %p.card-text= description.description.html_safe
+        %p
+          parameter name:
+          = description.parameter.blank? ? 'Unspecified' : description.parameter
         %p
           created at:
           = description.created_at
@@ -15,10 +18,13 @@
           updated at
           = description.updated_at
         %p
+          displayed on glossary only?
+          = description.glossary_only
+        %p
           Sources:
           %ul
           - description.links.each do |link|
-            %li= "#{link.name}, #{link.url}"
+            %li= link.url.blank? ? link.name : link_to(link.name, link.url)
         %p
           Text generation AI tool:
           %ul

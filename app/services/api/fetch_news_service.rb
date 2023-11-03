@@ -35,6 +35,7 @@ module Api
       []
     end
 
+    # response is cached to avoid unnecessary requests
     def everything_news(q: 'blood AND (disease OR treatment)', from: Time.zone.today - 1.month, sort_by: 'popularity')
       Rails.cache.fetch("everything_news_#{q}_#{from}_#{sort_by}", expires_in: 1.day) do
         @newsapi.get_everything(
