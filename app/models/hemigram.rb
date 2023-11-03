@@ -28,6 +28,8 @@ class Hemigram < ApplicationRecord
   encrypts :chart_value, deterministic: true # deterministic: allows querying the db data
 
   belongs_to :user
+  has_many :hemigram_parameter_associations, class_name: 'Hemigrams::ParameterAssociation'
+  has_many :parameter_metadata, through: :hemigram_parameter_associations, class_name: 'Hemigrams::ParameterMetadata'
 
   validates :date, presence: true
   validates :parameter, presence: true

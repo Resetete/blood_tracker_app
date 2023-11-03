@@ -8,17 +8,12 @@ module Hemigrams
 
     def create
       binding.pry
-
     end
 
     def edit; end
 
     def update
-      if @chart_setting.update(chart_setting_params)
-        redirect_to graphs_path
-      else
-        redirect_to graphs_path
-      end
+      redirect_to graphs_path
     end
 
     def destroy; end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_100546) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_140037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_100546) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hemigrams_chart_settings_on_user_id"
+  end
+
+  create_table "hemigrams_parameter_associations", force: :cascade do |t|
+    t.bigint "hemigram_id", null: false
+    t.bigint "parameter_metadata_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hemigram_id"], name: "index_hemigrams_parameter_associations_on_hemigram_id"
+    t.index ["parameter_metadata_id"], name: "index_hemigrams_parameter_associations_on_parameter_metadata_id"
   end
 
   create_table "hemigrams_parameter_metadata", force: :cascade do |t|
@@ -85,5 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_100546) do
   end
 
   add_foreign_key "hemigrams_chart_settings", "users", on_delete: :cascade
+  add_foreign_key "hemigrams_parameter_associations", "hemigrams", name: "hemigram_fk"
+  add_foreign_key "hemigrams_parameter_associations", "hemigrams_parameter_metadata", column: "parameter_metadata_id", name: "parameter_metadata_fk"
   add_foreign_key "links", "blood_cell_descriptions"
 end

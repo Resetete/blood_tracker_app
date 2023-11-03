@@ -24,6 +24,8 @@ class GraphsController < ApplicationController
   end
 
   def user_hemigrams
-    Hemigram.for_user(current_user).sort_by(&:parameter)
+    Hemigram.for_user(current_user).select do |hemigram|
+      hemigram.parameter.include?(current_user.chart_setting.parameter_ids)
+    end.sort_by(&:parameter)
   end
 end
