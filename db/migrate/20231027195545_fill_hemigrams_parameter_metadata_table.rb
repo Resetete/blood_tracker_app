@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# seed the Hemigrams::ParameterMetadata table with initial data
+# seed the Admin::Hemigrams::ParameterMetadata table with initial data
 class FillHemigramsParameterMetadataTable < ActiveRecord::Migration[7.0]
   PARAMETER_METADATA = { 'thrombozythes' => { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
                          'hemoglobin' => { short: %w[Hb Hgb], chart_unit: 'g/dL', upper_limit: '18', lower_limit: '12' },
@@ -30,11 +30,11 @@ class FillHemigramsParameterMetadataTable < ActiveRecord::Migration[7.0]
       upper_limit = parameter.second[:upper_limit]
       lower_limit = parameter.second[:lower_limit]
 
-      Hemigrams::ParameterMetadata.create(parameter_name:, abbreviations:, chart_unit:, lower_limit:, upper_limit:)
+      Admin::Hemigrams::ParameterMetadata.create(parameter_name:, abbreviations:, chart_unit:, lower_limit:, upper_limit:)
     end
   end
 
   def down
-    ParameterMetadata.where(key: PARAMETER_METADATA.map { |metadata| metadata[:key] }).delete_all
+    Admin::Hemigrams::ParameterMetadata.where(key: PARAMETER_METADATA.map { |metadata| metadata[:key] }).delete_all
   end
 end

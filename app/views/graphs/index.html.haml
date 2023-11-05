@@ -10,9 +10,9 @@
       - @user_parameters.each do |parameter|
         %p= parameter.humanize
         .mb-5.chart
-          - chart_unit = Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).chart_unit
-          - min = Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).lower_limit
-          - max = Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).upper_limit
+          - chart_unit = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).chart_unit
+          - min = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).lower_limit
+          - max = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).upper_limit
           - chart_data = @charts_data.select{|h| h[:name] == parameter.downcase}
 
           .chart-links

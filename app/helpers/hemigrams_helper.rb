@@ -8,4 +8,8 @@ module HemigramsHelper
   def form_method
     @hemigram.persisted? ? :patch : :post
   end
+
+  def options_for_chart_units
+    Admin::Hemigrams::ParameterMetadata::UNITS.values.flatten.uniq.sort
+  end
 end
