@@ -1,20 +1,22 @@
 .row.form-background.mb-5
   .col-9
-    = form_with model: @admin_hemigrams_blood_parameter_metadatum, url: admin_hemigrams_parameter_metadata_path, local: true, model: Admin::Hemigrams::ParameterMetadata do |f|
+    -# = form_with model: @parameter_metadatum, url: admin_hemigrams_parameter_metadata_path, local: true, model: Admin::Hemigrams::ParameterMetadata do |f|
+    -# = form_with model: @parameter_metadatum, local: true do |f|
+    = form_with(model: parameter_metadatum, url: url, local: true, method: (method || :patch)) do |f|
       .mb-3
         = f.label :parameter_name, class: 'form-label'
         = f.text_field :parameter_name, class: 'form-control', required: true
       .mb-3
-        = f.label :abbreviations_string, class: 'form-label'
-        = f.text_field :abbreviations_string, class: 'form-control', hint: 'Enter the abbreviations separated by comma, e.g. Abbrev1, Abbrev2'
+        = f.label :abbreviations, class: 'form-label'
+        = f.text_field :abbreviations_string, class: 'form-control', hint: 'Enter the abbreviations separated by comma, e.g. Abbrev1, Abbrev2', value: parameter_metadatum.abbreviations.map(&:strip).join(', ')
       .mb-3
         = f.label :chart_unit, 'Blood parameter', class: 'form-label'
-        = f.select :chart_unit, options_for_select(options_for_chart_units, selected: @blood_parameter_metadatum.chart_unit), { include_blank: 'Choose a chart unit' }, class: 'form-select'
+        = f.select :chart_unit, options_for_select(options_for_chart_units, selected: parameter_metadatum.chart_unit), { include_blank: 'Choose a chart unit' }, class: 'form-select', required: true
       .mb-3
         = f.label :upper_limit, class: 'form-label'
-        = f.number_field :upper_limit, class: 'form-control'
+        = f.number_field :upper_limit, class: 'form-control', required: true, step: 'any'
       .mb-3
         = f.label :lower_limit, class: 'form-label'
-        = f.number_field :lower_limit, class: 'form-control'
+        = f.number_field :lower_limit, class: 'form-control', required: true, step: 'any'
       .mt-5
         = f.submit 'Submit', class: 'btn btn-primary'

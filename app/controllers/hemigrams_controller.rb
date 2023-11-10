@@ -23,7 +23,7 @@ class HemigramsController < ApplicationController
     @hemigram = Hemigram.new(hemigram_params)
     @hemigram.user_id = current_user.id
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
-    @hemigram.hemigram_parameter_associations.build(parameter_metadata:)
+    @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
     if @hemigram.save
       redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE

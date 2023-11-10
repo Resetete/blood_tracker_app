@@ -3,7 +3,7 @@
     %h1
       %span.text-highlight Blood parameter metadata
   = link_to 'New', new_admin_hemigrams_parameter_metadatum_path, class: 'btn btn-primary mb-3'
-  - @blood_parameter_metadata&.each do |metadata|
+  - @parameter_metadata&.each do |metadata|
     .card.mb-3
       .card-body
         %h5.card-title= metadata.parameter_name.humanize
@@ -16,4 +16,7 @@
           %p= "updated at: #{metadata.updated_at.to_date}"
         %p.card_links
           - if metadata.persisted?
-            = link_to 'Edit', edit_admin_hemigrams_parameter_metadatum_path(metadata), class: 'btn btn-primary mb-3'
+            .buttons.mb-3
+              = link_to 'Edit', edit_admin_hemigrams_parameter_metadatum_path(metadata), class: 'btn btn-primary'
+              = link_to 'Delete', admin_hemigrams_parameter_metadatum_path(metadata), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this parameter metadata?' }, class: 'btn btn-danger'
+

@@ -18,10 +18,9 @@ module Admin
     class ParameterMetadata < ApplicationRecord
       self.table_name = 'hemigrams_parameter_metadata'
 
-      has_and_belongs_to_many :hemigrams, class_name: 'Hemigram', optional: true
+      has_and_belongs_to_many :hemigrams, join_table: 'hemigrams_parameter_associations', class_name: 'Hemigram', optional: true
 
       validates :parameter_name, presence: true, uniqueness: true
-      validates :abbreviations, presence: true
       validates :chart_unit, presence: true
       validates :upper_limit, presence: true, numericality: { greater_than_or_equal_to: 0 }
       validates :lower_limit, presence: true, numericality: { greater_than_or_equal_to: 0 }

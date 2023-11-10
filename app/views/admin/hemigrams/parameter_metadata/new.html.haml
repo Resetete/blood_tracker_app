@@ -2,4 +2,4 @@
   .header-title.p-0.m-0
     %h1
       %span.text-highlight New blood parameter metadata
-  = render 'form'
+  = render partial: 'form', locals: { parameter_metadatum: @parameter_metadatum, url: admin_hemigrams_parameter_metadata_path, method: :post }

@@ -6,4 +6,17 @@ module ErrorHandling
   UNSUCCESSFUL_UPDATE = 'The update was not successful'
   SUCCESSFUL_CREATE = 'Successfully created.'
   UNSUCCESSFUL_CREATE = 'Creation was not successful.'
+  SUCCESSFUL_DESTROY = 'Successfully deleted.'
+
+  def self.unsuccessful_create(error_message)
+    UNSUCCESSFUL_CREATE + "due to #{error_message}"
+  end
+
+  def self.unsuccessful_update(error_message)
+    UNSUCCESSFUL_UPDATE + "due to #{error_message}"
+  end
+
+  def self.unsuccessful_destroy(error_message)
+    SUCCESSFUL_DESTROY + "due to #{error_message}"
+  end
 end
