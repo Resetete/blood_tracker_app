@@ -30,7 +30,8 @@ class Hemigram < ApplicationRecord
   belongs_to :user
   has_many :hemigrams_parameter_associations, class_name: 'Hemigrams::ParameterAssociation'
   # has_many :parameter_metadata, through: :hemigrams_parameter_associations, class_name: 'Admin::Hemigrams::ParameterMetadata'
-  has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations', class_name: 'Admin::Hemigrams::ParameterMetadata'
+  has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
+                                               class_name: 'Admin::Hemigrams::ParameterMetadata'
 
   validates :date, presence: true
   validates :parameter, presence: true

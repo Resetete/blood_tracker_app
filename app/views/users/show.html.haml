@@ -1,7 +1,9 @@
 .user-account-section.mb-5
   .container
-    %h2
-      Welcome #{@user.email}
+    %h1
+      %span.text-highlight
+        Welcome
+      = @user.username
     %p
       User is admin?:
       = @user.admin?

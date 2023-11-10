@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Hemigrams
     class ParameterMetadataController < ApplicationController
@@ -55,7 +57,8 @@ module Admin
       end
 
       def parameter_metadatum_params
-        params.require(:admin_hemigrams_parameter_metadata).permit(:parameter_name, :chart_unit, :upper_limit, :lower_limit, :abbreviations_string)
+        params.require(:admin_hemigrams_parameter_metadata).permit(:parameter_name, :chart_unit, :upper_limit, :lower_limit,
+                                                                   :abbreviations_string)
       end
 
       def parse_abbreviation_params
