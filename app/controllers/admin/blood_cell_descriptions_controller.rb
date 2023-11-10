@@ -49,10 +49,9 @@ module Admin
 
     def destroy
       if @blood_cell_description.destroy
-        flash[:notice] = 'Successfully deleted'
-        redirect_to admin_blood_cell_descriptions_path
+        redirect_to admin_blood_cell_descriptions_path, notice: ErrorHandling::SUCCESSFUL_DESTROY
       else
-        flash[:alert] = 'Could not be deleted'
+        flash[:alert] = ErrorHandling::UNSUCCESSFUL_DESTROY(@blood_cell_description.errors.full_messages)
         render :edit
       end
     end

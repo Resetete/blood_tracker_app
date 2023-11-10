@@ -15,6 +15,6 @@ module Hemigrams
     self.table_name = 'hemigrams_parameter_associations'
 
     belongs_to :hemigram, class_name: 'Hemigram'
-    belongs_to :parameter_metadata, class_name: 'Hemigrams::ParameterMetadata'
+    belongs_to :parameter_metadata, class_name: 'Admin::Hemigrams::ParameterMetadata'
   end
 end

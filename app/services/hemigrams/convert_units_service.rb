@@ -14,7 +14,7 @@ module Hemigrams
     def execute
       value = hemigram.value
       from_unit = hemigram.unit
-      to_unit = Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter).chart_unit
+      to_unit = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter).chart_unit
 
       return set_chart_value_and_unit(value, from_unit) unless need_to_convert_unit?(to_unit)
 
