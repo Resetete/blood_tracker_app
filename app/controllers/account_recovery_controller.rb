@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This class is responsible for allowing the recovering of user accounts in case the username / password was forgotten
-class AccountRecoveriesController < ApplicationsController
+class AccountRecoveryController < ApplicationController
   def generate_recovery_code
     # Generate a unique recovery code and associate it with the user
     # Store the code in the user's recovery_codes field and mark it as unused
