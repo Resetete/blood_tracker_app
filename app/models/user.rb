@@ -27,10 +27,17 @@ class User < ApplicationRecord
 
   # Registerable temporarly desactivated
   # TODO: allow registration when tracker is ready
-  devise :database_authenticatable, # :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
+
+  serialize :recovery_codes, Array
+  serialize :security_questions, Array
+
+  validates :recovery_codes, presence: true
+  validates :security_questions, presence: true
+  validates :username, presence: true, uniqueness: true
 
   def admin?
     admin

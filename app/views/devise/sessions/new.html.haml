@@ -7,8 +7,8 @@
     .col-md-6
       = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
         .mb-3
-          = f.label :email, class: 'form-label', for: 'email_input'
-          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email_input', placeholder: 'my_email@example.com'
+          = f.label :username, class: 'form-label', for: 'email_input'
+          = f.text_field :username, autofocus: true, autocomplete: 'email', class: 'form-control', id: 'username_input', placeholder: 'my_username'
 
         .mb-3
           = f.label :password, class: 'form-label', for: 'password_input'
