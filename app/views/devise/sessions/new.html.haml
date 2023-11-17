@@ -1,14 +1,13 @@
 .devise-views.container
   .header-title.p-0.m-0
     %h2
-      %span.text-highlight Log in (Admin)
-    %p.small Currently the login is only possible for the admin. When the tracker becomes available, you will be able to sign up.
+      %span.text-highlight Log in
   .row
     .col-md-6
       = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
         .mb-3
-          = f.label :username, class: 'form-label', for: 'email_input'
-          = f.text_field :username, autofocus: true, autocomplete: 'email', class: 'form-control', id: 'username_input', placeholder: 'my_username'
+          = f.label :username, class: 'form-label', for: 'username_input'
+          = f.text_field :username, autofocus: true, autocomplete: 'username', class: 'form-control', id: 'username_input', placeholder: 'my_username'
 
         .mb-3
           = f.label :password, class: 'form-label', for: 'password_input'

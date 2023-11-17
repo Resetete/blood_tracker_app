@@ -1,0 +1,28 @@
+.container.devise-views
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Sign up
+
+  .row
+    .col-md-6
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .mb-3
+          = f.label :username, class: 'form-label', for: 'username_input'
+          = f.text_field :username, autofocus: true, autocomplete: 'username', id: 'username_input', class: 'form-control', placeholder: 'my_username'
+
+        .mb-3
+          = f.label :password, class: 'form-label', for: 'password_input'
+          - if @minimum_password_length
+            %em
+              = "(#{@minimum_password_length} characters minimum)"
+          = f.password_field :password, autocomplete: 'new-password', id: 'password_input', class: 'form-control'
+
+        .mb-3
+          = f.label :password_confirmation, class: 'form-label', for: 'password_confirmation'
+          = f.password_field :password_confirmation, autocomplete: 'new-password', id: 'password_confirmation', class: 'form-control'
+
+        .actions.mb-2
+          = f.submit 'Sign up', class: 'btn btn-outline-light'
+
+      = render 'devise/shared/links'

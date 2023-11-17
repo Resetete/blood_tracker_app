@@ -207,3 +207,18 @@ mark {
   padding: 0.2em 0.3em;
   font-weight: bold;
 }
+
+// buttons
+.btn-highlight {
+  background-color: $red;
+  color: white;
+  margin: 0 0.5em;
+  border: solid white 1px;
+}
+
+.btn-highlight:hover {
+  background-color: white;
+  color: $red;
+  margin: 0 0.5em;
+  border: solid $red 1px;
+}

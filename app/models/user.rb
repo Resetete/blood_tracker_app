@@ -32,14 +32,19 @@ class User < ApplicationRecord
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
 
-  serialize :recovery_codes, Array
-  serialize :security_questions, Array
-
   validates :recovery_codes, presence: true
   validates :security_questions, presence: true
   validates :username, presence: true, uniqueness: true
 
+  before_save :generate_recovery_codes
+
   def admin?
     admin
+  end
+
+  private
+
+  def generate_recovery_codes
+
   end
 end
