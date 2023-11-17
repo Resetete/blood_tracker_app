@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'account_recovery/use_recovery_code', to: 'recovery#use_recovery_code'
 
   devise_for :users
+
   resources :view_users, controller: 'users', only: [:show]
   resources :hemigrams
 

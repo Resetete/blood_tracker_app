@@ -12,7 +12,7 @@
       = @user.admin?
 
     %p Change your password here
-    = link_to edit_user_password(@user)
+    = link_to 'Change your password', edit_user_registration_path
 
     %h2 Chart settings
     %p Select the parameters for which you want to display the charts
