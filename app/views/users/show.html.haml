@@ -5,8 +5,15 @@
         Welcome
       = @user.username
     %p
+      Username:
+      = @user.username
+    %p
       User is admin?:
       = @user.admin?
+
+    %p Change your password here
+    = link_to edit_user_password(@user)
+
     %h2 Chart settings
     %p Select the parameters for which you want to display the charts
     .row

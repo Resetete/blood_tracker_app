@@ -1,5 +1,7 @@
-<div class= 'container devise-views'>
-  <h2>Change your password</h2>
+.container.devise-views
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Change your password
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
