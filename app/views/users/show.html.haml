@@ -1,9 +1,7 @@
 .user-account-section.mb-5
   .container
     %h1
-      %span.text-highlight
-        Welcome
-      = @user.username
+      %span.text-highlight Welcome
     %p
       Username:
       = @user.username
@@ -11,10 +9,9 @@
       User is admin?:
       = @user.admin?
 
-    %p Change your password here
-    = link_to 'Change your password', edit_user_registration_path
+    %p= link_to('Change your password', edit_user_registration_path, class: 'btn btn-outline-dark')
 
-    %h2 Chart settings
+    %h2.mt-5 Chart settings
     %p Select the parameters for which you want to display the charts
     .row
       .col-9.mb-3
