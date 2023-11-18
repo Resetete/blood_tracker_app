@@ -1,0 +1,10 @@
+-# TODO: update the form
+.mb-5
+  = form_for current_user, url: view_user_path(current_user), method: :patch  do |f|
+    - current_user.security_questions.each_with_index do |(question, answer), index|
+      .mb-3
+        .form-label= "Question #{index + 1}"
+        = f.text_field "security_questions[#{index}][question]", value: question, placeholder: 'Question', class: 'form-control'
+        .form-label= "Answer #{index + 1}"
+        = f.text_field "security_questions[#{index}][answer]", value: answer, placeholder: 'Answer', class: 'form-control'
+    = f.submit 'Update Security Questions', class: 'btn btn-outline-light'

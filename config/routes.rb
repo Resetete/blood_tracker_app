@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :view_users, controller: 'users', only: [:show]
+  resources :view_users, controller: 'users', only: [:show, :edit, :update]
   resources :hemigrams
 
   namespace :hemigrams do

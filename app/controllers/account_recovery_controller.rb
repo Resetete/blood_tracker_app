@@ -7,9 +7,6 @@ class AccountRecoveryController < ApplicationController
   end
 
   def generate_recovery_codes
-    # Generate a unique recovery code and associate it with the user
-    # Store the code in the user's recovery_codes field and mark it as unused
-    # Send the recovery code to the user through a secure channel (e.g., email, SMS)
     current_user.generate_recovery_codes
 
     if current_user.save
