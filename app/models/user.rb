@@ -34,8 +34,6 @@ class User < ApplicationRecord
     admin
   end
 
-  private
-
   def generate_recovery_codes
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
   end

@@ -1,4 +1,4 @@
-.user-account-section.mb-5
+.user-account-section.mb-5.mt-5
   .container
     %h1
       %span.text-highlight Welcome
@@ -10,6 +10,16 @@
       = @user.admin?
 
     %p= link_to('Change your password', edit_user_registration_path, class: 'btn btn-outline-dark')
+    %p
+      %h2.mt-5 Need new recovery codes?
+      %p
+        %i.fa-solid.fa-circle-exclamation.fa-xl.icon-red
+        Notice, that if you change the recovery codes, your old ones will not invalid.
+      = form_tag(account_recovery_generate_recovery_codes_path(current_user), method: :post, id: 'generate_recovery_codes_form') do
+        = submit_tag 'Generate new recovery codes', class: 'btn btn-outline-light'
+
+      #user_recovery_codes
+        = render partial: 'recovery_codes', locals: { recovery_codes: @user.recovery_codes }
 
     %h2.mt-5 Chart settings
     %p Select the parameters for which you want to display the charts
