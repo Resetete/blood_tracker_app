@@ -1,9 +1,10 @@
 .container
   .mt-5
-    %h2.center-align My Hemigrams
+    %h2.center-align
+      %span.text-highlight My Hemigrams
     .mt-5
       .row
-        .col-9.mb-3
+        .col-9.mb-5
           %h3.col-2.text-highlight Filter charts
           = render partial: '/hemigrams/chart_settings/form', locals: { current_user: , chart_setting: @chart_setting}
 
