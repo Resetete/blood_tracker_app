@@ -13,7 +13,13 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @user.update(security_questions: formatted_security_questions)
+      redirect_to view_user_path(@user), notice: 'Security questions successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   private
 
@@ -26,5 +32,15 @@ class UsersController < ApplicationController
 
     flash[:alert] = 'You can only view your own profile'
     redirect_to root_path
+  end
+
+  def user_params
+    params.require(:user).permit(security_questions: [:question, :answer])
+  end
+
+  def formatted_security_questions
+    user_params[:security_questions].to_h.map do |idx, question|
+      [question[:question], question[:answer]]
+    end
   end
 end
