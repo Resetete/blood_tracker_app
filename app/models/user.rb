@@ -33,10 +33,9 @@ class User < ApplicationRecord
   has_many :hemigrams, dependent: :destroy
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :validatable
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :validatable, :recoverable
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+  devise :database_authenticatable, :registerable, :rememberable
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
 
