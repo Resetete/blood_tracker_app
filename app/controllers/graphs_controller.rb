@@ -3,6 +3,7 @@
 # Responsible to render and visualize the graphical visualization of the blood work data (Hemigrams)
 class GraphsController < ApplicationController
   def index
+    @user_has_data = user_hemigrams.any?
     @user_parameters = user_hemigrams.pluck(:parameter).uniq
     @charts_data = prepare_charts_data
     @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user: current_user)
