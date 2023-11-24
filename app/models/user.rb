@@ -62,7 +62,8 @@ class User < ApplicationRecord
   private
 
   def validates_security_questions_present_and_unique
-    return if security_questions.present? && security_questions.uniq.length == 3
+    sanitized_questions = security_questions.reject{ |question, answer| question.blank? || answer.blank?}
+    return if security_questions.present? && sanitized_questions.uniq.length == 3
 
     errors.add(:security_questions, 'must be present and unique')
   end
