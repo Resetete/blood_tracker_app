@@ -22,7 +22,7 @@ class AccountRecoveryController < ApplicationController
         end
       end
     else
-      redirect request.referer
+      redirect_to request.referer
     end
   end
 
