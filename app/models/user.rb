@@ -44,6 +44,8 @@ class User < ApplicationRecord
   validate :validates_no_whitespace_in_username
   validate :validates_username_format
   validate :validates_security_questions_present_and_unique, on: :update
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true, if: -> { password.present? }
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
   after_create :generate_recovery_codes
@@ -73,9 +75,9 @@ class User < ApplicationRecord
   end
 
   def validates_username_format
-    return if username =~ /\A[a-zA-Z0-9_+\-]+\z/
+    return if username =~ /\A[a-zA-Z0-9_:+\-]+\z/
 
-    errors.add(:username, 'can only contain lower or uppercase letters, numbers and +, - or _')
+    errors.add(:username, 'can only contain lower or uppercase letters, numbers and +, :, - or _')
   end
 
   def generate_default_security_questions_and_answers

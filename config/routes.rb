@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'account_recovery/generate_recovery_codes/:user_id', to: 'account_recovery#generate_recovery_codes', as: 'account_recovery_generate_recovery_codes'
   post 'account_recovery/use_recovery_code', to: 'account_recovery#use_recovery_code'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :view_users, controller: 'users', only: [:show, :edit, :update]
   resources :hemigrams
