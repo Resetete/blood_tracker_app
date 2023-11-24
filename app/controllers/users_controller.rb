@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.update(security_questions: formatted_security_questions)
       redirect_to view_user_path(@user), notice: 'Security questions successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity # needs status to show error messages
     end
   end
 
