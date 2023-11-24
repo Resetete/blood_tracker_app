@@ -2,6 +2,8 @@
 
 # This class is responsible for allowing the recovering of user accounts in case the username / password was forgotten
 class AccountRecoveryController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:use_recovery_code]
+
   def recovery_codes
     @recovery_codes = current_user.recovery_codes
   end
@@ -27,8 +29,20 @@ class AccountRecoveryController < ApplicationController
   end
 
   def use_recovery_code
-    # Check if the recovery code is valid and unused
-    # Update the user's password or perform necessary actions
-    # Mark the recovery code as used or delete it
+    binding.pry
+    recovery_code = params[:recovery_code].strip
+    return redirect_to(new_user_session_path, alert: 'No recovery code provided') if recovery_code.blank?
+
+    if user = User.find { |user| user.recovery_codes.include?(recovery_code) }
+      ActiveRecord::Base.transaction do
+        sign_in(user)
+        user.update(recovery_codes: user.recovery_codes - [recovery_code])
+        redirect_to view_user_path(user), notice: "Successfully signed in!"
+      rescue => e
+        redirect_to new_user_session_path, alert: "An error occured: #{e}"
+      end
+    else
+      redirect_to new_user_session_path, alert: 'Account recovery was not successfull'
+    end
   end
 end

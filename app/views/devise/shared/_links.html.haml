@@ -1,0 +1,27 @@
+- if controller_name != 'sessions'
+  .mb-3= link_to "Log in", new_session_path(resource_name)
+
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  .mb-3= link_to "Sign up", new_registration_path(resource_name)
+
+-# create a turbo_frame_tag and if clicked on the button (Forgot your password)
+-# renders the form_tag which is stored in the unlocks/unlock_account_form partial
+.mt-3
+  .mb-1 Forgot your password?
+  = form_tag account_recovery_use_recovery_code_path, method: :post, id: 'unlock-account-form' do
+    .row.row-cols-auto
+      .col
+        = text_field_tag :recovery_code, params[:recovery_code], placeholder: 'Enter recovery code', class: 'form-control'
+      .col
+        = submit_tag 'Unlock account', name: nil, class: 'btn btn-outline-dark'
+
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  .mb-3= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  .mb-3= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+
+- if devise_mapping.omniauthable?
+  .mb-3
+    - resource_class.omniauth_providers.each do |provider|
+      = button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }
