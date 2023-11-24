@@ -27,7 +27,7 @@ class User < ApplicationRecord
     'What is the title of your all-time favorite movie?',
     'What was the first concert you attended?',
     'What is your oldest siblings middle name?',
-    'In what city or town did your parents meet?',
+    'In what city or town did your parents meet?'
   ].freeze
 
   has_many :hemigrams, dependent: :destroy
@@ -75,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def validates_username_format
-    return if username =~ /\A[a-zA-Z0-9_:+\-]+\z/
+    return if username =~ /\A[a-zA-Z0-9_:+-]+\z/
 
     errors.add(:username, 'can only contain lower or uppercase letters, numbers and +, :, - or _')
   end

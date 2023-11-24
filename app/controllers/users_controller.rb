@@ -4,7 +4,7 @@
 # This controller allows users to access their user profile info
 class UsersController < ApplicationController
   before_action :require_same_user
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: %i[show edit update]
 
   def show
     @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
@@ -35,11 +35,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(security_questions: [:question, :answer])
+    params.require(:user).permit(security_questions: %i[question answer])
   end
 
   def formatted_security_questions
-    user_params[:security_questions].to_h.map do |idx, question|
+    user_params[:security_questions].to_h.map do |_idx, question|
       [question[:question], question[:answer]]
     end
   end
