@@ -32,4 +32,28 @@ module GraphsHelper
       [parameter.parameter_name.humanize, parameter.id]
     end
   end
+
+  def blood_tracker_button(button_text, btn_style, button_size = '')
+    # btn_style: e.g. btn-outline-light or btn-outline-dark
+    # button_size: btn-lg or btn-sm
+    link_to hemigrams_path, class: "btn #{btn_style} #{button_size if button_size.present?}" do
+      [
+        content_tag(:i, '', class: 'fa-solid fa-table fa-xl icon-red'),
+        ' ',
+        button_text,
+      ].join.html_safe
+    end
+  end
+
+  def graphs_button(button_text, btn_style, button_size = '')
+    # btn_style: e.g. btn-outline-light or btn-outline-dark
+    # button_size: btn-lg or btn-sm
+    link_to graphs_path, class: "btn #{btn_style} #{button_size.present? ? button_size : ''}" do
+      [
+        content_tag(:i, '', class: 'fa-solid fa-chart-column fa-xl icon-red'),
+        ' ',
+        button_text,
+      ].join.html_safe
+    end
+  end
 end
