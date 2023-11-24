@@ -5,8 +5,15 @@
       = @user.username
       = '- you are an admin' if @user.admin?
 
+    %p.mt-5
+      = link_to hemigrams_path, class: 'btn btn-outline-dark btn-lg' do
+        %i.fa-solid.fa-chart-column.fa-xl.icon-red
+        Track your blood values
+
     %h2.mt-5 Security and account recovery
-    %p= link_to('Change your password', edit_user_registration_path, class: 'btn btn-outline-dark')
+    %p
+      = link_to('Change', edit_user_registration_path, class: 'btn btn-outline-light')
+      your password and/or username
     %p
       Here, you can establish recovery options to regain access to your account in case you forget your password or
       username. As we do not have your email address or any other contact information, it is crucial to set up recovery
