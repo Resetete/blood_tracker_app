@@ -2,7 +2,7 @@
 
 # This class is responsible for allowing the recovering of user accounts in case the username / password was forgotten
 class AccountRecoveryController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:use_recovery_code]
+  skip_before_action :authenticate_user!, only: %i[use_recovery_code load_recovery_partial]
 
   def recovery_codes
     @recovery_codes = current_user.recovery_codes
@@ -29,7 +29,6 @@ class AccountRecoveryController < ApplicationController
   end
 
   def use_recovery_code
-    binding.pry
     recovery_code = params[:recovery_code].strip
     return redirect_to(new_user_session_path, alert: 'No recovery code provided') if recovery_code.blank?
 
@@ -43,6 +42,12 @@ class AccountRecoveryController < ApplicationController
       end
     else
       redirect_to new_user_session_path, alert: 'Account recovery was not successfull'
+    end
+  end
+
+  def load_recovery_partial
+    respond_to do |format|
+      format.html { render partial: 'devise/unlocks/unlock_account_form' }
     end
   end
 end

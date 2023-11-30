@@ -1,4 +1,7 @@
-TEST - unlock account
-
-= turbo_frame_tag 'unlock_account_form' do
-  TEST form rendering
+= turbo_frame_tag('forgot_password_button') do
+  = form_tag account_recovery_use_recovery_code_path, method: :post do
+    .row.row-cols-auto
+      .col
+        = text_field_tag :recovery_code, params[:recovery_code], placeholder: 'Enter recovery code', class: 'form-control'
+      .col
+        = submit_tag 'Unlock account', name: nil, class: 'btn btn-outline-dark'
