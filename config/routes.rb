@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post 'account_recovery/generate_recovery_codes/:user_id', to: 'account_recovery#generate_recovery_codes',
                                                             as: 'account_recovery_generate_recovery_codes'
   post 'account_recovery/use_recovery_code', to: 'account_recovery#use_recovery_code'
+  post 'account_recovery/use_security_questions', to: 'account_recovery#use_security_questions'
+
   get 'account_recovery/load_recovery_partial', to: 'account_recovery#load_recovery_partial'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }

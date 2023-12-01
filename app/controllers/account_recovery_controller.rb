@@ -45,6 +45,13 @@ class AccountRecoveryController < ApplicationController
     end
   end
 
+  # /account_recovery/use_security_questions as account_recovery_use_security_questions_path
+  def use_security_questions
+    # TODO: set up route for form
+    # render questions -> check that answers the user submits via form match answers in db
+    # lowercase + strip answers
+  end
+
   def load_recovery_partial
     respond_to do |format|
       format.html { render partial: 'devise/unlocks/unlock_account_form' }

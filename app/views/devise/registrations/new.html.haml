@@ -25,9 +25,10 @@
         .actions.mb-2
           = f.submit 'Sign up', class: 'btn btn-outline-dark'
 
+    .col-md-12
       = render 'devise/shared/links'
 
-      .mt-5
-        %p
-          %i.fa-solid.fa-circle-exclamation.fa-xl.icon-red
-          Notice, after sign up you can define options for your account recovery in case you forget your passsword or username.
+    .mt-5
+      %p
+        %i.fa-solid.fa-circle-exclamation.fa-xl.icon-red
+        Notice, after sign up you can define options for your account recovery in case you forget your passsword or username.

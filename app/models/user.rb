@@ -15,7 +15,7 @@
 #  security_questions  :string           default([]), is an Array
 #
 class User < ApplicationRecord
-  EXAMPLE_SECURITY_QUESTIONS = [
+  SECURITY_QUESTIONS = [
     'What is the name of your favorite teacher from elementary school?',
     'What was the name of your first pet?',
     'In which city were you born?',
@@ -86,7 +86,7 @@ class User < ApplicationRecord
   end
 
   def select_random_questions_with_answers
-    EXAMPLE_SECURITY_QUESTIONS.sample(3).map do |question|
+    SECURITY_QUESTIONS.sample(3).map do |question|
       [question, 'Your answer']
     end
   end
