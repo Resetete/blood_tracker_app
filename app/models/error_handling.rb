@@ -7,8 +7,9 @@ module ErrorHandling
   SUCCESSFUL_CREATE = 'Successfully created.'
   UNSUCCESSFUL_CREATE = 'Creation was not successful.'
   SUCCESSFUL_DESTROY = 'Successfully deleted.'
-  UNSUCCESSFUL_ACCOUNT_RECOVERY = "Unfortunately, we couldn't restore your account. Please use a recovery code."
+  UNSUCCESSFUL_ACCOUNT_RECOVERY = "Unfortunately, we couldn't restore your account. Please use a recovery code or try again."
   BLANK_SECURITY_ANSWERS = "You need to choose your security questions and provide answers."
+  SUCCESSFUL_SIGN_IN = 'Successfully signed in!'
 
   def self.unsuccessful_create(error_message)
     UNSUCCESSFUL_CREATE + "due to #{error_message}"

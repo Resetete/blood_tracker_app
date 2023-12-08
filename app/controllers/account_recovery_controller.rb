@@ -33,15 +33,18 @@ class AccountRecoveryController < ApplicationController
     return redirect_to(new_user_session_path, alert: 'No recovery code provided') if recovery_code.blank?
 
     if user = User.find { |user| user.recovery_codes.include?(recovery_code) }
-      ActiveRecord::Base.transaction do
-        sign_in(user)
-        user.update(recovery_codes: user.recovery_codes - [recovery_code])
-        redirect_to view_user_path(user), notice: "Successfully signed in!"
+      begin
+        ActiveRecord::Base.transaction do
+          sign_in(user)
+          user.update(recovery_codes: user.recovery_codes - [recovery_code])
+        end
+
+        redirect_to(view_user_path(user), notice: ErrorHandling::SUCCESSFUL_SIGN_IN)
       rescue => e
         redirect_to new_user_session_path, alert: "An error occured: #{e}"
       end
     else
-      redirect_to new_user_session_path, alert: 'Account recovery was not successfull'
+      redirect_to new_user_session_path, alert: 'Account recovery was not successful.'
     end
   end
 
@@ -57,7 +60,9 @@ class AccountRecoveryController < ApplicationController
     matching_users = find_matching_users(user_answers)
 
     if matching_users.length == 1
-      sign_in(matching_user.first)
+      user = matching_users.first
+      sign_in(user)
+      redirect_to(view_user_path(user), notice: ErrorHandling::SUCCESSFUL_SIGN_IN)
     elsif matching_users.length > 1
       redirect_with_error_message(ErrorHandling::UNSUCCESSFUL_ACCOUNT_RECOVERY)
     else
