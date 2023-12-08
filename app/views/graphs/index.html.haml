@@ -13,6 +13,10 @@
             %h3.col-2.text-highlight Filter charts
             = render partial: '/hemigrams/chart_settings/form', locals: { current_user: , chart_setting: @chart_setting}
     - if @user_parameters.any?
+      %p
+        The yellow lines represent the upper and lower limits for the blood parameters.
+        Values falling within these limits are considered normal. For more information, you can explore
+        the glossary by clicking the link in the top right corner.
       - @user_parameters.each do |parameter|
         %p= parameter.humanize
         .mb-5.chart

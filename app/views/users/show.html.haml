@@ -49,8 +49,13 @@
                 %td= answer
 
     %h2.mt-5 Chart settings
-    %p Select the parameters for which you want to display the charts
-    .row
-      .col-9.mb-3
-        = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user: , chart_setting: @chart_setting}
+    - if @user_parameter_ids.any?
+      %p Select the parameters for which you want to display the charts
+      .row
+        .col-9.mb-3
+          = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user: , chart_setting: @chart_setting}
+    - else
+      %p
+        You need to track some data first.
+        = blood_tracker_button('Track your blood values', 'btn-outline-dark')
 

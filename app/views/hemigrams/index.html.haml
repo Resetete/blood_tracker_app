@@ -10,3 +10,5 @@
       = will_paginate(@hemigrams, page_links: true)
   %p
     = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark'
+    -if @hemigrams.any?
+      = graphs_button('Visualize your data', 'btn-outline-dark')

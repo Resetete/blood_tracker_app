@@ -37,7 +37,7 @@
     %span.text-highlight Cancel my account
 
   %p
-    Unhappy?
-    = button_to('Cancel my account', registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning')
+    Unhappy? You can delete your account and all related data..
+    = button_to('Delete my account', registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning')
 
   = link_to('Back', :back, class: 'btn btn-outline-dark')
