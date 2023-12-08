@@ -1,7 +1,18 @@
 = form_for chart_setting, url: hemigrams_chart_setting_path(chart_setting) do |f|
+  - checkboxes = collection_for_chart_settings_checkboxes
+  - items_per_column = (checkboxes.count / 4.to_f).ceil # we have 4 columns
+
   .row
-    .col
-      -# TODO: make it a multi select with checkboxes or ways to select by click
-      = f.select :parameter_ids, options_for_select(options_for_chart_settings_select, chart_setting.parameter_ids), { }, multiple: true, class: 'form-select', id: 'chart-settings-select', selected: chart_setting.parameter_ids
+    -# splits the total amount of checkboxes into slices and then iterates over each slice
+    - checkboxes.each_slice(items_per_column).each do |column_items|
+      .col-md-3
+        - column_items.each do |cb|
+          .form-check
+            = f.check_box :parameter_ids, { multiple: true }, cb[:id], nil
+            = label_tag(nil, cb[:parameter_name].humanize, class: 'form-check-label')
+  .row.mt-3.justify-content-between
     .col
       = f.submit 'Filter', class: 'btn btn-outline-dark'
+    .col.text-end
+      = blood_tracker_button('Track more data', 'btn-outline-dark')
+

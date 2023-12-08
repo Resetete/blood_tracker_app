@@ -5,5 +5,4 @@
         = f.label Admin::Hemigrams::ParameterMetadata.find(user_parameter_id).parameter_name
         = check_box_tag "hemigrams_chart_setting[parameter_ids][]", user_parameter_id, chart_setting.parameter_ids.include?(user_parameter_id)
     .col
-      - if
       = f.submit 'Save Setting', class: 'btn btn-outline-dark'

@@ -77,7 +77,8 @@ module Hemigrams
         %w[pg fmol] => 1_000,
         %w[fmol pg] => 0.001,
         ['g/dL', 'g/L'] => 0.1,
-        ['g/L', 'g/dL'] => 10
+        ['g/L', 'g/dL'] => 10,
+        ['10^3/µL', '10^6/μL'] => 1000,
       }
     end
 
