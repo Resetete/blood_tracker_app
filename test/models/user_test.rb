@@ -4,21 +4,15 @@
 #
 # Table name: users
 #
-#  id                     :bigint           not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  first_name             :string
-#  last_name              :string
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  admin                  :boolean
+#  id                  :bigint           not null, primary key
+#  encrypted_password  :string           default(""), not null
+#  remember_created_at :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  admin               :boolean
+#  username            :string           default(""), not null
+#  recovery_codes      :string           default([]), not null, is an Array
+#  security_questions  :string           default([]), is an Array
 #
 require 'test_helper'
 

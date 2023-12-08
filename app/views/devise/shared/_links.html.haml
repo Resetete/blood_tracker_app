@@ -1,0 +1,20 @@
+- if controller_name != 'sessions'
+  .mb-3= link_to "Log in", new_session_path(resource_name)
+
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  .mb-3= link_to "Sign up", new_registration_path(resource_name)
+
+.mt-3
+  = turbo_frame_tag('forgot_password_button') do
+    = link_to 'Forgot your password?', account_recovery_load_recovery_partial_path
+
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  .mb-3= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  .mb-3= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+
+- if devise_mapping.omniauthable?
+  .mb-3
+    - resource_class.omniauth_providers.each do |provider|
+      = button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }

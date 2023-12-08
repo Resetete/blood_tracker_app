@@ -1,0 +1,11 @@
+-# form to update the user security questions and answers
+.mb-5
+  = form_for current_user, url: view_user_path(current_user), method: :patch, data: { turbo: false }  do |f|
+    = render partial: 'shared/model_errors', locals: { model: current_user }
+    - current_user.security_questions.each_with_index do |(question, answer), index|
+      .mb-3
+        .form-label= "Question #{index + 1}"
+        = f.text_field "security_questions[#{index}][question]", value: question, required: true, placeholder: 'Question', class: 'form-control border-success', minlength: 10
+        .form-label= "Answer #{index + 1}"
+        = f.text_field "security_questions[#{index}][answer]", value: answer, required: true, placeholder: 'Answer', class: 'form-control', minlength: 5
+    = f.submit 'Update Security Questions', class: 'btn btn-outline-dark'

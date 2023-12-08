@@ -36,8 +36,8 @@
                 %li= link_to 'Blood type descriptions', admin_blood_cell_descriptions_path, class: 'dropdown-item'
                 %li= link_to 'Blood parameter metadata', admin_hemigrams_parameter_metadata_path, class: 'dropdown-item'
           - if !user_signed_in?
-            -# %li= link_to 'Sign up', new_user_registration_path, class: 'btn'
-            %li= link_to 'Sign in (Admin)', new_user_session_path, class: 'btn btn-outline-light'
+            %li= link_to 'Sign up', new_user_registration_path, class: 'btn btn-highlight'
+            %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-dark'
           - if user_signed_in?
             %li.nav-item
               = link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger'

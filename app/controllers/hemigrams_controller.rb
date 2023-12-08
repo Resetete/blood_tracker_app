@@ -10,7 +10,7 @@ class HemigramsController < ApplicationController
     hemigrams = Hemigram.search(params[:search], current_user)
     @hemigrams = Hemigram.where(id: hemigrams.map(&:id))
                          .order(date: :desc)
-                         .paginate(page: params[:page])
+                         .paginate(page: params[:page], per_page: 10)
   end
 
   def new

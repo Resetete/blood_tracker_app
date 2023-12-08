@@ -1,0 +1,7 @@
+.container.mt-5.mb-5.bg-light.p-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Update your security questions
+  .mt-5.mb-5
+    = render partial: 'form', locals: { user: current_user }
+  = link_to('Back', :back, class: "btn btn-outline-dark")

@@ -9,9 +9,16 @@ Rails.application.routes.draw do
   post '/news/sort_by', to: 'pages#sort_news_articles'
   get 'cookie_policy', to: 'pages#cookie_policy'
   get '/hemigrams/get_unit_selection_dropdown_options', to: 'hemigrams#get_unit_selection_dropdown_options'
+  post 'account_recovery/generate_recovery_codes/:user_id', to: 'account_recovery#generate_recovery_codes',
+                                                            as: 'account_recovery_generate_recovery_codes'
+  post 'account_recovery/use_recovery_code', to: 'account_recovery#use_recovery_code'
+  post 'account_recovery/use_security_questions', to: 'account_recovery#use_security_questions'
 
-  devise_for :users
-  resources :view_users, controller: 'users', only: [:show]
+  get 'account_recovery/load_recovery_partial', to: 'account_recovery#load_recovery_partial'
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  resources :view_users, controller: 'users', only: %i[show edit update]
   resources :hemigrams
 
   namespace :hemigrams do

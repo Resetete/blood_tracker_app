@@ -5,11 +5,11 @@
 # Or run Rails.application.load_seed in rails console
 
 # Create an admin user
-if User.find_by(email: Rails.application.credentials.admin.email)
+if User.find_by(username: Rails.application.credentials.admin.username)
   Rails.logger.debug 'Admin user already exists'
 else
   User.create(
-    email: Rails.application.credentials.admin.email,
+    username: Rails.application.credentials.admin.username,
     password: Rails.application.credentials.admin.password,
     admin: true
   )

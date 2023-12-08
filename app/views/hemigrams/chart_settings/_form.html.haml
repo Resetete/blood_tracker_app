@@ -1,7 +1,0 @@
-= form_for chart_setting, url: hemigrams_chart_setting_path(chart_setting) do |f|
-  .row
-    .col
-      -# TODO: make it a multi select with checkboxes or ways to select by click
-      = f.select :parameter_ids, options_for_select(options_for_chart_settings_select, chart_setting.parameter_ids), { }, multiple: true, class: 'form-select', id: 'chart-settings-select', selected: chart_setting.parameter_ids
-    .col
-      = f.submit 'Filter', class: 'btn btn-outline-dark'

@@ -1,18 +1,22 @@
-.devise-views.container
+-# TODO: update to allow resetting password with recovery code / questions
+.devise-views.container.pt-5
   .header-title.p-0.m-0
     %h2
-      %span.text-highlight
-        Forgot your password?
+      %span.text-highlight Forgot your password?
+    %p
+      If you forgot your password or username, you have two options to recover it.
+      You can enter the answers to your secret questions or enter one of your recovery codes.
   .row.mt-5
     .col-md-6
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f|
         = render "devise/shared/error_messages", resource: resource
-
         .mb-3
-          = f.label :email, class: 'form-label', for: 'email_input'
-          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email_input', placeholder: 'my_email@example.com'
-
+          = f.label :recovery_codes, name: 'Recovery code', class: 'form-label', for: 'recovery_code_input'
+          = f.text_field :recovery_codes, autofocus: true, class: 'form-control', id: 'recovery_code_input'
+        .mb-3
+          = f.label :security_questions, class: 'form-label', for: 'security_question_input'
+          = f.text_field :security_questions, autofocus: true, class: 'form-control', id: 'security_question_input'
         .actions.mb-2
-          = f.submit('Send me reset password instructions', class: 'btn btn-outline-light')
+          = f.submit('Reset my password', class: 'btn btn-outline-dark')
 
       = render "devise/shared/links"

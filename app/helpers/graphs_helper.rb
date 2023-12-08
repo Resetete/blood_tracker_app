@@ -24,12 +24,47 @@ module GraphsHelper
     end
   end
 
+  # deprecated
   def options_for_chart_settings_select
     user_parameters = Hemigram.for_user(current_user).pluck(:parameter).uniq
     Admin::Hemigrams::ParameterMetadata.all.select do |parameter_metadata|
       user_parameters.include?(parameter_metadata.parameter_name)
     end.map do |parameter|
       [parameter.parameter_name.humanize, parameter.id]
+    end
+  end
+
+  # returns a collection of parameters to allow filtering charts
+  def collection_for_chart_settings_checkboxes
+    user_parameters = Hemigram.for_user(current_user).pluck(:parameter).uniq
+    collection = Admin::Hemigrams::ParameterMetadata.all.select do |parameter_metadata|
+      user_parameters.include?(parameter_metadata.parameter_name)
+    end
+    collection
+  end
+
+
+  def blood_tracker_button(button_text, btn_style, button_size = '')
+    # btn_style: e.g. btn-outline-light or btn-outline-dark
+    # button_size: btn-lg or btn-sm
+    link_to hemigrams_path, class: "btn #{btn_style} #{button_size.presence}" do
+      [
+        content_tag(:i, '', class: 'fa-solid fa-table fa-xl icon-red'),
+        ' ',
+        button_text
+      ].join.html_safe
+    end
+  end
+
+  def graphs_button(button_text, btn_style, button_size = '')
+    # btn_style: e.g. btn-outline-light or btn-outline-dark
+    # button_size: btn-lg or btn-sm
+    link_to graphs_path, class: "btn #{btn_style} #{button_size.presence || ''}" do
+      [
+        content_tag(:i, '', class: 'fa-solid fa-chart-column fa-xl icon-red'),
+        ' ',
+        button_text
+      ].join.html_safe
     end
   end
 end

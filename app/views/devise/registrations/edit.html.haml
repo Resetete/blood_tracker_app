@@ -1,0 +1,43 @@
+.container.devise-views.pt-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight
+        Edit
+        = resource_name.to_s.humanize
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    .mb-3
+      = f.label :username, class: 'form-label', for: 'username-input'
+      = f.text_field :username, autofocus: true, autocomplete: "username", class: 'form-control', id: 'username-input'
+
+    .mb-3
+      = f.label :password,  class: 'form-label', for: 'password-input'
+      %i (leave blank if you don't want to change it)
+      = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+      - if @minimum_password_length
+        %em
+          = @minimum_password_length
+          characters minimum
+
+    .mb-3
+      = f.label :password_confirmation, class: 'form-label', for: 'password-confirmation'
+      = f.password_field :password_confirmation, autocomplete: "new-password", id: 'password-conformation', class: 'form-control'
+
+    .mb-3
+      = f.label :current_password, class: 'form-label', for: 'current-password'
+      %i (we need your current password to confirm your changes)
+      = f.password_field :current_password, autocomplete: "current-password", id: 'current-password', class: 'form-control'
+
+    .actions.mb-2
+      = f.submit "Update", class: 'btn btn-outline-dark'
+
+  %h3.mt-5
+    %span.text-highlight Cancel my account
+
+  %p
+    Unhappy? You can delete your account and all related data..
+    = button_to('Delete my account', registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning')
+
+  = link_to('Back', :back, class: 'btn btn-outline-dark')

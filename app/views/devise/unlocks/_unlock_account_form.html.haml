@@ -1,0 +1,23 @@
+-# this form renders two forms
+-# the form to enter an recovery code
+-# a form to enter the recovery questionsf
+= turbo_frame_tag('forgot_password_button') do
+  %p If you forgot your password or username, you have two options to recover it. You can enter the answers to your secret questions or enter one of your recovery codes.
+  .mb-3
+    = form_tag account_recovery_use_recovery_code_path, method: :post, data: { turbo: false } do
+      .row.row-cols-auto
+        .col
+          = text_field_tag :recovery_code, params[:recovery_code], placeholder: 'Enter recovery code', class: 'form-control'
+        .col
+          = submit_tag 'Unlock account', name: nil, class: 'btn btn-outline-dark'
+
+  %p Recover your account by selecting and answering the security questions you previously set up in your account.
+  = form_tag account_recovery_use_security_questions_path, method: :post, data: { turbo: false } do
+    - User::SECURITY_QUESTIONS.sample(3).each_with_index do |question, index|
+      .row.row-cols-auto.mb-3
+        .col-8
+          = select_tag "question[#{index}]", options_for_select(User::SECURITY_QUESTIONS, selected: question), class: 'form-control'
+        .col-4
+          = text_field_tag "answer[#{index}]", params[:answer], placeholder: 'Enter answer', class: 'form-control'
+    .col
+      = submit_tag 'Unlock account', name: nil, class: 'btn btn-outline-dark'

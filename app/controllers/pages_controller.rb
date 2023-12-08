@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def news
     top_headline_news = Api::FetchNewsService.new(news_api_client).top_headline_news
     everything = Api::FetchNewsService.new(news_api_client).everything_news
-    @news = (top_headline_news + everything).reject { |news| news.title.include?('removed') }.uniq(&:title).first(30)
+    @news = (top_headline_news + everything).reject { |news| news.title.downcase.include?('removed') }.uniq(&:title).first(30)
   end
 
   def sort_news_articles

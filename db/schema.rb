@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_143003) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_17_161617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,22 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_143003) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
     t.datetime "remember_created_at", precision: nil
-    t.string "confirmation_token"
-    t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
-    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string "username", default: "", null: false
+    t.string "recovery_codes", default: [], null: false, array: true
+    t.string "security_questions", default: [], array: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "hemigrams_chart_settings", "users", on_delete: :cascade

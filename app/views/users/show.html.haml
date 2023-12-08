@@ -1,13 +1,61 @@
-.user-account-section.mb-5
-  .container
-    %h2
-      Welcome #{@user.email}
+.user-account-section.mb-5.mt-5
+  .container.bg-light.p-5
+    %h1
+      %span.text-highlight Welcome
+      = @user.username
+      = '- you are an admin' if @user.admin?
+
+    %p.mt-5
+      = blood_tracker_button('Track your blood values', 'btn-outline-dark', 'btn-lg')
+      -if @user.hemigrams.any?
+        = graphs_button('Visualize your data', 'btn-outline-dark', 'btn-lg')
+
+    %h2.mt-5 Security and account recovery
     %p
-      User is admin?:
-      = @user.admin?
-    %h2 Chart settings
-    %p Select the parameters for which you want to display the charts
+      = link_to('Change', edit_user_registration_path, class: 'btn btn-outline-dark')
+      your password and/or username
+    %p
+      Here, you can establish recovery options to regain access to your account in case you forget your password or
+      username. As we do not have your email address or any other contact information, it is crucial to set up recovery
+      options for us to assist you in restoring your account. Without those information, we cannot restore your account.
     .row
-      .col-9.mb-3
-        = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user: , chart_setting: @chart_setting}
+      .col-6
+        %h4.mt-5 Recovery codes
+        %p
+          You can utilize the provided codes to recover your account. Ensure to copy and store these codes in a secure place
+          where you can easily access them when needed.
+        %p
+          %i.fa-solid.fa-circle-exclamation.fa-xl.icon-red
+          Notice, that if you change the recovery codes, your old ones will become invalid.
+        = form_tag(account_recovery_generate_recovery_codes_path(current_user), method: :post, id: 'generate_recovery_codes_form') do
+          = submit_tag 'Generate new recovery codes', class: 'btn btn-outline-dark'
+
+        #user_recovery_codes
+          = render partial: 'recovery_codes', locals: { recovery_codes: @user.recovery_codes }
+      .col-6
+        %h4.mt-5 Security questions
+        %p
+          You have the option to set up three security questions to facilitate account recovery.
+          In the event that you forget your account credentials, you can provide the answers to these questions to
+          restore access. It is recommended to provide complex and secure answers for enhanced account protection.
+          The more intricate your answers, the better and more secure your account will be.
+        .mt-2
+          = link_to('Update security questions', edit_view_user_path(current_user), class: 'btn btn-outline-dark')
+        %table.table.mt-2
+          %tbody
+            - @user.security_questions.each do |question, answer|
+              %tr
+                %th{scope: 'row'}= question
+                %td= answer
+
+    %h2.mt-5 Chart settings
+    - if @user_parameter_ids.any?
+      %p Select the parameters for which you want to display the charts
+      .row
+        .col-12.mb-3
+          = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user:, chart_setting: @chart_setting, button_text: 'Save setting'}
+    - else
+      %p
+        You need to track some data first.
+        = blood_tracker_button('Track your blood values', 'btn-outline-dark')
 

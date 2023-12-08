@@ -57,6 +57,10 @@ module Admin
 
         parameter.values_at(:abbreviations).flatten.join(', ')
       end
+
+      def parameter_name_humanize
+        parameter_name.humanize
+      end
     end
   end
 end
