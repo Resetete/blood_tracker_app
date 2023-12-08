@@ -8,6 +8,7 @@ class AccountRecoveryController < ApplicationController
     @recovery_codes = current_user.recovery_codes
   end
 
+  # generates recovery codes in the user view page and updates a turbo frame
   def generate_recovery_codes
     current_user.generate_recovery_codes
 
@@ -28,6 +29,7 @@ class AccountRecoveryController < ApplicationController
     end
   end
 
+  # allows the user to submit a recovery code and sign in
   def use_recovery_code
     recovery_code = params[:recovery_code].strip
     return redirect_to(new_user_session_path, alert: 'No recovery code provided') if recovery_code.blank?

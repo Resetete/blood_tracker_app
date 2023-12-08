@@ -43,6 +43,7 @@ class User < ApplicationRecord
   validate :validates_no_whitespace_in_username
   validate :validates_username_format
   validate :validates_security_questions_present_and_unique, on: :update
+  validate :validates_security_answers_complexity_unique, on: :update
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: -> { password.present? }
 
@@ -61,11 +62,18 @@ class User < ApplicationRecord
 
   private
 
+  # validates that we have different questions and answer combinations and exactly 3 pairs
   def validates_security_questions_present_and_unique
-    sanitized_questions = security_questions.reject { |question, answer| question.blank? || answer.blank? }
     return if security_questions.present? && sanitized_questions.uniq.length == 3
 
     errors.add(:security_questions, 'must be present and unique')
+  end
+
+  def validates_security_answers_complexity_unique
+    answers = sanitized_questions.map(&:second)
+    return if answers.uniq.length == 3 && !default_answers?(answers)
+
+    errors.add(:security_question_answers, 'must be unique and cannot be the default ones')
   end
 
   def validates_no_whitespace_in_username
@@ -80,6 +88,10 @@ class User < ApplicationRecord
     errors.add(:username, 'can only contain lower or uppercase letters, numbers and +, :, - or _')
   end
 
+  def sanitized_questions
+    security_questions.reject { |question, answer| question.blank? || answer.blank? }
+  end
+
   def generate_default_security_questions_and_answers
     self.security_questions = select_random_questions_with_answers
     save
@@ -89,5 +101,9 @@ class User < ApplicationRecord
     SECURITY_QUESTIONS.sample(3).map do |question|
       [question, 'Your answer']
     end
+  end
+
+  def default_answers?(answers)
+    answers.map(&:downcase).include?('your answer')
   end
 end
