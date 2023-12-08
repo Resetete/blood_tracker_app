@@ -1,10 +1,12 @@
+= turbo_page_requires_reload
+
 .container.devise-views.pt-5
   .header-title.p-0.m-0
     %h2
       %span.text-highlight Sign up
 
   .row
-    .col-md-6
+    .col-md-6.col-s-12
       = form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f|
         = render 'devise/shared/error_messages', resource: resource
         .mb-3
