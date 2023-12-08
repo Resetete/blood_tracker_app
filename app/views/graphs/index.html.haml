@@ -12,7 +12,7 @@
           .col-12
             %h3.col-3
               %span.text-highlight Filter charts
-            = render partial: '/hemigrams/chart_settings/form', locals: { current_user: , chart_setting: @chart_setting}
+            = render partial: '/hemigrams/chart_settings/check_boxes', locals: { current_user:, chart_setting: @chart_setting, button_text: 'Filter'}
     - if @user_parameters.any?
       %p
         The yellow lines represent the upper and lower limits for the blood parameters.
