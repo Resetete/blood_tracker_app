@@ -15,6 +15,8 @@
 #  security_questions  :string           default([]), is an Array
 #
 class User < ApplicationRecord
+  include AccountRecovery::RecoveryHelpers
+
   SECURITY_QUESTIONS = [
     'What is the name of your favorite teacher from elementary school?',
     'What was the name of your first pet?',
@@ -64,14 +66,14 @@ class User < ApplicationRecord
 
   # validates that we have different questions and answer combinations and exactly 3 pairs
   def validates_security_questions_present_and_unique
-    return if security_questions.present? && sanitized_questions.uniq.length == 3
+    return if security_questions.present? && sanitized_questions_with_answers.uniq.length == 3
 
     errors.add(:security_questions, 'must be present and unique')
   end
 
   def validates_security_answers_complexity_unique
-    answers = sanitized_questions.map(&:second)
-    return if answers.uniq.length == 3 && !default_answers?(answers)
+    answers = sanitized_questions_with_answers.map(&:second)
+    return if answers.uniq.length == 3 && !default_answers?(sanitized_questions_with_answers)
 
     errors.add(:security_question_answers, 'must be unique and cannot be the default ones')
   end
@@ -88,7 +90,7 @@ class User < ApplicationRecord
     errors.add(:username, 'can only contain lower or uppercase letters, numbers and +, :, - or _')
   end
 
-  def sanitized_questions
+  def sanitized_questions_with_answers
     security_questions.reject { |question, answer| question.blank? || answer.blank? }
   end
 
@@ -101,9 +103,5 @@ class User < ApplicationRecord
     SECURITY_QUESTIONS.sample(3).map do |question|
       [question, 'Your answer']
     end
-  end
-
-  def default_answers?(answers)
-    answers.map(&:downcase).include?('your answer')
   end
 end

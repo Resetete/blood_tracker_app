@@ -2,6 +2,8 @@
 
 # This class is responsible for allowing the recovering of user accounts in case the username / password was forgotten
 class AccountRecoveryController < ApplicationController
+  include AccountRecovery::RecoveryHelpers
+
   skip_before_action :authenticate_user!, only: %i[use_recovery_code load_recovery_partial use_security_questions]
 
   def recovery_codes
@@ -52,14 +54,15 @@ class AccountRecoveryController < ApplicationController
 
   # /account_recovery/use_security_questions as account_recovery_use_security_questions_path
   def use_security_questions
-    user_answers = params["question"].keys.map do |index|
+    user_questions_with_answers = params["question"].keys.map do |index|
       [params["question"][index], params["answer"][index].downcase.strip]
     end
 
-    return redirect_with_error_message(ErrorHandling::BLANK_SECURITY_ANSWERS) if user_answers.map(&:second).all?(&:empty?)
+    return redirect_with_error_message(ErrorHandling::BLANK_SECURITY_ANSWERS) if user_questions_with_answers.map(&:second).all?(&:empty?)
+    return redirect_with_error_message(ErrorHandling::NO_CUSTOM_ANSWERS) if default_answers?(user_questions_with_answers)
 
     # Find the user with matching questions and answers combinations
-    matching_users = find_matching_users(user_answers)
+    matching_users = find_matching_users(user_questions_with_answers)
 
     if matching_users.length == 1
       user = matching_users.first
@@ -80,8 +83,10 @@ class AccountRecoveryController < ApplicationController
 
   private
 
-  def find_matching_users(user_answers)
-    User.select { |user| user.security_questions.map { |q, a| [q, a.downcase.strip]}.sort == user_answers.sort }
+  def find_matching_users(user_questions_with_answers)
+    User.select do |user|
+      user.security_questions.map { |q, a| [q, a.downcase.strip] }.sort == user_questions_with_answers.sort
+    end
   end
 
   def redirect_with_error_message(error_message)
