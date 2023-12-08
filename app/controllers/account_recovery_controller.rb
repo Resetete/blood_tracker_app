@@ -36,7 +36,7 @@ class AccountRecoveryController < ApplicationController
     recovery_code = params[:recovery_code].strip
     return redirect_to(new_user_session_path, alert: 'No recovery code provided') if recovery_code.blank?
 
-    if user = User.find { |user| user.recovery_codes.include?(recovery_code) }
+    if (user = User.find { |user| user.recovery_codes.include?(recovery_code) })
       begin
         ActiveRecord::Base.transaction do
           sign_in(user)
@@ -44,7 +44,7 @@ class AccountRecoveryController < ApplicationController
         end
 
         redirect_to(view_user_path(user), notice: ErrorHandling::SUCCESSFUL_SIGN_IN)
-      rescue => e
+      rescue StandardError => e
         redirect_to new_user_session_path, alert: "An error occured: #{e}"
       end
     else
@@ -54,8 +54,8 @@ class AccountRecoveryController < ApplicationController
 
   # /account_recovery/use_security_questions as account_recovery_use_security_questions_path
   def use_security_questions
-    user_questions_with_answers = params["question"].keys.map do |index|
-      [params["question"][index], params["answer"][index].downcase.strip]
+    user_questions_with_answers = params['question'].keys.map do |index|
+      [params['question'][index], params['answer'][index].downcase.strip]
     end
 
     return redirect_with_error_message(ErrorHandling::BLANK_SECURITY_ANSWERS) if user_questions_with_answers.map(&:second).all?(&:empty?)
@@ -91,8 +91,8 @@ class AccountRecoveryController < ApplicationController
 
   def redirect_with_error_message(error_message)
     redirect_to(
-        request.referer,
-        alert: error_message,
-      )
+      request.referer,
+      alert: error_message
+    )
   end
 end

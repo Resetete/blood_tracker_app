@@ -36,11 +36,11 @@ module GraphsHelper
   def blood_tracker_button(button_text, btn_style, button_size = '')
     # btn_style: e.g. btn-outline-light or btn-outline-dark
     # button_size: btn-lg or btn-sm
-    link_to hemigrams_path, class: "btn #{btn_style} #{button_size if button_size.present?}" do
+    link_to hemigrams_path, class: "btn #{btn_style} #{button_size.presence}" do
       [
         content_tag(:i, '', class: 'fa-solid fa-table fa-xl icon-red'),
         ' ',
-        button_text,
+        button_text
       ].join.html_safe
     end
   end
@@ -48,11 +48,11 @@ module GraphsHelper
   def graphs_button(button_text, btn_style, button_size = '')
     # btn_style: e.g. btn-outline-light or btn-outline-dark
     # button_size: btn-lg or btn-sm
-    link_to graphs_path, class: "btn #{btn_style} #{button_size.present? ? button_size : ''}" do
+    link_to graphs_path, class: "btn #{btn_style} #{button_size.presence || ''}" do
       [
         content_tag(:i, '', class: 'fa-solid fa-chart-column fa-xl icon-red'),
         ' ',
-        button_text,
+        button_text
       ].join.html_safe
     end
   end
