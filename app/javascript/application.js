@@ -14,7 +14,7 @@ import "Chart.bundle"
 import Choices from 'choices.js';
 import { Chart, registerables } from "chart.js"
 Chart.register(...registerables)
-import "./chartjs-plugin-annotation";
+import './chartjs-plugin-annotation';
 
 // updates the search term in the url when searching with turbo frame in mediline
 document.addEventListener("turbo:submit-end", function (event) {
