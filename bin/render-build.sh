@@ -9,20 +9,13 @@ echo "Install packages"
 yarn install
 bundle install
 
-# install chartjs-plugin-annotation
-echo "Install chartjs-plugin-annotation"
-yarn add chartjs-plugin-annotation
-
-# copy the package to the vendor directory
-echo find path of chartjs-plugin-annotation.js
-find . -type f -name "chartjs-plugin-annotation.js"
-echo copy chartjs-plugin-annotation to the asset pipeline
-cp vendor/javascript/chartjs-plugin-annotation.js app/assets/chartjs-plugin-annotation/
-
 # clean and precompile assets
 echo "Precompile assets"
-bundle exec bin/rails assets:precompile RAILS_ENV=production
+bundle exec bin/rails assets:precompile
 bundle exec bin/rails assets:clean
+
+# seed the db
+bundle exec bin/rails db:seed
 
 # run setup script
 echo "Run setup script"

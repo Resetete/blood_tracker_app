@@ -11,7 +11,8 @@ pin 'chartjs-adapter-date-fns', to: 'https://ga.jspm.io/npm:chartjs-adapter-date
 pin '@kurkle/color', to: 'https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js'
 pin 'chartkick', to: 'chartkick.js'
 pin 'Chart.bundle', to: 'Chart.bundle.js'
-pin 'chartjs-plugin-annotation', to: 'vendor/javascript/chartjs-plugin-annotation.js'
+# chartjs-plugin-annotation is manually downloaded and copyied into the vendor/javascript folder / no yarn installation
+pin 'chartjs-plugin-annotation', to: 'chartjs-plugin-annotation.js'
 pin 'highcharts', to: 'https://ga.jspm.io/npm:highcharts@10.3.3/highcharts.js'
 pin '@rails/actioncable', to: 'https://ga.jspm.io/npm:@rails/actioncable@7.0.4-3/app/assets/javascripts/actioncable.esm.js'
 pin '@rails/activestorage', to: 'https://ga.jspm.io/npm:@rails/activestorage@7.0.4-3/app/assets/javascripts/activestorage.esm.js'
