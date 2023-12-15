@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
 
-  validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
+  validates :username, presence: true, uniqueness: true, length: { in: 5..35 }
   validate :validates_no_whitespace_in_username
   validate :validates_username_format
   validate :validates_security_questions_present_and_unique, on: :update
