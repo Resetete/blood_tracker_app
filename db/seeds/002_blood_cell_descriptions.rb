@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Create blood cell descriptions
 if Admin::BloodCellDescription.find_by(title: 'Blood plasma')
   Rails.logger.debug 'Plasma description already exists'
