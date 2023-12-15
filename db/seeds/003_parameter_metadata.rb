@@ -1,5 +1,10 @@
 
 # Admin::Hemigrams::ParameterMetadata
+
+def find_parameter(parameter_name)
+  Admin::Hemigrams::ParameterMetadata.find_by(parameter_name:)
+end
+
 [
   { :parameter_name=>"thrombozythes", :abbreviations=>["PLT", "thrombos"], :chart_unit=>"10^3/µL", :upper_limit=>450.0, :lower_limit=>150.0},
   { :parameter_name=>"hemoglobin", :abbreviations=>["Hb", "Hgb"], :chart_unit=>"g/dL", :upper_limit=>18.0, :lower_limit=>12.0},
@@ -24,10 +29,10 @@
   return Rails.logger.debug("ParameterMetadata #{parameter.parameter_name} already exists") if parameter.present?
 
   Admin::Hemigrams::ParameterMetadata.create(
-    parameter_name: parameter.parameter_name,
-    abbreviations: parameter.abbreviations,
-    chart_unit: parameter.chart_unit,
-    upper_limit: parameter.upper_limit,
-    lower_limit: parameter.lower_limit,
+    parameter_name: parameter_attr[:parameter_name],
+    abbreviations: parameter_attr[:abbreviations],
+    chart_unit: parameter_attr[:chart_unit],
+    upper_limit: parameter_attr[:upper_limit],
+    lower_limit: parameter_attr[:lower_limit],
   )
 end
