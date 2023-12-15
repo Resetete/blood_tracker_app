@@ -7,13 +7,13 @@ def find_parameter(parameter_name)
 end
 
 [
-  { parameter_name: 'thrombozythes', abbreviations: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: 450.0,
+  { parameter_name: 'thrombozythes', abbreviations: %w[PLT Thrombos], chart_unit: '10^3/µL', upper_limit: 450.0,
     lower_limit: 150.0 },
   { parameter_name: 'hemoglobin', abbreviations: %w[Hb Hgb], chart_unit: 'g/dL', upper_limit: 18.0, lower_limit: 12.0 },
   { parameter_name: 'hematocrit', abbreviations: ['Hct'], chart_unit: '%', upper_limit: 52.0, lower_limit: 37.0 },
-  { parameter_name: 'red_blood_cells', abbreviations: %w[RBC erythrocytes], chart_unit: '10^6/μL', upper_limit: 6.0,
+  { parameter_name: 'red_blood_cells', abbreviations: %w[RBC Erythrocytes], chart_unit: '10^6/μL', upper_limit: 6.0,
     lower_limit: 4.5 },
-  { parameter_name: 'white_blood_cells', abbreviations: %w[WBC leukocytes], chart_unit: '10^6/μL', upper_limit: 11.0,
+  { parameter_name: 'white_blood_cells', abbreviations: %w[WBC Leukocytes], chart_unit: '10^6/μL', upper_limit: 11.0,
     lower_limit: 4.0 },
   { parameter_name: 'mean_corpuscular_hemoglobin', abbreviations: ['MCH'], chart_unit: 'pg', upper_limit: 34.0,
     lower_limit: 27.0 },

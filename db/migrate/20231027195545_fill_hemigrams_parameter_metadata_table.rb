@@ -2,11 +2,11 @@
 
 # seed the Admin::Hemigrams::ParameterMetadata table with initial data
 class FillHemigramsParameterMetadataTable < ActiveRecord::Migration[7.0]
-  PARAMETER_METADATA = { 'thrombozythes' => { short: %w[PLT thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
+  PARAMETER_METADATA = { 'thrombozythes' => { short: %w[PLT Thrombos], chart_unit: '10^3/µL', upper_limit: '450', lower_limit: '150' },
                          'hemoglobin' => { short: %w[Hb Hgb], chart_unit: 'g/dL', upper_limit: '18', lower_limit: '12' },
                          'hematocrit' => { short: %w[Hct], chart_unit: '%', upper_limit: '52', lower_limit: '37' },
-                         'red_blood_cells' => { short: %w[RBC erythrocytes], chart_unit: '10^6/μL', upper_limit: '6', lower_limit: '4.5' },
-                         'white_blood_cells' => { short: %w[WBC leukocytes], chart_unit: '10^6/μL', upper_limit: '11', lower_limit: '4' },
+                         'red_blood_cells' => { short: %w[RBC Erythrocytes], chart_unit: '10^6/μL', upper_limit: '6', lower_limit: '4.5' },
+                         'white_blood_cells' => { short: %w[WBC Leukocytes], chart_unit: '10^6/μL', upper_limit: '11', lower_limit: '4' },
                          'mean_corpuscular_volume' => { short: %w[MCV], chart_unit: 'fL', upper_limit: '100', lower_limit: '80' },
                          'mean_corpuscular_hemoglobin' => { short: %w[MCH], chart_unit: 'pg', upper_limit: '34', lower_limit: '27' },
                          'mean_corpuscular_hemoglobin_concentration' => { short: %w[MCHC], chart_unit: 'g/dl', upper_limit: '36',

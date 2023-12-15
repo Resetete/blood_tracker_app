@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    @user.is_being_updated = true
+    @user.is_being_updated = true # needed to only run validations on update
 
     if @user.update(security_questions: formatted_security_questions)
       redirect_to view_user_path(@user), notice: 'Security questions successfully updated.'
