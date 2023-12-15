@@ -17,6 +17,8 @@
 class User < ApplicationRecord
   include AccountRecovery::RecoveryHelpers
 
+  attr_accessor :is_being_updated
+
   SECURITY_QUESTIONS = [
     'What is the name of your favorite teacher from elementary school?',
     'What was the name of your first pet?',
@@ -44,10 +46,13 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: { in: 5..35 }
   validate :validates_no_whitespace_in_username
   validate :validates_username_format
-  validate :validates_security_questions_present_and_unique, on: :update
-  validate :validates_security_answers_complexity_unique, on: :update
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: -> { password.present? }
+
+  with_options if: :being_updated? do
+    validate :validates_security_questions_present_and_unique
+    validate :validates_security_answers_complexity_unique
+  end
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
   after_create :generate_recovery_codes
@@ -63,6 +68,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def being_updated?
+    is_being_updated && persisted?
+  end
 
   # validates that we have different questions and answer combinations and exactly 3 pairs
   def validates_security_questions_present_and_unique
