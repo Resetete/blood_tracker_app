@@ -26,24 +26,28 @@ module Admin
       validates :lower_limit, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
       UNITS = {
-        thrombozythes: ['10^3/µL', 'g/L'],
-        white_blood_cells: ['10^3/µL', 'g/L'],
-        hemoglobin: ['g/dL', 'g/L'],
-        hematocrit: ['%', 'L/L', 'ratio'],
-        red_blood_cells: ['10^6/μL', 'T/L'],
-        mean_corpuscular_volume: ['fL'],
-        mean_corpuscular_hemoglobin: ['pg'],
-        mean_corpuscular_hemoglobin_concentration: ['g/dL'],
-        red_cell_distribution_width: ['%'],
-        platelet_distribution_width: ['%', 'fL'],
-        mean_platelet_volume: ['fL'],
-        prothrombin_time: ['seconds'],
-        fibrinogen: ['g/L', 'mg/dL'],
-        neutrophils: ['%'],
-        lymphocytes: ['%'],
-        monocytes: ['%'],
-        eosinophils: ['%'],
         basophils: ['%']
+        basophils_absolute_count: ['cells/μL', '10^9/L']
+        eosinophils: ['%'],
+        fibrinogen: ['g/L', 'mg/dL'],
+        hematocrit: ['%', 'L/L', 'ratio'],
+        hemoglobin: ['g/dL', 'g/L', 'mg/mL'],
+        lymphocytes: ['%'],
+        lymphocytes_absolute_count: ['/nL', '10^9/L', '10^3/μL', 'cells/μL'],
+        mean_corpuscular_hemoglobin_concentration: ['g/dL', 'mmol/L', 'g/L'],
+        mean_corpuscular_hemoglobin: ['pg', 'fmol'],
+        mean_corpuscular_volume: ['fL'],
+        mean_platelet_volume: ['fL'],
+        monocytes: ['%'],
+        monocytes_absolute_count: ['10^9/L', 'g/L', '10^3/μL', 'cells/μL'],
+        neutrophils: ['%'],
+        neutrophils_absolute_count: ['cells/μL', '10^9/L', 'g/L'],
+        platelet_distribution_width: ['%', 'fL'],
+        prothrombin_time: ['seconds'],
+        red_blood_cells: ['10^6/μL', 'T/L', 'cells/pl', '10^12/L'],
+        red_cell_distribution_width: ['%'],
+        thrombozythes: ['10^3/µL', 'g/L', '10^9/L'],
+        white_blood_cells: ['10^3/µL', 'g/L', 'cells/μL', '10^9/L'],
       }.freeze
 
       def self.units(parameter)
