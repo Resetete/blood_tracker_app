@@ -38,7 +38,7 @@ end
   { parameter_name: 'thrombozythes', abbreviations: %w[PLT Thrombos], chart_unit: '10^9/L', upper_limit: 450.0,
     lower_limit: 150.0 },
   { parameter_name: 'white_blood_cells', abbreviations: %w[WBC Leukocytes], chart_unit: '10^6/μL', upper_limit: 11.0,
-    lower_limit: 4.0 },
+    lower_limit: 4.0 }
 ].each do |parameter_attr|
   parameter = find_parameter(parameter_attr[:parameter_name])
   return Rails.logger.debug("ParameterMetadata #{parameter.parameter_name} already exists") if parameter.present?
