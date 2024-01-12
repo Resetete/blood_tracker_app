@@ -9,7 +9,7 @@ class FillHemigramsParameterMetadataTable < ActiveRecord::Migration[7.0]
                          'white_blood_cells' => { short: %w[WBC Leukocytes], chart_unit: '10^6/μL', upper_limit: '11', lower_limit: '4' },
                          'mean_corpuscular_volume' => { short: %w[MCV], chart_unit: 'fL', upper_limit: '100', lower_limit: '80' },
                          'mean_corpuscular_hemoglobin' => { short: %w[MCH], chart_unit: 'pg', upper_limit: '34', lower_limit: '27' },
-                         'mean_corpuscular_hemoglobin_concentration' => { short: %w[MCHC], chart_unit: 'g/dl', upper_limit: '36',
+                         'mean_corpuscular_hemoglobin_concentration' => { short: %w[MCHC], chart_unit: 'g/dL', upper_limit: '36',
                                                                           lower_limit: '32' },
                          'red_cell_distribution_width' => { short: %w[RDW], chart_unit: '%', upper_limit: '16', lower_limit: '11' },
                          'platelet_distribution_width' => { short: %w[PDW], chart_unit: 'fL', upper_limit: '20', lower_limit: '9' },

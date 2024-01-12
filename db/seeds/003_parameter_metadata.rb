@@ -17,7 +17,7 @@ end
   { parameter_name: 'lymphocytes_absolute_count', abbreviations: ['ALC'], chart_unit: '/nL', upper_limit: 3.6, lower_limit: 1.0 },
   { parameter_name: 'mean_corpuscular_hemoglobin', abbreviations: ['MCH'], chart_unit: 'pg', upper_limit: 34.0,
     lower_limit: 27.0 },
-  { parameter_name: 'mean_corpuscular_hemoglobin_concentration', abbreviations: ['MCHC'], chart_unit: 'g/dl', upper_limit: 36.0,
+  { parameter_name: 'mean_corpuscular_hemoglobin_concentration', abbreviations: ['MCHC'], chart_unit: 'g/dL', upper_limit: 36.0,
     lower_limit: 32.0 },
   { parameter_name: 'mean_corpuscular_volume', abbreviations: ['MCV'], chart_unit: 'fL', upper_limit: 100.0,
     lower_limit: 80.0 },
