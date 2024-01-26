@@ -36,48 +36,53 @@ document.addEventListener("turbo:submit-end", function (event) {
 });
 
 $(document).on('turbo:load', function() {
-  // Dropdown in hemigram form
-  let selectElement = document.getElementById('parameter-select');
-  new Choices(selectElement, { searchEnabled: true });
+  const frame = document.getElementById('new_hemigram_turbo_frame');
+  if (frame) {
+    frame.addEventListener('change', function(event) {
+      // Dropdown in hemigram form
+      let selectElement = document.getElementById('parameter-select');
+      new Choices(selectElement, { searchEnabled: true });
 
-  // Return hemigram parameter unit options for dropdown in hemigram form
-  // Change abbreviation/shorts field if parameter dropdown is filled
-  var selectedOption = $('#parameter-select').val();
-  updateUnitDropdown(selectedOption)
+      // Return hemigram parameter unit options for dropdown in hemigram form
+      // Change abbreviation/shorts field if parameter dropdown is filled
+      var selectedOption = $('#parameter-select').val();
+      updateUnitDropdown(selectedOption)
 
-  // Change abbreviation/shorts field if parameter changes
-  $('#parameter-select').on('change', function() {
-    var selectedOption = $(this).val();
-    updateUnitDropdown(selectedOption)
-  });
+      // Change abbreviation/shorts field if parameter changes
+      $('#parameter-select').on('change', function() {
+        var selectedOption = $(this).val();
+        updateUnitDropdown(selectedOption)
+      });
 
-  function updateUnitDropdown(selectedOption) {
-    $.ajax({
-      url: '/hemigrams/get_unit_selection_dropdown_options',
-      data: { 'parameter_select': selectedOption },
-      dataType: 'json',
-      success: function (data) {
-        var unitDropdown = $('#hemigram_unit');
-        unitDropdown.empty(); // Clear existing options
-        var inputAbbreviation = $('#input_abreviation');
+      function updateUnitDropdown(selectedOption) {
+        $.ajax({
+          url: '/hemigrams/get_unit_selection_dropdown_options',
+          data: { 'parameter_select': selectedOption },
+          dataType: 'json',
+          success: function (data) {
+            var unitDropdown = $('#hemigram_unit');
+            unitDropdown.empty(); // Clear existing options
+            var inputAbbreviation = $('#input_abreviation');
 
-        if (data.shorts == undefined || data.options == null) {
-          unitDropdown.append(new Option('Select a parameter first', ''));
-          inputAbbreviation.val('Select a parameter first');
-        } else {
-          // Update the abbreviation values if the parameter changes
-          var shortValue = data.shorts;
-          inputAbbreviation.val(shortValue);
+            if (data.shorts == undefined || data.options == null) {
+              unitDropdown.append(new Option('Select a parameter first', ''));
+              inputAbbreviation.val('Select a parameter first');
+            } else {
+              // Update the abbreviation values if the parameter changes
+              var shortValue = data.shorts;
+              inputAbbreviation.val(shortValue);
 
-          if (data.options && data.options.length > 0) {
-            data.options.forEach(function (option) {
-              unitDropdown.append(new Option(option, option));
-            });
-          } else {
-            unitDropdown.append(new Option('Select unit', ''));
-          }
-        }
-      },
+              if (data.options && data.options.length > 0) {
+                data.options.forEach(function (option) {
+                  unitDropdown.append(new Option(option, option));
+                });
+              } else {
+                unitDropdown.append(new Option('Select unit', ''));
+              }
+            }
+          },
+        });
+      }
     });
   }
 

@@ -20,8 +20,7 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
-    @hemigram = Hemigram.new(hemigram_params)
-    @hemigram.user_id = current_user.id
+    @hemigram = current_user.hemigrams.build(hemigram_params)
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
