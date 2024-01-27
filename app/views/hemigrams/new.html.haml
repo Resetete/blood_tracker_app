@@ -3,7 +3,7 @@
     %h2
       %span.text-highlight Create new Hemigram
   .mt-5
-    = turbo_frame_tag "new_hemigram_turbo_frame" do
+    = turbo_frame_tag "hemigram_turbo_frame" do
       Create a new hemigram
       = render 'hemigrams/form'
   = blood_tracker_button('All Hemigrams', 'btn-outline-dark')

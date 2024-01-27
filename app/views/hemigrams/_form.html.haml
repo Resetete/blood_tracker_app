@@ -10,3 +10,5 @@
         = render partial: 'entry_fields', locals: { form: }
         .mb-3
           = form.submit 'Submit', class: 'btn btn-outline-dark'
+          = link_to 'Back', :back, class: "btn btn-outline-dark"
+

@@ -3,6 +3,7 @@
     %h2
       %span.text-highlight Edit Hemigram
   .mt-5.mb-5
-    = render 'hemigrams/form'
-    = link_to 'Back', :back, class: "btn btn-outline-dark"
-    = link_to 'Delete', hemigram_path(@hemigram), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
+    = turbo_frame_tag("hemigram_#{@hemigram.id}") do
+      = render 'hemigrams/form'
+      = link_to 'Back', :back, class: "btn btn-outline-dark"
+      = link_to 'Delete', hemigram_path(@hemigram), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'

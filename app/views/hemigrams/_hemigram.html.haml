@@ -1,9 +1,9 @@
 .mt-5.mb-5
   .mb-3
-    = link_to(hemigram.parameter.humanize, hemigram_path(hemigram))
-    = hemigram.value
-    = hemigram.unit
-    = hemigram.date.to_date
-    = link_to 'Delete', hemigram_path(hemigram), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
-    -# = button_to "Delete", hemigram_path(hemigram), method: :delete, class: "btn btn-light"
-    = link_to("Edit", edit_hemigram_path(hemigram), class: "btn btn-light")
+    = turbo_frame_tag("hemigram_#{hemigram.id}") do
+      = link_to(hemigram.parameter.humanize, hemigram_path(hemigram))
+      = hemigram.value
+      = hemigram.unit
+      = hemigram.date.to_date
+      = link_to 'Delete', hemigram_path(hemigram), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
+      = link_to("Edit", edit_hemigram_path(hemigram), class: "btn btn-light")
