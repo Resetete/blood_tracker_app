@@ -25,7 +25,11 @@ class HemigramsController < ApplicationController
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
     if @hemigram.save
-      redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE
+      respond_to do |format|
+        format.html { redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE }
+        # renders views/hemigrams/create.turbo_stream.haml
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity # need the status to show errors with turbo
     end

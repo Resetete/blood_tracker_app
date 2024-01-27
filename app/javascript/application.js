@@ -36,7 +36,7 @@ document.addEventListener("turbo:submit-end", function (event) {
 });
 
 $(document).on('turbo:load', function() {
-  const frame = document.getElementById('hemigram_turbo_frame');
+  const frame = document.getElementById('new_hemigram');
   if (frame) {
     frame.addEventListener('change', function(event) {
       // Dropdown in hemigram form

@@ -1,0 +1,3 @@
+= turbo_stream.append "hemigrams", partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
+-# the turbo frame with the id new_hemigram on hemigrams page will be substituted by empty string
+= turbo_stream.update 'new_hemigram', ""
