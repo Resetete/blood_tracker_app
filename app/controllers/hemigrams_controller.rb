@@ -43,8 +43,12 @@ class HemigramsController < ApplicationController
   end
 
   def destroy
-    flash[:notice] = 'You have successfully deleted that hemigram.' if @hemigram.destroy
-    redirect_to hemigrams_path
+    @hemigram.destroy
+
+    respond_to do |format|
+      format.html { redirect_to hemigrams_path, flash[:notice] = 'You have successfully deleted that hemigram.' }
+      format.turbo_stream
+    end
   end
 
   def get_unit_selection_dropdown_options

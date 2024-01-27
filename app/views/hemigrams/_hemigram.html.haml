@@ -1,7 +1,7 @@
 .mt-5.mb-5
   .mb-3
-    = turbo_frame_tag("hemigram_#{hemigram.id}") do
-      = link_to(hemigram.parameter.humanize, hemigram_path(hemigram))
+    = turbo_frame_tag(hemigram) do
+      = link_to(hemigram.parameter.humanize, hemigram_path(hemigram), data: { turbo_frame: "_top" })
       = hemigram.value
       = hemigram.unit
       = hemigram.date.to_date
