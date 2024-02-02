@@ -1,26 +1,3 @@
--# entry fields for the hemigram form
--# .mb-3
--#   = form.select :parameter, options_for_select(Admin::Hemigrams::ParameterMetadata.all.map{ |metadata| ["#{metadata.parameter_name.humanize} (#{metadata.abbreviations.join(', ')})", metadata.parameter_name] }, |
--#     selected: @hemigram.parameter || params[:parameter]),                                                              |
--#     { include_blank: 'Select parameter' },                                                                             |
--#     class: 'form-select',                                                                                              |
--#     id: 'parameter-select',                                                                                            |
--#     required: true
-
--# - unless @hemigram.new_record?
--#   .mb-3.form-floating
--#     = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation'
--#     = form.label :short, class: 'form-label', for: 'input_abreviation'
--#     %div#abbreviation-display
--# .mb-3.form-floating
--#   = form.text_field :value, class: 'form-control', id: 'input_value'
--#   = form.label :value, class: 'form-label', for: 'input_value'
--# .mb-3
--#   = form.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
--# .mb-3.form-floating
--#   = form.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true
--#   = form.label :date, class: 'form-label', for: 'input_date'
-
 -# Inline form
 .row
   .col-md-5.g-3

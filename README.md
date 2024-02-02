@@ -15,3 +15,6 @@ Landing Page: The app opens to a well-designed landing page with relevant and up
 External Links: BloodTracker provides users with affiliate links to interesting products
 
 Blood Tracking (Under Development): The app is working on a blood tracking feature that will allow users to monitor and record blood-related measurements, such as blood pressure, glucose levels, and more.
+
+##### Local development
+In order to see javascript/CSS code change, run `bin/rails assets:precompile assets:clean` and then start the server `bin/rails s`

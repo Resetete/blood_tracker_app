@@ -23,7 +23,7 @@ document.addEventListener("turbo:submit-end", function (event) {
   const form = event.target;
   const frameId = form.getAttribute("data-turbo-frame");
   const searchInput = form.querySelector("[name='mediline_search']");
-  const searchValue = searchInput.value;
+  const searchValue = searchInput?.value;
 
   // Update the URL with the search term
   const url = new URL(window.location.href);
@@ -32,7 +32,9 @@ document.addEventListener("turbo:submit-end", function (event) {
 
   // Clear the "No results found" message in the mediline-results-frame
   const resultsFrame = document.querySelector("#mediline-results-frame");
-  resultsFrame.innerHTML = "";
+  if (resultsFrame) {
+    resultsFrame.innerHTML = "";
+  }
 });
 
 $(document).on('turbo:load', function() {

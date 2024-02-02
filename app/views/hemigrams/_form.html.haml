@@ -4,12 +4,12 @@
 -# Allow entering several parameters at once for a specific date
 .row.rounded.shadow.bg-white.m-3
   .col
-    .mb-5
+    .mb-3
       = form_for @hemigram, url: form_url, method: form_method  do |form|
         = render partial: 'shared/model_errors', locals: { model: @hemigram }
         = render partial: 'entry_fields', locals: { form: }
         .row
           .col
             = form.submit(@hemigram.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
-            = link_to 'Cancel', :back, class: "btn btn-outline-dark"
+            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark"
 
