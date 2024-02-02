@@ -27,7 +27,6 @@ class HemigramsController < ApplicationController
     if @hemigram.save
       respond_to do |format|
         format.html { redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE }
-        # renders views/hemigrams/create.turbo_stream.haml
         format.turbo_stream
       end
     else
@@ -39,8 +38,10 @@ class HemigramsController < ApplicationController
 
   def update
     if @hemigram.update(hemigram_params)
-      flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE
-      redirect_to hemigrams_path
+      respond_to do |format|
+        format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
+        format.turbo_stream
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -71,7 +72,8 @@ class HemigramsController < ApplicationController
   end
 
   def set_hemigram
-    @hemigram = Hemigram.find(params[:id])
+    # ensure that a user can only manipulate their own hemigrams
+    @hemigram = current_user.hemigrams.find(params[:id])
   end
 
   def parameter_metadata

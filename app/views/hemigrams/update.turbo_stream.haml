@@ -1,0 +1,4 @@
+= turbo_stream.append "hemigrams", partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
+-# we sort the whole list by date and replace the whole list by the ordered one that includes the updated entry
+- sorted_hemigrams = @hemigram.user.hemigrams.order(date: :desc)
+= turbo_stream.replace "hemigrams", partial: "hemigrams/hemigram", collection: sorted_hemigrams

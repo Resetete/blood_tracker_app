@@ -36,6 +36,7 @@ class Hemigram < ApplicationRecord
   validates :date, presence: true
   validates :parameter, presence: true
   validates :unit, presence: true
+  validates :value, presence: true, numericality: { float: true }
   validate :validate_date_not_in_future, if: :date_present?
   validate :validate_only_one_entry_per_parameter_per_day, if: :date_present?
 
