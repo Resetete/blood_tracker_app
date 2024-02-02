@@ -72,7 +72,7 @@
       %header
         = render 'layouts/navbar'
       %main
-        = render 'layouts/flash_messages'
+        .flash#flash= render 'layouts/flash_messages'
         = yield
         = render 'shared/cookie_banner'
       %footer

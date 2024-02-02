@@ -8,4 +8,8 @@ module ApplicationHelper
       link_to 'Login', new_user_session_path
     end
   end
+
+  def render_turbo_stream_flash_messages
+    turbo_stream.prepend 'flash', partial: 'layouts/flash_messages'
+  end
 end
