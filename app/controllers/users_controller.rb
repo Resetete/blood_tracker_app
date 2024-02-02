@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
-    @hemigrams = @user.hemigrams
+    @hemigrams = @user.hemigrams.order(date: :desc)
   end
 
   private
