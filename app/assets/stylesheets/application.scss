@@ -48,6 +48,12 @@ a {
   color: $red;
 }
 
+.border-dashed {
+  background-color: #E4ACC0;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='black' stroke-width='17' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+  border-radius: 8px;
+}
+
 // ensures that navbar, main and footer section span at least 100vh
 .website-content-wrapper {
   display: flex;

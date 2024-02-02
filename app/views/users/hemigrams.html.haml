@@ -5,9 +5,14 @@
       %span.text-highlight Hemigrams
     .d-flex.justify-content-end
       = turbo_frame_tag "hemigram_turbo_frame" do
-        = link_to 'new hemigram', new_hemigram_path, class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram' }
+        = link_to 'New hemigram', new_hemigram_path, class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram' }
     .mb-3
-      = turbo_frame_tag('new_hemigram')
+      = turbo_frame_tag('new_hemigram') do
+        - unless @hemigrams
+          .d-flex.justify-content-center.mt-5
+            .w-50.rounded.bg-white.p-3.d-flex.flex-column.shadow.border-dashed.border-dashed
+              %p You have no data yet, start tracking your blood values now
+              .w-30.text-center= link_to 'Add new hemigram', new_hemigram_path, class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram' }
     = turbo_frame_tag('hemigrams') do
       %ul.mt-3.mb-3.list-group
         = render @hemigrams
