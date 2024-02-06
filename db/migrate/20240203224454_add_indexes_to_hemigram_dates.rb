@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndexesToHemigramDates < ActiveRecord::Migration[7.0]
   def change
     # Ensures that each hemigram entry can only have one date
