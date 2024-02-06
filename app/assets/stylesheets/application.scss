@@ -72,12 +72,21 @@ footer {
 }
 
 /* flash error messages */
-#flash-errors {
-  margin-top: 15vh;
-}
-.alert .notice {
+.flash-errors {
+  margin-top: 10vh;
   opacity: 1;
   transition: opacity 1.5s ease-out;
+  animation: appear-then-fade 4s both;
+}
+
+// add animation to the flash error message
+@keyframes appear-then-fade {
+  0%, 100% {
+    opacity:0
+  }
+  5%, 60% {
+    opacity:1
+  }
 }
 
 h1 {

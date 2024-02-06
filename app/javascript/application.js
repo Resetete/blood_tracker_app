@@ -113,13 +113,6 @@ $(document).on('turbo:load', function() {
     }
   }
 
-  // fade out alert flash messages
-  $(function() {
-    setTimeout(function() {
-      $('.alert').fadeOut('slow');
-    }, 5000);
-  });
-
   // cookie banner
   if(localStorage.getItem('cookieSeen') != 'shown'){
     $(".cookie-banner").delay(2000).fadeIn();
