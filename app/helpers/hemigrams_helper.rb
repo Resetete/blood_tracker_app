@@ -12,4 +12,18 @@ module HemigramsHelper
   def options_for_chart_units
     Admin::Hemigrams::ParameterMetadata::UNITS.values.flatten.uniq.sort
   end
+
+  # ensures a pretty rendering of the units
+  def render_unit(unit)
+    case unit
+    when '10^3/µL'
+      "10<sup>3</sup>/µL".html_safe
+    when '10^6/μL'
+      "10<sup>6</sup>/µL".html_safe
+    when '10^12/L'
+      "10<sup>12</sup>/L".html_safe
+    else
+      unit
+    end
+  end
 end
