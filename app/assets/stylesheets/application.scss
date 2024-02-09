@@ -14,11 +14,23 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "font-awesome";
-
 // import variables, like color definitions
 @import 'variables';
+
+@import "bootstrap";
+// custom bootstrap colors / variables here (before importing bootstrap:
+.btn-warning {
+  @include button-variant(
+    $yellow,                 // Base Color
+    darken($yellow, 7.5%),   // Background Color
+    darken($yellow, 50%),    // Border Color
+    lighten($yellow, 10%),   // Hover Background Color
+    lighten($yellow, 20%),   // Active Background Color
+    darken($yellow, 30%)     // Border Color on Focus
+  );
+}
+
+@import "font-awesome";
 
 // import scss files
 @import "news_section";
