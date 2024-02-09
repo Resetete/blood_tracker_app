@@ -1,31 +1,15 @@
-/ TODO: enter new data for the specific parameter
 -# dropdown of parameter - dependent dropdowns (unit - blood parameter specific)
 -# dependent dropdowns: blood parameter - abbreviation
 -# datepicker with nicer styles
-.row
-  .col-md-6.col-s-12
-    .mb-5
-      = form_for @hemigram, url: form_url, method: form_method  do |f|
+-# Allow entering several parameters at once for a specific date
+.row.rounded.shadow.bg-white.m-3
+  .col
+    .mb-3
+      = form_for @hemigram, url: form_url, method: form_method  do |form|
         = render partial: 'shared/model_errors', locals: { model: @hemigram }
-        .mb-3
-          = f.select :parameter, options_for_select(Admin::Hemigrams::ParameterMetadata.all.map{|metadata| ["#{metadata.parameter_name.humanize} (#{metadata.abbreviations.join(', ')})", metadata.parameter_name] }, |
-            selected: @hemigram.parameter || params[:parameter]),                                                              |
-            { include_blank: 'Select parameter' },                                                                             |
-            class: 'form-select',                                                                                              |
-            id: 'parameter-select',                                                                                            |
-            required: true                                                                                                     |
-        - unless @hemigram.new_record?
-          .mb-3.form-floating
-            = f.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation'
-            = f.label :short, class: 'form-label', for: 'input_abreviation'
-            %div#abbreviation-display
-        .mb-3.form-floating
-          = f.text_field :value, class: 'form-control', id: 'input_value'
-          = f.label :value, class: 'form-label', for: 'input_value'
-        .mb-3
-          = f.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true)
-        .mb-3.form-floating
-          = f.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true
-          = f.label :date, class: 'form-label', for: 'input_date'
-        .mb-3
-          = f.submit 'Submit', class: 'btn btn-outline-dark'
+        = render partial: 'entry_fields', locals: { form: }
+        .row
+          .col
+            = form.submit(@hemigram.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
+            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark"
+

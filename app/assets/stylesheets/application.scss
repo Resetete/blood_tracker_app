@@ -32,6 +32,7 @@
 @import "footer";
 
 @import "mobile_styles";
+@import "user_pages_styles";
 
 /****************+***************/
 /******* START CSS *********+****/
@@ -46,6 +47,12 @@ body, html {
 // set color for all links
 a {
   color: $red;
+}
+
+.border-dashed {
+  background-color: #E4ACC0;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='black' stroke-width='17' stroke-dasharray='2%2c 6' stroke-dashoffset='24' stroke-linecap='butt'/%3e%3c/svg%3e");
+  border-radius: 8px;
 }
 
 // ensures that navbar, main and footer section span at least 100vh
@@ -65,13 +72,22 @@ footer {
   flex-shrink: 0;
 }
 
-/* flash error messages*/
-#flash-errors {
-  margin-top: 15vh;
-}
-.alert {
+/* flash error messages */
+.flash-errors {
+  margin-top: 10vh;
   opacity: 1;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 1.5s ease-out;
+  animation: appear-then-fade 4s both;
+}
+
+// add animation to the flash error message
+@keyframes appear-then-fade {
+  0%, 100% {
+    opacity:0
+  }
+  5%, 60% {
+    opacity:1
+  }
 }
 
 h1 {
@@ -177,21 +193,21 @@ hr.separator-element {
   .custom_pagination a, .custom_pagination span, .custom_pagination em {
     padding: 0.2em 0.5em; }
   .custom_pagination .disabled {
-    color: white; }
+    color: black; }
   .custom_pagination .current {
     font-style: normal;
     font-weight: bold;
     color: $red; }
   .custom_pagination a {
-    border: 1px solid white;
-    color: $yellow;
+    border: 1px solid black;
+    color: black;
     text-decoration: none; }
     .custom_pagination a:hover, .custom_pagination a:focus {
       border-color: $red;
       background: $yellow;
-      color: white; }
+      color: black; }
   .custom_pagination .page_info {
-    color: white;
+    color: black;
     padding-top: 0.8em; }
   .custom_pagination .previous_page, .custom_pagination .next_page {
     border-width: 2px; }

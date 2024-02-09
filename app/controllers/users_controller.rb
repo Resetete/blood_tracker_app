@@ -4,7 +4,7 @@
 # This controller allows users to access their user profile info
 class UsersController < ApplicationController
   before_action :require_same_user
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update hemigrams]
 
   def show
     @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity # needs status to show error messages
     end
+  end
+
+  def hemigrams
+    @hemigrams = @user.hemigrams.order(date: :desc)
   end
 
   private

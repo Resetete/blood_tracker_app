@@ -3,7 +3,7 @@
     %h2
       %span.text-highlight My Hemigrams
   -# TODO: sort columns
-  .mt-5.hemigram-data-table
+  .my-5.hemigram-data-table.shadow.p-3
     = render 'shared/search'
     = render partial: 'table', locals: { hemigrams: @hemigrams }
     .custom_pagination.mt-3.mb-3

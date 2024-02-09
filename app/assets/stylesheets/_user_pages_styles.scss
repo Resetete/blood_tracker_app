@@ -1,0 +1,9 @@
+@import 'variables';
+
+// updates styles related to user accessible pages
+// e.g. graphs, data tracker
+// http://localhost:3000/view_users/:id/hemigrams
+
+.user-pages-styles {
+  background-color: $beige !important;
+};

@@ -20,13 +20,15 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
-    @hemigram = Hemigram.new(hemigram_params)
-    @hemigram.user_id = current_user.id
+    @hemigram = current_user.hemigrams.build(hemigram_params)
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
     if @hemigram.save
-      redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE
+      respond_to do |format|
+        format.html { redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE }
+        format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_CREATE }
+      end
     else
       render :new, status: :unprocessable_entity # need the status to show errors with turbo
     end
@@ -36,16 +38,22 @@ class HemigramsController < ApplicationController
 
   def update
     if @hemigram.update(hemigram_params)
-      flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE
-      redirect_to hemigrams_path
+      respond_to do |format|
+        format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
+        format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    flash[:notice] = 'You have successfully deleted that hemigram.' if @hemigram.destroy
-    redirect_to hemigrams_path
+    @hemigram.destroy
+
+    respond_to do |format|
+      format.html { redirect_to hemigrams_path, flash[:notice] = 'You have successfully deleted that hemigram.' }
+      format.turbo_stream { flash.now[:notice] = 'You have successfully deleted that hemigram.' }
+    end
   end
 
   def get_unit_selection_dropdown_options
@@ -64,7 +72,8 @@ class HemigramsController < ApplicationController
   end
 
   def set_hemigram
-    @hemigram = Hemigram.find(params[:id])
+    # ensure that a user can only manipulate their own hemigrams
+    @hemigram = current_user.hemigrams.find(params[:id])
   end
 
   def parameter_metadata

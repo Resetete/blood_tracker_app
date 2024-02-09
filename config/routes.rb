@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :view_users, controller: 'users', only: %i[show edit update]
+  resources :view_users, controller: 'users', only: %i[show edit update] do
+    get 'hemigrams', on: :member
+    resources :hemigrams
+  end
+
   resources :hemigrams
 
   namespace :hemigrams do

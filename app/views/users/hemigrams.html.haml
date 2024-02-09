@@ -1,0 +1,15 @@
+-# /view_users/:user_id/hemigrams
+.container.mt-5.mb-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Hemigrams
+    .d-flex.justify-content-end
+      = turbo_frame_tag "hemigram_turbo_frame" do
+        = link_to 'New hemigram', new_hemigram_path, class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram' }
+    .mb-3
+      = turbo_frame_tag('new_hemigram') do
+        - unless @hemigrams
+          = render partial: 'hemigrams/empty_state'
+    = turbo_frame_tag('hemigrams') do
+      %ul.mt-3.mb-3.list-group
+        = render @hemigrams

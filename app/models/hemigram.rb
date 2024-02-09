@@ -23,19 +23,25 @@ class Hemigram < ApplicationRecord
   # Hide attributes values when querying the model
   self.filter_attributes += %i[parameter value]
 
+  # TODO: the dates attribute can be dropped after the backfilling of the dates
+  # this needs to be ensured on production
+  # deprecated, I use the record_date association
+  # self.ignored_columns = %i[date]
+
   encrypts :parameter, deterministic: true # deterministic: allows querying the db data
   encrypts :value, deterministic: true # deterministic: allows querying the db data
   encrypts :chart_value, deterministic: true # deterministic: allows querying the db data
 
   belongs_to :user
+  has_one :record_date, dependent: :destroy, class_name: 'Hemigrams::Date'
   has_many :hemigrams_parameter_associations, class_name: 'Hemigrams::ParameterAssociation'
-  # has_many :parameter_metadata, through: :hemigrams_parameter_associations, class_name: 'Admin::Hemigrams::ParameterMetadata'
   has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
                                                class_name: 'Admin::Hemigrams::ParameterMetadata'
 
   validates :date, presence: true
   validates :parameter, presence: true
   validates :unit, presence: true
+  validates :value, presence: true, numericality: { allow_float: true, greater_than: 0 }
   validate :validate_date_not_in_future, if: :date_present?
   validate :validate_only_one_entry_per_parameter_per_day, if: :date_present?
 
