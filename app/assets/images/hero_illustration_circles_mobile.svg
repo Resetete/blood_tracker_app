@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="5392px" height="2443px" viewBox="0 0 5392 2443" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>hero_illustration_circles</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(493.000000, 0.000000)" fill-rule="nonzero">
+            <g id="hero_illustration_circles" transform="translate(-493.000000, 0.000000)">
+                <g id="hero_illustration2" transform="translate(493.000000, 0.000000)">
+                    <rect id="Rectangle" fill="#E4ACC0" x="0" y="0" width="4320" height="2091"></rect>
+                    <g id="Group" transform="translate(621.000000, 91.000000)">
+                        <g id="Oval" transform="translate(937.000000, 1148.000000)">
+                            <g id="path-1-link" fill="#000000">
+                                <circle id="path-1" cx="602" cy="602" r="602"></circle>
+                            </g>
+                            <g id="path-1-link" fill="#D8232A">
+                                <circle id="path-1" cx="602" cy="602" r="602"></circle>
+                            </g>
+                        </g>
+                        <circle id="Oval" stroke="#3B3855" fill="#D8232A" cx="2156" cy="151" r="151"></circle>
+                        <g id="Oval" transform="translate(0.000000, 1607.000000)">
+                            <g id="path-3-link" fill="#000000">
+                                <circle id="path-3" cx="191" cy="191" r="191"></circle>
+                            </g>
+                            <g id="path-3-link" fill="#D8232A">
+                                <circle id="path-3" cx="191" cy="191" r="191"></circle>
+                            </g>
+                        </g>
+                        <g id="Oval" transform="translate(3084.000000, 1671.000000)">
+                            <g id="path-5-link" fill="#000000">
+                                <circle id="path-5" cx="126.5" cy="126.5" r="126.5"></circle>
+                            </g>
+                            <g id="path-5-link" fill="#D8232A" stroke="#DCD283">
+                                <circle id="path-5" cx="126.5" cy="126.5" r="126.5"></circle>
+                            </g>
+                        </g>
+                        <g id="Oval" transform="translate(3572.000000, 1480.000000)">
+                            <g id="path-7-link" fill="#000000">
+                                <circle id="path-7" cx="63.5" cy="63.5" r="63.5"></circle>
+                            </g>
+                            <g id="path-7-link" fill="#D8232A">
+                                <circle id="path-7" cx="63.5" cy="63.5" r="63.5"></circle>
+                            </g>
+                        </g>
+                        <g id="Oval" transform="translate(2838.000000, 1543.000000)">
+                            <g id="path-9-link" fill="#000000">
+                                <circle id="path-9" cx="63.5" cy="63.5" r="63.5"></circle>
+                            </g>
+                            <g id="path-9-link" fill="#DCD283">
+                                <circle id="path-9" cx="63.5" cy="63.5" r="63.5"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g id="Oval-Copy" transform="translate(4580.000000, 489.000000)">
+                    <g id="path-11-link" fill="#000000">
+                        <circle id="path-11" cx="115" cy="115" r="115"></circle>
+                    </g>
+                    <g id="path-11-link" fill="#DCD283">
+                        <circle id="path-11" cx="115" cy="115" r="115"></circle>
+                    </g>
+                </g>
+                <g id="Oval" transform="translate(4580.000000, 489.000000)">
+                    <g id="path-13-link" fill="#000000">
+                        <circle id="path-13" cx="406" cy="406" r="406"></circle>
+                    </g>
+                    <g id="path-13-link" fill="#D8232A">
+                        <circle id="path-13" cx="406" cy="406" r="406"></circle>
+                    </g>
+                </g>
+                <circle id="path-11" fill="#DCD283" cx="586" cy="1212" r="115"></circle>
+                <g id="Oval" transform="translate(0.000000, 1149.000000)">
+                    <g id="path-13-link" fill="#000000">
+                        <circle id="path-13" cx="350.5" cy="350.5" r="350.5"></circle>
+                    </g>
+                    <g id="path-13-link" fill="#D8232A">
+                        <circle id="path-13" cx="350.5" cy="350.5" r="350.5"></circle>
+                    </g>
+                </g>
+                <circle id="path-11" fill="#DCD283" cx="588.5" cy="1743.5" r="75.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

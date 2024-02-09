@@ -1,88 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="4329px" height="2091px" viewBox="0 0 4329 2091" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group 2</title>
-    <defs>
-        <circle id="path-1" cx="2130" cy="1134" r="602"></circle>
-        <filter x="-0.6%" y="-0.4%" width="101.2%" height="101.2%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-3" cx="191" cy="1798" r="191"></circle>
-        <filter x="-1.8%" y="-1.3%" width="103.7%" height="103.7%" filterUnits="objectBoundingBox" id="filter-4">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-5" cx="2956.5" cy="1480.5" r="126.5"></circle>
-        <filter x="-3.0%" y="-2.2%" width="105.9%" height="105.9%" filterUnits="objectBoundingBox" id="filter-6">
-            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
-            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-7" cx="3404.5" cy="1417.5" r="63.5"></circle>
-        <filter x="-5.5%" y="-3.9%" width="111.0%" height="111.0%" filterUnits="objectBoundingBox" id="filter-8">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-9" cx="3083.5" cy="1134.5" r="63.5"></circle>
-        <filter x="-5.5%" y="-3.9%" width="111.0%" height="111.0%" filterUnits="objectBoundingBox" id="filter-10">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-11" cx="3612" cy="374" r="115"></circle>
-        <filter x="-3.0%" y="-2.2%" width="106.1%" height="106.1%" filterUnits="objectBoundingBox" id="filter-12">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <circle id="path-13" cx="3919" cy="691" r="406"></circle>
-        <filter x="-0.9%" y="-0.6%" width="101.7%" height="101.7%" filterUnits="objectBoundingBox" id="filter-14">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.231372549   0 0 0 0 0.219607843   0 0 0 0 0.333333333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-2" fill-rule="nonzero">
-            <g id="hero_illustration2">
+<svg width="4320px" height="2091px" viewBox="0 0 4320 2091" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hero_illustration_circles" transform="translate(-493.000000, 0.000000)" fill-rule="nonzero">
+            <g id="hero_illustration2" transform="translate(493.000000, 0.000000)">
                 <rect id="Rectangle" fill="#E4ACC0" x="0" y="0" width="4320" height="2091"></rect>
                 <g id="Group" transform="translate(621.000000, 91.000000)">
-                    <g id="Oval">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                        <use fill="#D8232A" xlink:href="#path-1"></use>
+                    <g id="Oval" transform="translate(1528.000000, 532.000000)">
+                        <g id="path-1-link" fill="#000000">
+                            <circle id="path-1" cx="602" cy="602" r="602"></circle>
+                        </g>
+                        <g id="path-1-link" fill="#D8232A">
+                            <circle id="path-1" cx="602" cy="602" r="602"></circle>
+                        </g>
                     </g>
                     <circle id="Oval" stroke="#3B3855" fill="#D8232A" cx="2156" cy="151" r="151"></circle>
-                    <g id="Oval">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
-                        <use fill="#D8232A" xlink:href="#path-3"></use>
+                    <g id="Oval" transform="translate(0.000000, 1607.000000)">
+                        <g id="path-3-link" fill="#000000">
+                            <circle id="path-3" cx="191" cy="191" r="191"></circle>
+                        </g>
+                        <g id="path-3-link" fill="#D8232A">
+                            <circle id="path-3" cx="191" cy="191" r="191"></circle>
+                        </g>
                     </g>
-                    <g id="Oval">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
-                        <use stroke="#DCD283" stroke-width="1" fill="#D8232A" xlink:href="#path-5"></use>
+                    <g id="Oval" transform="translate(2830.000000, 1354.000000)">
+                        <g id="path-5-link" fill="#000000">
+                            <circle id="path-5" cx="126.5" cy="126.5" r="126.5"></circle>
+                        </g>
+                        <g id="path-5-link" fill="#D8232A" stroke="#DCD283">
+                            <circle id="path-5" cx="126.5" cy="126.5" r="126.5"></circle>
+                        </g>
                     </g>
-                    <g id="Oval">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
-                        <use fill="#D8232A" xlink:href="#path-7"></use>
+                    <g id="Oval" transform="translate(3341.000000, 1354.000000)">
+                        <g id="path-7-link" fill="#000000">
+                            <circle id="path-7" cx="63.5" cy="63.5" r="63.5"></circle>
+                        </g>
+                        <g id="path-7-link" fill="#D8232A">
+                            <circle id="path-7" cx="63.5" cy="63.5" r="63.5"></circle>
+                        </g>
                     </g>
-                    <g id="Oval">
-                        <use fill="black" fill-opacity="1" filter="url(#filter-10)" xlink:href="#path-9"></use>
-                        <use fill="#DCD283" xlink:href="#path-9"></use>
+                    <g id="Oval" transform="translate(3020.000000, 1071.000000)">
+                        <g id="path-9-link" fill="#000000">
+                            <circle id="path-9" cx="63.5" cy="63.5" r="63.5"></circle>
+                        </g>
+                        <g id="path-9-link" fill="#DCD283">
+                            <circle id="path-9" cx="63.5" cy="63.5" r="63.5"></circle>
+                        </g>
                     </g>
                 </g>
             </g>
-            <g id="Oval-Copy">
-                <use fill="black" fill-opacity="1" filter="url(#filter-12)" xlink:href="#path-11"></use>
-                <use fill="#DCD283" xlink:href="#path-11"></use>
+            <g id="Oval-Copy" transform="translate(3990.000000, 259.000000)">
+                <g id="path-11-link" fill="#000000">
+                    <circle id="path-11" cx="115" cy="115" r="115"></circle>
+                </g>
+                <g id="path-11-link" fill="#DCD283">
+                    <circle id="path-11" cx="115" cy="115" r="115"></circle>
+                </g>
             </g>
-            <g id="Oval">
-                <use fill="black" fill-opacity="1" filter="url(#filter-14)" xlink:href="#path-13"></use>
-                <use fill="#D8232A" xlink:href="#path-13"></use>
+            <g id="Oval" transform="translate(4006.000000, 285.000000)">
+                <g id="path-13-link" fill="#000000">
+                    <circle id="path-13" cx="406" cy="406" r="406"></circle>
+                </g>
+                <g id="path-13-link" fill="#D8232A">
+                    <circle id="path-13" cx="406" cy="406" r="406"></circle>
+                </g>
             </g>
+            <circle id="path-11" fill="#DCD283" cx="586" cy="1212" r="115"></circle>
+            <g id="Oval" transform="translate(0.000000, 1149.000000)">
+                <g id="path-13-link" fill="#000000">
+                    <circle id="path-13" cx="350.5" cy="350.5" r="350.5"></circle>
+                </g>
+                <g id="path-13-link" fill="#D8232A">
+                    <circle id="path-13" cx="350.5" cy="350.5" r="350.5"></circle>
+                </g>
+            </g>
+            <circle id="path-11" fill="#DCD283" cx="588.5" cy="1743.5" r="75.5"></circle>
         </g>
     </g>
 </svg>
