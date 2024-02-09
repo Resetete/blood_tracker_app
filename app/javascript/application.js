@@ -23,7 +23,7 @@ function initializeAnimation() {
   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
   var init = function () {
-    canvas = document.querySelector('canvas');
+    canvas = document.getElementById('landingpage-animation');
     ctx = canvas.getContext('2d');
 
     var onresize = function () {
@@ -243,5 +243,7 @@ $(document).on('turbo:load', function() {
     $('.cookie-banner').fadeOut();
   });
 
-  initializeAnimation();
+  if (document.getElementById('landingpage-animation')) {
+    initializeAnimation();
+  };
 });
