@@ -21,4 +21,6 @@ bundle exec bin/rails db:seed
 echo "Run setup script"
 bin/setup
 
+bin/rails db:migrate
+
 echo "Build script completed successfully"
