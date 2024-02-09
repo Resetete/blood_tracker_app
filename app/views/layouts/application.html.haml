@@ -71,7 +71,7 @@
     .website-content-wrapper
       %header
         = render 'layouts/navbar'
-      %main
+      %main{ class: ('user-pages-styles' unless controller_name == 'welcome' || controller_name == 'pages') }
         .flash#flash= render 'layouts/flash_messages'
         = yield
         = render 'shared/cookie_banner'

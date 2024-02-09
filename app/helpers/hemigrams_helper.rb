@@ -20,6 +20,8 @@ module HemigramsHelper
       '10<sup>3</sup>/µL'.html_safe
     when '10^6/μL'
       '10<sup>6</sup>/µL'.html_safe
+    when '10^9/L'
+      '10<sup>9</sup>/L'.html_safe
     when '10^12/L'
       '10<sup>12</sup>/L'.html_safe
     else

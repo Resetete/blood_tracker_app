@@ -1,11 +1,12 @@
 = form_for chart_setting, url: hemigrams_chart_setting_path(chart_setting) do |f|
   - checkboxes = collection_for_chart_settings_checkboxes
-  - items_per_column = (checkboxes.count / 4.to_f).ceil # we have 4 columns
+  - items_per_column = (checkboxes.count / 3.to_f).ceil # we have 3 columns
 
   .row
     -# splits the total amount of checkboxes into slices and then iterates over each slice
     - checkboxes.each_slice(items_per_column).each do |column_items|
-      .col-md-3
+      -# col-md-4 since we have 3 columns and want to span the whole element width
+      .col-md-4
         - column_items.each do |cb|
           .form-check
             = f.check_box :parameter_ids, { multiple: true }, cb[:id], nil

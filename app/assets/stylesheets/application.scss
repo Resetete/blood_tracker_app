@@ -32,6 +32,7 @@
 @import "footer";
 
 @import "mobile_styles";
+@import "user_pages_styles";
 
 /****************+***************/
 /******* START CSS *********+****/
@@ -192,21 +193,21 @@ hr.separator-element {
   .custom_pagination a, .custom_pagination span, .custom_pagination em {
     padding: 0.2em 0.5em; }
   .custom_pagination .disabled {
-    color: white; }
+    color: black; }
   .custom_pagination .current {
     font-style: normal;
     font-weight: bold;
     color: $red; }
   .custom_pagination a {
-    border: 1px solid white;
-    color: $yellow;
+    border: 1px solid black;
+    color: black;
     text-decoration: none; }
     .custom_pagination a:hover, .custom_pagination a:focus {
       border-color: $red;
       background: $yellow;
-      color: white; }
+      color: black; }
   .custom_pagination .page_info {
-    color: white;
+    color: black;
     padding-top: 0.8em; }
   .custom_pagination .previous_page, .custom_pagination .next_page {
     border-width: 2px; }
