@@ -1,3 +1,8 @@
 = turbo_stream.remove @hemigram
 -# ensure the flash messages are rendered on the page
 = render_turbo_stream_flash_messages
+
+-# render the empty state message when there are no hemigrams yet
+- unless current_user.hemigrams.present?
+  = turbo_stream.update 'new_hemigram' do
+    = render 'hemigrams/empty_state'

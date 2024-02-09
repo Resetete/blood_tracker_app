@@ -25,6 +25,7 @@ class Hemigram < ApplicationRecord
 
   # TODO: the dates attribute can be dropped after the backfilling of the dates
   # this needs to be ensured on production
+  # deprecated, I use the record_date association
   # self.ignored_columns = %i[date]
 
   encrypts :parameter, deterministic: true # deterministic: allows querying the db data
