@@ -8,7 +8,7 @@
   position: relative;
   height: 80vh;
   background-color: $rosa;
-  background-image: url('hero_illustration.jpg');
+  background-image: url('hero_illustration_circles.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -61,6 +61,16 @@ canvas {
   position: absolute;
   right: 0;
   top: 90%;
+}
+
+#deco-circle {
+  position: absolute;
+  left: 30%;
+  top: 90%;
+  width: 20%;
+  img {
+    width: 50%;
+  }
 }
 
 #hero-credit a {
