@@ -4,7 +4,10 @@
       %span.text-highlight Create new Hemigram
   .mt-5
     = turbo_frame_tag('new_hemigram') do
-      = render 'hemigrams/form'
+      .card.mt-2
+        .card-body
+          .card-title Create new
+          .card-text= render 'hemigrams/form'
   = blood_tracker_button('All Hemigrams', 'btn-outline-dark')
   = graphs_button('See your data', 'btn-outline-dark')
 
