@@ -27,7 +27,8 @@ class HemigramsController < ApplicationController
     if @hemigram.save
       respond_to do |format|
         format.html { redirect_to hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE }
-        format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_CREATE }
+        # check turbo stream CREATE views/hemigrams/create.turbo_stream.haml
+        # format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_CREATE }
       end
     else
       render :new, status: :unprocessable_entity # need the status to show errors with turbo
@@ -40,7 +41,8 @@ class HemigramsController < ApplicationController
     if @hemigram.update(hemigram_params)
       respond_to do |format|
         format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
-        format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
+        # check turbo stream UPDATE view, views/hemigrams/update.turbo_stream.haml
+        # format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -52,7 +54,8 @@ class HemigramsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to hemigrams_path, flash[:notice] = 'You have successfully deleted that hemigram.' }
-      format.turbo_stream { flash.now[:notice] = 'You have successfully deleted that hemigram.' }
+      # check turbo stream DESTROY view, views/hemigrams/destroy.turbo_stream.haml
+      # format.turbo_stream { flash.now[:notice] = 'You have successfully deleted that hemigram.' }
     end
   end
 
