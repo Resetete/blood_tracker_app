@@ -50,7 +50,7 @@ function initializeAnimation() {
     gravityStrength = 10;
     particles = [];
     spawnTimer = 0;
-    spawnInterval = 10;
+    spawnInterval = 30; // speed of the bubble creation
     type = 0;
     requestAnimationFrame(startLoop);
   };
@@ -158,7 +158,12 @@ $(document).on('turbo:load', function() {
     frame.addEventListener('change', function(event) {
       // Dropdown in hemigram form
       let selectElement = document.getElementById('parameter-select');
-      new Choices(selectElement, { searchEnabled: true });
+      // Check if Choices has already been initialized on the element
+      if (!selectElement.classList.contains('choices-initialized')) {
+        new Choices(selectElement, { searchEnabled: true, allowHTML: true });
+        // Add a class to mark the element as initialized
+        selectElement.classList.add('choices-initialized');
+      }
 
       // Return hemigram parameter unit options for dropdown in hemigram form
       // Change abbreviation/shorts field if parameter dropdown is filled
@@ -166,7 +171,7 @@ $(document).on('turbo:load', function() {
       updateUnitDropdown(selectedOption)
 
       // Change abbreviation/shorts field if parameter changes
-      $('#parameter-select').on('change', function() {
+      $('#parameter-select').off('change').on('change', function() {
         var selectedOption = $(this).val();
         updateUnitDropdown(selectedOption)
       });
