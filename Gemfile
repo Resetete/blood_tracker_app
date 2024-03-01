@@ -58,6 +58,8 @@ gem 'cocoon'
 # unit converter
 gem 'ruby-units'
 
+gem 'unicode'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

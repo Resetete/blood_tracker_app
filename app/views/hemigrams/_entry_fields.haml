@@ -1,7 +1,7 @@
 -# Inline form
 .row
   .col-md-5.g-3
-    = form.select :parameter, options_for_select(Admin::Hemigrams::ParameterMetadata.all.map{ |metadata| ["#{metadata.parameter_name.humanize} (#{metadata.abbreviations.join(', ')})", metadata.parameter_name] }, |
+    = form.select :parameter, options_for_select(Admin::Hemigrams::ParameterMetadata.all.sort_by{ _1.parameter_name }.map{ |metadata| ["#{metadata.parameter_name.humanize} (#{metadata.abbreviations.join(', ')})", metadata.parameter_name] }, |
       selected: @hemigram.parameter || params[:parameter]),                                                              |
       { include_blank: 'Select parameter' },                                                                             |
       class: 'form-select',                                                                                              |
