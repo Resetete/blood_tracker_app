@@ -152,6 +152,9 @@ document.addEventListener("turbo:submit-end", function (event) {
   }
 });
 
+// Define a flag to track whether options have been loaded
+let optionsLoaded = false;
+
 $(document).on('turbo:load', function() {
   const frame = document.getElementById('new_hemigram');
   if (frame) {
@@ -167,16 +170,21 @@ $(document).on('turbo:load', function() {
 
       // Return hemigram parameter unit options for dropdown in hemigram form
       // Change abbreviation/shorts field if parameter dropdown is filled
-      var selectedOption = $('#parameter-select').val();
+      const selectedOption = $('#parameter-select').val();
       updateUnitDropdown(selectedOption)
 
       // Change abbreviation/shorts field if parameter changes
       $('#parameter-select').off('change').on('change', function() {
-        var selectedOption = $(this).val();
+        const selectedOption = $(this).val();
         updateUnitDropdown(selectedOption)
       });
 
       function updateUnitDropdown(selectedOption) {
+        // Check if options have already been loaded
+        if (optionsLoaded) {
+          return;
+        }
+
         $.ajax({
           url: '/hemigrams/get_unit_selection_dropdown_options',
           data: { 'parameter_select': selectedOption },
@@ -201,6 +209,9 @@ $(document).on('turbo:load', function() {
               } else {
                 unitDropdown.append(new Option('Select unit', ''));
               }
+
+              // Set the flag to indicate that options have been loaded
+              optionsLoaded = true;
             }
           },
         });
