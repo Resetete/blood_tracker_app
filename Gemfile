@@ -58,7 +58,9 @@ gem 'cocoon'
 # unit converter
 gem 'ruby-units'
 
+# to ensure correctly handling special characters
 gem 'unicode'
+gem 'unicode_utils'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

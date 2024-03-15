@@ -26,7 +26,11 @@ module Hemigrams
     private
 
     def need_to_convert_unit?(to_unit)
-      to_unit != hemigram.unit
+      # ensure the comparability of special characters
+      normalized_to_unit = UnicodeUtils.nfkc(to_unit)
+      normalized_hemigram_unit = UnicodeUtils.nfkc(hemigram.unit)
+
+      normalized_to_unit != normalized_hemigram_unit
     end
 
     def set_chart_value_and_unit(chart_value, chart_unit)
