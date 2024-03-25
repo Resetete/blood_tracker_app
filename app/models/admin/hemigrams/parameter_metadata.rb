@@ -46,8 +46,8 @@ module Admin
         prothrombin_time: ['seconds'],
         red_blood_cells: ['10^6/μL', 'T/L', 'cells/pL', '10^12/L'],
         red_cell_distribution_width: ['%'],
-        thrombozythes: ['10^3/µL', 'g/L', '10^9/L'],
-        white_blood_cells: ['10^3/µL', 'g/L', 'cells/μL', '10^9/L']
+        thrombozythes: ['10^3/μL', 'g/L', '10^9/L'],
+        white_blood_cells: ['10^3/μL', 'g/L', 'cells/μL', '10^9/L']
       }.freeze
 
       def self.units(parameter)

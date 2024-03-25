@@ -152,6 +152,9 @@ document.addEventListener("turbo:submit-end", function (event) {
   }
 });
 
+// Define a flag to track whether options have been loaded
+let optionsLoaded = false;
+
 $(document).on('turbo:load', function() {
   const frame = document.getElementById('new_hemigram');
   if (frame) {
@@ -163,47 +166,6 @@ $(document).on('turbo:load', function() {
         new Choices(selectElement, { searchEnabled: true, allowHTML: true });
         // Add a class to mark the element as initialized
         selectElement.classList.add('choices-initialized');
-      }
-
-      // Return hemigram parameter unit options for dropdown in hemigram form
-      // Change abbreviation/shorts field if parameter dropdown is filled
-      var selectedOption = $('#parameter-select').val();
-      updateUnitDropdown(selectedOption)
-
-      // Change abbreviation/shorts field if parameter changes
-      $('#parameter-select').off('change').on('change', function() {
-        var selectedOption = $(this).val();
-        updateUnitDropdown(selectedOption)
-      });
-
-      function updateUnitDropdown(selectedOption) {
-        $.ajax({
-          url: '/hemigrams/get_unit_selection_dropdown_options',
-          data: { 'parameter_select': selectedOption },
-          dataType: 'json',
-          success: function (data) {
-            var unitDropdown = $('#hemigram_unit');
-            unitDropdown.empty(); // Clear existing options
-            var inputAbbreviation = $('#input_abreviation');
-
-            if (data.shorts == undefined || data.options == null) {
-              unitDropdown.append(new Option('Select a parameter first', ''));
-              inputAbbreviation.val('Select a parameter first');
-            } else {
-              // Update the abbreviation values if the parameter changes
-              var shortValue = data.shorts;
-              inputAbbreviation.val(shortValue);
-
-              if (data.options && data.options.length > 0) {
-                data.options.forEach(function (option) {
-                  unitDropdown.append(new Option(option, option));
-                });
-              } else {
-                unitDropdown.append(new Option('Select unit', ''));
-              }
-            }
-          },
-        });
       }
     });
   }

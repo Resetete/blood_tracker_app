@@ -112,7 +112,9 @@ p {
   font-size: 1.3em;
 }
 
+// *******
 // form styles
+// *******
 .form-background {
   background-color: $yellow;
   padding: 2em;
@@ -120,7 +122,15 @@ p {
   border-radius: 5px;
 }
 
+.dependent-select-error-message {
+  color: $red;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+// *******
 // image crediting tooltip
+// *******
 .image-credit {
   position: relative;
   font-size: 0.8em;

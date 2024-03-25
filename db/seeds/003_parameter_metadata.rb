@@ -35,7 +35,7 @@ end
     lower_limit: 4.3 },
   { parameter_name: 'red_cell_distribution_width', abbreviations: ['RDW'], chart_unit: '%', upper_limit: 16.0,
     lower_limit: 11.0 },
-  { parameter_name: 'thrombozythes', abbreviations: %w[PLT Thrombos], chart_unit: '10^9/L', upper_limit: 450.0,
+  { parameter_name: 'thrombozythes', abbreviations: %w[PLT Thrombos], chart_unit: '10^3/μL', upper_limit: 450.0,
     lower_limit: 150.0 },
   { parameter_name: 'white_blood_cells', abbreviations: %w[WBC Leukocytes], chart_unit: '10^6/μL', upper_limit: 11.0,
     lower_limit: 4.0 }
