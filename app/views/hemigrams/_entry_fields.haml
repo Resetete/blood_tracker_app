@@ -4,7 +4,7 @@
       selected: @hemigram.parameter || params[:parameter]),                                                              |
       { include_blank: 'Select parameter' },                                                                             |
       class: 'form-select',                                                                                              |
-      id: "parameter-select-#{@hemigram.persisted? ? @hemigram.id : 'new' }",                                                                                            |
+      id: "parameter-select-#{@hemigram.persisted? ? @hemigram.id : 'new'}",                                                                                            |
       required: true, |
       data: { controller: 'dynamic-select', 'turbo-frame': 'unit_options', url: hemigrams_get_unit_selection_dropdown_options_path, object_id: @hemigram.persisted? ? @hemigram.id : 'new' } |
 .row.mb-3
@@ -15,7 +15,7 @@
   .col.g-3
     = form.text_field :value, class: 'form-control', id: 'input_value', value: (@hemigram.value.to_i == 0 ? 'Enter value' : @hemigram.value)
   .col.g-3
-    = turbo_frame_tag "unit_options" do
+    = turbo_frame_tag "unit_options-#{@hemigram.persisted? ? @hemigram.id : 'new'}" do
       = form.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector
   .col.g-3

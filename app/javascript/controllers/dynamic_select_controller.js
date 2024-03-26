@@ -19,7 +19,7 @@ export default class extends Controller {
     const parameterSelector = 'parameter-select-' + objectId;
     console.log(parameterSelector);
     const firstDropdown = document.getElementById(parameterSelector);
-    const firstDropdownValue = firstDropdown.value;
+    const firstDropdownValue = firstDropdown?.value;
 
     if (!firstDropdownValue) {
       // Insert the error message below the second dropdown
@@ -35,15 +35,16 @@ export default class extends Controller {
     // get data-url from the select
     const url = this.element.dataset.url
     // fetch turbo-frame from the select
-    const turboFrame = this.element.dataset.turboFrame
-    console.log("turboFrame", turboFrame);
+    const turboFrameId = this.element.dataset.turboFrame + '-' + objectId
+    console.log("turboFrame", turboFrameId);
 
     // create new url with the value
-    this.url = (`${url}?parameter_select=${value}`)
+    // the values are passed to the controller action as params
+    this.url = (`${url}?parameter_select=${value}&hemigram_id=${objectId}`)
 
     // replace the turbo-frame with the new url
     // for the new create form
-    let frame = document.querySelector(`turbo-frame#${turboFrame}`)
+    let frame = document.querySelector(`turbo-frame#${turboFrameId}`)
 
     frame.src = this.url
     frame.reload()
