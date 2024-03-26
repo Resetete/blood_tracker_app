@@ -7,13 +7,18 @@ export default class extends Controller {
     this.element.dataset.action = "change->dynamic-select#change"
   }
 
-  // TODO: when the hemigram edit form
+  // TODO: when the hemigram edit form is opened
   // when there is already a value selected (not 'Select Parameter')
   // and we listen to the change of the second dropdown and show the unit options
+  // each form needs dynamic dropdown select ids so that the javascript works specifically for each dropdown
 
   change() {
     // Check if the first dropdown has a selected value
-    const firstDropdown = document.getElementById('parameter-select');
+    const objectId = this.element.dataset.objectId
+    console.log(objectId);
+    const parameterSelector = 'parameter-select-' + objectId;
+    console.log(parameterSelector);
+    const firstDropdown = document.getElementById(parameterSelector);
     const firstDropdownValue = firstDropdown.value;
 
     if (!firstDropdownValue) {

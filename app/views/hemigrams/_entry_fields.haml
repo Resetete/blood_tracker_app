@@ -4,9 +4,9 @@
       selected: @hemigram.parameter || params[:parameter]),                                                              |
       { include_blank: 'Select parameter' },                                                                             |
       class: 'form-select',                                                                                              |
-      id: 'parameter-select',                                                                                            |
+      id: "parameter-select-#{@hemigram.persisted? ? @hemigram.id : 'new' }",                                                                                            |
       required: true, |
-      data: { controller: 'dynamic-select', 'turbo-frame': 'unit_options', url: hemigrams_get_unit_selection_dropdown_options_path } |
+      data: { controller: 'dynamic-select', 'turbo-frame': 'unit_options', url: hemigrams_get_unit_selection_dropdown_options_path, object_id: @hemigram.persisted? ? @hemigram.id : 'new' } |
 .row.mb-3
   - unless @hemigram.new_record?
     .col.g-3

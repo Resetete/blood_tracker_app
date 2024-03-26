@@ -155,12 +155,13 @@ document.addEventListener("turbo:submit-end", function (event) {
 // Define a flag to track whether options have been loaded
 let optionsLoaded = false;
 
+// TODO: selectors need to be adjusted to work with the dynamic ids of the edit form
 $(document).on('turbo:load', function() {
   const frame = document.getElementById('new_hemigram');
   if (frame) {
     frame.addEventListener('change', function(event) {
       // Dropdown in hemigram form
-      let selectElement = document.getElementById('parameter-select');
+      let selectElement = document.getElementById('parameter-select-new');
       // Check if Choices has already been initialized on the element
       if (!selectElement.classList.contains('choices-initialized')) {
         new Choices(selectElement, { searchEnabled: true, allowHTML: true });
