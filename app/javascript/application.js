@@ -156,10 +156,14 @@ document.addEventListener("turbo:submit-end", function (event) {
 let optionsLoaded = false;
 
 // TODO: selectors need to be adjusted to work with the dynamic ids of the edit form
+// need to pass the hemogram id
 $(document).on('turbo:load', function() {
-  const frame = document.getElementById('new_hemigram');
-  if (frame) {
-    frame.addEventListener('change', function(event) {
+  const newFrame = document.getElementById('new_hemigram');
+  const elements = document.querySelectorAll('[id^="hemigram_"]'); // hemigram_123
+
+  // for the new form dropdown
+  if (newFrame) {
+    newFrame.addEventListener('change', function(event) {
       // Dropdown in hemigram form
       let selectElement = document.getElementById('parameter-select-new');
       // Check if Choices has already been initialized on the element
@@ -168,6 +172,22 @@ $(document).on('turbo:load', function() {
         // Add a class to mark the element as initialized
         selectElement.classList.add('choices-initialized');
       }
+    });
+  }
+
+  // the edit forms dropdowns
+  if (elements.length > 0) {
+    elements.forEach(element => {
+      element.addEventListener('change', function(event) {
+      // Dropdown in hemigram form
+        let selectElement = element.querySelector('[id^="parameter-select"]');
+        // Check if Choices has already been initialized on the element
+        if (!selectElement.classList.contains('choices-initialized')) {
+          new Choices(selectElement, { searchEnabled: true, allowHTML: true });
+          // Add a class to mark the element as initialized
+          selectElement.classList.add('choices-initialized');
+        }
+      });
     });
   }
 
