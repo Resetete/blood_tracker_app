@@ -152,44 +152,35 @@ document.addEventListener("turbo:submit-end", function (event) {
   }
 });
 
+// ///////////////////////////////////////
+// BEGIN - choices dropdowns
+// Initialize choices.js for the hemigram forms dropdown
 // Define a flag to track whether options have been loaded
-let optionsLoaded = false;
+function initializeChoicesDropdown(selectElement) {
+  if (selectElement && !selectElement.classList.contains('choices-initialized')) {
+    new Choices(selectElement, { searchEnabled: true, allowHTML: true });
+    selectElement.classList.add('choices-initialized');
+  }
+}
 
-// TODO: selectors need to be adjusted to work with the dynamic ids of the edit form
-// need to pass the hemogram id
-$(document).on('turbo:load', function() {
+$(document).on('turbo:frame-load', function() {
   const newFrame = document.getElementById('new_hemigram');
   const elements = document.querySelectorAll('[id^="hemigram_"]'); // hemigram_123
 
-  // for the new form dropdown
   if (newFrame) {
-    newFrame.addEventListener('change', function(event) {
-      // Dropdown in hemigram form
-      let selectElement = document.getElementById('parameter-select-new');
-      // Check if Choices has already been initialized on the element
-      if (!selectElement.classList.contains('choices-initialized')) {
-        new Choices(selectElement, { searchEnabled: true, allowHTML: true });
-        // Add a class to mark the element as initialized
-        selectElement.classList.add('choices-initialized');
-      }
-    });
+    let selectElement = document.getElementById('parameter-select-new');
+    initializeChoicesDropdown(selectElement);
   }
 
   // the edit forms dropdowns
   if (elements.length > 0) {
     elements.forEach(element => {
-      element.addEventListener('change', function(event) {
-      // Dropdown in hemigram form
-        let selectElement = element.querySelector('[id^="parameter-select"]');
-        // Check if Choices has already been initialized on the element
-        if (!selectElement.classList.contains('choices-initialized')) {
-          new Choices(selectElement, { searchEnabled: true, allowHTML: true });
-          // Add a class to mark the element as initialized
-          selectElement.classList.add('choices-initialized');
-        }
-      });
+      let selectElement = element.querySelector('[id^="parameter-select"]');
+      initializeChoicesDropdown(selectElement);
     });
   }
+  // END - choices dropdowns
+  // ///////////////////////////////////////
 
   // resizes the navbar logo and brand when scrolling down 80px from top
   if (window.innerWidth >= 768){
