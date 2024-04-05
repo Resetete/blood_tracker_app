@@ -5,9 +5,7 @@ module Hemigrams
   class Date < ApplicationRecord
     self.table_name = 'hemigram_dates'
 
-    belongs_to :hemigram
-
-    validates :date, presence: true, uniqueness: { scope: :hemigram_id }
+    has_many :hemigrams, foreign_key: :record_date_id, dependent: :destroy
 
     scope :ordered, -> { order(date: :desc) }
   end

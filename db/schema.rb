@@ -25,12 +25,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_211955) do
 
   create_table "hemigram_dates", force: :cascade do |t|
     t.date "date", null: false
-    t.bigint "hemigram_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["date", "hemigram_id"], name: "index_hemigram_dates_on_date_and_hemigram_id", unique: true
     t.index ["date"], name: "index_hemigram_dates_on_date"
-    t.index ["hemigram_id"], name: "index_hemigram_dates_on_hemigram_id"
   end
 
   create_table "hemigrams", force: :cascade do |t|
@@ -44,6 +41,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_211955) do
     t.string "short"
     t.string "chart_unit"
     t.string "chart_value"
+    t.bigint "record_date_id"
+    t.index ["record_date_id", "parameter"], name: "index_hemigrams_on_record_date_id_and_parameter", unique: true
+    t.index ["record_date_id"], name: "index_hemigrams_on_record_date_id"
   end
 
   create_table "hemigrams_chart_settings", force: :cascade do |t|
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_211955) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "hemigram_dates", "hemigrams"
+  add_foreign_key "hemigrams", "hemigram_dates", column: "record_date_id"
   add_foreign_key "hemigrams_chart_settings", "users", on_delete: :cascade
   add_foreign_key "hemigrams_parameter_associations", "hemigrams", name: "hemigram_fk"
   add_foreign_key "hemigrams_parameter_associations", "hemigrams_parameter_metadata", column: "parameter_metadata_id", name: "parameter_metadata_fk"

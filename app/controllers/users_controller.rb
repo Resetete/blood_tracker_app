@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
+    # TODO: add filter field
+    # TODO: add pagination (copy from hemigram index action)
     @hemigrams = @user.hemigrams.order(date: :desc)
   end
 
