@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :view_users, controller: 'users', only: %i[show edit update] do
     get 'hemigrams', on: :member
     resources :hemigrams
+    resources :hemigram_dates
   end
 
   resources :hemigrams
