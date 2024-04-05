@@ -1,0 +1,4 @@
+-# this partial is substituting the select on the form when the first dropdown with parameter name is selected
+-# TODO: turbo_frame tag needs to be dynamic
+= turbo_frame_tag "unit_options-#{hemigram_id}" do
+  = select_tag('hemigram[unit]', options_for_select(options), class: 'form-select', required: true)

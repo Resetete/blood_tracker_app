@@ -58,11 +58,14 @@ class HemigramsController < ApplicationController
 
   def get_unit_selection_dropdown_options
     parameter = params[:parameter_select].to_sym
+    hemigram_id = params[:hemigram_id]
 
     options = Admin::Hemigrams::ParameterMetadata.units(parameter)
     shorts = Admin::Hemigrams::ParameterMetadata.short(parameter)
 
-    render json: { options:, shorts: }
+    respond_to do |format|
+      format.html { render("hemigrams/frames/unit_form_select", locals: { options:, shorts:, hemigram_id:}) }
+    end
   end
 
   private

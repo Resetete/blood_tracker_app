@@ -152,61 +152,35 @@ document.addEventListener("turbo:submit-end", function (event) {
   }
 });
 
-$(document).on('turbo:load', function() {
-  const frame = document.getElementById('new_hemigram');
-  if (frame) {
-    frame.addEventListener('change', function(event) {
-      // Dropdown in hemigram form
-      let selectElement = document.getElementById('parameter-select');
-      // Check if Choices has already been initialized on the element
-      if (!selectElement.classList.contains('choices-initialized')) {
-        new Choices(selectElement, { searchEnabled: true, allowHTML: true });
-        // Add a class to mark the element as initialized
-        selectElement.classList.add('choices-initialized');
-      }
+// ///////////////////////////////////////
+// BEGIN - choices dropdowns
+// Initialize choices.js for the hemigram forms dropdown
+// Define a flag to track whether options have been loaded
+function initializeChoicesDropdown(selectElement) {
+  if (selectElement && !selectElement.classList.contains('choices-initialized')) {
+    new Choices(selectElement, { searchEnabled: true, allowHTML: true });
+    selectElement.classList.add('choices-initialized');
+  }
+}
 
-      // Return hemigram parameter unit options for dropdown in hemigram form
-      // Change abbreviation/shorts field if parameter dropdown is filled
-      var selectedOption = $('#parameter-select').val();
-      updateUnitDropdown(selectedOption)
+$(document).on('turbo:frame-load', function() {
+  const newFrame = document.getElementById('new_hemigram');
+  const elements = document.querySelectorAll('[id^="hemigram_"]'); // hemigram_123
 
-      // Change abbreviation/shorts field if parameter changes
-      $('#parameter-select').off('change').on('change', function() {
-        var selectedOption = $(this).val();
-        updateUnitDropdown(selectedOption)
-      });
+  if (newFrame) {
+    let selectElement = document.getElementById('parameter-select-new');
+    initializeChoicesDropdown(selectElement);
+  }
 
-      function updateUnitDropdown(selectedOption) {
-        $.ajax({
-          url: '/hemigrams/get_unit_selection_dropdown_options',
-          data: { 'parameter_select': selectedOption },
-          dataType: 'json',
-          success: function (data) {
-            var unitDropdown = $('#hemigram_unit');
-            unitDropdown.empty(); // Clear existing options
-            var inputAbbreviation = $('#input_abreviation');
-
-            if (data.shorts == undefined || data.options == null) {
-              unitDropdown.append(new Option('Select a parameter first', ''));
-              inputAbbreviation.val('Select a parameter first');
-            } else {
-              // Update the abbreviation values if the parameter changes
-              var shortValue = data.shorts;
-              inputAbbreviation.val(shortValue);
-
-              if (data.options && data.options.length > 0) {
-                data.options.forEach(function (option) {
-                  unitDropdown.append(new Option(option, option));
-                });
-              } else {
-                unitDropdown.append(new Option('Select unit', ''));
-              }
-            }
-          },
-        });
-      }
+  // the edit forms dropdowns
+  if (elements.length > 0) {
+    elements.forEach(element => {
+      let selectElement = element.querySelector('[id^="parameter-select"]');
+      initializeChoicesDropdown(selectElement);
     });
   }
+  // END - choices dropdowns
+  // ///////////////////////////////////////
 
   // resizes the navbar logo and brand when scrolling down 80px from top
   if (window.innerWidth >= 768){
