@@ -40,13 +40,15 @@
           restore access. It is recommended to provide complex and secure answers for enhanced account protection.
           The more intricate your answers, the better and more secure your account will be.
         .mt-2
-          = link_to('Update security questions', edit_view_user_path(current_user), class: 'btn btn-outline-dark')
-        %table.table.mt-2
-          %tbody
-            - @user.security_questions.each do |question, answer|
-              %tr
-                %th{scope: 'row'}= question
-                %td= answer
+          - verb = @user.custom_security_questions? ? 'Update' : 'Set'
+          = link_to("#{verb} security questions", edit_view_user_path(current_user), class: 'btn btn-outline-dark')
+          %table.table.mt-2
+            %tbody
+              - if @user.custom_security_questions?
+                - @user.security_questions.each do |question, answer|
+                  %tr
+                    %th{scope: 'row'}= question
+                    %td= answer
 
     %h2.mt-5 Chart settings
     - if @user_parameter_ids.any?

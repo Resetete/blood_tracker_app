@@ -74,6 +74,10 @@ class User < ApplicationRecord
     end
   end
 
+  def custom_security_questions?
+    validates_security_questions_present_and_unique
+  end
+
   private
 
   def being_updated?
