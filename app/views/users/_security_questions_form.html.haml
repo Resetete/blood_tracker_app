@@ -1,6 +1,6 @@
 -# form to update the user security questions and answers
 .mb-5
-  = form_for current_user, url: view_user_path(current_user), method: :patch, data: { turbo: false }  do |f|
+  = form_for current_user, url: view_user_path(current_user), method: form_method(current_user), data: { turbo: false }  do |f|
     = render partial: 'shared/model_errors', locals: { model: current_user }
     - current_user.security_questions.each_with_index do |(question, answer), index|
       .mb-3

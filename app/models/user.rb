@@ -68,6 +68,12 @@ class User < ApplicationRecord
     save
   end
 
+  def select_random_questions_with_answers
+    SECURITY_QUESTIONS.sample(3).map do |question|
+      [question, 'Your answer']
+    end
+  end
+
   private
 
   def being_updated?
@@ -107,11 +113,5 @@ class User < ApplicationRecord
   def generate_default_security_questions_and_answers
     self.security_questions = select_random_questions_with_answers
     save
-  end
-
-  def select_random_questions_with_answers
-    SECURITY_QUESTIONS.sample(3).map do |question|
-      [question, 'Your answer']
-    end
   end
 end

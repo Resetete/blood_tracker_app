@@ -11,7 +11,10 @@ class UsersController < ApplicationController
     @user_parameter_ids = Hemigram.for_user(current_user).map(&:parameter_metadata).flat_map(&:ids).uniq
   end
 
-  def edit; end
+  def edit
+    # ensures that we always have at least the default security questions
+    generate_default_security_questions if @user.security_questions.empty?
+  end
 
   def update
     @user.is_being_updated = true # needed to only run validations on update
@@ -51,5 +54,9 @@ class UsersController < ApplicationController
     user_params[:security_questions].to_h.map do |_idx, question|
       [question[:question], question[:answer]]
     end
+  end
+
+  def generate_default_security_questions
+    @user.update(security_questions: @user.select_random_questions_with_answers)
   end
 end
