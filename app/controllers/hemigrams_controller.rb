@@ -23,6 +23,9 @@ class HemigramsController < ApplicationController
     @hemigram = current_user.hemigrams.build(hemigram_params)
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
+    existing_date_record = current_user.record_dates.find_or_initialize_by(date: @hemigram_date)
+
+    @hemigram.record_date.date = @hemigram.date
 
     if @hemigram.save
       respond_to do |format|

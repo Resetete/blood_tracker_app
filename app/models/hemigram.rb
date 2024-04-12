@@ -33,12 +33,12 @@ class Hemigram < ApplicationRecord
   encrypts :chart_value, deterministic: true # deterministic: allows querying the db data
 
   belongs_to :user
-  belongs_to :record_date, foreign_key: :record_date_id, class_name: 'Hemigrams::Date', dependent: :destroy
+  belongs_to :record_date, class_name: 'Hemigrams::Date', dependent: :destroy
   has_many :hemigrams_parameter_associations, class_name: 'Hemigrams::ParameterAssociation'
   has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
-  class_name: 'Admin::Hemigrams::ParameterMetadata'
+                                               class_name: 'Admin::Hemigrams::ParameterMetadata'
 
-  validates :record_date, presence: true, uniqueness: { scope: :hemigram_date_id }
+  validates :record_date, presence: true, uniqueness: { scope: :record_date_id }
   validates :date, presence: true # deprecated
   validates :parameter, presence: true
   validates :unit, presence: true

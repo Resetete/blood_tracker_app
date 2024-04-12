@@ -7,7 +7,7 @@ class BackfillHemigramDates < ActiveRecord::Migration[7.0]
       # Find or create a Hemigrams::Date record for the current date
       hemigram_date = Hemigrams::Date.find_or_create_by(date:)
 
-      #Update all hemigrams with the id of the Hemigrams::Date object
+      # Update all hemigrams with the id of the Hemigrams::Date object
       Hemigram.where(date:).update_all(record_date_id: hemigram_date.id)
     end
   end

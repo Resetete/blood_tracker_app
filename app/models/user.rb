@@ -35,6 +35,7 @@ class User < ApplicationRecord
   ].freeze
 
   has_many :hemigrams, dependent: :destroy
+  has_many :record_dates, class_name: 'Hemigrams::Date', dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :validatable, :recoverable

@@ -2,7 +2,7 @@
 
 module HemigramsHelper
   def form_url(object, path)
-    object.persisted? ? public_send("#{path}_path", object) : public_send("#{path}s_path" , parameter: nil)
+    object.persisted? ? public_send("#{path}_path", object) : public_send("#{path}s_path", parameter: nil)
   end
 
   def form_method(object)

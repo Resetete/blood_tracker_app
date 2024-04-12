@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HemigramDatesController < ApplicationController
   def new
     @hemigram_date = Hemigrams::Date.new
