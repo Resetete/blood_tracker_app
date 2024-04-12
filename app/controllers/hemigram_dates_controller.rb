@@ -6,9 +6,9 @@ class HemigramDatesController < ApplicationController
   end
 
   def create
-    @hemigram_date = Hemigrams::Date.new(hemigram_date_params)
+    @hemigram_date = Hemigrams::Date.new(hemigram_date_params.merge(user: current_user))
 
-    return 'Wrong user' unless current_user == params[:view_user_id]
+    return 'Unauthorized. Wrong user' unless current_user.id == params[:view_user_id]
 
     @hemigram = @hemigram_date.hemigrams.build(user: current_user)
 

@@ -1,0 +1,4 @@
+%p= hemigram_date.date
+- if hemigram_date.hemigrams.any?
+  = hemigram_date.hemigrams.each do |hemigram|
+    = render partial: '../hemigrams/hemigram', locals: { hemigram: }

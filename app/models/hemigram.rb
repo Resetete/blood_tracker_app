@@ -38,7 +38,7 @@ class Hemigram < ApplicationRecord
   has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
                                                class_name: 'Admin::Hemigrams::ParameterMetadata'
 
-  validates :record_date, presence: true, uniqueness: { scope: :record_date_id }
+  validates :record_date, presence: true, uniqueness: { scope: %i[record_date_id user_id parameter] }
   validates :date, presence: true # deprecated
   validates :parameter, presence: true
   validates :unit, presence: true
