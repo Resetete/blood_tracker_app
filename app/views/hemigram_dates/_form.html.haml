@@ -7,11 +7,12 @@
         = form.fields_for :hemigrams do |hemigram_form|
           - @hemigram_date.hemigrams.each do |hemigram|
             = render partial: 'hemigram_fields', locals: { hemigram: , form: hemigram_form}
-          -# = hemigram_form.text_field :value, class: 'form-control', id: 'input_value'
-          = hemigram_form.check_box :_destroy, title: "Check to delete hemigram"
-          = hemigram_form.submit "Add hemigram", name: :add_hemigram
+          .form-group
+            = hemigram_form.label 'Delete?'
+            = hemigram_form.check_box :_destroy, title: "Check to delete hemigram"
         .row
           .col
+            -# Save button for the hemigram_date
             = form.submit(@hemigram_date.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
             = link_to 'Cancel', new_view_user_hemigram_date_path(current_user), class: "btn btn-outline-dark"
 
