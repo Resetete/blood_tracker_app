@@ -38,8 +38,7 @@ class Hemigram < ApplicationRecord
   has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
                                                class_name: 'Admin::Hemigrams::ParameterMetadata'
 
-  validates :record_date, presence: true, uniqueness: { scope: %i[record_date_id user_id parameter] }
-  validates :date, presence: true # deprecated
+  # validates :record_date, presence: true, uniqueness: { scope: %i[record_date_id user_id parameter] }
   validates :parameter, presence: true
   validates :unit, presence: true
   validates :value, presence: true, numericality: { allow_float: true, greater_than: 0 }
@@ -71,24 +70,24 @@ class Hemigram < ApplicationRecord
   private
 
   def validate_only_one_entry_per_parameter_per_day
-    return unless entry_already_exists_on_date?
+    return unless entry_for_parameter_already_exists_on_date?
 
     return if persisted?
 
-    errors.add(:value, "on #{date.to_date} for #{parameter} already exists")
+    errors.add(:value, "on #{record_date.date.to_date} for #{parameter} already exists")
   end
 
-  def entry_already_exists_on_date?
-    Hemigram.exists?(user_id:, parameter:, date: date.to_date)
+  def entry_for_parameter_already_exists_on_date?
+    Hemigram.exists?(user_id:, parameter:, record_date: record_date.date.to_date)
   end
 
   def validate_date_not_in_future
-    return unless date > Date.current
+    return unless record_date.date > Date.current
 
-    errors.add(:date, "can't be in the future")
+    errors.add(:record_date, "can't be in the future")
   end
 
   def date_present?
-    date.present?
+    record_date.present?
   end
 end

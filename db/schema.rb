@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_12_121644) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_26_121059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_121644) do
     t.string "chart_unit"
     t.string "chart_value"
     t.bigint "record_date_id"
-    t.index ["record_date_id", "parameter"], name: "index_hemigrams_on_record_date_id_and_parameter", unique: true
+    t.index ["record_date_id", "parameter", "user_id"], name: "index_hemigrams_on_record_date_id_and_parameter_and_user_id", unique: true
     t.index ["record_date_id"], name: "index_hemigrams_on_record_date_id"
   end
 

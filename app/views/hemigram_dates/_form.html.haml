@@ -4,6 +4,12 @@
       = form_for @hemigram_date, url: form_url(@hemigram_date, 'view_user_hemigram_date'), method: form_method(@hemigram_date)  do |form|
         = render partial: 'shared/model_errors', locals: { model: @hemigram_date }
         = render partial: 'entry_fields', locals: { form: }
+        = form.fields_for :hemigrams do |hemigram_form|
+          - @hemigram_date.hemigrams.each do |hemigram|
+            = render partial: 'hemigram_fields', locals: { hemigram: , form: hemigram_form}
+          -# = hemigram_form.text_field :value, class: 'form-control', id: 'input_value'
+          = hemigram_form.check_box :_destroy, title: "Check to delete hemigram"
+          = hemigram_form.submit "Add hemigram", name: :add_hemigram
         .row
           .col
             = form.submit(@hemigram_date.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')

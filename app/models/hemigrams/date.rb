@@ -7,6 +7,7 @@ module Hemigrams
 
     belongs_to :user
     has_many :hemigrams, foreign_key: :record_date_id, dependent: :destroy
+    accepts_nested_attributes_for :hemigrams, allow_destroy: true
 
     scope :ordered, -> { order(date: :desc) }
   end
