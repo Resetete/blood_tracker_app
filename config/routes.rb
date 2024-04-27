@@ -20,10 +20,12 @@ Rails.application.routes.draw do
 
   resources :view_users, controller: 'users', only: %i[show edit update] do
     get 'hemigrams', on: :member
-    resources :hemigrams
-    resources :hemigram_dates
+    resources :hemigram_dates do
+      resources :hemigrams
+    end
   end
 
+  # TODO: should be deprecated and everything moved under the view_users hemigrams route
   resources :hemigrams
 
   namespace :hemigrams do

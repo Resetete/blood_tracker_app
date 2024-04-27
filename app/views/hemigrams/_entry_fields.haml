@@ -18,5 +18,7 @@
     = turbo_frame_tag "unit_options-#{@hemigram.persisted? ? @hemigram.id : 'new'}" do
       = form.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector
-  .col.g-3
-    = form.date :record_date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date'
+  - if @hemigram.new_record?
+    -# TODO: need to figure out how to change the date and add/create it to a new hemigrams::date object
+    .col.g-3
+      = form.date_field :record_date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date'

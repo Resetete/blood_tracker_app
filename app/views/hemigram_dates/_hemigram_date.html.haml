@@ -1,4 +1,6 @@
 %p= hemigram_date.date
 - if hemigram_date.hemigrams.any?
-  = hemigram_date.hemigrams.each do |hemigram|
-    = render partial: '../hemigrams/hemigram', locals: { hemigram: }
+  = render hemigram_date.hemigrams, record_date: hemigram_date
+
+.hemigram-date-footer
+  = link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user: current_user, hemigram_date:), class: 'btn'
