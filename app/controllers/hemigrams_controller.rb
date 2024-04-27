@@ -15,6 +15,11 @@ class HemigramsController < ApplicationController
 
   def new
     @hemigram = Hemigram.new
+    respond_to do |format|
+      binding.pry
+      format.turbo_stream
+      format.html
+    end
   end
 
   def show; end
