@@ -5,6 +5,7 @@ class HemigramsController < ApplicationController
   include WillPaginate::CollectionMethods
 
   before_action :set_hemigram, only: %i[show edit update destroy]
+  before_action :set_hemigram_date, only: %i[new create]
 
   def index
     hemigrams = Hemigram.search(params[:search], current_user)
@@ -14,18 +15,14 @@ class HemigramsController < ApplicationController
   end
 
   def new
-    @hemigram = Hemigram.new
-    respond_to do |format|
-      binding.pry
-      format.turbo_stream
-      format.html
-    end
+    # @hemigram = Hemigram.new
+    @hemigram = hemigram_date.hemigrams.build
   end
 
   def show; end
 
   def create
-    @hemigram = current_user.hemigrams.build(hemigram_params)
+    @hemigram = hemigram_date.hemigrams.build(hemigram_params)
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
     existing_record_object = current_user.record_dates.find_or_initialize_by(date: @hemigram.date)
@@ -88,5 +85,11 @@ class HemigramsController < ApplicationController
 
   def parameter_metadata
     Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: @hemigram.parameter)
+  end
+
+  def set_hemigram_date
+    binding.pry
+    # or should be record_date_id?
+    @hemigram_date = current_user.record_dates.find(params[:record_date_id])
   end
 end

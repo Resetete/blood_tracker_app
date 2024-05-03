@@ -35,11 +35,11 @@ class User < ApplicationRecord
   ].freeze
 
   has_many :hemigrams, dependent: :destroy
+  # TODO: should probably just be the hemigram_dates instead of record_dates
   has_many :record_dates, class_name: 'Hemigrams::Date', dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :validatable, :recoverable
-
   devise :database_authenticatable, :registerable, :rememberable
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'

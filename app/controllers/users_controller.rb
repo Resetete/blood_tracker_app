@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   before_action :require_same_user
   before_action :set_user, only: %i[show edit update hemigrams]
 
+  # TODO: encrypt security questions and recovery codes!
+
   def show
     @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
     @user_parameter_ids = Hemigram.for_user(current_user).map(&:parameter_metadata).flat_map(&:ids).uniq
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
   def hemigrams
     # TODO: add filter field
     # TODO: add pagination (copy from hemigram index action)
-    @hemigrams = @user.hemigrams.order(date: :desc)
+    @hemigrams = @user.record_dates.includes(:hemigrams).order(date: :desc)
     @hemigram_dates = @user.record_dates.order(date: :desc)
   end
 

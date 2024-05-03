@@ -1,6 +1,7 @@
-%p= hemigram_date.date
-- if hemigram_date.hemigrams.any?
-  = render hemigram_date.hemigrams, record_date: hemigram_date
+= turbo_frame_tag hemigram_date do
+  %p= hemigram_date.date
+  - if hemigram_date.hemigrams.any?
+    = render hemigram_date.hemigrams, record_date: hemigram_date
 
-.hemigram-date-footer
-  = link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user: current_user, hemigram_date:), class: 'btn'
+  .hemigram-date-footer
+    = link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user: current_user, hemigram_date:), class: 'btn'
