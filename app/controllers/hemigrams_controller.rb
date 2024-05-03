@@ -15,18 +15,18 @@ class HemigramsController < ApplicationController
   end
 
   def new
-    # @hemigram = Hemigram.new
-    @hemigram = hemigram_date.hemigrams.build
+    @hemigram = @hemigram_date.hemigrams.build
   end
 
   def show; end
 
   def create
-    @hemigram = hemigram_date.hemigrams.build(hemigram_params)
+    binding.pry
+    @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({user: current_user}))
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
-    existing_record_object = current_user.record_dates.find_or_initialize_by(date: @hemigram.date)
-    @hemigram.record_date = existing_record_object
+    # existing_record_object = current_user.record_dates.find_or_initialize_by(date: @hemigram.date)
+    # @hemigram.record_date = existing_record_object
 
     if @hemigram.save
       respond_to do |format|
@@ -75,7 +75,7 @@ class HemigramsController < ApplicationController
   private
 
   def hemigram_params
-    params.require(:hemigram).permit(:parameter, :value, :unit, :date)
+    params.require(:hemigram).permit(:parameter, :value, :unit)
   end
 
   def set_hemigram
@@ -88,8 +88,6 @@ class HemigramsController < ApplicationController
   end
 
   def set_hemigram_date
-    binding.pry
-    # or should be record_date_id?
-    @hemigram_date = current_user.record_dates.find(params[:record_date_id])
+    @hemigram_date = current_user.record_dates.find(params[:hemigram_date_id])
   end
 end

@@ -1,4 +1,4 @@
-# app/views/hemigrams/new.turbo_stream.erb
+-# app/views/hemigrams/new.turbo_stream.erb
 = turbo_frame_tag 'hemigrams' do
   = form.fields_for :hemigrams, @hemigram, child_index: 'NEW_RECORD' do |hemigram_form|
     = render partial: 'hemigram_fields', locals: { hemigram: @hemigram, form: hemigram_form }

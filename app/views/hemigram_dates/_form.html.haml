@@ -4,17 +4,6 @@
       = form_for @hemigram_date, url: form_url(@hemigram_date, 'view_user_hemigram_date'), method: form_method(@hemigram_date)  do |form|
         = render partial: 'shared/model_errors', locals: { model: @hemigram_date }
         = render partial: 'entry_fields', locals: { form: form }
-        = turbo_frame_tag 'hemigrams' do
-          = form.fields_for :hemigrams do |hemigram_form|
-            - @hemigram_date.hemigrams.each do |hemigram|
-              = render partial: 'hemigram_fields', locals: { hemigram: hemigram, form: hemigram_form}
-            .form-group
-              = hemigram_form.label 'Delete?'
-              = hemigram_form.check_box :_destroy, title: "Check to delete hemigram"
-        .form-group.mb-3
-          -# allow adding another hemigram form
-          -# = link_to "Add another hemigram", new_hemigram_path, data: { turbo_action: 'replace', turbo_frame: 'hemigrams' }, class: 'btn btn-outline-dark btn-sm'
-          = link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user: current_user, hemigram_date: @hemigram_date), class: 'btn'
         .row
           .col
             -# Save button for the hemigram_date

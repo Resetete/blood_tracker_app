@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # TODO: should be deprecated and everything moved under the view_users hemigrams route
+  # TODO: should be deprecated and everything moved under the viewusers
   resources :hemigrams
 
   namespace :hemigrams do
