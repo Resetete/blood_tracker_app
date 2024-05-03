@@ -38,14 +38,13 @@ class HemigramsController < ApplicationController
   def edit; end
 
   def update
-    # TODO!: need to update the turbo_stream update view to tell where to add the updated element (hemigram date accordeon)
-
     # get the date from the params, check if we already have a Hemigram::Date for the submitted date and user
     record_date = Hemigrams::Date.find_or_initialize_by(date: params[:hemigram][:record_date][:date], user_id: current_user.id)
     # set the record_date for the hemigram
     @hemigram.record_date = record_date
 
     if @hemigram.update(hemigram_params)
+      @hemigram_dates = current_user.record_dates.joins(:hemigrams).order(date: :desc)
       respond_to do |format|
         format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
         format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }

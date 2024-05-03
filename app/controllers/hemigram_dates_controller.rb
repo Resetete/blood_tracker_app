@@ -19,12 +19,6 @@ class HemigramDatesController < ApplicationController
       else
         # Save the build hemigram date with associated hemigrams
         if @hemigram_date.save
-          # do I need this?
-          # create the associated hemigrams for the date from the params
-          #hemigrams_params[:hemigrams_attributes].each do |param|
-            # remove the destroy key and add the current user to the attributes to build the hemigram
-          #  @hemigram_date.hemigrams.build(param[1].to_h.except!('_destroy').merge(user: current_user))
-          #end
           format.html { redirect_to view_user_hemigrams_path, notice: ErrorHandling::SUCCESSFUL_CREATE }
           format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_CREATE }
         else

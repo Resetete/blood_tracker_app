@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     # TODO: add filter field
     # TODO: add pagination (copy from hemigram index action)
     @hemigrams = @user.record_dates.includes(:hemigrams).order(date: :desc)
-    @hemigram_dates = @user.record_dates.order(date: :desc)
+    @hemigram_dates = @user.record_dates.joins(:hemigrams).order(date: :desc)
   end
 
   private

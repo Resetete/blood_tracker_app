@@ -8,5 +8,8 @@
 = render_turbo_stream_flash_messages
 -# the sorting approach does not really work when multiple entries are edited simultaneously,
 -# therefore we can just replace the edited entry with the new data
-= turbo_stream.replace @hemigram, @hemigram
+- if @hemigram.record_date.date != @hemigram_date.date
+  = turbo_stream.replace 'hemigrams', partial: 'hemigram_dates/hemigram_dates_accordion'
+- else
+  = turbo_stream.replace @hemigram, @hemigram
 
