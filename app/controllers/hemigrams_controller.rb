@@ -5,7 +5,7 @@ class HemigramsController < ApplicationController
   include WillPaginate::CollectionMethods
 
   before_action :set_hemigram, only: %i[show edit update destroy]
-  before_action :set_hemigram_date, only: %i[new create]
+  before_action :set_hemigram_date, only: %i[new create edit update]
 
   def index
     hemigrams = Hemigram.search(params[:search], current_user)
@@ -38,6 +38,13 @@ class HemigramsController < ApplicationController
   def edit; end
 
   def update
+    # TODO!: need to update the turbo_stream update view to tell where to add the updated element (hemigram date accordeon)
+
+    # get the date from the params, check if we already have a Hemigram::Date for the submitted date and user
+    record_date = Hemigrams::Date.find_or_initialize_by(date: params[:hemigram][:record_date][:date], user_id: current_user.id)
+    # set the record_date for the hemigram
+    @hemigram.record_date = record_date
+
     if @hemigram.update(hemigram_params)
       respond_to do |format|
         format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
