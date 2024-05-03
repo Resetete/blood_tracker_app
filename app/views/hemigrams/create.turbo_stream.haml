@@ -1,5 +1,6 @@
-= turbo_stream.prepend "hemigrams", partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
+-# = turbo_stream.prepend "hemigrams", partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
+= turbo_stream.append @hemigram_date, partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
 -# the turbo frame with the id new_hemigram on hemigrams page will be substituted by empty string
-= turbo_stream.update 'new_hemigram', ""
+= turbo_stream.update "new_hemigram_for_date_#{@hemigram_date.id}", ""
 -# ensure the flash messages are rendered on the page
 = render_turbo_stream_flash_messages

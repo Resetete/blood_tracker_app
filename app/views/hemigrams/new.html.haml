@@ -3,7 +3,7 @@
     %h2
       %span.text-highlight Create new Hemigram
   .mt-5
-    = turbo_frame_tag('new_hemigram') do
+    = turbo_frame_tag("new_hemigram_for_date_#{@hemigram_date.id}") do
       .card.mt-2
         .card-body
           .card-title Create new

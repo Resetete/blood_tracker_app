@@ -21,12 +21,9 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
-    binding.pry
     @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({user: current_user}))
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
-    # existing_record_object = current_user.record_dates.find_or_initialize_by(date: @hemigram.date)
-    # @hemigram.record_date = existing_record_object
 
     if @hemigram.save
       respond_to do |format|
