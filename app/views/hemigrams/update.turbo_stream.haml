@@ -1,13 +1,8 @@
--# = turbo_stream.append "hemigrams", partial: "hemigrams/hemigram", locals: { hemigram: @hemigram }
--# I sort the whole list by date and replace the whole list by the ordered one that includes the updated entry
--# - sorted_hemigrams = @hemigram.user.hemigrams.order(date: :desc)
--# replace the old list with the new sorted list
--# = turbo_stream.replace "hemigrams", partial: "hemigrams/hemigram", collection: sorted_hemigrams
-
 -# ensure the flash messages are rendered on the page
 = render_turbo_stream_flash_messages
--# the sorting approach does not really work when multiple entries are edited simultaneously,
--# therefore we can just replace the edited entry with the new data
+-#  if the date of the edited hemigram is not the same as the current, we need to render a new hemigram::date
+-# accordeon with the updated hemigram
+-# else we can just replace the existing hemigram entry with the updated object
 - if @hemigram.record_date.date != @hemigram_date.date
   = turbo_stream.replace 'hemigrams', partial: 'hemigram_dates/hemigram_dates_accordion'
 - else

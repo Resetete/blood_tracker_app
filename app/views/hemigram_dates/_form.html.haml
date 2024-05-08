@@ -6,6 +6,6 @@
         = render partial: 'entry_fields', locals: { form: form }
         .row
           .col
-            -# Save button for the hemigram_date
             = form.submit(@hemigram_date.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
-            = link_to 'Cancel', new_view_user_hemigram_date_path(current_user), class: "btn btn-outline-dark"
+            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark"
+

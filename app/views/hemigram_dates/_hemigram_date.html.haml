@@ -1,4 +1,4 @@
-= turbo_frame_tag hemigram_date do
+= turbo_frame_tag(hemigram_date) do
   %p= hemigram_date.date
   - if hemigram_date.hemigrams.any?
     = render hemigram_date.hemigrams, record_date: hemigram_date
