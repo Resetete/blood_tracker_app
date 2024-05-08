@@ -7,7 +7,10 @@
       - if @hemigram_dates.any?
         .mx-3= graphs_button('Visualize your data', 'btn-outline-dark')
       = turbo_frame_tag "hemigram_turbo_frame" do
-        = link_to 'New data', new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' }
+        = link_to new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' } do
+          %i.fa-solid.fa-plus.fa-xl.icon-red
+          New data
+
     .mb-3
       = turbo_frame_tag('new_hemigram_date') do
         - unless @hemigram_dates
