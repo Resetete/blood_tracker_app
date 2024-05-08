@@ -42,6 +42,8 @@ class HemigramsController < ApplicationController
     record_date = Hemigrams::Date.find_or_initialize_by(date: params[:hemigram][:record_date][:date], user_id: current_user.id)
     # set the record_date for the hemigram
     @hemigram.record_date = record_date
+    # set the abbreviation for the updated parameter
+    @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(hemigram_params[:parameter])
 
     if @hemigram.update(hemigram_params)
       @hemigram_dates = current_user.record_dates.joins(:hemigrams).order(date: :desc)
