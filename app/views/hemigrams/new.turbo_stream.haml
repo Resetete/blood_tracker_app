@@ -1,4 +1,9 @@
 -# app/views/hemigrams/new.turbo_stream.erb
-= turbo_frame_tag 'hemigrams' do
-  = form.fields_for :hemigrams, @hemigram, child_index: 'NEW_RECORD' do |hemigram_form|
-    = render partial: 'hemigram_fields', locals: { hemigram: @hemigram, form: hemigram_form }
+= render_turbo_stream_flash_messages
+
+- if @hemigram.errors.any?
+  = turbo_stream.prepend @hemigram, render(partial: '/shared/model_errors', locals: { model: @hemigram })
+- else
+  = turbo_frame_tag 'hemigrams' do
+    = form.fields_for :hemigrams, @hemigram, child_index: 'NEW_RECORD' do |hemigram_form|
+      = render partial: 'hemigram_fields', locals: { hemigram: @hemigram, form: hemigram_form }

@@ -1,8 +1,7 @@
 .container
   %p
-    You just created a new date
     %span.badge.bg-secondary Hurray!
-    Enter your hemigram data now below
+    =hemigram_date.new_record? ? 'You just created a new date. Enter your hemigram data now below' : 'Add more data now'
   %ul.mt-3.mb-3.list-group
     .accordion.accordion-flush#accordion-hemigram-index
       .accordion-item

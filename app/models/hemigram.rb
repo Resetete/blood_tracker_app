@@ -38,7 +38,9 @@ class Hemigram < ApplicationRecord
   has_and_belongs_to_many :parameter_metadata, join_table: 'hemigrams_parameter_associations',
                                                class_name: 'Admin::Hemigrams::ParameterMetadata'
 
-  # validates :record_date, presence: true, uniqueness: { scope: %i[record_date_id user_id parameter] }
+  validates :record_date, presence: true,
+                          uniqueness: { scope: %i[record_date_id user_id parameter], message: 'already contains an entry for this parameter' }
+
   validates :parameter, presence: true
   validates :unit, presence: true
   validates :value, presence: true, numericality: { allow_float: true, greater_than: 0 }

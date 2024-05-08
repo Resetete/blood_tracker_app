@@ -21,7 +21,7 @@ class HemigramsController < ApplicationController
   def show; end
 
   def create
-    @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({user: current_user}))
+    @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({ user: current_user }))
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
