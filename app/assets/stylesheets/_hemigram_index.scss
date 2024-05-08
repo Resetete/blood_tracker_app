@@ -1,0 +1,33 @@
+@import 'variables';
+
+// Styles for the hemigram index page
+
+.hemigram-index .accordion-button:active,
+.hemigram-index .accordion-button:focus,
+.hemigram-index .accordion-button:not(.collapsed) {
+  background-color: $yellow !important;
+  color: #4b4515;
+  border: solid 1px $yellow;
+  border-radius: 1px;
+}
+
+.hemigram-index .accordion-header {
+  border: solid 2px $yellow;
+  border-radius: 5px;
+}
+
+.hemigram-index .accordion-button.collapsed {
+  background-color: $beige !important;
+  color: black;
+  border: solid 2px white;
+  border-radius: 3px;
+}
+
+.hemigram-index .accordion-button:after {
+  color: black;
+}
+
+.accordion-flush .accordion-item {
+  background-color: white;
+  border-radius: 5px;
+}

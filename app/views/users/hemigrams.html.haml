@@ -16,8 +16,8 @@
       %ul.mt-3.mb-3.list-group
         - @hemigram_dates.each do |record_date|
           - date = record_date.date
-          .accordion.accordion-flush#accordion-hemigram-index
-            .accordion-item
+          .hemigram-index.accordion.accordion-flush#accordion-hemigram-index
+            .accordion-item.shadow
               %h2.accordion-header{id: "heading-#{date}"}
                 %button.accordion-button.collapsed{ type: 'button', 'data-bs-toggle': "collapse", 'data-bs-target': "#collapse-#{date}", 'aria-expanded': "true", 'aria-controls': "collapse-#{date}"}
                   = [date, date.strftime("%A")].join(' - ')
