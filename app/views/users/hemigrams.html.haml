@@ -19,10 +19,11 @@
             You've recorded data for
             %span.text-highlight= @number_hemigram_entries
             different hemigram parameters, spanning across
-            %span.text-highlight= @hemigram_dates.count
+            %span.text-highlight= @number_of_days
             different days.
         - unless @hemigram_dates
           = render partial: 'hemigram_dates/empty_state'
+    = render 'shared/search'
     = turbo_frame_tag('hemigrams') do
       %ul.mt-3.mb-3.list-group
         - @hemigram_dates.each do |record_date|

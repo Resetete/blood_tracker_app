@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
-    hemigrams = Hemigram.search(params[:search], current_user)
-
-    @number_hemigram_entries = @user.record_dates.includes(:hemigrams).count
+    preloaded_dates = @user.record_dates.includes(:hemigrams)
+    @number_of_days = preloaded_dates.flat_map(&:hemigrams).map(&:record_date_id).uniq.count
+    @number_hemigram_entries = preloaded_dates.flat_map(&:hemigrams).count
     @icon = case @number_hemigram_entries
             when 0..5
               'fa-feather'
@@ -42,11 +42,12 @@ class UsersController < ApplicationController
             else
               'fa-tree'
             end
-    # TODO: add filter field (by parameter, by date)
-    @hemigram_dates = @user.record_dates.joins(:hemigrams)
-                                        .order(date: :desc)
-                                        .distinct
-                                        .paginate(page: params[:page], per_page: 10)
+
+    hemigram_dates = Hemigrams::Date.search(params[:search], current_user)
+    @hemigram_dates = Hemigrams::Date.where(id: hemigram_dates.map(&:id))
+                         .order(date: :desc)
+                         .distinct
+                         .paginate(page: params[:page], per_page: 10)
   end
 
   private
