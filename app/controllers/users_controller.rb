@@ -29,6 +29,19 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
+    hemigrams = Hemigram.search(params[:search], current_user)
+
+    @number_hemigram_entries = @user.record_dates.includes(:hemigrams).count
+    @icon = case @number_hemigram_entries
+            when 0..5
+              'fa-feather'
+            when 6..20
+              'fa-leaf'
+            when 21..60
+              'fa-seedling'
+            else
+              'fa-tree'
+            end
     # TODO: add filter field (by parameter, by date)
     @hemigram_dates = @user.record_dates.joins(:hemigrams)
                                         .order(date: :desc)
