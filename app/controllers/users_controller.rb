@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
-    # TODO: add filter field
+    # TODO: add filter field (by parameter, by date)
     @hemigram_dates = @user.record_dates.joins(:hemigrams)
                                         .order(date: :desc)
                                         .distinct

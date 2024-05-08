@@ -1,17 +1,16 @@
-.container
-  %p
-    %span.badge.bg-secondary Hurray!
-    =hemigram_date.new_record? ? 'You just created a new date. Enter your hemigram data now below' : 'Add more data now'
-  %ul.mt-3.mb-3.list-group
-    .accordion.accordion-flush#accordion-hemigram-index
-      .accordion-item
-        %h2.accordion-header{id: "heading-#{hemigram_date.date}"}
-          %button.accordion-button{ type: 'button', 'data-bs-toggle': "collapse", 'data-bs-target': "#collapse-#{hemigram_date.date}", 'aria-expanded': "true", 'aria-controls': "collapse-#{hemigram_date.date}"}
-            = [hemigram_date.date, hemigram_date.date.strftime("%A")].join(' - ')
-        .accordion-collapse{id: "collapse-#{hemigram_date.date}", 'aria-labelledby': "heading-#{hemigram_date.date}", 'data-bs-parent': "#accordion-hemigram-index"}
-          .accordion-body
-            = turbo_frame_tag(hemigram_date) do
-              - if hemigram_date.hemigrams.any?
-                = render hemigram_date.hemigrams, record_date: hemigram_date
-              = turbo_frame_tag("new_hemigram_for_date_#{hemigram_date.id}") do
-                .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: hemigram_date.id), class: 'btn btn-outline-dark'
+%p
+  %span.badge.bg-secondary Hurray!
+  =hemigram_date.new_record? ? 'You just created a new date. Enter your hemigram data now below' : 'Add more data now'
+%ul.mt-3.mb-3.list-group
+  .accordion.accordion-flush#accordion-hemigram-index
+    .accordion-item
+      %h2.accordion-header{id: "heading-#{hemigram_date.date}"}
+        %button.accordion-button{ type: 'button', 'data-bs-toggle': "collapse", 'data-bs-target': "#collapse-#{hemigram_date.date}", 'aria-expanded': "true", 'aria-controls': "collapse-#{hemigram_date.date}"}
+          = [hemigram_date.date, hemigram_date.date.strftime("%A")].join(' - ')
+      .accordion-collapse{id: "collapse-#{hemigram_date.date}", 'aria-labelledby': "heading-#{hemigram_date.date}", 'data-bs-parent': "#accordion-hemigram-index"}
+        .accordion-body
+          = turbo_frame_tag(hemigram_date) do
+            - if hemigram_date.hemigrams.any?
+              = render hemigram_date.hemigrams, record_date: hemigram_date
+            = turbo_frame_tag("new_hemigram_for_date_#{hemigram_date.id}") do
+              .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: hemigram_date.id), class: 'btn btn-outline-dark'
