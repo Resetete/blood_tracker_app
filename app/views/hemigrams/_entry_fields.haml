@@ -19,6 +19,7 @@
       = form.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector
   - unless @hemigram.new_record?
-    = form.fields_for :record_date do |date_form|
-      = date_form.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date'
+    .col.g-3
+      = form.fields_for :record_date do |date_form|
+        = date_form.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date', value: @hemigram.record_date.date
 
