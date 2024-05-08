@@ -30,9 +30,10 @@ class UsersController < ApplicationController
 
   def hemigrams
     # TODO: add filter field
-    # TODO: add pagination (copy from hemigram index action)
-    @hemigrams = @user.record_dates.includes(:hemigrams).order(date: :desc)
-    @hemigram_dates = @user.record_dates.joins(:hemigrams).order(date: :desc).uniq
+    @hemigram_dates = @user.record_dates.joins(:hemigrams)
+                                        .order(date: :desc)
+                                        .distinct
+                                        .paginate(page: params[:page], per_page: 10)
   end
 
   private
