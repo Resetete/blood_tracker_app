@@ -1,6 +1,6 @@
 %p
-  %span.badge.bg-secondary Hurray!
-  =hemigram_date.new_record? ? 'You just created a new date. Enter your hemigram data now below' : 'Add more data now'
+  %i.fa-solid.fa-thumbs-up.fa-xl.icon-red
+  =hemigram_date.hemigrams.present? ? 'Great job! Add more data now.' : "Exciting news! You've just created a new date. Enter your hemigram data below."
 %ul.mt-3.mb-3.list-group
   .accordion.accordion-flush#accordion-hemigram-index
     .accordion-item
