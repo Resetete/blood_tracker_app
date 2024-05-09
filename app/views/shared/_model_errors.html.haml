@@ -3,6 +3,6 @@
     - if model.errors.any?
       .alert.alert-warning
         - model.errors.full_messages.each do |msg|
-          %ur
-            %li= msg
+          %ul.list-unstyled.list-group
+            %li.list-group-item= msg
 

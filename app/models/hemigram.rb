@@ -44,6 +44,7 @@ class Hemigram < ApplicationRecord
   validates :parameter, presence: true
   validates :unit, presence: true
   validates :value, presence: true, numericality: { allow_float: true, greater_than: 0 }
+  validate :validate_value_unit_consistency
   validate :validate_date_not_in_future, if: :date_present?
   validate :validate_only_one_entry_per_parameter_per_day, if: :date_present?
 
@@ -87,6 +88,12 @@ class Hemigram < ApplicationRecord
     return unless record_date.date > Date.current
 
     errors.add(:record_date, "can't be in the future")
+  end
+
+  def validate_value_unit_consistency
+    return if value.between?(0,100) && unit == '%'
+
+    errors.add(:value, 'needs to be between 0-100%')
   end
 
   def date_present?
