@@ -33,6 +33,9 @@ module Api
     rescue TooManyRequestsException => e
       Rails.logger.error("News API (top headlines) Too Many Requests Error: #{e.message}")
       []
+    rescue SocketError => e
+      Rails.logger.error("It seems you do not have internet: #{e.message}")
+      []
     end
 
     # response is cached to avoid unnecessary requests
@@ -48,6 +51,9 @@ module Api
       end
     rescue TooManyRequestsException => e
       Rails.logger.error("News API (everything news) Too Many Requests Error: #{e.message}")
+      []
+    rescue SocketError => e
+      Rails.logger.error("It seems you do not have internet: #{e.message}")
       []
     end
 
