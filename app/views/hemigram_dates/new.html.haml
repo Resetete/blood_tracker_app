@@ -1,0 +1,12 @@
+.container.mt-5.mb-5
+  .header-title.p-0.m-0
+    %h2
+      %span.text-highlight Create new hemigram for date
+  .mt-5
+    = turbo_frame_tag('new_hemigram_date') do
+      .card.mt-2
+        .card-body
+          .card-title Choose a date for your hemigram
+          .card-text= render 'hemigram_dates/form'
+  = blood_tracker_button('All Hemigrams', 'btn-outline-dark')
+  = graphs_button('See your data', 'btn-outline-dark')

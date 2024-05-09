@@ -5,11 +5,10 @@
       %span.text-highlight Blood and health related news
     -# TODO: enable the sorting by ajax form
     -# views/pages/_sorted_news.js.erb
-    -# views/pahes/_news.html.haml
+    -# views/pages/_news.html.haml
 
     #sort_form
       = form_with(url: news_sort_by_path, method: :post, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
-        -# .row.mb-3.align-items-start
         .row.row-cols-lg-auto.g-3.align-items-center
           .col-12
             = form.label :sort_by, 'Sort by:', class: 'visually-hidden', for: 'sort_by_input'

@@ -5,6 +5,7 @@ class HemigramsController < ApplicationController
   include WillPaginate::CollectionMethods
 
   before_action :set_hemigram, only: %i[show edit update destroy]
+  before_action :set_hemigram_date, only: %i[new create edit update]
 
   def index
     hemigrams = Hemigram.search(params[:search], current_user)
@@ -14,13 +15,13 @@ class HemigramsController < ApplicationController
   end
 
   def new
-    @hemigram = Hemigram.new
+    @hemigram = @hemigram_date.hemigrams.build
   end
 
   def show; end
 
   def create
-    @hemigram = current_user.hemigrams.build(hemigram_params)
+    @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({ user: current_user }))
     @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(@hemigram.parameter)
     @hemigram.hemigrams_parameter_associations.build(parameter_metadata:)
 
@@ -37,7 +38,15 @@ class HemigramsController < ApplicationController
   def edit; end
 
   def update
+    # get the date from the params, check if we already have a Hemigram::Date for the submitted date and user
+    record_date = Hemigrams::Date.find_or_initialize_by(date: params[:hemigram][:record_date][:date], user_id: current_user.id)
+    # set the record_date for the hemigram
+    @hemigram.record_date = record_date
+    # set the abbreviation for the updated parameter
+    @hemigram.short = Admin::Hemigrams::ParameterMetadata.short(hemigram_params[:parameter])
+
     if @hemigram.update(hemigram_params)
+      @hemigram_dates = current_user.record_dates.joins(:hemigrams).order(date: :desc)
       respond_to do |format|
         format.html { redirect_to hemigrams_path, flash[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
         format.turbo_stream { flash.now[:notice] = ErrorHandling::SUCCESSFUL_UPDATE }
@@ -64,14 +73,14 @@ class HemigramsController < ApplicationController
     shorts = Admin::Hemigrams::ParameterMetadata.short(parameter)
 
     respond_to do |format|
-      format.html { render("hemigrams/frames/unit_form_select", locals: { options:, shorts:, hemigram_id:}) }
+      format.html { render('hemigrams/frames/unit_form_select', locals: { options:, shorts:, hemigram_id: }) }
     end
   end
 
   private
 
   def hemigram_params
-    params.require(:hemigram).permit(:parameter, :value, :unit, :date)
+    params.require(:hemigram).permit(:parameter, :value, :unit)
   end
 
   def set_hemigram
@@ -81,5 +90,9 @@ class HemigramsController < ApplicationController
 
   def parameter_metadata
     Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: @hemigram.parameter)
+  end
+
+  def set_hemigram_date
+    @hemigram_date = current_user.record_dates.find(params[:hemigram_date_id])
   end
 end

@@ -35,10 +35,11 @@ class User < ApplicationRecord
   ].freeze
 
   has_many :hemigrams, dependent: :destroy
+  # TODO: should probably just be the hemigram_dates instead of record_dates
+  has_many :record_dates, class_name: 'Hemigrams::Date', dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :validatable, :recoverable
-
   devise :database_authenticatable, :registerable, :rememberable
 
   has_one :chart_setting, class_name: 'Hemigrams::ChartSetting'
@@ -65,6 +66,16 @@ class User < ApplicationRecord
   def generate_recovery_codes
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
     save
+  end
+
+  def select_random_questions_with_answers
+    SECURITY_QUESTIONS.sample(3).map do |question|
+      [question, 'Your answer']
+    end
+  end
+
+  def custom_security_questions?
+    validates_security_questions_present_and_unique
   end
 
   private
@@ -106,11 +117,5 @@ class User < ApplicationRecord
   def generate_default_security_questions_and_answers
     self.security_questions = select_random_questions_with_answers
     save
-  end
-
-  def select_random_questions_with_answers
-    SECURITY_QUESTIONS.sample(3).map do |question|
-      [question, 'Your answer']
-    end
   end
 end

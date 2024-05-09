@@ -6,12 +6,17 @@ class UsersController < ApplicationController
   before_action :require_same_user
   before_action :set_user, only: %i[show edit update hemigrams]
 
+  # TODO: encrypt security questions and recovery codes!
+
   def show
     @chart_setting = Hemigrams::ChartSetting.find_or_create_by(user_id: current_user.id)
     @user_parameter_ids = Hemigram.for_user(current_user).map(&:parameter_metadata).flat_map(&:ids).uniq
   end
 
-  def edit; end
+  def edit
+    # ensures that we always have at least the default security questions
+    generate_default_security_questions if @user.security_questions.empty?
+  end
 
   def update
     @user.is_being_updated = true # needed to only run validations on update
@@ -24,7 +29,25 @@ class UsersController < ApplicationController
   end
 
   def hemigrams
-    @hemigrams = @user.hemigrams.order(date: :desc)
+    preloaded_dates = @user.record_dates.includes(:hemigrams)
+    @number_of_days = preloaded_dates.flat_map(&:hemigrams).map(&:record_date_id).uniq.count
+    @number_hemigram_entries = preloaded_dates.flat_map(&:hemigrams).count
+    @icon = case @number_hemigram_entries
+            when 0..5
+              'fa-feather'
+            when 6..20
+              'fa-leaf'
+            when 21..60
+              'fa-seedling'
+            else
+              'fa-tree'
+            end
+
+    hemigram_dates = Hemigrams::Date.search(params[:search], current_user)
+    @hemigram_dates = Hemigrams::Date.where(id: hemigram_dates.map(&:id))
+                                     .order(date: :desc)
+                                     .distinct
+                                     .paginate(page: params[:page], per_page: 10)
   end
 
   private
@@ -48,5 +71,9 @@ class UsersController < ApplicationController
     user_params[:security_questions].to_h.map do |_idx, question|
       [question[:question], question[:answer]]
     end
+  end
+
+  def generate_default_security_questions
+    @user.update(security_questions: @user.select_random_questions_with_answers)
   end
 end

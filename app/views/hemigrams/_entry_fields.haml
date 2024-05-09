@@ -13,10 +13,13 @@
       = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation', placeholder: @hemigram.short
       %div#abbreviation-display
   .col.g-3
-    = form.text_field :value, class: 'form-control', id: 'input_value', value: (@hemigram.value.to_i == 0 ? 'Enter value' : @hemigram.value)
+    = form.text_field :value, class: 'form-control', id: 'input_value'
   .col.g-3
     = turbo_frame_tag "unit_options-#{@hemigram.persisted? ? @hemigram.id : 'new'}" do
       = form.select(:unit, options_for_select([@hemigram.unit], selected: @hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector
-  .col.g-3
-    = form.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date'
+  - unless @hemigram.new_record?
+    .col.g-3
+      = form.fields_for :record_date do |date_form|
+        = date_form.date_field :date, class: 'datepicker form-control', id: 'input_date', max: Date.current.to_s, min: (Date.current - 100.years).to_s, required: true, placeholder: 'Choose date', value: @hemigram.record_date.date
+

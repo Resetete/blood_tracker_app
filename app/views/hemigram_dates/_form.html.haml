@@ -1,0 +1,11 @@
+.row.rounded.shadow.bg-white.m-3
+  .col
+    .mb-3
+      = form_for @hemigram_date, url: form_url(@hemigram_date, 'view_user_hemigram_date'), method: form_method(@hemigram_date)  do |form|
+        = render partial: 'shared/model_errors', locals: { model: @hemigram_date }
+        = render partial: 'entry_fields', locals: { form: form }
+        .row
+          .col
+            = form.submit(@hemigram_date.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
+            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark"
+

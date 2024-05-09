@@ -1,0 +1,7 @@
+= turbo_frame_tag(hemigram_date) do
+  %p= hemigram_date.date
+  - if hemigram_date.hemigrams.any?
+    = render hemigram_date.hemigrams, record_date: hemigram_date
+
+  .hemigram-date-footer
+    = link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: hemigram_date.id)

@@ -21,7 +21,7 @@
         %h3
           %span.text-highlight.text-center
             Want to search by your own? Here is your chance.
-      %p Use the search field below to look up symptomes, medical terms and more
+      %p Use the search field below to look up symptoms, medical terms, and more.
 
       = turbo_frame_tag 'mediline_search' do
         = form_tag root_path, method: :get, id: 'mediline-search-form', data: { turbo_frame: 'mediline_result', update_url: true } do

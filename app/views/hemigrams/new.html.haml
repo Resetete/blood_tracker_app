@@ -3,11 +3,11 @@
     %h2
       %span.text-highlight Create new Hemigram
   .mt-5
-    = turbo_frame_tag('new_hemigram') do
+    = turbo_frame_tag("new_hemigram_for_date_#{@hemigram_date.id}") do
       .card.mt-2
         .card-body
           .card-title Create new
-          .card-text= render 'hemigrams/form'
+          .card-text= render partial: 'hemigrams/form', locals: { hemigram: @hemigram, hemigram_date: @hemigram_date }
   = blood_tracker_button('All Hemigrams', 'btn-outline-dark')
   = graphs_button('See your data', 'btn-outline-dark')
 

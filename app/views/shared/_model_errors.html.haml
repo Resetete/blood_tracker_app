@@ -1,6 +1,8 @@
 .row.justify-content-center
   .col-md-6.col-s-12
     - if model.errors.any?
-      - model.errors.full_messages.each do |msg|
-        .alert.alert-warning
-          %p= msg
+      .alert.alert-warning
+        - model.errors.full_messages.each do |msg|
+          %ul.list-unstyled.list-group
+            %li.list-group-item= msg
+

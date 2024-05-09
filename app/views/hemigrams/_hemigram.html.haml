@@ -1,9 +1,10 @@
 = turbo_frame_tag(hemigram) do
   %li.list-group-item.list-group-item-action.d-flex.align-items-center.shadow
-    .col.align-items-center= hemigram.parameter.humanize
+    .col.align-items-center= hemigram.parameter&.humanize
     .col.text-left= hemigram.value
     .col.text-left= render_unit(hemigram.unit)
-    .col.text-left= hemigram.date.to_date
+    .col.text-left= hemigram.record_date.date
     .col.d-flex.justify-content-end
-      .me-3= link_to("Edit", edit_hemigram_path(hemigram), class: "btn btn-outline-dark")
-      = link_to 'Delete', hemigram_path(hemigram), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
+      .me-3= link_to('Edit', edit_view_user_hemigram_date_hemigram_path(current_user.id, hemigram.record_date, hemigram), class: "btn btn-outline-dark")
+      = link_to 'Delete', view_user_hemigram_date_hemigram_path(current_user, hemigram.record_date, hemigram), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this?' }, class: 'btn btn-warning'
+

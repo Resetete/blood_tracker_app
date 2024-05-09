@@ -1,0 +1,6 @@
+.d-flex.justify-content-center.mt-5
+  .w-50.rounded.bg-white.p-3.d-flex.flex-column.shadow.border-dashed.border-dashed
+    %p
+      %i.fa-solid.fa-kiwi-bird.fa-xl.icon-red
+      = encouraging_phrase
+    .w-30.text-center= link_to 'Add new hemigram', new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' }
