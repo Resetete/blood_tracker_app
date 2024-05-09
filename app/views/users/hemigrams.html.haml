@@ -14,13 +14,14 @@
     .mb-3
       = turbo_frame_tag('new_hemigram_date') do
         - if @hemigram_dates.any?
-          .pt-3
+          %p.py-5
             %i{class: "fa-solid #{@icon} icon-red fa-xl"}
-            You've recorded data for
+            You have recorded data for
             %span.text-highlight= @number_hemigram_entries
             different hemigram parameters, spanning across
             %span.text-highlight= @number_of_days
             different days.
+            = encouraging_phrase(@number_hemigram_entries)
         - unless @hemigram_dates
           = render partial: 'hemigram_dates/empty_state'
     = render 'shared/search'
