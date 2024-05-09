@@ -15,8 +15,8 @@ module Hemigrams
       safe_search_query = ActionController::Base.helpers.sanitize(search).to_s
       result = where(user_id: user.id).includes(:hemigrams).order(created_at: :desc).select do |date|
         date.date.to_s.include?(safe_search_query) ||
-        date.hemigrams.select { |h| h.parameter.downcase.include?(safe_search_query.downcase) }.any? ||
-        date.hemigrams.select { |h| h.short.downcase.include?(safe_search_query.downcase) }.any?
+          date.hemigrams.select { |h| h.parameter.downcase.include?(safe_search_query.downcase) }.any? ||
+          date.hemigrams.select { |h| h.short.downcase.include?(safe_search_query.downcase) }.any?
       end
     end
   end

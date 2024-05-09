@@ -2,5 +2,5 @@
   .w-50.rounded.bg-white.p-3.d-flex.flex-column.shadow.border-dashed.border-dashed
     %p
       %i.fa-solid.fa-kiwi-bird.fa-xl.icon-red
-      = ['You have no data yet! Ready to get started? Enter your first hemigram data now and begin tracking your health journey!', "You have no data yet! Let's begin! Your first step is to record your hemigram data. Start now to take control of your health!"].sample(1).join
+      = encouraging_phrase
     .w-30.text-center= link_to 'Add new hemigram', new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' }

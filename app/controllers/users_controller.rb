@@ -45,9 +45,9 @@ class UsersController < ApplicationController
 
     hemigram_dates = Hemigrams::Date.search(params[:search], current_user)
     @hemigram_dates = Hemigrams::Date.where(id: hemigram_dates.map(&:id))
-                         .order(date: :desc)
-                         .distinct
-                         .paginate(page: params[:page], per_page: 10)
+                                     .order(date: :desc)
+                                     .distinct
+                                     .paginate(page: params[:page], per_page: 10)
   end
 
   private

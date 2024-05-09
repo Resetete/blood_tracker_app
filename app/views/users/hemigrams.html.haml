@@ -21,7 +21,7 @@
             different hemigram parameters, spanning across
             %span.text-highlight= @number_of_days
             different days.
-            = encouraging_phrase(@number_hemigram_entries)
+            = encouraging_phrase
         - unless @hemigram_dates
           = render partial: 'hemigram_dates/empty_state'
     = render 'shared/search'

@@ -23,9 +23,7 @@ class HemigramDatesController < ApplicationController
   private
 
   def authorize_user
-    unless current_user.id.to_s == params[:view_user_id]
-      redirect_to root_path, alert: 'Unauthorized. Wrong user'
-    end
+    redirect_to root_path, alert: 'Unauthorized. Wrong user' unless current_user.id.to_s == params[:view_user_id]
 
     @hemigram_date = Hemigrams::Date.find_or_initialize_by(date: hemigram_date_params[:date], user_id: current_user.id)
   end
