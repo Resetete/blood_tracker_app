@@ -131,6 +131,12 @@ function initializeAnimation() {
   onload();
 };
 
+$(document).on('turbo:load', function() {
+  if (document.getElementById('landingpage-animation')) {
+    initializeAnimation();
+  };
+});
+
 // updates the search term in the url when searching with turbo frame in mediline
 document.addEventListener("turbo:submit-end", function (event) {
   event.preventDefault();
