@@ -91,7 +91,8 @@ class Hemigram < ApplicationRecord
   end
 
   def validate_value_unit_consistency
-    return if value.between?(0, 100) && unit == '%'
+    return unless unit == '%'
+    return if value.between?(0, 100)
 
     errors.add(:value, 'needs to be between 0-100%')
   end

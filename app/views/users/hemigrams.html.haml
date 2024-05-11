@@ -24,7 +24,10 @@
             = encouraging_phrase
         - unless @hemigram_dates
           = render partial: 'hemigram_dates/empty_state'
-    = render 'shared/search'
+
+    - if @hemigram_dates.any?
+      = render 'shared/search'
+
     = turbo_frame_tag('hemigrams') do
       %ul.mt-3.mb-3.list-group
         - @hemigram_dates.each do |record_date|
