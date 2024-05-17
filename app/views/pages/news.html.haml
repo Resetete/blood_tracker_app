@@ -4,11 +4,12 @@
 .blog-news-section
   .container.pt-4
     .header-title.p-0.m-0
-    %h2.mb-5
+    %h1.mb-5
       %span.text-highlight Blood and health related news
     -# TODO: enable the sorting by ajax form
     -# views/pages/_sorted_news.js.erb
     -# views/pages/_news.html.haml
+    %p Stay up-to-date with the latest developments, breakthroughs, and insights in the field of blood health. Explore a wide range of articles covering topics such as blood disorders, treatments, research findings, and more. Whether you're interested in learning about new discoveries or staying informed about advancements in blood health, you'll find it all here. Start exploring now!
 
     #sort_form
       = form_with(url: news_sort_by_path, method: :post, remote: true, data: { turbo_frame: 'sort_form' }) do |form|
