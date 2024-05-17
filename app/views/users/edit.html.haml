@@ -4,4 +4,4 @@
       %span.text-highlight Update your security questions
   .mt-5.mb-5
     = render partial: 'security_questions_form', locals: { user: current_user }
-  = link_to('Back', :back, class: "btn btn-outline-dark")
+  = link_to('Back', :back, class: "btn btn-outline-dark", title: 'Go back to previous page')

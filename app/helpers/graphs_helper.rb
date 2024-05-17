@@ -45,7 +45,7 @@ module GraphsHelper
   def blood_tracker_button(button_text, btn_style, button_size = '')
     # btn_style: e.g. btn-outline-light or btn-outline-dark
     # button_size: btn-lg or btn-sm
-    link_to hemigrams_view_user_path(current_user), class: "btn #{btn_style} #{button_size.presence}" do
+    link_to hemigrams_view_user_path(current_user), class: "btn #{btn_style} #{button_size.presence}", title: 'View Your Hemigrams' do
       [
         content_tag(:i, '', class: 'fa-solid fa-table fa-xl icon-red'),
         ' ',
@@ -57,7 +57,7 @@ module GraphsHelper
   def graphs_button(button_text, btn_style, button_size = '')
     # btn_style: e.g. btn-outline-light or btn-outline-dark
     # button_size: btn-lg or btn-sm
-    link_to graphs_path, class: "btn #{btn_style} #{button_size.presence || ''}" do
+    link_to graphs_path, class: "btn #{btn_style} #{button_size.presence || ''}", title: 'View Your Hemigram Charts' do
       [
         content_tag(:i, '', class: 'fa-solid fa-chart-column fa-xl icon-red'),
         ' ',

@@ -13,4 +13,4 @@
             - if hemigram_date.hemigrams.any?
               = render hemigram_date.hemigrams, record_date: hemigram_date
             = turbo_frame_tag("new_hemigram_for_date_#{hemigram_date.id}") do
-              .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: hemigram_date.id), class: 'btn btn-outline-dark'
+              .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: hemigram_date.id), class: 'btn btn-outline-dark', title: 'Create a new hemigram'

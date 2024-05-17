@@ -7,5 +7,5 @@
         .row
           .col
             = form.submit(@hemigram_date.new_record? ? 'Save' : 'Update', class: 'btn btn-outline-dark')
-            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark"
+            = link_to 'Cancel', hemigrams_view_user_path(current_user), class: "btn btn-outline-dark", title: 'Cancel the hemigram creation'
 
