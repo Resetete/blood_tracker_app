@@ -1,18 +1,18 @@
 !!!
-%html
+%html{lang: 'en'}
   %head
     %title= content_for?(:title) ? yield(:title) : 'The BloodTracker: Simplify Blood Values and Health Monitoring'
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{name: 'viewport', content: "width=device-width, initial-scale=1"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{name: 'viewport', content: "width=device-width, initial-scale=1"}
     %meta{name: "description", content: (content_for?(:description) ? yield(:description) : 'A free and anonymous blood values tracker - Start monitoring your blood values today and discover potential health risks')}
     = csrf_meta_tags
     = csp_meta_tag
     %link{rel: "preconnect", href: "https://fonts.googleapis.com"}
-    %link{rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true }
+    %link{rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: 'anonymous' }
     %link{href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600&family=Rowdies&display=swap", rel: "stylesheet" }
-    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
-    %link{href: "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", :rel => "stylesheet"}/
-    %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"}/
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}
+    %link{href: "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", :rel => "stylesheet"}
+    %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"}
 
     -# App stylesheets and javascript
     = stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload'
@@ -35,8 +35,6 @@
           pintrk('load', '2612582801014', {em: '<user_email_address>'});
           pintrk('page');
          }
-    %noscript
-      %img{height: "1", width: "1", style: "display:none;", alt: "", src: "https://ct.pinterest.com/v3/?event=init&tid=2612582801014&pd[em]=<hashed_email_address>&noscript=1"}
     -# end Pinterest Tag -->
     -# Pinterest track page visit -->
     %script
@@ -80,3 +78,8 @@
         = render 'shared/cookie_banner'
       %footer
         = render 'layouts/footer'
+
+    %noscript
+      %img{alt: 'Pinterest', height: '1', src: 'https://ct.pinterest.com/v3/?event=init&tid=2612582801014&pd%5Bem%5D=<hashed_email_address>&noscript=1', style: 'display:none;', width: '1'}
+
+
