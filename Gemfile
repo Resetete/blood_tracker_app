@@ -71,6 +71,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # APIs
 gem 'news-api'
 
+# To run Cron jobs
+# cron jobs are listed on config/schedule.rb
+# schedule cron jobs with whenever --update-crontab
+gem 'whenever', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # debugging
@@ -89,6 +94,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # annotates db strcture in models
   gem 'annotate'
+  # generate a sitemap for SEO on search engines
+  gem 'sitemap_generator'
 end
 
 group :test do

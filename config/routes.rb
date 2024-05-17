@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   root 'welcome#index'
-  get 'sitemap.xml', to: 'blood_tracker#sitemap', defaults: { format: 'xml' }, as: :sitemap
   get 'graphs', to: 'graphs#index'
   get 'imprint', to: 'pages#imprint'
   get 'glossary', to: 'glossaries#glossary'
