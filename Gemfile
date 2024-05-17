@@ -76,6 +76,9 @@ gem 'news-api'
 # schedule cron jobs with whenever --update-crontab
 gem 'whenever', require: false
 
+# Ensure minifiying CSS and Javascript to speed up app
+gem 'terser'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # debugging

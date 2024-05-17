@@ -1,3 +1,6 @@
+- provide(:title, 'The BloodTracker: Imprint')
+- provide(:description, 'Legal information, company details, and contact information for The BloodTracker.')
+
 .container.mb-5.mt-5
   .header-title.p-0.m-0
     %h1
@@ -5,7 +8,7 @@
 
   %p.mt-5 Responsible for the website content:
 
-  %h3.mt-5 Contact
+  %h2.mt-5 Contact
   %address
     %p Theresa Mannschatz
     %p Hildegardstr
@@ -16,16 +19,16 @@
     %p +49 15124045227
     %p rese_m(at)web.de
 
-  %h3.mt-5 Liability Notice
+  %h2.mt-5 Liability Notice
   %p Despite careful content control, I assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content.
 
-  %h3.mt-5 Copyright Notice
+  %h2.mt-5 Copyright Notice
   %p The content and works created by the website operator on this website are subject to German copyright law. Reproduction, editing, distribution, and any kind of exploitation beyond the limits of copyright require written consent from the respective author or creator. Downloads and copies of this site are permitted for private, non-commercial use only.
 
-  %h3.mt-5 Cookie Policy
+  %h2.mt-5 Cookie Policy
   = link_to('My cookie policy', cookie_policy_path)
 
-  %h3.mt-5 Images and animation sources
+  %h2.mt-5 Images and animation sources
   %p
     The animation on the landing page was created by
     = link_to 'Gabriel Valfridsson', 'https://codepen.io/GabbeV/pen/DMRPox'

@@ -266,3 +266,18 @@ mark {
 .icon-red {
   color: $red;
 }
+
+// welcome page CTA button
+.cta-button {
+  background-color: darken($green, 20%); /* Green color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: $green; // Darken color slightly on hover
+  color: white;
+}

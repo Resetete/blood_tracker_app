@@ -2,7 +2,7 @@
   .container-fluid
     %a.navbar-brand{href: root_path}
       .brand-image-wrapper{class: current_page?(root_path) ? 'brand-image-wrapper-home' : '' }
-        = image_tag 'logo_blood.png', class: 'logo'
+        = image_tag 'logo_blood.png', class: 'logo', alt: 'Logo of the blood trackers'
       .brand{class: current_page?(root_path) ? 'brand-home' : '' }
         %span#logo-blood>
           Blood

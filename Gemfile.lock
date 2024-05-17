@@ -314,6 +314,8 @@ GEM
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     temple (0.10.0)
+    terser (1.2.2)
+      execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -392,6 +394,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails
   stimulus-rails
+  terser
   turbo-rails
   tzinfo-data
   unicode

@@ -1,7 +1,9 @@
 = turbo_frame_tag(hemigram) do
   %li.list-group-item.list-group-item-action.d-flex.align-items-center.shadow
     .col.align-items-center= hemigram.parameter&.humanize
-    .col.text-left= hemigram.value
+    .col.text-left
+      %span{class: color_depending_norm_range(hemigram)}
+        = hemigram.value.round(2)
     .col.text-left= render_unit(hemigram.unit)
     .col.text-left= hemigram.record_date.date
     .col.d-flex.justify-content-end
