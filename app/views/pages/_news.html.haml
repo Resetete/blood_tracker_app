@@ -10,7 +10,7 @@
           published
           = time_ago_in_words(article.publishedAt.to_date)
           ago
-        = image_tag(article.urlToImage, class:'img-fluid card-img-top', alt:'news image') if article.urlToImage
+        = image_tag(article.urlToImage, class:'img-fluid card-img-top', alt: "Image of the #{article.title} news article") if article.urlToImage
         .card-body
           %h5.card-title= article.title
           %h6.card-subtitle.mb-2.text-body-secondary= article.description

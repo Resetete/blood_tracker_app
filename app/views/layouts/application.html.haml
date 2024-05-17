@@ -1,9 +1,10 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    %title BloodTracker
+    %title= content_for?(:title) ? yield(:title) : 'The BloodTracker: Simplify Blood Values and Health Monitoring'
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: 'viewport', content: "width=device-width, initial-scale=1"}/
+    %meta{name: "description", content: (content_for?(:description) ? yield(:description) : 'A free and anonymous blood values tracker - Start monitoring your blood values today and discover potential health risks')}
     = csrf_meta_tags
     = csp_meta_tag
     %link{rel: "preconnect", href: "https://fonts.googleapis.com"}
