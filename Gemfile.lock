@@ -314,6 +314,8 @@ GEM
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     temple (0.10.0)
+    terser (1.2.2)
+      execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -323,8 +325,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode (0.4.4.4)
     unicode-display_width (2.4.2)
     unicode_utils (1.4.0)
@@ -394,9 +394,9 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails
   stimulus-rails
+  terser
   turbo-rails
   tzinfo-data
-  uglifier
   unicode
   unicode_utils
   web-console (>= 3.3.0)
