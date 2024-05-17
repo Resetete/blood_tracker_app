@@ -30,8 +30,8 @@
           - chart_data = @charts_data.select { |h| h[:name] == parameter.downcase }
 
           .chart-links
-            = link_to('Add data', new_hemigram_path(parameter:), class: 'btn btn-outline-dark')
-            = link_to('Glossary', glossary_path + "##{parameter}-glossary", class: 'btn btn-outline-dark')
+            = link_to('Add data', new_hemigram_path(parameter:), class: 'btn btn-outline-dark', title: 'Create a new hemigram')
+            = link_to('Glossary', glossary_path + "##{parameter}-glossary", class: 'btn btn-outline-dark', title: 'Go to the glossary')
 
           -# graph_annotations are defined in a view helper
           -# graph_datasets view helper, dataset: { pointBackgroundColor: }

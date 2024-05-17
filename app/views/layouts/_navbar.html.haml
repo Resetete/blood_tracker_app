@@ -14,30 +14,30 @@
       #navbarNav.collapse.navbar-collapse
         %ul.navbar-nav
           %li.nav-item
-            = link_to 'Home', root_path, class: 'nav-link'
+            = link_to 'Home', root_path, class: 'nav-link', title: 'Go to Welcome page'
           %li.nav-item
-            = link_to 'News', "#{root_path}#news-section", class: 'nav-link'
+            = link_to 'News', "#{root_path}#news-section", class: 'nav-link', title: 'Go to News'
           %li.nav-item
-            = link_to 'Links', "#{root_path}#affiliate-marketing-section", class: 'nav-link'
+            = link_to 'Links', "#{root_path}#affiliate-marketing-section", class: 'nav-link', title: 'Go to the affiliate marketing offers'
           - if user_signed_in?
             %li.nav-item
-              = link_to 'Account', view_user_path(current_user), class: 'nav-link'
+              = link_to 'Account', view_user_path(current_user), class: 'nav-link', title: 'Go to your account'
             %li.nav-item.dropdown
-              = link_to 'Tracker', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownMenuLink', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
+              = link_to 'Tracker', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownMenuLink', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button', title: 'BloodTracker app dropdown'
               %ul.dropdown-menu-end.dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-                %li= link_to 'Data', hemigrams_view_user_path(current_user), class: 'dropdown-item'
-                %li= link_to 'Graphs', graphs_path, class: 'dropdown-item'
-                %li= link_to 'Glossary', glossary_path, class: 'dropdown-item'
+                %li= link_to 'Data', hemigrams_view_user_path(current_user), class: 'dropdown-item', title: 'Go to hemigram data editor'
+                %li= link_to 'Graphs', graphs_path, class: 'dropdown-item', title: 'Go to your hemigram charts'
+                %li= link_to 'Glossary', glossary_path, class: 'dropdown-item', title: 'Go to the glossary'
           -# Admin user area
           - if user_signed_in? && current_user.admin?
             %li.nav-item.dropdown
-              = link_to 'Admin', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownAdminLinks', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button'
+              = link_to 'Admin', '#', class: 'nav-link dropdown-toggle dropdown-menu-start', id: 'navbarDropdownAdminLinks', 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', role: 'button', title: 'Go to the admin backoffice'
               %ul.dropdown-menu-end.dropdown-menu{"aria-labelledby" => "navbarDropdownAdminLinks"}
-                %li= link_to 'Blood type descriptions', admin_blood_cell_descriptions_path, class: 'dropdown-item'
-                %li= link_to 'Blood parameter metadata', admin_hemigrams_parameter_metadata_path, class: 'dropdown-item'
+                %li= link_to 'Blood type descriptions', admin_blood_cell_descriptions_path, class: 'dropdown-item', title: 'Create new admin blood type descriptions'
+                %li= link_to 'Blood parameter metadata', admin_hemigrams_parameter_metadata_path, class: 'dropdown-item', title: 'Create new admin blood parameter metadata'
           - if !user_signed_in?
-            %li= link_to 'Sign up', new_user_registration_path, class: 'btn btn-highlight'
-            %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-dark'
+            %li= link_to 'Sign up', new_user_registration_path, class: 'btn btn-highlight', title: 'Register a new account'
+            %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-dark', title: 'Log into your account'
           - if user_signed_in?
             %li.nav-item
-              = link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger'
+              = link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger', title: 'Log out of your account'

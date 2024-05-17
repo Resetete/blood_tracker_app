@@ -15,7 +15,7 @@
           %h5.card-title= article.title
           %h6.card-subtitle.mb-2.text-body-secondary= article.description
           %p.card-text= article.content
-          = link_to('read more >', article.url, class: 'card-link card-news-link')
+          = link_to('read more >', article.url, class: 'card-link card-news-link', title: 'Read more about the news article')
         .card-footer.text-body-secondary.d-flex.flex-row.justify-content-between
           %small.news-author
             by

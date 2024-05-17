@@ -9,5 +9,5 @@
           %span.text-highlight Get The Latest News
     %p.news-content-text.pt-5.d-flex.flex-row.justify-content-between
       Discover the latest news relevant to blood health in this section.
-      = link_to('More news >', news_path, class: 'card-link card-news-link text-right')
+      = link_to('More news >', news_path, class: 'card-link card-news-link text-right', title: 'Get more news articles')
     = render partial: 'pages/news', locals: { news: @all_news }

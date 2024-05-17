@@ -2,7 +2,7 @@
   .header-title.p-0.m-0
     %h1
       %span.text-highlight Blood parameter metadata
-  = link_to 'New', new_admin_hemigrams_parameter_metadatum_path, class: 'btn btn-primary mb-3'
+  = link_to 'New', new_admin_hemigrams_parameter_metadatum_path, class: 'btn btn-primary mb-3', title: 'Create a new Hemigram Metadata'
   - @parameter_metadata&.each do |metadata|
     .card.mb-3
       .card-body

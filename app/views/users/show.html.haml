@@ -15,7 +15,7 @@
 
     %h2.mt-5 Security and account recovery
     %p
-      = link_to('Change', edit_user_registration_path, class: 'btn btn-outline-dark')
+      = link_to('Change', edit_user_registration_path, class: 'btn btn-outline-dark', title: 'Change your password or user name.')
       your password and/or username
     %p
       Here, you can establish recovery options to regain access to your account in case you forget your password or
@@ -44,7 +44,7 @@
           The more intricate your answers, the better and more secure your account will be.
         .mt-2
           - verb = @user.custom_security_questions? ? 'Update' : 'Set'
-          = link_to("#{verb} security questions", edit_view_user_path(current_user), class: 'btn btn-outline-dark')
+          = link_to("#{verb} security questions", edit_view_user_path(current_user), class: 'btn btn-outline-dark', title: 'Edit your security questions')
           %table.table.mt-2
             %tbody
               - if @user.custom_security_questions?

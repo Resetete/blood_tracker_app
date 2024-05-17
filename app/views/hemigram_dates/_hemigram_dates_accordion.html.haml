@@ -12,4 +12,4 @@
               = turbo_frame_tag(record_date) do
                 = render record_date.hemigrams.sort
               = turbo_frame_tag("new_hemigram_for_date_#{record_date.id}") do
-                .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: record_date.id), class: 'btn btn-outline-dark'
+                .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: record_date.id), class: 'btn btn-outline-dark', title: 'Create a new hemigram'

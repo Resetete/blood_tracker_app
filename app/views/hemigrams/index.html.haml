@@ -12,6 +12,6 @@
     .custom_pagination.mt-3.mb-3
       = will_paginate(@hemigrams, page_links: true)
   %p
-    = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark'
+    = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark', title: 'Create a new hemigram'
     -if @hemigrams.any?
       = graphs_button('Visualize your data', 'btn-outline-dark')
