@@ -1,3 +1,20 @@
 #app-features-section
+  .header-wrapper
+    .header-subtitle
+      %h3.sub-title Track Your Blood Values Today
+    %hr.separator-element
+    .header-title
+      %h1
+        %span.text-highlight
+          The BloodTracker App
+  .container.mb-5
+    %p
+      %span.text-highlight Exciting news!
+      The alpha version of our blood tracker is now available. Whether you're a new user or already part of our community, it's time to take control of your health. Click the button below to start tracking now or continue tracking if you're an existing user.
+    .text-center
+      - if user_signed_in?
+        = link_to 'Continue tracking', hemigrams_view_user_path(current_user), class: 'cta-button btn btn-lg' #, class: 'btn btn-success btn-lg text-white border'
+      - else
+        = link_to 'Register and start tracking now', new_user_session_path, class: 'cta-button btn btn-lg'#'btn btn-success btn-lg text-white border'
   .container
     = image_tag("tracker-app-preview.png", alt: 'Preview of online tracking app features')
