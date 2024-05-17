@@ -31,3 +31,31 @@
   background-color: white;
   border-radius: 5px;
 }
+
+// Coloring / Highlighting blood values out of norm ranges
+.too-low {
+  background-color: $yellow;
+  &:before {
+    font: var(--fa-font-solid);
+    content: "\f063";
+    margin-right: 5px;
+  }
+}
+
+.too-high {
+  background-color: $rosa;
+  &:before {
+    font: var(--fa-font-solid);
+    content: "\f062";
+    margin-right: 5px;
+  }
+}
+
+.within-norm {
+  background-color: $green;
+  &:before {
+    font: var(--fa-font-solid);
+    content: "\f164";
+    margin-right: 5px;
+  }
+}
