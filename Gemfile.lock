@@ -323,6 +323,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unicode (0.4.4.4)
     unicode-display_width (2.4.2)
     unicode_utils (1.4.0)
@@ -394,6 +396,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  uglifier
   unicode
   unicode_utils
   web-console (>= 3.3.0)
