@@ -18,7 +18,9 @@ class HemigramsController < ApplicationController
     @hemigram = @hemigram_date.hemigrams.build
   end
 
-  def show; end
+  def show
+    @historic_entries = current_user.hemigrams.where(parameter: @hemigram.parameter)
+  end
 
   def create
     @hemigram = @hemigram_date.hemigrams.build(hemigram_params.merge({ user: current_user }))

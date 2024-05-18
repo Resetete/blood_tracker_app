@@ -1,9 +1,16 @@
 .container.mt-5
   .header-title.p-0.m-0
     %h2
-      %span.text-highlight My Hemigram
+      %span.text-highlight
+        My Hemigram records for
+        = @hemigram.parameter.humanize
     .mt-5
       = render partial: 'table', locals: { hemigrams: [@hemigram] }
+
+    .mt-5
+      %h3 Historic entries
+      = render partial: 'table', locals: { hemigrams: @historic_entries }
+
     %p
       = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark', title: 'Create a new hemigram'
       = blood_tracker_button('All Hemigrams', 'btn-outline-dark')
