@@ -20,6 +20,7 @@ class HemigramsController < ApplicationController
 
   def show
     @historic_entries = current_user.hemigrams.where(parameter: @hemigram.parameter)
+    @chart_data = prepare_charts_data
   end
 
   def create
@@ -96,5 +97,10 @@ class HemigramsController < ApplicationController
 
   def set_hemigram_date
     @hemigram_date = current_user.record_dates.find(params[:hemigram_date_id])
+  end
+
+  def prepare_charts_data
+    @historic_entries.sort_by(&:record_date)
+                     .map { |entry| [entry.record_date.date.to_date, entry.chart_value.to_f] }
   end
 end

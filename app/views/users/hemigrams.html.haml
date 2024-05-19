@@ -10,7 +10,7 @@
       - if @hemigram_dates.any?
         .mx-3= graphs_button('Visualize your data', 'btn-outline-dark')
       = turbo_frame_tag "hemigram_turbo_frame" do
-        = link_to new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' }, title: 'Create a new hemigram' do
+        = link_to new_view_user_hemigram_date_path(current_user), class: 'btn btn-outline-dark', data: { turbo_frame: 'new_hemigram_date' } do
           %i.fa-solid.fa-plus.fa-xl.icon-red
           New data
 
@@ -45,6 +45,6 @@
                   = turbo_frame_tag(record_date) do
                     = render record_date.hemigrams.sort.uniq
                   = turbo_frame_tag("new_hemigram_for_date_#{record_date.id}") do
-                    .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: record_date.id), class: 'btn btn-outline-dark', title: 'Create new hemigram'
+                    .mt-3= link_to "Add hemigram", new_view_user_hemigram_date_hemigram_path(view_user_id: current_user.id, hemigram_date_id: record_date.id), class: 'btn btn-outline-dark'
     .custom_pagination.mt-3.mb-3
       = will_paginate(@hemigram_dates, page_links: true)
