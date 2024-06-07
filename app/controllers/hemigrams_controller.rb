@@ -19,7 +19,8 @@ class HemigramsController < ApplicationController
   end
 
   def show
-    @historic_entries = current_user.hemigrams.where(parameter: @hemigram.parameter)
+    @historic_entries = current_user.hemigrams.where(parameter: @hemigram.parameter).order(date: :desc)
+    @historic_entries_table = @historic_entries.paginate(page: params[:page], per_page: 10)
     @chart_data = prepare_charts_data
   end
 
