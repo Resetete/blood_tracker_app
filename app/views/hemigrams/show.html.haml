@@ -54,9 +54,11 @@
 
     .mt-5
       %h3 Historic entries
-      = render partial: 'table', locals: { hemigrams: @historic_entries_table }
+      = turbo_frame_tag('hemigrams') do
+        %ul.mt-3.mb-3.list-group
+          - @historic_entries_table.each do |hemigram|
+            = render hemigram
       .custom_pagination.mt-3.mb-3
         = will_paginate(@historic_entries_table, page_links: true)
 
     %p= blood_tracker_button('All Hemigrams', 'btn-outline-dark')
-
