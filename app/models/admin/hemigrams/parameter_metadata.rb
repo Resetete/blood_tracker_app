@@ -27,7 +27,7 @@ module Admin
 
       UNITS = {
         basophils: ['%'],
-        basophils_absolute_count: ['cells/μL', '10^9/L'],
+        basophils_absolute_count: ['cells/μL', '10^9/L', '10^3/μL'],
         eosinophils: ['%'],
         fibrinogen: ['g/L', 'mg/dL'],
         hematocrit: ['%', 'L/L', 'ratio'],
@@ -41,7 +41,7 @@ module Admin
         monocytes: ['%'],
         monocytes_absolute_count: ['10^9/L', 'g/L', '10^3/μL', 'cells/μL'],
         neutrophils: ['%'],
-        neutrophils_absolute_count: ['cells/μL', '10^9/L', 'g/L'],
+        neutrophils_absolute_count: ['cells/μL', '10^9/L', '10^3/μL', 'g/L'],
         platelet_distribution_width: ['%', 'fL'],
         prothrombin_time: ['seconds'],
         red_blood_cells: ['10^6/μL', 'T/L', 'cells/pL', '10^12/L'],
