@@ -11,6 +11,7 @@ class GraphsController < ApplicationController
 
   private
 
+  # TODO: move to hemigram model as method
   def prepare_charts_data
     raw_data = user_hemigrams
     raw_data.group_by(&:parameter)

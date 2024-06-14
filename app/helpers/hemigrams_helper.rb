@@ -59,17 +59,17 @@ module HemigramsHelper
         "Fantastic job! With so much data, you're gaining valuable insights into your health. Keep going!"
       ].sample(1).join
     end
+  end
 
-    def color_depending_norm_range(hemigram)
-      parameter_metadata = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter)
+  def color_depending_norm_range(hemigram)
+    parameter_metadata = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: hemigram.parameter)
 
-      if hemigram.chart_value.to_f > parameter_metadata.upper_limit
-        'too-high p-1'
-      elsif hemigram.chart_value.to_f < parameter_metadata.lower_limit
-        'too-low p-1'
-      else
-        'within-norm p-1'
-      end
+    if hemigram.chart_value.to_f > parameter_metadata.upper_limit
+      'too-high p-1'
+    elsif hemigram.chart_value.to_f < parameter_metadata.lower_limit
+      'too-low p-1'
+    else
+      'within-norm p-1'
     end
   end
 end

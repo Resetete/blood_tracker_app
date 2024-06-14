@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
   helper ApplicationHelper
+  helper GraphsHelper
+  helper HemigramsHelper
 
   protect_from_forgery with: :exception
 

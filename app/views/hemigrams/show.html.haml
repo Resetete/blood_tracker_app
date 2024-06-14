@@ -1,10 +1,64 @@
 .container.mt-5
   .header-title.p-0.m-0
     %h2
-      %span.text-highlight My Hemigram
-    .mt-5
-      = render partial: 'table', locals: { hemigrams: [@hemigram] }
-    %p
-      = link_to 'Enter new Hemigram', new_hemigram_path, class: 'btn btn-outline-dark', title: 'Create a new hemigram'
-      = blood_tracker_button('All Hemigrams', 'btn-outline-dark')
+      %span.text-highlight
+        My Hemigram records for
+        = @hemigram.parameter.humanize
+    .mt-5.chart.shadow
+      - parameter = @hemigram.parameter
+      - chart_unit = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).chart_unit
+      - min = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).lower_limit
+      - max = Admin::Hemigrams::ParameterMetadata.find_by(parameter_name: parameter.to_sym).upper_limit
 
+      .chart-links
+        = link_to('Add data', hemigrams_view_user_path(current_user), class: 'btn btn-outline-dark', title: 'Create a new hemigram')
+        = link_to('Glossary', glossary_path + "##{parameter}-glossary", class: 'btn btn-outline-dark', title: 'Go to the glossary')
+
+      -# graph_annotations are defined in a view helper
+      -# graph_datasets view helper, dataset: { pointBackgroundColor: }
+      :ruby
+        line_chart = line_chart(@chart_data,
+          discrete: true,
+          colors: ["#3a3d69"],
+          thousands: ',',
+          decimal: '.',
+          zeros: true,
+          ytitle: chart_unit,
+          options: {},
+          dataset: {
+            label: parameter.humanize,
+            pointBackgroundColor: point_background_color(@chart_data, min, max),
+            pointBorderWidth: 0,
+            pointRadius: 7,
+            pointHoverBackgroundColor: 'red',
+            pointHoverRadius: 8,
+            pointHoverBorderWidth: 0,
+          },
+          library: {
+            plugins: {
+              annotation: graph_annotations(min, max),
+              legend: {
+                display: true,
+                position: 'bottom',
+                align: 'center',
+                },
+            },
+            animation: {
+              duration: 1000,
+              easing: 'easeInOutQuad',
+            },
+          },
+        )
+
+      = line_chart
+
+    .mt-5
+      %h3 Historic entries
+      = turbo_frame_tag('hemigrams') do
+        %ul.mt-3.mb-3.list-group
+          - @historic_entries_table.each do |hemigram|
+            = render hemigram
+      .custom_pagination.mt-3.mb-3
+        = will_paginate(@historic_entries_table, page_links: true)
+
+    %p= blood_tracker_button('All Hemigrams', 'btn-outline-dark')

@@ -70,6 +70,10 @@ class Hemigram < ApplicationRecord
     super.to_f
   end
 
+  def parameter_abbreviation
+    parameter_metadata.find_by(parameter_name: parameter).abbreviations.join(', ')
+  end
+
   private
 
   def validate_only_one_entry_per_parameter_per_day
