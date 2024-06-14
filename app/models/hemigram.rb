@@ -71,6 +71,8 @@ class Hemigram < ApplicationRecord
   end
 
   def parameter_abbreviation
+    return if parameter_metadata.find_by(parameter_name: parameter).nil?
+
     parameter_metadata.find_by(parameter_name: parameter).abbreviations.join(', ')
   end
 

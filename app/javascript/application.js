@@ -146,10 +146,13 @@ document.addEventListener("turbo:submit-end", function (event) {
   const searchInput = form.querySelector("[name='mediline_search']");
   const searchValue = searchInput?.value;
 
-  // Update the URL with the search term
-  const url = new URL(window.location.href);
-  url.searchParams.set("mediline_search", searchValue);
-  window.history.pushState({}, "", url.toString());
+  // Check if we are on the root page
+  if (window.location.pathname === "/") {
+    // Update the URL with the search term
+    const url = new URL(window.location.href);
+    url.searchParams.set("mediline_search", searchValue);
+    window.history.pushState({}, "", url.toString());
+  };
 
   // Clear the "No results found" message in the mediline-results-frame
   const resultsFrame = document.querySelector("#mediline-results-frame");
