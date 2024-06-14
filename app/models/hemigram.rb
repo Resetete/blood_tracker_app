@@ -76,6 +76,12 @@ class Hemigram < ApplicationRecord
     parameter_metadata.find_by(parameter_name: parameter).abbreviations.join(', ')
   end
 
+  def units
+    return [] if new_record?
+
+    Admin::Hemigrams::ParameterMetadata.units(parameter.to_sym)
+  end
+
   private
 
   def validate_only_one_entry_per_parameter_per_day

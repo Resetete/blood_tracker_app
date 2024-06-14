@@ -16,5 +16,5 @@
     = form.text_field :value, class: 'form-control', id: 'input_value', value: (hemigram.value.to_i == 0 ? 'Enter value' : hemigram.value)
   .col.g-3
     = turbo_frame_tag "unit_options-#{hemigram.persisted? ? hemigram.id : 'new'}" do
-      = form.select(:unit, options_for_select([hemigram.unit], selected: hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
+      = form.select(:unit, options_for_select(hemigram.units), selected: hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector
