@@ -25,10 +25,22 @@ module Hemigrams
 
     private
 
+    def normalize_unit(unit)
+      normalized_unit = UnicodeUtils.nfkc(unit)
+
+      # Remove extra spaces
+      normalized_unit = normalized_unit.gsub(/\s+/, '')
+
+      # Replace specific characters if needed
+      normalized_unit = normalized_unit.gsub('μ', 'u')
+
+      normalized_unit
+    end
+
     def need_to_convert_unit?(to_unit)
       # ensure the comparability of special characters
-      normalized_to_unit = UnicodeUtils.nfkc(to_unit)
-      normalized_hemigram_unit = UnicodeUtils.nfkc(hemigram.unit)
+      normalized_to_unit = normalize_unit(to_unit)
+      normalized_hemigram_unit = normalize_unit(hemigram.unit)
 
       normalized_to_unit != normalized_hemigram_unit
     end
@@ -39,32 +51,32 @@ module Hemigrams
 
     def conversion_factors
       {
-        ['10^9/L', '10^3/μL'] => 1,
-        ['10^3/μL', '10^9/L'] => 1,
+        ['10^9/L', '10^3/uL'] => 1,
+        ['10^3/uL', '10^9/L'] => 1,
 
-        ['/nL', '10^3/μL'] => 1,
-        ['10^3/μL', '/nL'] => 1,
+        ['/nL', '10^3/uL'] => 1,
+        ['10^3/uL', '/nL'] => 1,
 
         ['/nL', '10^9/L'] => 1,
         ['10^9/L', '/nL'] => 1,
 
-        ['kg/dL', '10^5/μL'] => 100,
-        ['10^5/μL', 'kg/dL'] => 0.01,
+        ['kg/dL', '10^5/uL'] => 100,
+        ['10^5/uL', 'kg/dL'] => 0.01,
 
-        ['10^3/μL', 'mg/dL'] => 100,
-        ['mg/dL', '10^3/μL'] => 0.01,
+        ['10^3/uL', 'mg/dL'] => 100,
+        ['mg/dL', '10^3/uL'] => 0.01,
 
-        ['10^6/μL', '10^3/μL'] => 0.000001,
-        ['10^3/µL', '10^6/μL'] => 1_000_000,
+        ['10^6/uL', '10^3/uL'] => 1_000,
+        ['10^3/uL', '10^6/uL'] => 0.001,
 
-        ['10^3/μL', 'g/L'] => 0.0000001,
-        ['g/L', '10^3/μL'] => 1_000_000,
+        ['10^3/uL', 'g/L'] => 0.0000001,
+        ['g/L', '10^3/uL'] => 1_000_000,
 
-        ['10^6/μL', 'g/L'] => 0.001,
-        ['g/L', '10^6/μL'] => 1_000,
+        ['10^6/uL', 'g/L'] => 0.001,
+        ['g/L', '10^6/uL'] => 1_000,
 
-        ['10^5/μL', 'kg/dL'] => 0.01,
-        ['kg/dL', '10^5/μL'] => 100,
+        ['10^5/uL', 'kg/dL'] => 0.01,
+        ['kg/dL', '10^5/uL'] => 100,
 
         ['mg/dL', '10^9/L'] => 0.0000001,
         ['10^9/L', 'mg/dL'] => 1_000_000,
@@ -75,8 +87,8 @@ module Hemigrams
         ['g/dL', 'g/L'] => 0.1,
         ['g/L', 'g/dL'] => 10,
 
-        ['g/L', '10^3/µL'] => 0.0000001,
-        ['10^3/µL', 'g/L'] => 1_000_000,
+        ['g/L', '10^3/uL'] => 0.0000001,
+        ['10^3/uL', 'g/L'] => 1_000_000,
 
         ['10^9/L', 'mg/dL'] => 1_000_000_000,
         ['mg/dL', '10^9/L'] => 0.000000001,
@@ -102,11 +114,14 @@ module Hemigrams
         ['mg/mL', 'g/L'] => 1,
         ['g/L', 'mg/mL'] => 1,
 
-        ['10^6/μL', 'T/L'] => 1,
-        ['T/L', '10^6/μL'] => 1,
+        ['mg/mL', 'g/dL'] => 0.1,
+        ['g/dL', 'mg/mL'] => 10,
 
-        ['fL', 'μm^3'] => 1,
-        ['μm^3', 'fL'] => 1,
+        ['10^6/uL', 'T/L'] => 1,
+        ['T/L', '10^6/uL'] => 1,
+
+        ['fL', 'um^3'] => 1,
+        ['um^3', 'fL'] => 1,
 
         %w[pg fmol] => 0.06206,
         %w[fmol pg] => 16.11,
@@ -120,30 +135,33 @@ module Hemigrams
         ['g/L', 'mmol/L'] => 0.06206,
         ['mmol/L', 'g/L'] => 16.11,
 
-        ['cells/µL', '10^9/L'] => 0.001,
-        ['10^9/L', 'cells/µL'] => 1_000,
+        ['cells/uL', '10^9/L'] => 0.001,
+        ['10^9/L', 'cells/uL'] => 1_000,
 
-        ['cells/µL', 'g/L'] => 0.001,
-        ['g/L', 'cells/µL'] => 1_000,
+        ['cells/uL', 'g/L'] => 0.001,
+        ['g/L', 'cells/uL'] => 1_000,
 
         ['cells/pL', 'T/L'] => 0.001,
         ['T/L', 'cells/pL'] => 1_000,
 
-        ['cells/pL', '10^6/μL'] => 0.001,
-        ['10^6/μL', 'cells/pL'] => 1_000,
+        ['cells/pL', '10^6/uL'] => 0.001,
+        ['10^6/uL', 'cells/pL'] => 1_000,
 
         ['cells/pL', '10^12/L'] => 0.001,
         ['10^12/L', 'cells/pL'] => 1_000,
 
-        ['10^6/μL', '10^12/L'] => 1,
-        ['10^12/L', '10^6/μL'] => 1
+        ['cells/uL', '10^3/uL'] => 0.001,
+        ['10^3/uL', 'cells/uL'] => 1_000,
+
+        ['10^6/uL', '10^12/L'] => 1,
+        ['10^12/L', '10^6/uL'] => 1
       }
     end
 
     # Converts a value from one unit to another based on the provided conversion factors.
     # Raises an error if the conversion is unsupported.
     def perform_conversion(value, from_unit, to_unit)
-      conversion_factor = conversion_factors[[from_unit, to_unit]]
+      conversion_factor = conversion_factors[[normalize_unit(from_unit), normalize_unit(to_unit)]]
 
       raise "Unsupported unit conversion from #{from_unit} to #{to_unit}" unless conversion_factor
 
