@@ -71,7 +71,15 @@ class Hemigram < ApplicationRecord
   end
 
   def parameter_abbreviation
+    return if parameter_metadata.find_by(parameter_name: parameter).nil?
+
     parameter_metadata.find_by(parameter_name: parameter).abbreviations.join(', ')
+  end
+
+  def units
+    return [] if new_record?
+
+    Admin::Hemigrams::ParameterMetadata.units(parameter.to_sym)
   end
 
   private
