@@ -10,8 +10,9 @@
 .row.mb-3
   - unless @hemigram.new_record?
     .col.g-3
-      = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation', placeholder: @hemigram.short
-      %div#abbreviation-display
+      = turbo_frame_tag "abbrev-options-#{@hemigram.id}" do
+        = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation', placeholder: @hemigram.short
+        %div#abbreviation-display
   .col.g-3
     = form.text_field :value, class: "form-control", id: 'input_value'
   .col.g-3
