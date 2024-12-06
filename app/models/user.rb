@@ -74,6 +74,8 @@ class User < ApplicationRecord
     end
   end
 
+  # evaluates that the user has set their own security questions and
+  # are not using the default ones
   def custom_security_questions?
     validates_security_questions_present_and_unique
   end
@@ -85,8 +87,9 @@ class User < ApplicationRecord
   end
 
   # validates that we have different questions and answer combinations and exactly 3 pairs
+  # this is required to prevent returning the automated questions and answers
   def validates_security_questions_present_and_unique
-    return if security_questions.present? && sanitized_questions_with_answers.uniq.length == 3
+    return true if security_questions.present? && sanitized_questions_with_answers.uniq.length == 3
 
     errors.add(:security_questions, 'must be present and unique')
   end

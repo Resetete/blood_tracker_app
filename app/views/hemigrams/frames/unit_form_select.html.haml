@@ -1,4 +1,8 @@
 -# this partial is substituting the select on the form when the first dropdown with parameter name is selected
--# TODO: turbo_frame tag needs to be dynamic
 = turbo_frame_tag "unit_options-#{hemigram_id}" do
   = select_tag("hemigram[unit]", options_for_select(options), class: 'form-select', required: true)
+
+-# This should substitute the abbreviations text field with the updated shorts
+-# = turbo_frame_tag "abbrev-options-#{hemigram_id}" do
+  -# = text_field_tag(:short, shorts, disabled: true, class: 'form-control', id: "input_abreviation-#{hemigram_id}", placeholder: shorts)
+

@@ -10,11 +10,12 @@
 .row.mb-3
   - unless hemigram.new_record?
     .col.g-3
-      = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation', placeholder: hemigram.short
-      %div#abbreviation-display
+      = turbo_frame_tag "abbrev-options-#{hemigram.id}" do
+        = form.text_field :short, disabled: true, class: 'form-control', id: 'input_abreviation', placeholder: hemigram.short
+        %div#abbreviation-display
   .col.g-3
     = form.text_field :value, class: 'form-control', id: 'input_value', value: (hemigram.value.to_i == 0 ? 'Enter value' : hemigram.value)
   .col.g-3
     = turbo_frame_tag "unit_options-#{hemigram.persisted? ? hemigram.id : 'new'}" do
-      = form.select(:unit, options_for_select([hemigram.unit], selected: hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
+      = form.select(:unit, options_for_select(hemigram.units), selected: hemigram.unit),{ include_blank: 'Select unit' }, class: 'form-select', required: true, data: { controller: 'dynamic-select' })
       #unit-selector

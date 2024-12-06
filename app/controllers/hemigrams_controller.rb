@@ -78,7 +78,9 @@ class HemigramsController < ApplicationController
     shorts = Admin::Hemigrams::ParameterMetadata.short(parameter)
 
     respond_to do |format|
-      format.html { render('hemigrams/frames/unit_form_select', locals: { options:, shorts:, hemigram_id: }) }
+      format.html do
+        render('hemigrams/frames/unit_form_select', locals: { options:, shorts:, hemigram_id: })
+      end
     end
   end
 
