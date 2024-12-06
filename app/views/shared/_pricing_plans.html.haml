@@ -6,7 +6,7 @@
         %h6.pb-1.text-muted Start tracking your health today – forever free!
         %p.card-text.mb-3.mt-3
           %strong 0€ / month
-        = link_to('Get Started', "#", class: 'card-link btn btn-outline-dark')
+        = link_to('Get Started', current_user ? view_user_path(current_user) : new_user_registration_path, class: 'card-link btn btn-outline-dark')
         %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
         %ul
           %li Track blood values for up to 10 blood analyses

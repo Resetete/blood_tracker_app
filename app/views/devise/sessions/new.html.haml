@@ -7,6 +7,7 @@
   .header-title.p-0.m-0
     %h2
       %span.text-highlight Log in
+    %p Welcome back! Access your account to track your blood values, visualize trends, and manage and manage your health effortlessly.
   .row
     .col-md-6
       = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
@@ -25,6 +26,9 @@
 
         .actions.mb-2
           = f.submit('Log in', class: 'btn btn-outline-dark')
+    .mt-3
+      = turbo_frame_tag('forgot_password_button') do
+        = link_to 'Forgot your password?', account_recovery_load_recovery_partial_path, title: 'Request a new password'
 
     .col-md-12
       = render 'devise/shared/links'
