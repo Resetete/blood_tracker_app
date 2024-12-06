@@ -1,0 +1,15 @@
+#app-pricing-section
+  .container
+    .header-wrapper
+      .header-subtitle
+        %h3.sub-title Take Control of Your Health
+      %hr.separator-element
+      .header-title
+        %h2
+          %span.text-highlight Plans & Pricing
+    %p.pt-5
+      Whether you're looking to casually track your blood values or gain personalized insights to optimize your health, we have a plan that fits your needs. Start with our free plan, or unlock advanced features with our premium options.
+      %span.text-highlight No risk – cancel anytime
+      if you're not satisfied with your plan.
+    .pricing-plans-overview.mt-5
+      = render('shared/pricing_plans')
