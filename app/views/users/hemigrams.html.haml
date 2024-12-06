@@ -25,7 +25,7 @@
             %span.text-highlight= @number_of_days
             different days.
             = encouraging_phrase
-        - unless @hemigram_dates
+        - unless @hemigram_dates.any?
           = render partial: 'hemigram_dates/empty_state'
 
     - if @hemigram_dates.any?
