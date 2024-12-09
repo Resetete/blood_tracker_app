@@ -1,12 +1,16 @@
 - if controller_name != 'sessions'
-  .mb-3= link_to "Log in", new_session_path(resource_name), title: 'Login into your account'
+  .col-md-12.mt-3.text-center
+    %p
+      %strong.text-muted
+        Already have an account?
+      = link_to('Log in here.', new_session_path(resource_name))
 
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  .mb-3= link_to "Sign up", new_registration_path(resource_name), title: 'Register a new account'
-
-.mt-3
-  = turbo_frame_tag('forgot_password_button') do
-    = link_to 'Forgot your password?', account_recovery_load_recovery_partial_path, title: 'Request a new password'
+  .col-md-12.mt-3.text-center
+    %p
+      %strong.text-muted
+        Don't have an account yet?
+      = link_to('Sign up here.', new_registration_path(resource_name))
 
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   .mb-3= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)

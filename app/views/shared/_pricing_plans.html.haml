@@ -1,0 +1,44 @@
+.container
+  .pricing-plans-container.mb-5
+    .pricing-plan-wrapper.card
+      .card-body
+        %h5.card-title Free Plan (Basic)
+        %h6.pb-1.text-muted Start tracking your health today – forever free!
+        %p.card-text.mb-3.mt-3
+          %strong 0€ / month
+        = link_to('Get Started', current_user ? view_user_path(current_user) : new_user_registration_path, class: 'card-link btn btn-outline-dark')
+        %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
+        %ul
+          %li Track blood values for up to 10 blood analyses
+          %li Basic visualizations (e.g., trends over the last month)
+          %li Receive indications if your blood values are within the normal range
+
+    .pricing-plan-wrapper.card
+      .card-body
+        %h5.card-title Plus Plan (Unlimited Tracking)
+        %h6.pb-1.text-muted Everything in the Free Plan plus:
+        %p.card-text.mb-3.mt-3
+          %strong 1€ / month
+        %p.text-muted (Coming Soon!)
+        = link_to('Get Started', "#", class: 'card-link btn btn-outline-dark disabled')
+        %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
+        %ul
+          %li Unlimited tracking of blood values
+          %li Track medications with reminders
+          %li Visualize both medications and blood values in one view
+          %li Exportable reports (e.g., CSV, PDF)
+          %li Enable diabetes tracking
+
+    .pricing-plan-wrapper.card.disabled
+      .card-body
+        %h5.card-title AI Plus Plan (Under Development)
+        %h6.pb-1.text-muted Everything in the Plus Plan plus:
+        %p.card-text.mb-3.mt-3
+          %strong 5€ / month
+        %p.text-muted (Coming Soon!)
+        = link_to('Get Started', "#", class: 'card-link btn btn-outline-dark disabled')
+        %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
+        %ul
+          %li AI-powered insights and recommendations (e.g., dietary, lifestyle suggestions based on data)
+          %li Smart alerts for critical changes in your blood values trends
+          %li Predictive analysis for potential health risks
