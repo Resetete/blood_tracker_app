@@ -32,9 +32,7 @@ module Hemigrams
       normalized_unit = normalized_unit.gsub(/\s+/, '')
 
       # Replace specific characters if needed
-      normalized_unit = normalized_unit.gsub('μ', 'u')
-
-      normalized_unit
+      normalized_unit.gsub('μ', 'u')
     end
 
     def need_to_convert_unit?(to_unit)

@@ -46,6 +46,11 @@ gem 'rails-html-sanitizer'
 # generate and configure favicons
 gem 'all-the-favicons'
 
+# feature flags
+gem 'flipper'
+gem 'flipper-active_record'
+gem 'flipper-ui', '~> 1.3'
+
 # frontend
 gem 'bootstrap', '~> 5.1.3'
 gem 'font-awesome-rails'

@@ -37,5 +37,8 @@ Rails.application.routes.draw do
     namespace :hemigrams do
       resources :parameter_metadata
     end
+    constraints CanAccessFlipperFeatureFlagsUI do
+      mount Flipper::UI.app(Flipper) => '/flipper', as: 'feature_flags'
+    end
   end
 end
