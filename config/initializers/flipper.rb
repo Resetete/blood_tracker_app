@@ -32,4 +32,10 @@ Flipper::UI.configure do |config|
 
   # just for fun
   config.fun = true
+
+  # Setting up groups that are controlled through feature flag
+  # example:
+  # Flipper.register(:plus_plan_users) do |actor|
+  #   actor.is_a?(User) && actor.pricing_plan&.feature_enabled?(:pricing_plan_plus)
+  # end
 end
