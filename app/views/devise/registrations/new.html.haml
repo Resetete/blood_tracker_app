@@ -1,15 +1,11 @@
-- provide(:title, 'The BloodTracker: Register')
-- provide(:description, 'Create your free account with The BloodTracker to start monitoring your blood values and health metrics today.')
-
-= turbo_page_requires_reload
-
 .container.devise-views.pt-5
   .header-title.p-0.m-0
     %h2
       %span.text-highlight Sign up
-
+    %p
+      Create your account today to access all the free features! Track your blood values, visualize trends, and stay informed about your health—all for free.
   .row
-    .col-md-6.col-s-12
+    .col-md-6.col-s-12.mb-5
       = form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f|
         = render 'devise/shared/error_messages', resource: resource
         .mb-3
@@ -30,10 +26,10 @@
         .actions.mb-2
           = f.submit 'Sign up', class: 'btn btn-outline-dark'
 
-    .col-md-12
-      = render 'devise/shared/links'
-
-    .mt-5
+    .mt-1
       %p
         %i.fa-solid.fa-circle-exclamation.fa-xl.icon-red
-        Notice, after sign up you can define options for your account recovery in case you forget your passsword or username.
+        After signing up, you will have the option to set up account recovery details to help you regain access if you forget your password or username.
+
+    .col-md-12= render 'devise/shared/links'
+

@@ -2,12 +2,11 @@
   .container
     .text
       %h1
-        A
-        %span.text-highlight free
-        and
-        %span.text-highlight anonymous
-        blood values tracker
-      %p.sub-title Start monitoring your blood values today and discover potential health risks
+        Monitor
+        %span.text-highlight your
+        blood values
+        %span.text-highlight anonymously
+      %p.sub-title Discover potential health risks and unlock advanced features for deeper insights. Free forever - with options to do more!
   %canvas#landingpage-animation
   #deco-right= image_tag('hero-section-deco-circle.svg', alt: 'Decorational element circle')
   #deco-circle= image_tag('hero-section-deco-circle.svg', alt: 'Decorational element circle')
@@ -15,5 +14,6 @@
 = render('problem_section')
 = render('background_section')
 = render('app_preview_section')
+= render('app_pricing_section')
 = render('news_section')
 = render('affiliate-marketing-section')
