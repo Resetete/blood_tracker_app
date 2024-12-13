@@ -37,6 +37,7 @@
               %ul.dropdown-menu-end.dropdown-menu{"aria-labelledby" => "navbarDropdownAdminLinks"}
                 %li= link_to 'Blood type descriptions', admin_blood_cell_descriptions_path, class: 'dropdown-item', title: 'Create new admin blood type descriptions'
                 %li= link_to 'Blood parameter metadata', admin_hemigrams_parameter_metadata_path, class: 'dropdown-item', title: 'Create new admin blood parameter metadata'
+                %li= link_to 'Feature flags', admin_feature_flags_path, class: 'dropdown-item', title: 'Configure feature flags with flipper'
           - if !user_signed_in?
             %li= link_to 'Sign up', new_user_registration_path, class: 'btn btn-highlight', title: 'Register a new account'
             %li= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-dark', title: 'Log into your account'

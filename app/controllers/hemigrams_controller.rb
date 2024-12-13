@@ -18,7 +18,7 @@ class HemigramsController < ApplicationController
     @hemigram = @hemigram_date.hemigrams.build
   end
 
-  #view_users/2/hemigram_dates/9/hemigrams/61
+  # view_users/2/hemigram_dates/9/hemigrams/61
   def show
     @historic_entries = current_user.hemigrams.where(parameter: @hemigram.parameter).order(date: :desc)
     @historic_entries_table = @historic_entries.paginate(page: params[:page], per_page: 10)

@@ -14,7 +14,7 @@ module GraphsHelper
   # index page, multiple parameters
   # [{:name=>"fibrinogen", :data=>[[2023-10-02, 4.0], [2023-11-01, 322.22], [2022-02-10, 10.0]]}]
   # show page, single parameter
-  #[[2023-01-01, 36.0], [2023-10-26, 15.8], [2023-11-01, 8.0], [2023-09-09, 50.0], [2022-02-10, 6.0]]
+  # [[2023-01-01, 36.0], [2023-10-26, 15.8], [2023-11-01, 8.0], [2023-09-09, 50.0], [2022-02-10, 6.0]]
   def point_background_color(chart_data, min, max)
     return unless chart_data
 
