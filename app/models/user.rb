@@ -17,6 +17,9 @@
 class User < ApplicationRecord
   include AccountRecovery::RecoveryHelpers
 
+  encrypts :recovery_codes, deterministic: true # deterministic: allows querying the db data
+  encrypts :security_questions, deterministic: true # deterministic: allows querying the db data
+
   attr_accessor :is_being_updated
 
   SECURITY_QUESTIONS = [
@@ -56,8 +59,8 @@ class User < ApplicationRecord
   end
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
-  after_create :generate_recovery_codes
-  after_create :generate_default_security_questions_and_answers
+  after_initialize :generate_recovery_codes
+  after_initialize :generate_default_security_questions_and_answers
 
   def admin?
     admin
@@ -65,7 +68,6 @@ class User < ApplicationRecord
 
   def generate_recovery_codes
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
-    save
   end
 
   def select_random_questions_with_answers
@@ -78,6 +80,32 @@ class User < ApplicationRecord
   # are not using the default ones
   def custom_security_questions?
     validates_security_questions_present_and_unique
+  end
+
+  # Override accessors for recovery_codes
+  # needed to account for encryption
+  def recovery_codes
+    # Decrypt the recovery codes and ensure they return as an array
+    super.present? ? JSON.parse(super) : []
+  rescue JSON::ParserError
+    []
+  end
+
+  def recovery_codes=(value)
+    # Encrypt the recovery codes and save them as JSON
+    super(value.to_json)
+  end
+
+  def security_questions
+    # Decrypt the security questions and ensure they return as an array of arrays
+    super.present? ? JSON.parse(super) : []
+  rescue JSON::ParserError
+    []
+  end
+
+  def security_questions=(value)
+    # Encrypt the security questions and save them as JSON
+    super(value.to_json)
   end
 
   private
@@ -119,6 +147,5 @@ class User < ApplicationRecord
 
   def generate_default_security_questions_and_answers
     self.security_questions = select_random_questions_with_answers
-    save
   end
 end
