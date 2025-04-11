@@ -11,14 +11,18 @@
 #  updated_at          :datetime         not null
 #  admin               :boolean
 #  username            :string           default(""), not null
-#  recovery_codes      :string           default([]), not null, is an Array
-#  security_questions  :string           default([]), is an Array
+#  recovery_codes      :jsonb            default([]), not null, is an Array
+#  security_questions  :jsonb            default([]), is an Array
 #
 class User < ApplicationRecord
   include AccountRecovery::RecoveryHelpers
 
-  encrypts :recovery_codes, deterministic: true # deterministic: allows querying the db data
-  encrypts :security_questions, deterministic: true # deterministic: allows querying the db data
+  serialize :recovery_codes, Array
+  serialize :security_questions, Array
+
+  # Encrypt both fields using ActiveRecord Encryption
+  encrypts :recovery_codes, deterministic: true
+  encrypts :security_questions, deterministic: true
 
   attr_accessor :is_being_updated
 
@@ -59,15 +63,17 @@ class User < ApplicationRecord
   end
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
-  after_initialize :generate_recovery_codes
-  after_initialize :generate_default_security_questions_and_answers
+  # before_create :generate_recovery_codes
+  # before_create :generate_default_security_questions_and_answers
 
   def admin?
     admin
   end
 
   def generate_recovery_codes
+    binding.pry
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
+    self.save if persisted?
   end
 
   def select_random_questions_with_answers
@@ -80,32 +86,6 @@ class User < ApplicationRecord
   # are not using the default ones
   def custom_security_questions?
     validates_security_questions_present_and_unique
-  end
-
-  # Override accessors for recovery_codes
-  # needed to account for encryption
-  def recovery_codes
-    # Decrypt the recovery codes and ensure they return as an array
-    super.present? ? JSON.parse(super) : []
-  rescue JSON::ParserError
-    []
-  end
-
-  def recovery_codes=(value)
-    # Encrypt the recovery codes and save them as JSON
-    super(value.to_json)
-  end
-
-  def security_questions
-    # Decrypt the security questions and ensure they return as an array of arrays
-    super.present? ? JSON.parse(super) : []
-  rescue JSON::ParserError
-    []
-  end
-
-  def security_questions=(value)
-    # Encrypt the security questions and save them as JSON
-    super(value.to_json)
   end
 
   private
@@ -142,6 +122,7 @@ class User < ApplicationRecord
   end
 
   def sanitized_questions_with_answers
+    # binding.pry
     security_questions.reject { |question, answer| question.blank? || answer.blank? }
   end
 

@@ -12,23 +12,23 @@ class AccountRecoveryController < ApplicationController
 
   # generates recovery codes in the user view page and updates a turbo frame
   def generate_recovery_codes
-    current_user.generate_recovery_codes
+    # current_user.generate_recovery_codes
 
-    if current_user.save
-      respond_to do |format|
-        format.turbo_stream do
-          render(
-            turbo_stream: turbo_stream.update(
-              'user_recovery_codes',
-              partial: 'users/recovery_codes',
-              locals: { recovery_codes: current_user.recovery_codes }
-            )
-          )
-        end
-      end
-    else
-      redirect_to request.referer
-    end
+    # if current_user.save
+    #   respond_to do |format|
+    #     format.turbo_stream do
+    #       render(
+    #         turbo_stream: turbo_stream.update(
+    #           'user_recovery_codes',
+    #           partial: 'users/recovery_codes',
+    #           locals: { recovery_codes: current_user.recovery_codes }
+    #         )
+    #       )
+    #     end
+    #   end
+    # else
+    #   redirect_to request.referer
+    # end
   end
 
   # allows the user to submit a recovery code and sign in
