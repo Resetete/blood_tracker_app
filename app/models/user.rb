@@ -18,10 +18,8 @@ class User < ApplicationRecord
   include AccountRecovery::RecoveryHelpers
 
   serialize :recovery_codes, Array
-  serialize :security_questions, Array
-
-  # Encrypt both fields using ActiveRecord Encryption
   encrypts :recovery_codes, deterministic: true
+  serialize :security_questions, Array
   encrypts :security_questions, deterministic: true
 
   attr_accessor :is_being_updated
@@ -63,15 +61,14 @@ class User < ApplicationRecord
   end
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
-  # before_create :generate_recovery_codes
-  # before_create :generate_default_security_questions_and_answers
+  before_create :generate_recovery_codes
+  before_create :generate_default_security_questions_and_answers
 
   def admin?
     admin
   end
 
   def generate_recovery_codes
-    binding.pry
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
     self.save if persisted?
   end
@@ -122,7 +119,6 @@ class User < ApplicationRecord
   end
 
   def sanitized_questions_with_answers
-    # binding.pry
     security_questions.reject { |question, answer| question.blank? || answer.blank? }
   end
 
