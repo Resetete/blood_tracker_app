@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative '../../app/models/flipper_feature'
 
 # create descriptions for each feature flag and store them in flipper_features table

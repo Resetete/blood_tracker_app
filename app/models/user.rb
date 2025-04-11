@@ -11,11 +11,16 @@
 #  updated_at          :datetime         not null
 #  admin               :boolean
 #  username            :string           default(""), not null
-#  recovery_codes      :string           default([]), not null, is an Array
-#  security_questions  :string           default([]), is an Array
+#  recovery_codes      :jsonb            default([]), not null, is an Array
+#  security_questions  :jsonb            default([]), is an Array
 #
 class User < ApplicationRecord
   include AccountRecovery::RecoveryHelpers
+
+  serialize :recovery_codes, Array
+  encrypts :recovery_codes, deterministic: true
+  serialize :security_questions, Array
+  encrypts :security_questions, deterministic: true
 
   attr_accessor :is_being_updated
 
@@ -56,8 +61,8 @@ class User < ApplicationRecord
   end
 
   # Only on user creation recovery codes and questions are automatically generated as defaults
-  after_create :generate_recovery_codes
-  after_create :generate_default_security_questions_and_answers
+  before_create :generate_recovery_codes
+  before_create :generate_default_security_questions_and_answers
 
   def admin?
     admin
@@ -65,7 +70,7 @@ class User < ApplicationRecord
 
   def generate_recovery_codes
     self.recovery_codes = 5.times.map { SecureRandom.alphanumeric(8) }
-    save
+    self.save if persisted?
   end
 
   def select_random_questions_with_answers
@@ -119,6 +124,5 @@ class User < ApplicationRecord
 
   def generate_default_security_questions_and_answers
     self.security_questions = select_random_questions_with_answers
-    save
   end
 end
