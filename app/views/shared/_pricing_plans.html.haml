@@ -2,14 +2,17 @@
   .pricing-plans-container.mb-5
     .pricing-plan-wrapper.card
       .card-body
-        %h5.card-title Free Plan (Basic)
+        %h5.card-title
+          Free Plan
+          %br (Basic)
         %h6.pb-1.text-muted Start tracking your health today – forever free!
         %p.card-text.mb-3.mt-3
           %strong 0€ / month
+        %p.text-muted (All you need is an account.)
         = link_to('Get Started', current_user ? view_user_path(current_user) : new_user_registration_path, class: 'card-link btn btn-outline-dark')
         %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
         %ul
-          %li Track blood values for up to 10 blood analyses
+          %li Track blood values for up to 5 blood analyses (i.e., full test panels per date)
           %li Basic visualizations (e.g., trends over the last month)
           %li Receive indications if your blood values are within the normal range
 
@@ -27,6 +30,17 @@
           %li Track medications with reminders
           %li Visualize both medications and blood values in one view
           %li Exportable reports (e.g., CSV, PDF)
+
+    .pricing-plan-wrapper.card
+      .card-body
+        %h5.card-title Diabetes Plus Plan (Unlimited Tracking)
+        %h6.pb-1.text-muted Everything in the Free and Plus Plan plus:
+        %p.card-text.mb-3.mt-3
+          %strong 3€ / month
+        %p.text-muted (Coming Soon!)
+        = link_to('Get Started', "#", class: 'card-link btn btn-outline-dark disabled')
+        %h6.card-subtitle.mb-3.mt-5.text-muted Included Features
+        %ul
           %li Enable diabetes tracking
 
     .pricing-plan-wrapper.card.disabled

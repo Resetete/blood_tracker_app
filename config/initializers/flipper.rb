@@ -5,7 +5,8 @@ require_relative '../../app/models/flipper_feature'
 # create descriptions for each feature flag and store them in flipper_features table
 DESCRIPTIONS = {
   pricing_plan_plus: 'Configures the features that are allowed for users that are assigned to the Plus plan.',
-  pricing_plan_plus_ai: 'Configures the features that are allowed for users that are assigned to the Plus plan.'
+  pricing_plan_diabetes_plus: 'Configures the features that are allowed for users that are assigned to the Diabetes Plus plan.',
+  pricing_plan_plus_ai: 'Configures the features that are allowed for users that are assigned to the Plus plan.',
 }.freeze
 
 # this ensures that we only initialize after the table exists
