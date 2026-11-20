@@ -10,7 +10,14 @@ DESCRIPTIONS = {
 }.freeze
 
 # this ensures that we only initialize after the table exists
-if ActiveRecord::Base.connection.table_exists?('flipper_features')
+flipper_table_ready =
+  begin
+    ActiveRecord::Base.connection.table_exists?('flipper_features')
+  rescue ActiveRecord::NoDatabaseError, ActiveRecord::ConnectionNotEstablished
+    false
+  end
+
+if flipper_table_ready
   Flipper::UI.configure do |config|
     config.descriptions_source = lambda { |keys|
       # descriptions loaded from YAML file or database (postgres, mysql, etc)
