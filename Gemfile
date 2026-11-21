@@ -3,14 +3,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '4.0.10'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.4', '>= 7.0.4'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
-# psych 3 to fix incompatibility
-gem 'psych', '~> 3'
+gem 'puma', '>= 6.4'
 # use postgres database
 gem 'pg'
 # Use SCSS for stylesheets
@@ -46,13 +44,18 @@ gem 'rails-html-sanitizer'
 # generate and configure favicons
 gem 'all-the-favicons'
 
+# loading rails and ruby
+gem 'ostruct'
+gem 'readline'
+gem 'irb'
+
 # feature flags
 gem 'flipper'
 gem 'flipper-active_record'
 gem 'flipper-ui', '~> 1.3'
 
 # frontend
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.3'
 gem 'font-awesome-rails'
 gem 'foreman'
 gem 'haml-rails', '~> 2.0'
@@ -64,7 +67,6 @@ gem 'cocoon'
 gem 'ruby-units'
 
 # to ensure correctly handling special characters
-gem 'unicode'
 gem 'unicode_utils'
 
 # Use Active Storage variant
@@ -110,8 +112,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
